@@ -1,0 +1,29 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=Tx_Vhs_ViewHelpers}
+<f:layout name="Content" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+<f:section name="Configuration">
+	<flux:form wizardTab="Bootstrap" id="section" icon="{v:extension.path.resources(path: 'Icons/icon-section.gif')}">
+		<flux:grid>
+			<flux:grid.row>
+				<flux:grid.column>
+					<flux:form.content name="content" />
+				</flux:grid.column>
+			</flux:grid.row>
+		</flux:grid>
+		<flux:field.input name="sectionStyle" label="Section Style Class" />
+	</flux:form>
+</f:section>
+
+<f:section name="Preview">
+	<flux:widget.grid />
+</f:section>
+
+<f:section name="Main">
+	<div class="section{f:if(condition: '{0: sectionStyle} != {0: \'\'}', then: ' {sectionStyle}')}">
+		<flux:content.render area="content" />
+	</div>
+</f:section>
+</div>

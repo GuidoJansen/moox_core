@@ -1,0 +1,11 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=Tx_Vhs_ViewHelpers}
+
+<flux:form.sheet name="container" label="LLL:sheets.container">
+	<flux:field.select name="settings.container.tagName" items="{settings.container.tagNames}" label="LLL:fields.tagName" requestUpdate="TRUE" />
+	<f:if condition="{settings.container.tagName} != {settings.constants.none}">
+		<flux:field.input name="settings.container.titleAttribute" label="LLL:fields.titleAttribute" />
+	</f:if>
+	<flux:field.select name="settings.container.className" renderMode="checkbox" minItems="0" maxItems="100" items="{settings.container.classNames}" label="LLL:fields.classNames" />
+	<flux:field.input name="settings.container.additionalClassNames" label="LLL:fields.additionalClassNames" />
+</flux:form.sheet>

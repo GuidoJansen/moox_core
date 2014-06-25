@@ -1,0 +1,25 @@
+plugin.tx_mooxcore.view {
+	templateRootPath = EXT:moox_core/Resources/Private/Templates/
+	partialRootPath = EXT:moox_core/Resources/Private/Partials/
+	layoutRootPath = EXT:moox_core/Resources/Private/Layouts/
+}
+
+# cat=MOOXCORE/settings; type=boolean; label=Use TypoScript settings instead of FlexForm values
+plugin.tx_mooxcore.settings.useTypoScript = 1
+plugin.tx_mooxcore.settings {
+	# cat=MOOXCORE/settings; type=int+; label=main menu entry level - other menus calculated based on this
+	entryLevel = 0
+	# cat=MOOXCORE/settings; type=boolean; label=enable the top right corner search field
+	enableSearch = 1
+	# cat=MOOXCORE/settings; type=small; label=name attribute of search field
+	searchFieldName = q
+	# cat=MOOXCORE/settings; type=small; label=search page uid
+	searchPageUid =
+	# cat=MOOXCORE/settings; type=small; label=search method
+	searchMethod = post
+	# cat=MOOXCORE/settings; type=small; label=domain
+	domain = 
+	
+	# cat=MOOXCORE/settings; type=int+; label=Number of grid columns: Set this to the same number used in your custom Bootstrap CSS if you've switched from the default 12-grid
+	gridColumns = 12
+}

@@ -1,0 +1,10 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+
+<flux:form.sheet name="image" label="LLL:sheets.image">
+	<flux:field.select name="settings.image.className" renderMode="checkbox" minItems="0" maxItems="100" items="{settings.image.classNames}" label="LLL:fields.classNames" />
+	<flux:field.select name="settings.scaleMode" items="{n: '', c: 'c', m: 'm'}" default="c" />
+	<flux:field.checkbox name="settings.extendedCaptions" />
+	<flux:field.checkbox name="settings.directInclusion" />
+	<flux:field.select name="settings.caption.tagName" items="{settings.caption.types}" label="LLL:fields.tagName" requestUpdate="TRUE" />
+	<flux:field.checkbox name="settings.lightbox" label="LLL:fields.lightbox" />
+</flux:form.sheet>

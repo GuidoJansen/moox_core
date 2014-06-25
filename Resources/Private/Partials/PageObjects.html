@@ -1,0 +1,56 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+<f:section name="SharedResources">
+	<v:page.header.meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<v:asset.style name="fontawesome" group="cdn" path="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" external="TRUE" standalone="TRUE" />
+	<v:asset.style name="bootstrap-css" group="cdn" path="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" external="TRUE" standalone="TRUE" />
+	<v:asset.script name="bootstrap-core" group="cdn" path="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" external="TRUE" standalone="TRUE" dependencies="jquery" />
+	<v:asset.script name="jquery" group="cdn" path="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" external="TRUE" standalone="TRUE" />
+	<v:asset.script name="jquery-ui" group="cdn" path="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js" external="TRUE" standalone="TRUE" dependencies="jquery" />
+	<v:page.header>
+		<!--[if lt IE 9]>
+			<link href="//netdna.bootstrapcdn.com/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+			<link href="typo3conf/ext/moox_core/Resources/Public/Respond/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+			<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>	
+			<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+			<script src="typo3conf/ext/moox_core/Resources/Public/Respond/respond.proxy.js"></script>
+		<![endif]-->
+	</v:page.header>
+</f:section>
+
+<f:section name="Navigation">
+	<div class="container">
+		<f:if condition="{settings.enableSearch}">
+			<form class="navbar-form navbar-right" method="{settings.searchMethod}" action="{f:uri.page(pageUid: settings.searchPageUid)}" role="search">
+				<div class="form-group">
+					<input type="text" name="{settings.searchFieldName}" class="form-control" tabindex="2" placeholder="Search..." />
+				</div>
+				<button tabindex="3" type="submit" class="btn btn-inverse"><i class="glyphicon glyphicon-search"></i></button>
+			</form>
+		</f:if>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="{v:site.url()}"><v:site.name /></a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<v:page.menu entryLevel="{settings.entryLevel}" useShortcutUid="FALSE" useShortcutData="TRUE">
+				<ul class="nav navbar-nav">
+					<f:for each="{menu}" as="mainPage" iteration="iteration">
+						<li class="{mainPage.class}"><a tabindex="{iteration.cycle -> v:math.sum(b: 100)}" href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a></li>
+					</f:for>
+				</ul>
+			</v:page.menu>
+		</div>
+	</div>
+</f:section>
+
+</div>
