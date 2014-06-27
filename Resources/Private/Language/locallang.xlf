@@ -91,7 +91,40 @@
 				<source>Include image directly, only assign "src", "alt" and CSS class names (nice for responsive images)</source>
 			</trans-unit>
 			<trans-unit id="fields.lightbox" xml:space="preserve">
-				<source>Open image in lightbox on click</source>
+				<source>Open image(s) in lightbox</source>
+			</trans-unit>
+			<trans-unit id="flux.image.fields.settings.cols" xml:space="preserve">
+				<source>Columns</source>
+			</trans-unit>
+			<trans-unit id="flux.image.fields.settings.gallery" xml:space="preserve">
+				<source>Include images to gallery</source>
+			</trans-unit>
+			<trans-unit id="fields.speed" xml:space="preserve">
+				<source>Speed</source>
+			</trans-unit>
+			<trans-unit id="fields.changeSpeed" xml:space="preserve">
+				<source>Change speed</source>
+			</trans-unit>
+			<trans-unit id="fields.effect" xml:space="preserve">
+				<source>Effect</source>
+			</trans-unit>
+			<trans-unit id="fields.fullscreen" xml:space="preserve">
+				<source>Fullscreen</source>
+			</trans-unit>
+			<trans-unit id="fields.itemWidth" xml:space="preserve">
+				<source>Optional min width of a grid item</source>
+			</trans-unit>
+			<trans-unit id="fields.autoResize" xml:space="preserve">
+				<source>This will auto-update the layout when the browser window is resized.</source>
+			</trans-unit>
+			<trans-unit id="fields.offset" xml:space="preserve">
+				<source>Optional, the distance between grid items</source>
+			</trans-unit>
+			<trans-unit id="fields.outerOffset" xml:space="preserve">
+				<source>Optional the distance from grid to parent</source>
+			</trans-unit>
+			<trans-unit id="fields.flexibleWidth" xml:space="preserve">
+				<source>Optional, the maximum width of a grid item</source>
 			</trans-unit>
 			<trans-unit id="flux.html" xml:space="preserve">
 				<source>Custom HTML</source>
