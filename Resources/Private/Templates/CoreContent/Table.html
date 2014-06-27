@@ -13,7 +13,7 @@
 <f:section name="Preview"></f:section>
 
 <f:section name="Main">
-	<table>
+	<table class="table">
 		<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString">
 			<tr>
 				<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column">
