@@ -37,16 +37,72 @@
 </f:section>
 
 <f:section name="Main">
+	<f:if condition="{settings.lightbox}">
+		<v:asset.style name="magnific-popup-css" group="magnific-popup" path="EXT:moox_core/Resources/Public/Stylesheets/magnific-popup/magnific-popup.css" standalone="TRUE" />
+		<v:asset.script name="magnific-popup-js" group="magnific-popup" path="EXT:moox_core/Resources/Public/Js/magnific-popup/jquery.magnific-popup.min.js" standalone="TRUE" allowMoveToFooter="TRUE"/>
+		<v:asset.script name="magnific-popup-init-js" group="magnific-popup" path="EXT:moox_core/Resources/Public/Js/magnific-popup/moox-init-lightbox.js" standalone="TRUE" allowMoveToFooter="TRUE" />
+	</f:if>
+	
 	<div class="media">
 		<div class="pull-{positionclass}">
-			<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
-				<f:for each="{images}" as="image" iteration="iteration">
-					<fcc:tag name="{settings.caption.tagName}">
-						<f:render partial="Image" arguments="{_all}" />
-						<flux:content.render area="content{image.checksum}" />
-					</fcc:tag>
-				</f:for>
-			</v:resource.record.fal>
+			<f:if condition="{settings.lightbox}"><div class="lightbox-gallery"></f:if>
+				<div class="row">
+					<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
+						<f:for each="{images}" as="image" iteration="iteration">
+							<v:switch value="{settings.cols}">
+								<v:case case="1" break="TRUE">
+									<div class="col-md-12">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>			
+								</v:case>
+								<v:case case="2" break="TRUE">
+									<div class="col-md-6">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>	
+								<v:case case="3" break="TRUE">
+									<div class="col-md-4">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>
+								<v:case case="4" break="TRUE">
+									<div class="col-md-3">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>
+								<v:case case="5" break="TRUE">
+									<div class="col-md-2">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>
+								<v:case case="6" break="TRUE">
+									<div class="col-md-1">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>
+							</v:switch>
+						</f:for>
+					</v:resource.record.fal>
+				</div>
+			<f:if condition="{settings.lightbox}"></div></f:if>
 		</div>
 		<div class="media-body">
 			{record.bodytext -> f:format.html()}
