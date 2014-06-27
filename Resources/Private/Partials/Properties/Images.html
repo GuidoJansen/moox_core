@@ -1,10 +1,28 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
 
 <flux:form.sheet name="image" label="LLL:sheets.image">
-	<flux:field.select name="settings.image.className" renderMode="checkbox" minItems="0" maxItems="100" items="{settings.image.classNames}" label="LLL:fields.classNames" />
-	<flux:field.select name="settings.scaleMode" items="{n: '', c: 'c', m: 'm'}" default="c" />
-	<flux:field.checkbox name="settings.extendedCaptions" />
-	<flux:field.checkbox name="settings.directInclusion" />
-	<flux:field.select name="settings.caption.tagName" items="{settings.caption.types}" label="LLL:fields.tagName" requestUpdate="TRUE" />
-	<flux:field.checkbox name="settings.lightbox" label="LLL:fields.lightbox" />
+	<flux:field.checkbox name="settings.gallery" requestUpdate="TRUE" />
+	<f:if condition="{settings.gallery}">
+		<f:then>
+			<flux:flexform.field.input name="settings.speed" label="LLL:fields.speed" default="500" />
+			<flux:flexform.field.input name="settings.changeSpeed" label="LLL:fields.changeSpeed" default="550" />
+			<flux:flexform.field.select name="settings.effect" label="LLL:fields.effect" items="{bounce: 'bounce',fadeBig: 'fadeBig',fade: 'fade',roll: 'roll',rotate: 'rotate',flipX: 'flipX',flipY: 'flipY'}"/>
+			<flux:flexform.field.select name="settings.fullscreen" label="LLL:fields.fullscreen" items="{true: 'true',false: 'false'}"/>
+			<flux:flexform.field.input name="settings.itemWidth" label="LLL:fields.itemWidth" default="30%" />
+			<flux:flexform.field.select name="settings.autoResize" label="LLL:fields.autoResize" items="{true: 'true',false: 'false'}" default="true"/>
+			<flux:flexform.field.input name="settings.offset" label="LLL:fields.offset" default="10" />
+			<flux:flexform.field.input name="settings.outerOffset" label="LLL:fields.outerOffset" default="10" />
+			<flux:flexform.field.input name="settings.flexibleWidth" label="LLL:fields.flexibleWidth" default="50%" />
+		</f:then>
+		<f:else>
+			<flux:field.select name="settings.image.className" renderMode="checkbox" minItems="0" maxItems="100" items="{settings.image.classNames}" label="LLL:fields.classNames" />
+			<flux:field.select name="settings.scaleMode" items="{n: '', c: 'c', m: 'm'}" default="c" />
+			<flux:field.checkbox name="settings.extendedCaptions" />
+			<flux:field.checkbox name="settings.directInclusion" />
+			<flux:field.select name="settings.caption.tagName" items="{settings.caption.types}" label="LLL:fields.tagName" requestUpdate="TRUE" />
+			<flux:field.select name="settings.cols" items="{1: '1', 2: '2', 3: '3', 4: '4', 5: '6', 6: '12'}" default="1" />
+			<flux:field.checkbox name="settings.lightbox" label="LLL:fields.lightbox" />
+		</f:else>
+	</f:if>
+	
 </flux:form.sheet>

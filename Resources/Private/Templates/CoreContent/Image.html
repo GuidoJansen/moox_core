@@ -41,12 +41,129 @@
 		<v:asset.script name="magnific-popup-init-js" group="magnific-popup" path="EXT:moox_core/Resources/Public/Js/magnific-popup/moox-init-lightbox.js" standalone="TRUE" allowMoveToFooter="TRUE" />
 	</f:if>
 	
-	<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
-		<f:for each="{images}" as="image" iteration="iteration">
-			<fcc:tag name="{settings.caption.tagName}">
-				<f:render partial="Image" arguments="{_all}" />
-				<flux:content.render area="content{image.checksum}" />
-			</fcc:tag>
-		</f:for>
-	</v:resource.record.fal>
+	
+	
+	<f:if condition="{settings.gallery}">
+		<f:then>
+			<v:asset.style name="gallery-css" group="gallery" path="EXT:moox_core/Resources/Public/Stylesheets/gallery/gallery.css" standalone="TRUE" allowMoveToFooter="FALSE" />
+			<v:asset.script name="gallery-js" group="gallery" path="EXT:moox_core/Resources/Public/Js/gallery/gallery.js" standalone="TRUE" allowMoveToFooter="TRUE" />
+			<v:asset.script name="gallery-imagesloaded-js" group="gallery" path="EXT:moox_core/Resources/Public/Js/gallery/jquery.imagesloaded.js" standalone="TRUE" allowMoveToFooter="TRUE" />
+			<v:asset.script name="gallery-wookmark-js" group="gallery" path="EXT:moox_core/Resources/Public/Js/gallery/jquery.wookmark.min.js" standalone="TRUE" allowMoveToFooter="TRUE" />
+			<v:asset.script name="gallery-init-js" group="gallery" standalone="TRUE" allowMoveToFooter="TRUE" external="1">
+				<![CDATA[	
+					$(function () {
+						$('.moox-gallery-image').glisse({
+							speed: ]]>{settings.speed}<![CDATA[,
+							changeSpeed: ]]>{settings.changeSpeed}<![CDATA[,
+							effect:']]>{settings.effect}<![CDATA[',
+							fullscreen: ]]>{settings.fullscreen}<![CDATA[
+						}); 
+					});
+				]]>
+				<![CDATA[
+					(function ($){
+						$(']]>#moox-image-gallery-c{record.uid}<![CDATA[').imagesLoaded(function() {
+						  var options = {
+						    itemWidth: ']]>{settings.itemWidth}<![CDATA[',
+						    autoResize: ]]>{settings.autoResize}<![CDATA[,
+						    container: $(']]>#moox-image-gallery-c{record.uid}<![CDATA['),
+						    offset: ]]>{settings.offset}<![CDATA[,
+						    outerOffset: ]]>{settings.outerOffset}<![CDATA[,
+						    flexibleWidth: ']]>{settings.flexibleWidth}<![CDATA['
+						  };
+					  
+						  var handler = $(']]>#moox-image-gallery-c{record.uid} li<![CDATA[');
+					  
+						  var $window = $(window);
+						  $window.resize(function() {
+						    var windowWidth = $window.width(),
+							newOptions = { flexibleWidth: '50%' };
+					  
+						    if (windowWidth < 1024) {
+						      newOptions.flexibleWidth = '100%';
+						    }
+					  
+						    handler.wookmark(newOptions);
+						  });
+					  
+						  handler.wookmark(options);
+						});
+					})(jQuery);
+				]]>
+			</v:asset.script>
+			<div class="moox-gallery moox-gallery-c{record.uid}">
+				<div class="moox-gallery-inner">
+					<ul class="moox-image-gallery" id="moox-image-gallery-c{record.uid}">
+						<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
+							<f:for each="{images}" as="image" iteration="iteration">
+								<li class="image-element">
+									<img src="{image.url}" alt="{image.alternative}" class="moox-gallery-image" rel="moox-image-group-c{record.uid}" data-glisse-big="{image.url}" title="{image.description}" />
+								</li>
+							</f:for>
+						</v:resource.record.fal>
+					</ul>
+				</div>
+			</div>
+		</f:then>
+		<f:else>
+			<f:if condition="{settings.lightbox}"><div class="lightbox-gallery"></f:if>
+				<div class="row">
+					<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
+						<f:for each="{images}" as="image" iteration="iteration">
+							<v:switch value="{settings.cols}">
+								<v:case case="1" break="TRUE">
+									<div class="col-md-12">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>			
+								</v:case>
+								<v:case case="2" break="TRUE">
+									<div class="col-md-6">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>	
+								<v:case case="3" break="TRUE">
+									<div class="col-md-4">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>
+								<v:case case="4" break="TRUE">
+									<div class="col-md-3">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>
+								<v:case case="5" break="TRUE">
+									<div class="col-md-2">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>
+								<v:case case="6" break="TRUE">
+									<div class="col-md-1">
+										<fcc:tag name="{settings.caption.tagName}">
+											<f:render partial="Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</fcc:tag>
+									</div>	
+								</v:case>
+							</v:switch>
+						</f:for>
+					</v:resource.record.fal>
+				</div>
+			<f:if condition="{settings.lightbox}"></div></f:if>	
+		</f:else>
+	</f:if>
 </f:section>

@@ -5,11 +5,29 @@
 		<f:if condition="{settings.lightbox}">
 			<f:then>
 				<a class="image-lightbox" href="{image.url}" relative="1" title="{image.title}">
-					<img src="{image.url}" alt="{image.name}" class="{settings.image.className}" />
+					<figure>
+						<img src="{image.url}" title="{image.title}" alt="{image.alternative}" class="{settings.image.className}" />
+						<f:if condition="{image.description}"><figcaption>{image.description}</figcaption></f:if>
+					</figure>
 				</a>
 			</f:then>
 			<f:else>
-				<img src="{image.url}" alt="{image.name}" class="{settings.image.className}" />
+				<f:if condition="{image.link}">
+					<f:then>
+						<a href="{image.link}">
+							<figure>
+								<img src="{image.url}" title="{image.title}" alt="{image.alternative}" class="{settings.image.className}" />
+								<f:if condition="{image.description}"><figcaption>{image.description}</figcaption></f:if>
+							</figure>
+						</a>
+					</f:then>
+					<f:else>
+						<figure>
+							<img src="{image.url}" title="{image.title}" alt="{image.alternative}" class="{settings.image.className}" />
+							<f:if condition="{image.description}"><figcaption>{image.description}</figcaption></f:if>
+						</figure>
+					</f:else>
+				</f:if>
 			</f:else>
 		</f:if>
 	</f:then>
@@ -17,15 +35,35 @@
 		<f:if condition="{settings.lightbox}">
 			<f:then>
 				<a class="image-lightbox" href="{image.url}" relative="1" title="{image.title}">
-					<f:image src="{image.url}" treatIdAsReference="TRUE" alt="{image.name}"
-					width="{record.imagewidth -> v:or(alternative: '-1')}{f:if(condition: record.imagewidth, then: settings.scaleMode)}"
-					height="{record.imageheight -> v:or(alternative: '-1')}{f:if(condition: record.imageheight, then: settings.scaleMode)}" />
+					<figure>
+						<f:image src="{image.url}" treatIdAsReference="TRUE" title="{image.title}" alt="{image.alternative}"
+						width="{record.imagewidth -> v:or(alternative: '-1')}{f:if(condition: record.imagewidth, then: settings.scaleMode)}"
+						height="{record.imageheight -> v:or(alternative: '-1')}{f:if(condition: record.imageheight, then: settings.scaleMode)}" />
+						<f:if condition="{image.description}"><figcaption>{image.description}</figcaption></f:if>
+					</figure>
 				</a>
 			</f:then>
 			<f:else>
-				<f:image src="{image.url}" treatIdAsReference="TRUE" alt="{image.name}"
-				width="{record.imagewidth -> v:or(alternative: '-1')}{f:if(condition: record.imagewidth, then: settings.scaleMode)}"
-				height="{record.imageheight -> v:or(alternative: '-1')}{f:if(condition: record.imageheight, then: settings.scaleMode)}" />
+				<f:if condition="{image.link}">
+					<f:then>
+						<a href="{image.link}">
+							<figure>
+								<f:image src="{image.url}" treatIdAsReference="TRUE" title="{image.title}" alt="{image.alternative}"
+								width="{record.imagewidth -> v:or(alternative: '-1')}{f:if(condition: record.imagewidth, then: settings.scaleMode)}"
+								height="{record.imageheight -> v:or(alternative: '-1')}{f:if(condition: record.imageheight, then: settings.scaleMode)}" />
+								<f:if condition="{image.description}"><figcaption>{image.description}</figcaption></f:if>
+							</figure>
+						</a>
+					</f:then>
+					<f:else>
+						<figure>
+							<f:image src="{image.url}" treatIdAsReference="TRUE" title="{image.title}" alt="{image.alternative}"
+							width="{record.imagewidth -> v:or(alternative: '-1')}{f:if(condition: record.imagewidth, then: settings.scaleMode)}"
+							height="{record.imageheight -> v:or(alternative: '-1')}{f:if(condition: record.imageheight, then: settings.scaleMode)}" />
+							<f:if condition="{image.description}"><figcaption>{image.description}</figcaption></f:if>
+						</figure>
+					</f:else>
+				</f:if>
 			</f:else>
 		</f:if>
 	</f:else>
