@@ -108,7 +108,7 @@ tt_content.default < plugin.tx_mooxcore.bootstrap
 tt_content.default.pluginName = Default
 
 ### MOOX Content Wrap ###
-tt_content.stdWrap.wrap = <div class="moox-contentwrap">|</div>
+###tt_content.stdWrap.wrap = <div class="moox-contentwrap">|</div>
 
 lib.parseTarget {
 	override =
