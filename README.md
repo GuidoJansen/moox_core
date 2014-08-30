@@ -1,4 +1,4 @@
-![MOOX Core](https://raw.github.com/dcngmbh/moox_core/master/ext_icon64.png)  MOOX Bootstrap Responsive
+![moox_core](https://raw.github.com/dcngmbh/moox_core/master/ext_icon64.png)  MOOX Bootstrap Responsive
 =========
 
 ### TYPO3-Extension moox_core
