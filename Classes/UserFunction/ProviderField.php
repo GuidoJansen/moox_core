@@ -4,6 +4,7 @@ namespace FluidTYPO3\MooxCore\UserFunction;
  *  Copyright notice
  *
  *  (c) 2013 Claus Due <claus@namelesscoder.net>
+ *  (c) 2014 DCN GmbH <moox@dcn.de>
  *
  *  All rights reserved
  *
