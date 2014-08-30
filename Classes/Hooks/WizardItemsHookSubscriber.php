@@ -4,6 +4,7 @@ namespace FluidTYPO3\MooxCore\Hooks;
  *  Copyright notice
  *
  *  (c) 2013 Claus Due <claus@wildside.dk>
+ *  (c) 2014 DCN GmbH <moox@dcn.de>
  *
  *  All rights reserved
  *
