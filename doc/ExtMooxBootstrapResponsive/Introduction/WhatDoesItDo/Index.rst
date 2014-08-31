@@ -24,6 +24,6 @@ provides Responsive Page-Layouts and Content Elements using Bootstrap,
 it also can be easily extended by other MOOX-Extensions like News &
 Blog, jQuery Effects and more.
 
-Visit `http://www.moox.org/documentation
-<http://www.moox.org/documentation>`_ for full documentation.
+Visit `http://www.moox.org/docs
+<http://www.moox.org/docs>`_ for full documentation.
 

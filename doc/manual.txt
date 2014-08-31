@@ -16,7 +16,7 @@ What does it do?
 
 
 MOOX Bootstrap Responsive is the Core-Extension for MOOX. MOOX is a set of Extensions for the TYPO3 CMS. While this TYPO3 Extension provides Responsive Page-Layouts and Content Elements using Bootstrap, it also can be easily extended by other MOOX-Extensions like News & Blog, jQuery Effects and more. 
-Visit http://www.moox.org/documentation for full documentation. 
+Visit http://www.moox.org/docs for full documentation. 
 
 
 Sponsors
@@ -26,7 +26,7 @@ This Extension is developed by DCN GmbH (http://www.dcn.de). There are now spons
 
 Users manual
 
-Choose a free or commercial MOOX Template (http://www.moox.org/templates) on a fresh TYPO3-Installation.
+Choose a free or commercial MOOX Template (http://www.moox.org/designs) on a fresh TYPO3-Installation.
 OR
 Install MOOX Template Builder (moox_template_builder) to create an own responsive website template with MOOX.
 In both ways moox_core and all needed MOOX Extensions will be installed automatically.
@@ -72,7 +72,7 @@ Alternatively you may order a ready2run plattform on http://www.moox.org/service
 
 Tutorial
 
-Visit http://www.moox.org/documentation for full documentation. 
+Visit http://www.moox.org/docs for full documentation. 
 
 
 Known problems

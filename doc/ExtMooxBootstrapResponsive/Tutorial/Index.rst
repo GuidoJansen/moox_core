@@ -18,7 +18,7 @@
 Tutorial
 --------
 
-Visit `http://www.moox.org/documentation
-<http://www.moox.org/documentation>`_ for full documentation.
+Visit `http://www.moox.org/docs
+<http://www.moox.org/docs>`_ for full documentation.
 
 
