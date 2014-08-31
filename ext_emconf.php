@@ -11,8 +11,8 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'MOOX Core',
-	'description' => 'MOOX Core TYPO3 Bootstrap package',
+	'title' => 'MOOX Bootstrap Responsive',
+	'description' => 'Makes TYPO3 fully responsive using Bootstrap, HTML5 Boilerplate, jQuery and Superfish.',
 	'category' => 'misc',
 	'shy' => 0,
 	'version' => '0.9.0',
