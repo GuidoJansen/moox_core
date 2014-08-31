@@ -2,13 +2,14 @@
     "name": "fluidtypo3/moox_core",
     "description": "Replace css_styled_content with your own templates",
     "require": {
-        "fluidtypo3/flux": "*"
+       "fluidtypo3/flux": "*",
+       "fluidtypo3/vhs": "*"
     },
     "type": "typo3-cms-extension",
     "keywords": ["TYPO3 CMS", "templating", "bootstrap", "flux", "fluidcontent", "fedext", "fluid"],
-    "homepage": "https://fedext.net",
+    "homepage": "https://fluidtypo3.org/",
     "license": "GPL-2.0+",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "support": {
         "irc": "irc://irc.freenode.org/fedext",
         "issues": "https://github.com/FluidTYPO3/fluidcontent_core/issues"

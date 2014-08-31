@@ -1,0 +1,132 @@
+@import url(http://fonts.googleapis.com/css?family=Share:400,400italic,700,700italic);
+
+body
+{
+    color: #000000;
+    font-size: 18px;
+}
+
+h1
+{
+    color: #000000;
+}
+h3
+{
+    color: #707070;
+}
+.mod-administration-dashboard
+{
+    padding: 0 25px;
+    font-family: 'Share', cursive;
+}
+
+.alert-info
+{
+    background: #fff;
+    border-color: #b2b2b2;
+    color: #000000;
+    border-radius: 0px;
+    padding-bottom: 50px;
+}
+.panel
+{
+    border-color: #cdcdcd;
+}
+.panel-heading
+{
+    background: #cfcfcf !important;
+    border-color: #ccc !important;
+}
+.panel-heading h4
+{
+    color: #202020 !important;
+}
+.btn-link
+{
+    background: #f28d0b;
+    color: #fff;
+    padding: 3px 10px;
+    -moz-transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    transition: 0.5s all;
+}
+.btn-link:hover
+{
+    background: #22a64b;
+    color: #ffffff;
+    text-decoration: none;
+}
+.elastic-frame
+{
+	position: relative;
+	padding-bottom: 55%;
+	padding-top: 15px;
+	height: 0;
+	overflow: hidden;
+	z-index: 1;
+}
+.elastic-frame IFRAME
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+/*/
+/* gridster
+/*/
+.gridster ul
+{
+    background-color: #EFEFEF;
+    list-style-type: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+.gridster li
+{
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100%;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+.gridster
+{
+    margin: 0 auto;
+
+    opacity: .8;
+
+    -webkit-transition: opacity .6s;
+    -moz-transition: opacity .6s;
+    -o-transition: opacity .6s;
+    -ms-transition: opacity .6s;
+    transition: opacity .6s;
+}
+.gridster .gs-w
+{
+    background: #DDD;
+    cursor: pointer;
+}
+.gridster .player
+{
+    background: #BBB;
+}
+.gridster .preview-holder
+{
+    border: none!important;
+    background: red!important;
+}
+.gridster li header
+{
+        background: #999;
+        display: block;
+        font-size: 20px;
+        line-height: normal;
+        padding: 4px 0 6px ;
+        margin-bottom: 20px;
+        cursor: move;
+}

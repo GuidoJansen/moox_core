@@ -450,9 +450,9 @@ return array (
 						'vhs' =>
 								array (
 										'manifestPath' => '',
-										'composerName' => 'typo3/cms-vhs',
+										'composerName' => 'fluidtypo3/vhs',
 										'state' => 'active',
-										'packagePath' => 'typo3/sysext/vhs/',
+										'packagePath' => 'typo3conf/ext/vhs/',
 										'classesPath' => 'Classes/',
 								),
 						'viewpage' =>

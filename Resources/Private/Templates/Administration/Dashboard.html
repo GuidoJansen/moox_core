@@ -1,0 +1,25 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:fcc="http://typo3.org/ns/FluidTYPO3/MooxCore/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+    
+    <f:layout name="AdministrationDashboard"/>
+    
+    <title>Templates: Index</title>
+    
+    <f:section name="main">
+        <div class="page-header">
+            <h3> <f:image src="{f:uri.resource(path: 'Images/Backend/mooxlogoicon.png')}" width="35c" /> Dashboard</h3>
+        </div>
+        <div class="section-welcome elastic-frame">
+             <iframe src="http://moox.org/index.php?id=57" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <f:if condition="{settings.extKey} != ''">
+            <div class="section-welcome elastic-frame">
+                <iframe src="http://moox.org/dashboard/templates/{settings.extKey}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </f:if>
+    </f:section>
+    
+</div>

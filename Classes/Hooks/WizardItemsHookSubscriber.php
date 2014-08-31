@@ -4,7 +4,6 @@ namespace FluidTYPO3\MooxCore\Hooks;
  *  Copyright notice
  *
  *  (c) 2013 Claus Due <claus@wildside.dk>
- *  (c) 2014 DCN GmbH <moox@dcn.de>
  *
  *  All rights reserved
  *
@@ -54,12 +53,13 @@ class WizardItemsHookSubscriber implements NewContentElementWizardHookInterface 
 		foreach ($definitions as $definition) {
 			list ($title, $name, $icon) = $definition;
 			list ($extensionNameCompacted, $listType) = explode('_', $name);
+			$title = LocalizationUtility::translate($title, NULL);
 			$descriptionLabelName = 'plugin.' . $listType . '.description';
 			$description = LocalizationUtility::translate($descriptionLabelName, $extensionNameCompacted);
 			$index = 'plugins_' . $name;
 			$items[$index] =  array(
 				'title' => $title,
-				'icon' => '../' . substr(GeneralUtility::getFileAbsFileName($icon, FALSE, TRUE), strlen(PATH_site)),
+				'icon' => $icon,
 				'tt_content_defValues' => array(
 					'list_type' => $name,
 				),

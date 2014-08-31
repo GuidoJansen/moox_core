@@ -4,7 +4,6 @@ namespace FluidTYPO3\MooxCore\Controller;
  *  Copyright notice
  *
  *  (c) 2013 Claus Due <claus@namelesscoder.net>
- *  (c) 2014 DCN GmbH <moox@dcn.de>
  *
  *  All rights reserved
  *
@@ -38,6 +37,18 @@ use FluidTYPO3\Fluidcontent\Controller\AbstractContentController;
  * @route off
  */
 class ContentController extends AbstractContentController {
+    
+        /**
+	 * @return void
+	 */
+	protected function initializeOverriddenSettings() {
+		$record = $this->getRecord();
+		$useTypoScriptOptionFromForm = $this->provider->getForm($record)->getOption('useTypoScript');
+		if (NULL !== $useTypoScriptOptionFromForm) {
+			$this->settings['useTypoScript'] = (boolean)$useTypoScriptOptionFromForm;
+		}
+		parent::initializeOverriddenSettings();
+	}
 
 	/**
 	 * @return string
@@ -50,20 +61,6 @@ class ContentController extends AbstractContentController {
 	 * @return string
 	 */
 	public function alertAction() {
-
-	}
-
-	/**
-	 * @return string
-	 */
-	public function buttonGroupAction() {
-
-	}
-
-	/**
-	 * @return string
-	 */
-	public function buttonLinkAction() {
 
 	}
 
@@ -112,13 +109,6 @@ class ContentController extends AbstractContentController {
 	/**
 	 * @return string
 	 */
-	public function thumbnailsAction() {
-
-	}
-
-	/**
-	 * @return string
-	 */
 	public function wellAction() {
 
 	}
@@ -126,8 +116,64 @@ class ContentController extends AbstractContentController {
         /**
 	 * @return string
 	 */
-	public function sectionAction() {
+	public function progressBarAction() {
 
 	}
+
+	/**
+	 * @return string
+	 */
+	public function modalLightAction() {
+
+	}
+
+	/**
+	 * @return string
+	 */
+	public function buttonAction() {
+
+	}
+
+	/**
+	 * @return string
+	 */
+	public function embedVideoAction() {
+
+	}
+
+	/**
+	 * @return string
+	 */
+	public function simpleResponsiveImageAction() {
+
+	}
+
+	/**
+	 * @return string
+	 */
+	public function threeColumnAction() {
+
+	}
+
+	/**
+	 * @return string
+	 */
+	public function twoColumnAction() {
+
+	}
+        
+        /**
+	 * @return string
+	 */
+	public function fourColumnAction() {
+
+	}
+        
+        /**
+	 * @return string
+	 */
+        public function imageGalleryAction() {
+    
+        }
 
 }

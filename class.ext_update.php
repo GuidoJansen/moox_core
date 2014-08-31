@@ -46,7 +46,7 @@ class ext_update {
 	 * @return boolean
 	 */
 	public function access() {
-		return (FALSE === file_exists($this->targetConfigurationFile) && TRUE === \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('fluidcontent_core'));
+		return (FALSE === file_exists($this->targetConfigurationFile) && TRUE === \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('moox_core'));
 	}
 
 	/**

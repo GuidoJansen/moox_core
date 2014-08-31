@@ -1,16 +1,11 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace v=Tx_Vhs_ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
 <f:layout name="Content" />
 
 <f:section name="Configuration">
-	<flux:form wizardTab="Bootstrap" id="jumbotron" icon="{v:extension.path.resources(path: 'Icons/icon-jumbotron.gif')}">
-		<flux:grid>
-			<flux:grid.row>
-				<flux:grid.column>
-					<flux:form.content name="content" />
-				</flux:grid.column>
-			</flux:grid.row>
-		</flux:grid>
+	<flux:form id="jumbotron" options="{useTypoScript: 0, group: 'Bootstrap', icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/glyphicons_116_text_bigger.png'}">
+		<flux:form.content name="content" />
 	</flux:form>
 </f:section>
 

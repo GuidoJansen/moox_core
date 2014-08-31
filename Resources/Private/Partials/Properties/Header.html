@@ -1,7 +1,11 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace v=Tx_Vhs_ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers" flux:schemaLocation="http://fluidtypo3.org/schemas/flux-development.xsd"
+     xmlns:fcc="http://typo3.org/ns/FluidTYPO3/MooxCore/ViewHelpers" flux:schemaLocation="http://fluidtypo3.org/schemas/fluidcontent_core-development.xsd"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" flux:schemaLocation="http://fluidtypo3.org/schemas/vhs-development.xsd"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" f:schemaLocation="http://fluidtypo3.org/schemas/fluid-master.xsd">
 
 <flux:form.sheet name="header" label="LLL:sheets.header">
 	<flux:field.select name="settings.header.type" items="{settings.header.types}" default="{record.header_layout -> v:or(alternative: settings.header.type)}" label="LLL:fields.headerLevel" />
 	<flux:field.select name="settings.header.className" renderMode="checkbox" size="3" minItems="0" maxItems="100" items="{settings.header.classNames}" label="LLL:fields.classNames" />
 </flux:form.sheet>
+
+</div>

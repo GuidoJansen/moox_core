@@ -4,7 +4,6 @@ namespace FluidTYPO3\MooxCore\UserFunction;
  *  Copyright notice
  *
  *  (c) 2013 Claus Due <claus@namelesscoder.net>
- *  (c) 2014 DCN GmbH <moox@dcn.de>
  *
  *  All rights reserved
  *
@@ -61,7 +60,17 @@ class ProviderField {
 	 */
 	public function createVariantsField(array $parameters) {
 		$extensionKeys = $this->provider->getVariantExtensionKeysForContentType($parameters['row']['CType']);
-		return $this->renderSelectField($parameters, array_combine($extensionKeys, $extensionKeys), $parameters['row']['content_variant']);
+		$defaults = $this->provider->getDefaults();
+		$preSelected = $parameters['row']['content_variant'];
+		if (ContentProvider::MODE_RECORD === $defaults['mode'] && TRUE === empty($preSelected)) {
+			$preSelected = $defaults['variant'];
+		}
+		if (TRUE === is_array($extensionKeys) && 0 < count($extensionKeys)) {
+			$options = array_combine($extensionKeys, $extensionKeys);
+		} else {
+			$options = array();
+		}
+		return $this->renderSelectField($parameters, $options, $preSelected);
 	}
 
 	/**
@@ -93,8 +102,25 @@ class ProviderField {
 	 * @return string
 	 */
 	public function createVersionsField(array $parameters) {
-		$versions = $this->provider->getVariantVersions($parameters['row']['CType'], $parameters['row']['content_variant']);
-		return $this->renderSelectField($parameters, array_combine($versions, $versions), $parameters['row']['content_version']);
+		$defaults = $this->provider->getDefaults();
+		$preSelectedVariant = $parameters['row']['content_variant'];
+		$preSelectedVersion = $parameters['row']['content_version'];
+		if (ContentProvider::MODE_PRESELECT === $defaults['mode']) {
+			if (TRUE === empty($preSelectedVariant)) {
+				$preSelectedVariant = $defaults['variant'];
+			}
+			if (TRUE === empty($preSelectedVersion)) {
+				$preSelectedVersion = $defaults['version'];
+			}
+		}
+
+		$versions = $this->provider->getVariantVersions($parameters['row']['CType'], $preSelectedVariant);
+		if (TRUE === is_array($versions) && 0 < count($versions)) {
+			$options = array_combine($versions, $versions);
+		} else {
+			$options = array();
+		}
+		return $this->renderSelectField($parameters, $options, $preSelectedVersion);
 	}
 
 	/**
