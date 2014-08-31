@@ -22,7 +22,7 @@ Extension Key: moox\_core
 
 Language: en
 
-Version: 0.0.1
+Version: 1.0.0
 
 Keywords: moox, bootstrap, responsive, html5, boilerplate, seo,
 mobile, tablet, fluid
