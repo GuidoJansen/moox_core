@@ -10,3 +10,11 @@ MOOX Bootstrap Responsive is the Core-Extension for MOOX. MOOX is a set of Exten
 Visit http://www.moox.org for more information, free download and full documentation.
 
 Please report all issues here: https://github.com/dcngmbh/moox_core/issues
+
+#### More Links:
+
+Watch Video: https://www.youtube.com/watch?v=3dL-VImR2x8
+
+Sourceforge: https://sourceforge.net/projects/moox-typo3-bootstrap/
+
+TYPO3 Forge: https://forge.typo3.org/projects/extension-moox_core/
