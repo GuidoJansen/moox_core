@@ -13,6 +13,8 @@ Please report all issues here: https://github.com/dcngmbh/moox_core/issues
 
 #### More Links:
 
+Repository: http://typo3.org/extensions/repository/view/moox_core
+
 Watch Video: https://www.youtube.com/watch?v=3dL-VImR2x8
 
 Sourceforge: https://sourceforge.net/projects/moox-typo3-bootstrap/
