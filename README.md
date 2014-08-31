@@ -8,3 +8,5 @@ MOOX Bootstrap Responsive is the Core-Extension for MOOX. MOOX is a set of Exten
 ![MOOX Bootstrap Responsive Preview](https://raw.github.com/dcngmbh/moox_core/master/ext_preview.jpg)
 
 Visit http://www.moox.org for more information, free download and full documentation.
+
+Please report all issues here: https://github.com/dcngmbh/moox_core/issues
