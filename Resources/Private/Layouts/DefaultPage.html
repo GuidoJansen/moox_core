@@ -1,19 +1,13 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-
+{namespace v=Tx_Vhs_ViewHelpers}
 <f:layout name="DefaultPage" />
 
-{v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
-
-<f:render section="MooxMetaTags" partial="PageObjects" arguments="{_all}" />
-<f:render section="MooxHeadSection" partial="PageObjects" arguments="{_all}" />
-
+<f:render section="Resources" optional="TRUE" arguments="{_all}" />
 <v:asset.style name="template-css" group="template" path="typo3conf/ext/moox_core/Resources/Public/Stylesheets/starter-template.css" external="TRUE" standalone="TRUE" />
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<f:render section="MooxNavigation" partial="PageObjects" arguments="{_all}" />
-</div>
 
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<f:render section="Navigation" partial="PageObjects" arguments="{_all}" />
+</div>
 <div class="container">
 	<!--TYPO3SEARCH_begin-->
 	<div class="starter-template">
@@ -21,5 +15,4 @@
 	</div>
 	<!--TYPO3SEARCH_end-->
 </div>
-
-<f:render section="MooxFooterSection" partial="PageObjects" arguments="{_all}" />
+<f:debug title="Debug of MyArray">{_all}</f:debug>

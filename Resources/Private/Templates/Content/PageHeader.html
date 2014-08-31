@@ -1,30 +1,21 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace v=Tx_Vhs_ViewHelpers}
 
-<f:layout name="Content" />
+<f:layout name="FCE" />
 
 <f:section name="Configuration">
-	<flux:form id="pageheader" options="{useTypoScript: 0, group: 'Bootstrap', icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/glyphicons_459_header.png'}">
-		<flux:field.select name="headerType" items="{h1: 'h1', h2: 'h2', h3: 'h3', h4: 'h4', h5: 'h5', h6: 'h6'}" default="h1" />
+	<flux:form wizardTab="Bootstrap" id="pageheader" icon="{v:extension.path.resources(path: 'Icons/icon-pageheader.gif')}">
 		<flux:field.input name="header" />
 		<flux:field.input name="subheader" />
 	</flux:form>
 </f:section>
 
 <f:section name="Preview">
-	<{headerType}>{header}
-		<f:if condition="{subheader}">
-			<small>{subheader}</small>
-		</f:if>
-	</{headerType}>
+	<h2>{header} <f:if condition="{subheader}"><small>{subheader}</small></f:if></h2>
 </f:section>
 
 <f:section name="Main">
 	<div class="page-header">
-		<{headerType}>{header}
-			<f:if condition="{subheader}">
-				<small>{subheader}</small>
-			</f:if>
-		</{headerType}>
+		<h1>{header}<f:if condition="{subheader}"> <small>{subheader}</small></f:if></h1>
 	</div>
 </f:section>

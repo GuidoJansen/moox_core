@@ -4,6 +4,7 @@ namespace FluidTYPO3\MooxCore\Controller;
  *  Copyright notice
  *
  *  (c) 2014 Claus Due <claus@namelesscoder.net>
+ *  (c) 2014 DCN GmbH <moox@dcn.de>
  *
  *  All rights reserved
  *
@@ -41,7 +42,21 @@ class PageController extends AbstractPageController {
 	/**
 	 * @return string
 	 */
-	public function defaultPageAction() {
+	public function frontPageAction() {
+
+	}
+
+	/**
+	 * @return string
+	 */
+	public function renderAction() {
+
+	}
+
+	/**
+	 * @return string
+	 */
+	public function withSideBarAction() {
 
 	}
 

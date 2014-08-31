@@ -11,108 +11,14 @@ config {
     tx_realurl_enable = 1
     prefixLocalAnchors = all
     tx_cooluri_enable = 0
-    disableImgBorderAttr = 1
 }
 
-plugin.tx_vhs.settings.asset{
-	bootstrapcss {
-		path = http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
-		external = 1
-		group = cdn
-		standalone = 1
-		type = css
-	}
-	
-	mooxcorecss {
-		path = EXT:moox_core/Resources/Public/Stylesheets/moox-core.css
-		external = 0
-		group = moox
-		standalone = 1
-		type = css
-	}
 
-	bootstrapcore {
-		path = http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
-		external = 1
-		dependencies = jquery
-		group = cdn
-		standalone = 1
-		movable = 1
-		type = js
-	}
-	
-	magnificpopupcss {
-		path = EXT:moox_core/Resources/Public/Stylesheets/magnific-popup/magnific-popup.css
-		external = 0
-		dependencies = mooxcorecss
-		group = moox
-		standalone = 1
-		type = css
-	}
-
-	jquery {
-		path = http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
-		external = 1
-		group = cdn
-		standalone = 1
-		movable = 0
-		type = js
-	}
-
-	jqueryuid {
-		path = http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js
-		external = 1
-		dependencies = jquery
-		group = cdn
-		standalone = 1
-		movable = 1
-		type = js
-	}
-	
-	jquerycookie {
-		path = EXT:moox_core/Resources/Public/Js/jquery.cookie.js
-		external = 0
-		dependencies = jquery
-		group = moox
-		standalone = 1
-		movable = 1
-		type = js
-	}
-
-	eqheight {
-		path = EXT:moox_core/Resources/Public/Js/eqheight.js
-		dependencies = jquery
-		standalone = 1
-		group = JS
-		movable = 1
-		type = js
-	}
-
-	fontawesome {
-		path = http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css
-		external = 1
-		group = cdn
-		standalone = 1
-		type = css
-	}
-	
-	magnificpopupjs {
-		path = EXT:moox_core/Resources/Public/Js/magnific-popup/jquery.magnific-popup.min.js
-		dependencies = jquery
-		standalone = 1
-		group = JS
-		movable = 1
-		type = js
-	}
-	
-	initmagnificpopup {
-		path = EXT:moox_core/Resources/Public/Js/magnific-popup/moox-init-lightbox.js
-		dependencies = magnificpopupjs
-		standalone = 1
-		group = JS
-		movable = 1
-		type = js
-	}
+plugin.tx_mooxcore.view {
+	extensionKey = moox_core
+	templateRootPath = {$plugin.tx_mooxcore.view.templateRootPath}
+	partialRootPath = {$plugin.tx_mooxcore.view.partialRootPath}
+	layoutRootPath = {$plugin.tx_mooxcore.view.layoutRootPath}
 }
 
 plugin.tx_mooxcore.view {
@@ -128,84 +34,29 @@ plugin.tx_mooxcore.view {
 }
 
 plugin.tx_mooxcore.settings {
-	defaults {
-		template = EXT:moox_core/Resources/Private/Templates/CoreContent/Default.html
-		variant =
-		version =
-		# mode of defaults usage. Possible values: "record", "preselect" or empty. When set to "record", default values will be saved in records when they are saved, but only if no variant or version was chosen. If set to "preselect" the values entered in defaults will be the initially selected values when creating or editing records. If set to anything else, defaults are used only when the record has empty values in variant or version but the defaults will not be saved to the database.
-		mode = preselect
-	}
+	defaultTemplate = EXT:mooxcore/Resources/Private/Templates/CoreContent/Default.html
 	constants {
 		auto = auto
 		none = none
 	}
 	header {
 		type = 1
-		types = 1,2,3,4,5,6
+		types = 1,2,3,4,5,6,7,8
 		autoType = 2
 		classNames = page-header,hidden
-		hideIfEmpty = 1
 	}
 	container {
-		types {
-			default = div
-			text = div
-			textpic = div
-			header = none
-			image = div
-			bullets = div
-			uploads = div
-			table = none
-			media = div
-			menu = navigation
-			html = none
-			list = div
-		}
+		types = none,div,section,chapter
+		autoType = div
 		classNames = container, trenner
-		addAnchor = 0
+		tagNames = none,div,header,section
 	}
 	image {
-		classNames = image,img-responsive,img-rounded,img-circle,img-thumbnail,img-grayscale
+		classNames = image,responsive-image,img-roundend,img-circle,img-portrait,img-grayscale
 	}
 	caption {
 		types = none,div,span,p
 	}
-	preview {
-		maxCharacters = 100
-	}
-	
-	menu {
-		main.entryLevel = 0
-		sub.entryLevel = 1
-	}
-	
-	entryLevel = {$plugin.tx_mooxcore.settings.entryLevel}
-	enableSearch = {$plugin.tx_mooxcore.settings.enableSearch}
-	searchFieldName = {$plugin.tx_mooxcore.settings.searchFieldName}
-	searchPageUid = {$plugin.tx_mooxcore.settings.searchPageUid}
-	searchMethod = {$plugin.tx_mooxcore.settings.searchMethod}
-	globalpagetitle = {$plugin.tx_mooxcore.settings.globalpagetitle}
-	domain = {$plugin.tx_mooxcore.settings.domain}
-	useCookieCompliance = {$plugin.tx_mooxcore.settings.useCookieCompliance}
-	cookieSettingsPage = {$plugin.tx_mooxcore.settings.cookieSettingsPage}
-	cookieAlertBoxPosition = {$plugin.tx_mooxcore.settings.cookieAlertBoxPosition}
-	
-	### ANALYTICS ###
-	usePiwik = {$plugin.tx_mooxcore.settings.usePiwik}
-	piwikUrl = {$plugin.tx_mooxcore.settings.piwikUrl}
-	idSite = {$plugin.tx_mooxcore.settings.idSite}
-	useGoogleAnalytics = {$plugin.tx_mooxcore.settings.useGoogleAnalytics}
-	uaCode = {$plugin.tx_mooxcore.settings.uaCode}
-	
-	### META ###
-	meta-type = {$plugin.tx_mooxcore.settings.meta-type}
-	geo-lat = {$plugin.tx_mooxcore.settings.geo-lat}
-	geo-long = {$plugin.tx_mooxcore.settings.geo-long}
-	geo-region = {$plugin.tx_mooxcore.settings.geo-region}
-	geo-placename = {$plugin.tx_mooxcore.settings.geo-placename}
-	robots = {$plugin.tx_mooxcore.settings.robots}
-	apple-mobile-web-app-status-bar-style = {$plugin.tx_mooxcore.settings.apple-mobile-web-app-status-bar-style}
-	msApplicationTitleColor = {$plugin.tx_mooxcore.settings.msApplicationTitleColor}
 }
 
 plugin.tx_mooxcore.bootstrap = USER
@@ -256,10 +107,8 @@ tt_content.list {
 tt_content.default < plugin.tx_mooxcore.bootstrap
 tt_content.default.pluginName = Default
 
-### MOOX Body Tag ID ###
-page.bodyTag >
-page.bodyTagCObject = TEXT
-page.bodyTagCObject.dataWrap = <body id="moox-p{field:uid}">
+### MOOX Content Wrap ###
+###tt_content.stdWrap.wrap = <div class="moox-contentwrap">|</div>
 
 lib.parseTarget {
 	override =
@@ -339,255 +188,3 @@ lib.parseFunc_RTE {
 		htmlSpecialChars = 2
 	}
 }
-
-
-# meta
-###########################################
-
-page.headerData >
-page.headerData {
-    10 = TEXT
-    10.value (
-	<title>{$plugin.tx_mooxcore.settings.globalpagetitle}: {page:title} {page:subtitle}</title>
-	<meta name="author" content="{page:author}" />
-	<meta name="description" content="{page:description}" />
-	<meta name="keywords" content="{page:keywords}" />
-	<meta name="generator" content="MOOX for TYPO3" />
-    )
-    10.insertData = 1
-    20 = TEXT
-    20.value (
-	<!--[if lt IE 9]>
-		<link href="//netdna.bootstrapcdn.com/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
-		<link href="typo3conf/ext/moox_core/Resources/Public/Respond/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
-		<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>	
-		<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<script src="typo3conf/ext/moox_core/Resources/Public/Respond/respond.proxy.js"></script>
-	<![endif]-->
-    )
-}
-
-# Auto XML-Sitemap
-#############################################
-google_sitemap = PAGE
-google_sitemap {
-  # URL Parameter type=1234. Nicht nur Relevant wenn man mit realurl arbeitet.
-  typeNum = 1234
-  config {
-    # Charset soll utf-8 sein
-    metaCharset = utf-8
-    # TYPO3 Header Code deaktivieren
-    disableAllHeaderCode = 1
-    # Content-type anpassen
-    additionalHeaders = Content-type:text/xml;charset=utf-8
-    # Seite nicht Cachen
-    no_cache = 1
-    # Kein xhtml cleaning durch TYPO3
-    xhtml_cleaning = 0
-  }
-
-  # Hilfs Code für manuellen Zeilenumbruch im Quellcode
-  append = TEXT
-  append.char = 10
- 
-  10 = TEXT
-  10.value = <?xml version="1.0" encoding="UTF-8"?>
-  10.append < .append
- 
-  30 = COA
-  30 {
-    wrap = <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">|</urlset>
- 
-    1 = LOAD_REGISTER
-    1 {
-      # Beispiel wenn man nicht die Default Sprache L=0 ausgeben will
-      # 1:DE / 2:FR / 3:IT / 4:EN  etc.. ( je nach config )
-      langparam = &L=0
-    }
- 
-    # ROOTLEVEL ITEM
-    10 = COA
-    10 {
- 
-      10 = TEXT
-      10 {
-        wrap = <loc>{getIndpEnv:TYPO3_SITE_URL}|</loc>
-        insertData = 1
-        typolink {
-          parameter.data = leveluid:0
-          # Einbinden wenn nicht L=0
-          #additionalParams = {register:langparam}
-          #additionalParams.insertData = 1
-          returnLast = url
-        }
-      }
-      20 = RECORDS
-      20 {
-        source = pages_{leveluid:0}
-        source.insertData = 1
-        dontCheckPid = 1
-        tables = pages
-        conf.pages = TEXT
-        conf.pages {
-          wrap = <lastmod>|</lastmod>
-          data = field:lastUpdated // field:SYS_LASTCHANGED // field:tstamp // field:crdate
-          date = c
-        }
-      }
- 
-      30 = TEXT
-      30 {
-        wrap = <changefreq>|</changefreq>
-        # Mögliche Werte:
-        # always / hourly / daily / weekly / monthly / yearly / never
-        value = daily
-        # output kosmetik
-        #append < google_sitemap.append
-      }
-      40 = TEXT
-      40 {
-        wrap = <priority>|</priority>
-        # 0.1 - 1.0
-        value = 1.0
-        # output kosmetik
-        #append < google_sitemap.append
-      }
-      stdWrap.wrap = <url>|</url>
-      stdWrap.prepend < google_sitemap.append
-    }
- 
-    20 = HMENU
-    20 {
-      excludeUidList = {$google_sitemap.excludeUidList}
- 
-      1 = TMENU
-      1 {
-        expAll = 1
-        noBlur = 1
- 
-        NO {
-          doNotLinkIt = 1
-          doNotShowLink = 1
-          stdWrap2 {
-            # diverese informationen aufbereiten
-            cObject = COA
-            cObject {
- 
-              1 = LOAD_REGISTER
-              1 {
-                title {
-                  field = title
-                  htmlSpecialChars = 1
-                }
-              }
- 
-              # loc
-              10 = TEXT
-              10 {
-                wrap = <loc>{getIndpEnv:TYPO3_SITE_URL}|</loc>
-                insertData = 1
-                typolink {
-                  parameter.field = uid
-                  # Einbinden wenn nicht L=0
-                  #additionalParams = {register:langparam}
-                  #additionalParams.insertData = 1
-                  returnLast = url
-                }
-                # output kosmetik
-                #prepend < google_sitemap.append
-                #append < google_sitemap.append
-              }
- 
-              # lastmod
-              20 = TEXT
-              20 {
-                wrap = <lastmod>|</lastmod>
-                data = field:lastUpdated // field:SYS_LASTCHANGED // field:tstamp // field:crdate
-                date = c
-                # output kosmetik
-                #append < google_sitemap.append
-              }
- 
-              # changefreq
-              30 = TEXT
-              30 {
-                wrap = <changefreq>|</changefreq>
-                # always / hourly / daily / weekly / monthly / yearly / never
-                value = monthly
-                # output kosmetik
-                #append < google_sitemap.append
-              }
-              # entfernt damit XML nicht ueber 50KB
-              30 >
- 
-              # priority
-              40 = TEXT
-              40 {
-                wrap = <priority>|</priority>
-                # 0.1 - 1.0
-                value = 1.0
-                # output kosmetik
-                #append < google_sitemap.append
-              }
- 
-              stdWrap.wrap = <url>|</url>
-              stdWrap.prepend < google_sitemap.append
-              #stdWrap.append < google_sitemap.append
-            }
-          }
- 
-          append < google_sitemap.append
-        }
- 
-      }
- 
-      2 = TMENU
-      2 < .1
-      2.NO.stdWrap2.cObject.40.value = 0.9
- 
-      3 = TMENU
-      3 < .1
-      3.NO.stdWrap2.cObject.40.value = 0.9
- 
-      4 = TMENU
-      4 < .1
-      4.NO.stdWrap2.cObject.40.value = 0.8
- 
-      5 = TMENU
-      5 < .1
-      5.NO.stdWrap2.cObject.40.value = 0.7
- 
-      6 = TMENU
-      6 < .1
-      6.NO.stdWrap2.cObject.40.value = 0.7
-    }
- 
-    # Spezielle Seiten, welche nicht über die normale Navigation wie
-    # zum Beispiel: News / Events / Disclaimer / Impressum / Metanavigation
-    # erreichbar sind und im *Menü nicht anzeigen* haben.
-    30 = HMENU
-    30 < .20
-    30 {
-      special = list
-      special.value = {$google_sitemap.includeSpecialUidList}
-      includeNotInMenu = 1
-    }
-  }
-}
-
-### get rid of the typo3 generated stylesheet ###
-
-plugin.tx_felogin_pi1._CSS_DEFAULT_STYLE >
-plugin.tx_news._CSS_DEFAULT_STYLE >
-plugin.tx_powermail._CSS_DEFAULT_STYLE >
-plugin.tx_flux._CSS_DEFAULT_STYLE >
-plugin.tx_fluidwidget._CSS_DEFAULT_STYLE >
-plugin.tx_fluidpages._CSS_DEFAULT_STYLE >
-plugin.tx_fluidcontent._CSS_DEFAULT_STYLE >
-plugin.tx_cssstyledcontent._CSS_DEFAULT_STYLE >
-plugin.tx_fed._CSS_DEFAULT_STYLE >
-plugin.tx_mooxcore._CSS_DEFAULT_STYLE >
-plugin.news._CSS_DEFAULT_STYLE >
-plugin.tx_indexedsearch._CSS_DEFAULT_STYLE >
-plugin.fluidpages._CSS_DEFAULT_STYLE >
-plugin.tx_form._CSS_DEFAULT_STYLE >

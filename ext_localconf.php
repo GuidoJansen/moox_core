@@ -3,12 +3,6 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-// Use dashboard instead of the default page module
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig('
- 	setup.override.startModule = moox_MooxCoreDashboard
-	mod.moox_MooxCoreDashboard.sideBarEnable = 0
- ');
-
 if (FALSE === isset($GLOBALS['TYPO3_CONF_VARS']['FE']['contentRenderingTemplates'])) {
 	\TYPO3\CMS\Core\Utility\GeneralUtility::sysLog('MooxCore requires an additional configuration file in typo3conf/AdditionalConfiguration.php - '
 		. 'you can have MooxCore generate this file for you from the extension manager by running the MooxCore update script. A dummy '
@@ -44,50 +38,3 @@ for ($i = 0; $i < count($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['type
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms']['db_new_content_el']['wizardItemsHook']['moox_core'] = 'FluidTYPO3\MooxCore\Hooks\WizardItemsHookSubscriber';
 
-
-/***************
- * Use RealUrl Config from MOOX Core
- */
-$settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$_EXTKEY]);
-if($settings['UseRealUrlConfig'] == 1){
-    @include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY,'Configuration/RealURL/Default.php'));    
-}
-
-if (TYPO3_MODE === 'BE') {
-
-    $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
-    /**
-     * Provides an example .htaccess file for Apache after extension is installed and shows a warning if TYPO3 is not running on Apache.
-     */
-    $signalSlotDispatcher->connect(
-        'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-        'hasInstalledExtensions',
-        'FluidTYPO3\\MooxCore\\Service\\InstallService',
-        'generateApacheHtaccess'
-    );
-    /**
-     * Provides an example AdditionalConfiguration.php file after extension is installed and shows a warning if TYPO3 is not running with moox_core additional configuration.
-     */
-    $signalSlotDispatcher->connect(
-        'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-        'hasInstalledExtensions',
-        'FluidTYPO3\\MooxCore\\Service\\InstallService',
-        'createDefaultAdditionalConfiguration'
-    );
-    /**
-     * Provides an example robots.txt file after extension is installed and shows a warning if TYPO3 is not running with moox_core robots.txt.
-     */
-    $signalSlotDispatcher->connect(
-        'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-        'hasInstalledExtensions',
-        'FluidTYPO3\\MooxCore\\Service\\InstallService',
-        'createDefaultRobots'
-    );
-}
-
-/***************
- * Backend Styling
- */
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Backend\\View\\LogoView']['className'] = 'FluidTYPO3\\MooxCore\\Xclass\\Backend\\View\\LogoView';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/backend.php']['renderPreProcess'][] = 'FluidTYPO3\\MooxCore\\Hooks\\Backend\\RenderPreProcess->addStyles';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/template.php']['preHeaderRenderHook'][] = 'FluidTYPO3\\MooxCore\\Hooks\\Backend\\PreHeaderRender->addStyles';
