@@ -1,0 +1,26 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+
+<f:layout name="DefaultPage" />
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+<f:section name="Configuration">
+	<flux:form id="defaultpage" label="Default Page" options="{icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/starter-template.jpg'}">
+		{v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
+		<flux:grid>
+			<flux:grid.row>
+				<flux:grid.column colPos="0" name="Main Content" />
+			</flux:grid.row>
+		</flux:grid>
+	</flux:form>
+</f:section>
+
+<f:section name="Content">
+	<v:content.render column="0" />
+</f:section>
+
+</div>

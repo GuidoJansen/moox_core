@@ -1,0 +1,29 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:fcc="http://typo3.org/ns/FluidTYPO3/MooxCore/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+<f:layout name="Default" />
+
+<f:section name="Configuration">
+	<flux:form id="table">
+		<f:render partial="Properties/Header" arguments="{_all}" />
+		<f:render partial="Properties/Container" arguments="{_all}" />
+	</flux:form>
+</f:section>
+
+<f:section name="Preview"></f:section>
+
+<f:section name="Main">
+	<table class="table">
+		<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString">
+			<tr>
+				<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column">
+					<td>{column -> f:format.raw()}</td>
+				</f:for>
+			</tr>
+		</f:for>
+	</table>
+</f:section>
+
+</div>

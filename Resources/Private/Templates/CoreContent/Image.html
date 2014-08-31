@@ -1,0 +1,105 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:fcc="http://typo3.org/ns/FluidTYPO3/MooxCore/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+<f:layout name="Default" />
+
+<f:section name="Configuration">
+	<flux:form id="image">
+		<f:render partial="Properties/Header" arguments="{_all}" />
+		<f:render partial="Properties/Container" arguments="{_all}" />
+		<f:render partial="Properties/Images" arguments="{_all}" />
+		<f:if condition="{settings.extendedCaptions}">
+			<flux:grid>
+				<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
+					<f:for each="{images}" as="image" iteration="iteration">
+						<flux:grid.row>
+							<flux:grid.column name="content{image.checksum}" label="Caption, {image.name}" />
+						</flux:grid.row>
+					</f:for>
+				</v:resource.record.fal>
+			</flux:grid>
+		</f:if>
+	</flux:form>
+</f:section>
+
+<f:section name="Preview">
+	<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
+		<f:for each="{images}" as="image" iteration="iteration">
+			<v:media.image src="{image.url}" treatIdAsReference="TRUE" alt="{image.id}" height="50" style="height: auto; max-width: 100%;" />
+		</f:for>
+	</v:resource.record.fal>
+	<flux:widget.grid />
+</f:section>
+
+<f:section name="Main">
+	
+	<f:if condition="{settings.lightbox}">
+		<v:asset.style name="magnific-popup-css" group="magnific-popup" path="EXT:moox_core/Resources/Public/Stylesheets/magnific-popup/magnific-popup.css" standalone="TRUE" />
+		<v:asset.script name="magnific-popup-js" group="magnific-popup" path="EXT:moox_core/Resources/Public/Js/magnific-popup/jquery.magnific-popup.min.js" standalone="TRUE" allowMoveToFooter="TRUE"/>
+		<v:asset.script name="magnific-popup-init-js" group="magnific-popup" path="EXT:moox_core/Resources/Public/Js/magnific-popup/moox-init-lightbox.js" standalone="TRUE" allowMoveToFooter="TRUE" />
+	</f:if>
+	
+	<f:if condition="{settings.lightbox}"><div class="lightbox-gallery"></f:if>
+		<div class="row image-position-{positionclass}">
+			<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
+				<f:for each="{images}" as="image" iteration="iteration">
+					<v:switch value="{settings.cols}">
+						<v:case case="1" break="TRUE">
+							<div class="col-md-12">
+								<fcc:tag name="{settings.caption.tagName}">
+									<f:render partial="Content/Image" arguments="{_all}" />
+									<flux:content.render area="content{image.checksum}" />
+								</fcc:tag>
+							</div>			
+						</v:case>
+						<v:case case="2" break="TRUE">
+							<div class="col-md-6">
+								<fcc:tag name="{settings.caption.tagName}">
+									<f:render partial="Content/Image" arguments="{_all}" />
+									<flux:content.render area="content{image.checksum}" />
+								</fcc:tag>
+							</div>	
+						</v:case>	
+						<v:case case="3" break="TRUE">
+							<div class="col-md-4">
+								<fcc:tag name="{settings.caption.tagName}">
+									<f:render partial="Content/Image" arguments="{_all}" />
+									<flux:content.render area="content{image.checksum}" />
+								</fcc:tag>
+							</div>	
+						</v:case>
+						<v:case case="4" break="TRUE">
+							<div class="col-md-3">
+								<fcc:tag name="{settings.caption.tagName}">
+									<f:render partial="Content/Image" arguments="{_all}" />
+									<flux:content.render area="content{image.checksum}" />
+								</fcc:tag>
+							</div>	
+						</v:case>
+						<v:case case="5" break="TRUE">
+							<div class="col-md-2">
+								<fcc:tag name="{settings.caption.tagName}">
+									<f:render partial="Content/Image" arguments="{_all}" />
+									<flux:content.render area="content{image.checksum}" />
+								</fcc:tag>
+							</div>	
+						</v:case>
+						<v:case case="6" break="TRUE">
+							<div class="col-md-1">
+								<fcc:tag name="{settings.caption.tagName}">
+									<f:render partial="Content/Image" arguments="{_all}" />
+									<flux:content.render area="content{image.checksum}" />
+								</fcc:tag>
+							</div>	
+						</v:case>
+					</v:switch>
+				</f:for>
+			</v:resource.record.fal>
+		</div>
+	<f:if condition="{settings.lightbox}"></div></f:if>
+	
+</f:section>
+
+</div>

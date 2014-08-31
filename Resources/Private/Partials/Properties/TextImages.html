@@ -1,0 +1,12 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<flux:form.sheet name="image" label="LLL:sheets.image">
+	<flux:field.select name="positionclass" label="LLL:fields.positionclass" items="{left: 'left', right: 'right', top: 'top', bottom: 'bottom'}" default="left" requestUpdate="1" />
+	<f:if condition="{positionclass} == 'top'">
+		<flux:field.select name="imagealignmentclass" label="LLL:fields.imagealignmentclass" items="{left: 'left', center: 'center', right: 'right'}" default="left" />
+	</f:if>
+	<f:if condition="{positionclass} == 'bottom'">
+		<flux:field.select name="imagealignmentclass" label="LLL:fields.imagealignmentclass" items="{left: 'left', center: 'center', right: 'right'}" default="left" />
+	</f:if>
+	<flux:field.select name="captionpositionclass" label="LLL:fields.captionpositionclass" items="{left: 'left', center: 'center', right: 'right'}" default="left" />
+</flux:form.sheet>
