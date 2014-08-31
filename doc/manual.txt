@@ -21,7 +21,7 @@ Visit http://www.moox.org/documentation for full documentation.
 
 Sponsors
 
-This Extension is developed by DCN GmbH (http://www.dcn.de). There are now sponsors yet. If you want to donate us, contact moox@dcn.de and we will add you here and on our sponsor page http://www.moox.org/en/partner/sponsors 
+This Extension is developed by DCN GmbH (http://www.dcn.de). There are now sponsors yet. If you want to donate us, contact moox@dcn.de and we will add you here and on our sponsor page http://www.moox.org/partner/sponsors 
 
 
 Users manual
