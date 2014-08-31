@@ -4,7 +4,6 @@ namespace FluidTYPO3\MooxCore\ViewHelpers;
  *  Copyright notice
  *
  *  (c) 2013 Claus Due <claus@namelesscoder.net>
- *  (c) 2014 DCN GmbH <moox@dcn.de>
  *
  *  All rights reserved
  *
@@ -46,6 +45,7 @@ class TagViewHelper extends AbstractTagBasedViewHelper {
 		parent::initializeArguments();
 		$this->registerUniversalTagAttributes();
 		$this->registerArgument('name', 'string', 'Tag name', TRUE);
+		$this->registerArgument('hideIfEmpty', 'boolean', 'Hide the tag completely if there is no tag content', FALSE, FALSE);
 	}
 
 	/**
@@ -54,19 +54,20 @@ class TagViewHelper extends AbstractTagBasedViewHelper {
 	public function render() {
 		$this->arguments['class'] = trim($this->arguments['class']);
 		$content = $this->renderChildren();
+		$trimmedContent = trim($content);
+		if (TRUE === empty($trimmedContent)) {
+			return '';
+		}
 		if ('none' === $this->arguments['name'] || TRUE === empty($this->arguments['name'])) {
 			// skip building a tag if special keyword "none" is used, or tag name is empty
 			return $content;
 		}
 		// process a few key variables to support values coming from TCEforms storage:
 		if (FALSE === empty($this->arguments['class'])) {
-			$this->arguments['class'] = str_replace(',', ' ', $this->arguments['class']);
+			$class = str_replace(',', ' ', $this->arguments['class']);
+			$this->tag->addAttribute('class', $class);
 		}
-		$this->tag->reset();
 		$this->tag->setTagName($this->arguments['name']);
-		$this->applyAttributes($this->arguments['additionalAttributes']);
-		unset($this->arguments['name'], $this->arguments['additionalAttributes']);
-		$this->applyAttributes($this->arguments);
 		$this->tag->setContent($content);
 		return $this->tag->render();
 	}

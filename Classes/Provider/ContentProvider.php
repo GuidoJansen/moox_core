@@ -4,7 +4,6 @@ namespace FluidTYPO3\MooxCore\Provider;
  *  Copyright notice
  *
  *  (c) 2013 Claus Due <claus@namelesscoder.net>
- *  (c) 2014 DCN GmbH <moox@dcn.de>
  *
  *  All rights reserved
  *
@@ -31,8 +30,10 @@ use FluidTYPO3\Flux\Provider\ProviderInterface;
 use FluidTYPO3\Flux\Utility\ExtensionNamingUtility;
 use FluidTYPO3\Flux\Utility\RecursiveArrayUtility;
 use FluidTYPO3\Flux\Utility\PathUtility;
+use FluidTYPO3\Flux\Utility\ResolveUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -51,6 +52,11 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  */
 class ContentProvider extends AbstractProvider implements ProviderInterface {
 
+	const MODE_RECORD = 'record';
+	const MODE_PRESELECT = 'preselect';
+	const CTYPE_MENU = 'menu';
+	const CTYPE_FIELDNAME = 'CType';
+ 
 	/**
 	 * @var string
 	 */
@@ -80,6 +86,44 @@ class ContentProvider extends AbstractProvider implements ProviderInterface {
 	 * @var array
 	 */
 	protected static $versions = array();
+	
+	/**
+	 * Filled with an integer-or-string -> Fluid section name
+	 * map which maps machine names of menu types to human
+	 * readable values that are sensible as Fluid section names.
+	 * When type is selected in menu element, corresponding
+	 * section gets rendered.
+	 *
+	 * @var array
+	 */
+	protected $menuTypeToSectionNameMap = array(
+		'0' => 'SelectedPages',
+		'1' => 'SubPagesOfSelectedPages',
+		'4' => 'SubPagesOfSelectedPagesWithAbstract',
+		'7' => 'SubPagesOfSelectedPagesWithSections',
+		'2' => 'SiteMap',
+		'8' => 'SiteMapsOfSelectedPages',
+		'3' => 'SectionIndex',
+		'5' => 'RecentlyUpdated',
+		'6' => 'RelatedPages',
+		'categorized_pages' => 'CategorizedPages',
+		'categorized_content' => 'CategorizedContent'
+	);
+
+	/**
+	 * @return void
+	 */
+	public function initializeObject() {
+		$typoScript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+		$settings = (array) $typoScript['plugin.']['tx_mooxcore.']['settings.'];
+		$settings = GeneralUtility::removeDotsFromTS($settings);
+		$paths = (array) $typoScript['plugin.']['tx_mooxcore.']['view.'];
+		$paths = GeneralUtility::removeDotsFromTS($paths);
+		$paths = PathUtility::translatePath($paths);
+		$this->templateVariables['settings'] = $settings;
+		$this->templatePaths = $paths;
+		$this->templatePathAndFilename = PathUtility::translatePath($settings['defaults']['template']);
+	}
 
 	/**
 	 * Note: This Provider will -always- trigger on any tt_content record
@@ -93,7 +137,7 @@ class ContentProvider extends AbstractProvider implements ProviderInterface {
 	 * @return boolean
 	 */
 	public function trigger(array $row, $table, $field, $extensionKey = NULL) {
-		return ($table === $this->tableName && $field === $this->fieldName);
+		return ($table === $this->tableName && ($field === $this->fieldName || NULL === $field));
 	}
 
 	/**
@@ -101,13 +145,14 @@ class ContentProvider extends AbstractProvider implements ProviderInterface {
 	 * @return Form
 	 */
 	public function getForm(array $row) {
-		$form = parent::getForm($row);
-		$variables = $this->templateVariables;
-		$variables['record'] = $row;
-		if (NULL !== $form) {
-			$form->setLocalLanguageFileRelativePath('Resources/Private/Language/locallang.xlf');
+		if (self::CTYPE_MENU === $row[self::CTYPE_FIELDNAME]) {
+			// addtional menu variables
+			$menuType = $row['menu_type'];
+			$partialTemplateName = $this->menuTypeToSectionNameMap[$menuType];
+			$this->templateVariables['menuPartialTemplateName'] = $partialTemplateName;
+			$this->templateVariables['pageUids'] = GeneralUtility::trimExplode(',', $row['pages']);
 		}
-		return $form;
+		return parent::getForm($row);
 	}
 
 	/**
@@ -123,8 +168,8 @@ class ContentProvider extends AbstractProvider implements ProviderInterface {
 		}
 		self::$variants[$contentType] = array();
 		foreach ($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['variants'][$contentType] as $variantExtensionKey) {
-			$templatePathAndFilename = $this->getTemplatePathAndFilenameByExtensionKeyAndContentType($variantExtensionKey, $contentType);
-			if (TRUE === file_exists($templatePathAndFilename)) {
+			$templatePathAndFilename = $this->getTemplatePathAndFilenameByExtensionKeyAndContentTypeAndVariantAndVersion($variantExtensionKey, $contentType, $variantExtensionKey);
+			if (TRUE === file_exists(PathUtility::translatePath($templatePathAndFilename))) {
 				array_push(self::$variants[$contentType], $variantExtensionKey);
 			}
 		}
@@ -145,6 +190,7 @@ class ContentProvider extends AbstractProvider implements ProviderInterface {
 		}
 		$paths = $this->configurationService->getViewConfigurationForExtensionName($variant);
 		$versionsDirectory = rtrim($paths['templateRootPath'], '/') . '/CoreContent/' . ucfirst($contentType) . '/';
+		$versionsDirectory = PathUtility::translatePath($versionsDirectory);
 		if (FALSE === is_dir($versionsDirectory)) {
 			self::$versions[$contentType][$variant] = array();
 		} else {
@@ -160,26 +206,35 @@ class ContentProvider extends AbstractProvider implements ProviderInterface {
 	/**
 	 * @param string $extensionKey
 	 * @param string $contentType
+	 * @param string $variant
+	 * @param string $version
 	 * @return string
 	 */
-	protected function getTemplatePathAndFilenameByExtensionKeyAndContentType($extensionKey, $contentType) {
+	protected function getTemplatePathAndFilenameByExtensionKeyAndContentTypeAndVariantAndVersion($extensionKey, $contentType, $variant = NULL, $version = NULL) {
+		if (FALSE === empty($variant)) {
+			$extensionKey = $variant;
+		}
 		$paths = $this->configurationService->getViewConfigurationForExtensionName($extensionKey);
-		$templatePathAndFilename = rtrim($paths['templateRootPath'], '/') . '/CoreContent/' . ucfirst($contentType) . '.html';
+		$controllerName = 'CoreContent';
+		$controllerAction = $contentType;
+		$format = 'html';
+		if (FALSE === empty($version)) {
+			$controllerAction .= '/' . $version;
+		}
+		
+		$templatePathAndFilename = ResolveUtility::resolveTemplatePathAndFilenameByPathAndControllerNameAndActionAndFormat($paths, $controllerName, $controllerAction, $format);
 		return $templatePathAndFilename;
 	}
 
 	/**
-	 * @return void
+	 * @param array $row
+	 * @return string|NULL
 	 */
-	public function initializeObject() {
-		$typoScript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-		$settings = (array) $typoScript['plugin.']['tx_mooxcore.']['settings.'];
-		$paths = (array) $typoScript['plugin.']['tx_mooxcore.']['view.'];
-		$this->templateVariables['settings'] = GeneralUtility::removeDotsFromTS($settings);
-		$paths = GeneralUtility::removeDotsFromTS($paths);
-		$paths = PathUtility::translatePath($paths);
-		$this->templatePaths = $paths;
-		$this->templatePathAndFilename = PathUtility::translatePath($settings['defaultTemplate']);
+	public function getExtensionKey(array $row) {
+		if (FALSE === empty($row['content_variant'])) {
+			return $row['content_variant'];
+		}
+		return $this->extensionKey;
 	}
 
 	/**
@@ -188,11 +243,47 @@ class ContentProvider extends AbstractProvider implements ProviderInterface {
 	 */
 	public function getTemplatePathAndFilename(array $row) {
 		$extensionKey = $this->getExtensionKey($row);
-		$template = $this->getTemplatePathAndFilenameByExtensionKeyAndContentType($extensionKey, $row['CType']);
-		if (TRUE === file_exists($template)) {
-			return $template;
+		$variant = $this->getVariant($row);
+		$version = $this->getVersion($row);
+		$template = $this->getTemplatePathAndFilenameByExtensionKeyAndContentTypeAndVariantAndVersion($extensionKey, $row['CType'], $variant, $version);		
+		if (TRUE === file_exists(PathUtility::translatePath($template))) {
+			return GeneralUtility::getFileAbsFileName($template);
 		}
-		return $this->templatePathAndFilename;
+		return GeneralUtility::getFileAbsFileName($this->templatePathAndFilename);
+	}
+
+	/**
+	  * @return array
+	  */
+	public function getDefaults() {
+		$typoScript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+		$defaults = (array) $typoScript['plugin.']['tx_mooxcore.']['settings.']['defaults.'];
+		$defaults = GeneralUtility::removeDotsFromTS($defaults);
+		return $defaults;
+	}
+
+	/**
+	 * @param array $row
+	 * @return string
+	 */
+	protected function getVariant(array $row) {
+		$defaults = $this->getDefaults();
+		if (self::MODE_RECORD !== $defaults['mode'] && TRUE === empty($row['content_variant'])) {
+			return $defaults['variant'];
+		}
+		return $row['content_variant'];
+	}
+
+	/**
+	 * @param array $row
+	 * @return string
+	 */
+	protected function getVersion(array $row) {
+		$defaults = $this->getDefaults();
+		if (self::MODE_RECORD !== $defaults['mode'] && TRUE === empty($row['content_version'])) {
+			return $defaults['version'];
+		}
+		return $row['content_version'];
 	}
 
 	/**
@@ -200,7 +291,27 @@ class ContentProvider extends AbstractProvider implements ProviderInterface {
 	 * @return string
 	 */
 	public function getControllerActionFromRecord(array $row) {
-		return ucfirst($row['CType']);
+		return strtolower($row['CType']);
+	}
+	
+	/**
+	 * @param string $operation
+	 * @param integer $id
+	 * @param array $row
+	 * @param DataHandler $reference
+	 * @return void
+	 */
+	public function postProcessRecord($operation, $id, array &$row, DataHandler $reference) {
+		$defaults = $this->getDefaults();
+		if (self::MODE_RECORD === $defaults['mode']) {
+			if (TRUE === empty($row['content_variant'])) {
+				$row['content_variant'] = $defaults['variant'];
+			}
+			if (TRUE === empty($row['content_version'])) {
+				$row['content_version'] = $defaults['version'];
+			}
+		}
+		return parent::postProcessRecord($operation, $id, $row, $reference);
 	}
 
 }

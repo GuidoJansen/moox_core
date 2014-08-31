@@ -4,22 +4,64 @@ plugin.tx_mooxcore.view {
 	layoutRootPath = EXT:moox_core/Resources/Private/Layouts/
 }
 
-# cat=MOOXCORE/settings; type=boolean; label=Use TypoScript settings instead of FlexForm values
-plugin.tx_mooxcore.settings.useTypoScript = 1
 plugin.tx_mooxcore.settings {
-	# cat=MOOXCORE/settings; type=int+; label=main menu entry level - other menus calculated based on this
-	entryLevel = 0
-	# cat=MOOXCORE/settings; type=boolean; label=enable the top right corner search field
-	enableSearch = 1
-	# cat=MOOXCORE/settings; type=small; label=name attribute of search field
-	searchFieldName = q
-	# cat=MOOXCORE/settings; type=small; label=search page uid
-	searchPageUid =
-	# cat=MOOXCORE/settings; type=small; label=search method
-	searchMethod = post
-	# cat=MOOXCORE/settings; type=small; label=domain
+	# cat=MOOX_CORE/content/10; type=string; label= Global page title
+	globalpagetitle = MOOX Page
+	# cat=MOOX_CORE/settings/20; type=string; label=domain
 	domain = 
+	# cat=MOOX_CORE/settings/40; type=int+; label=main menu entry level - other menus calculated based on this
+	entryLevel = 0
+	# cat=MOOX_CORE/settings/50; type=boolean; label=enable the top right corner search field
+	enableSearch = 1
+	# cat=MOOX_CORE/settings/60; type=string; label=name attribute of search field
+	searchFieldName = tx_indexedsearch[sword]
+	# cat=MOOX_CORE/settings/70; type=string; label=search page uid
+	searchPageUid =
+	# cat=MOOX_CORE/settings/80; type=string; label=search method
+	searchMethod = post
 	
-	# cat=MOOXCORE/settings; type=int+; label=Number of grid columns: Set this to the same number used in your custom Bootstrap CSS if you've switched from the default 12-grid
-	gridColumns = 12
+	# cat=MOOX_CORE_COOKIES/settings/10; type=boolean; label=Use Cookie Compliance
+	useCookieCompliance = 0
+	# cat=MOOX_CORE_COOKIES/settings/20; type=string; label=Cookie Settings Page PID
+	cookieSettingsPage =
+	# cat=MOOX_CORE_COOKIES/settings/30; type=string; label=Cookie Alert Box Position: Options: top, bottom
+	cookieAlertBoxPosition = top
+	
+	# cat=MOOX_ANALYTICS/settings/10; type=boolean; label=Use Piwik
+	usePiwik = 0
+	# cat=MOOX_ANALYTICS/settings/20; type=string; label=Piwik URL
+	piwikUrl =
+	# cat=MOOX_ANALYTICS/settings/30; type=string; label=ID Site
+	idSite =
+	# cat=MOOX_ANALYTICS/settings/40; type=boolean; label=Use Google Analytics
+	useGoogleAnalytics = 0
+	# cat=MOOX_ANALYTICS/settings/50; type=string; label=UA-XXXXX-X
+	uaCode =
+	
+	# cat=MOOX_CORE_META/settings/40008; type=options[Article,Blog,Book,Profile,Movie,TV Episode,TV Show,Video,Website]; label= Select yout Page type
+	meta-type = Website
+	# cat=MOOX_CORE_META/settings/40009; type=string; label= Latitude of a Point
+	geo-lat =
+	# cat=MOOX_CORE_META/settings/40010; type=string; label= Longitude of a Point
+	geo-long =
+	# cat=MOOX_CORE_META/settings/40011; type=string; label= Region
+	geo-region =
+	# cat=MOOX_CORE_META/settings/40012; type=string; label= Placename
+	geo-placename =
+	# cat=MOOX_CORE_META/settings/40013; type=options[all,index-follow,noindex-nofollow]; label= Select your robots settings
+	robots = all
+	# cat=MOOX_CORE_META/settings/40024; type=string; label= Statusbar color : Default is "black"
+	apple-mobile-web-app-status-bar-style = black
+	# cat=MOOX_CORE_META/settings/40025; type=string; label= MS Application title color : Default is "#603cba"
+	msApplicationTitleColor = #603cba
+}
+
+styles.content.loginform {
+	target = _top
+	  # cat=content/cLogin; type=int+; label= PID of user archive: Enter the page-uid number (PID) of the folder where you keep your fe_users that are supposed to login on this site. This setting is necessary, if login is going to work!
+	pid =
+	  # cat=content/cLogin; type=; label= Message, Login: This is the message (if any) that is popped-up when a user logs in as a front-end user
+	goodMess =
+	  # cat=content/cLogin; type=; label= Login template: Enter the path for the HTML template to be used
+	templateFile = EXT:felogin/template.html
 }

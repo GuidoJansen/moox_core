@@ -1,5 +1,7 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace v=Tx_Vhs_ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:fcc="http://typo3.org/ns/FluidTYPO3/MooxCore/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 
 <f:layout name="Default" />
 
@@ -7,6 +9,9 @@
 	<flux:form id="uploads">
 		<f:render partial="Properties/Header" arguments="{_all}" />
 		<f:render partial="Properties/Container" arguments="{_all}" />
+		<flux:form.sheet name="uploads">
+			<flux:field.select requestUpdate="0" name="settings.uploadsAlignment" label="LLL:fields.uploadsAlignment" items="{vertical: 'vertical',horizontal: 'horizontal'}" default="vertical" />
+		</flux:form.sheet>
 	</flux:form>
 </f:section>
 
@@ -20,13 +25,20 @@
 </f:section>
 
 <f:section name="FileList">
-	<ul>
+	<dl class="moox-filelist<f:if condition="{settings.uploadsAlignment} == 'horizontal'"><f:then> dl-horizontal</f:then><f:else> dl-vertical</f:else></f:if>">
 		<f:for each="{files}" as="fileRecord">
-			<li>
-				<a href="{fileRecord.url}">
+			<dt>
+				<a class="file-type-link file-type-{fileRecord.extension}" href="{fileRecord.url}">
 					{fileRecord.title -> v:or(alternative: fileRecord.name)}
 				</a>
-			</li>
+			</dt>
+			<dd>
+				<f:if condition="{fileRecord.description}">
+					<div class="filelist-item-description">{fileRecord.description}</div>
+				</f:if>
+			</dd>
 		</f:for>
-	</ul>
+	</dl>
 </f:section>
+
+</div>
