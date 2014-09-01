@@ -39,6 +39,9 @@
 			<trans-unit id="sheets.image" xml:space="preserve">
 				<source>Images</source>
 			</trans-unit>
+			<trans-unit id="sheets.table" xml:space="preserve">
+				<source>Table</source>
+			</trans-unit>
 			<trans-unit id="fields.classNames">
 				<source>CSS class names</source>
 			</trans-unit>
