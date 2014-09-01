@@ -11,7 +11,7 @@
 		{v:variable.typoscript(path: 'plugin.tx_fluidcontentbootstrap.settings') -> v:variable.set(name: 'settings')}
 		{f:if(condition: settings.gridColumns, then: settings.gridColumns, else: 12) -> v:variable.set(name:
 		'numberOfColumns')}
-		<flux:form id="row" options="{group: 'Grid', icon: 'EXT:moox_core/Resources/Public/Icons/bootstrap/icon-grid.png'}">
+		<flux:form id="row" options="{group: 'Grid', icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-grid.png'}">
 			<flux:form.section name="columns">
 				<flux:form.object name="column">
 					<flux:field.select name="class" items="{f:render(section: 'Value', arguments: {iteration: iteration})
