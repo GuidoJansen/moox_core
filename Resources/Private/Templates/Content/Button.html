@@ -8,7 +8,7 @@
      xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
     <f:section name="Configuration">
-        <flux:form id="button" options="{useTypoScript: 0, group: 'Bootstrap', icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/glyphicons_050_link.png'}">
+        <flux:form id="button" options="{group: 'Bootstrap', icon: 'EXT:moox_core/Resources/Public/Icons/bootstrap/icon-button.png'}">
             <flux:form.sheet name="ButtonSheetOne">
                 <flux:field.select items="xs,sm,default,lg" name="settings.ButtonSize" default="default"/>
                 <flux:field.checkbox name="settings.ButtonBlock" default="0"/>
@@ -84,11 +84,10 @@
         </button>
     </f:section>
     <f:section name="BottonWithLink">
-       <v:link.typolink configuration="{parameter: ButtonObjectItem.ButtonObject.target}">
-            <span class="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions}
-                        {f:if(then: 'btn-{settings.ButtonSize}', else: '', condition: '{settings.ButtonSize}!=\'default\'')} {f:if(then: 'btn-block', else: '', condition: '{settings.ButtonBlock}')} {f:if(then: 'disabled', else: '', condition: '{ButtonObjectItem.ButtonObject.ButtonActive}')}">
-                {ButtonObjectItem.ButtonObject.ButtonText}
-            </span>
-       </v:link.typolink>
+        <f:link.page pageUid="{ButtonObjectItem.ButtonObject.target}"
+                     class="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions} {f:if(then: 'btn-{settings.ButtonSize}', else: '', condition: '{settings.ButtonSize}!=\'default\'')} {f:if(then: 'btn-block', else: '', condition: '{settings.ButtonBlock}')} {ButtonDisable} {f:if(then: 'disabled', else: '', condition: '{ButtonObjectItem.ButtonObject.ButtonActive}')}"
+                     additionalAttributes="{role: 'button'}">
+            {ButtonObjectItem.ButtonObject.ButtonText}
+        </f:link.page>
     </f:section>
 </div>
