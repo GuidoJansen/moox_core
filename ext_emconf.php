@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'MOOX Bootstrap Responsive',
-	'description' => 'Makes TYPO3 fully responsive using Bootstrap, HTML5 Boilerplate, jQuery and Superfish.',
+	'description' => 'Makes TYPO3 fully responsive using Bootstrap, HTML5 Boilerplate, jQuery and Superfish. Needed for all MOOX Design Templates, MOOX News & Blog System and other MOOX Extensions. Best way to use the MOOX Core Extension is to install a Design Template, as moox_core will be autoinstalled by the dependencies.',
 	'category' => 'misc',
 	'shy' => 0,
 	'version' => '0.9.0',
