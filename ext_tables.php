@@ -169,7 +169,7 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
         array()
     );
     $TBE_MODULES['_configuration'][$mainModuleName]['access'] = 'user,group';
-    $TBE_MODULES['_configuration'][$mainModuleName]['icon'] = 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/moox_core_module.gif';
+    $TBE_MODULES['_configuration'][$mainModuleName]['icon'] = 'EXT:' . $_EXTKEY . '/ext_icon32.png';
     $TBE_MODULES['_configuration'][$mainModuleName]['labels'] = 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/MainModule.xlf';
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
         'FluidTYPO3.MooxCore',
@@ -181,7 +181,7 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 	),
 	array(
         'access' => 'user,group',
-        'icon' => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
+        'icon' => 'EXT:' . $_EXTKEY . '/ext_icon32.png',
         'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/DashboardModule.xlf',
 	)
     );
