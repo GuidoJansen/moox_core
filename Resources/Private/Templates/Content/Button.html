@@ -84,10 +84,11 @@
         </button>
     </f:section>
     <f:section name="BottonWithLink">
-        <f:link.page pageUid="{ButtonObjectItem.ButtonObject.target}"
-                     class="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions} {f:if(then: 'btn-{settings.ButtonSize}', else: '', condition: '{settings.ButtonSize}!=\'default\'')} {f:if(then: 'btn-block', else: '', condition: '{settings.ButtonBlock}')} {ButtonDisable} {f:if(then: 'disabled', else: '', condition: '{ButtonObjectItem.ButtonObject.ButtonActive}')}"
-                     additionalAttributes="{role: 'button'}">
-            {ButtonObjectItem.ButtonObject.ButtonText}
-        </f:link.page>
+        <v:link.typolink configuration="{parameter: ButtonObjectItem.ButtonObject.target}">
+            <span class="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions}
+                        {f:if(then: 'btn-{settings.ButtonSize}', else: '', condition: '{settings.ButtonSize}!=\'default\'')} {f:if(then: 'btn-block', else: '', condition: '{settings.ButtonBlock}')} {f:if(then: 'disabled', else: '', condition: '{ButtonObjectItem.ButtonObject.ButtonActive}')}">
+                            {ButtonObjectItem.ButtonObject.ButtonText}
+            </span>
+        </v:link.typolink>
     </f:section>
 </div>
