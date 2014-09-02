@@ -29,7 +29,7 @@ plugin.tx_mooxcore.settings {
 	
 	# cat=MOOX_ANALYTICS/settings/10; type=boolean; label=Use Piwik
 	usePiwik = 0
-	# cat=MOOX_ANALYTICS/settings/20; type=string; label=Piwik URL
+	# cat=MOOX_ANALYTICS/settings/20; type=string; label=Piwik URL : (e.g. www.moox.org/piwik)
 	piwikUrl =
 	# cat=MOOX_ANALYTICS/settings/30; type=string; label=ID Site
 	idSite =
