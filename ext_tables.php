@@ -153,8 +153,8 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
         $temp_TBE_MODULES = array();
         foreach ($TBE_MODULES as $key => $val) {
             if ($key == 'web') {
-		$temp_TBE_MODULES[$mainModuleName] = '';
                 $temp_TBE_MODULES[$key] = $val;
+		$temp_TBE_MODULES[$mainModuleName] = '';
             } else {
                 $temp_TBE_MODULES[$key] = $val;
             }
