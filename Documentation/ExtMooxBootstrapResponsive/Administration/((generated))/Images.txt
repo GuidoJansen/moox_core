@@ -1,0 +1,6 @@
+﻿.. |img-13|     image:: ../../Images/manual_html_m714dbc87.jpg
+   :height: 203
+   :width: 518
+.. :align: left
+.. :border: 0
+.. :name: Grafik8
