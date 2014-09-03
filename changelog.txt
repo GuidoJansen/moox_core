@@ -1,2 +1,32 @@
-- Add lightbox-enable
-- Add image description
+0.9.1
+
+Corrected Piwik and GA
+Manual improved
+
+
+0.9.0
+
+Pre-Beta
+
+
+0.1.0
+
+installable Demo
+Documentation
+Icons and Preview
+
+
+0.0.5
+
+first Dashboard
+
+
+0.0.2
+
+Add lightbox-enable
+Add image description
+
+
+0.0.1
+
+Initial Commit
