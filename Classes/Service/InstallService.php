@@ -91,7 +91,19 @@ class InstallService {
 			    return;
 		    }
 		       
-	    $robotsContent = GeneralUtility::getUrl(ExtensionManagementUtility::extPath($this->extKey).'/Configuration/Robots/robots.txt');
+	    $robotsContent .= "User-Agent: * \n";
+	    $robotsContent .= " \n";
+	    $robotsContent .= "Allow: / \n";
+	    $robotsContent .= "Disallow: /fileadmin/System/ \n";
+	    $robotsContent .= "Disallow: /cms/ \n";
+	    $robotsContent .= "Disallow: /t3lib/ \n";
+	    $robotsContent .= "Disallow: /typo3/ \n";
+	    $robotsContent .= "Disallow: /typo3conf/ \n";
+	    $robotsContent .= "Disallow: /typo3temp/ \n";
+	    $robotsContent .= "Disallow: /*?id=* \n";
+	    $robotsContent .= "Disallow: /*&type=98 \n";
+	    $robotsContent .= " \n";
+	    $robotsContent .= "Sitemap: http://" .$_SERVER['HTTP_HOST']. "/sitemap.xml";
 	    GeneralUtility::writeFile($robotsFile, $robotsContent, TRUE);
 	    
 	    /**
