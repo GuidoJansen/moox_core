@@ -183,10 +183,6 @@ plugin.tx_mooxcore.settings {
 	}
 	
 	entryLevel = {$plugin.tx_mooxcore.settings.entryLevel}
-	enableSearch = {$plugin.tx_mooxcore.settings.enableSearch}
-	searchFieldName = {$plugin.tx_mooxcore.settings.searchFieldName}
-	searchPageUid = {$plugin.tx_mooxcore.settings.searchPageUid}
-	searchMethod = {$plugin.tx_mooxcore.settings.searchMethod}
 	globalpagetitle = {$plugin.tx_mooxcore.settings.globalpagetitle}
 	domain = {$plugin.tx_mooxcore.settings.domain}
 	useCookieCompliance = {$plugin.tx_mooxcore.settings.useCookieCompliance}
@@ -209,6 +205,7 @@ plugin.tx_mooxcore.settings {
 	robots = {$plugin.tx_mooxcore.settings.robots}
 	apple-mobile-web-app-status-bar-style = {$plugin.tx_mooxcore.settings.apple-mobile-web-app-status-bar-style}
 	msApplicationTitleColor = {$plugin.tx_mooxcore.settings.msApplicationTitleColor}
+	google-site-verification = {$plugin.tx_mooxcore.settings.google-site-verification}
 }
 
 plugin.tx_mooxcore.bootstrap = USER
