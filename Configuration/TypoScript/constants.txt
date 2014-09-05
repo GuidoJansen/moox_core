@@ -34,7 +34,7 @@ plugin.tx_mooxcore.settings {
 	container {
 		# cat=MOOX_CORE_CONTENT: container/110/classNames; type=string; label=Available CSS class names for container (comma separated)
 		classNames = container
-		# cat=MOOX_CORE_CONTENT: container/120/addAnchor; type=string; label=Add anchor to content element
+		# cat=MOOX_CORE_CONTENT: container/120/addAnchor; type=boolean; label=Add anchor to content element
 		addAnchor = 0
 	}
 	image {
