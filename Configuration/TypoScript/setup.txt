@@ -129,22 +129,22 @@ plugin.tx_mooxcore.view {
 
 plugin.tx_mooxcore.settings {
 	defaults {
-		template = EXT:moox_core/Resources/Private/Templates/CoreContent/Default.html
+		template = {$plugin.tx_mooxcore.settings.defaults.template}
 		variant =
 		version =
 		# mode of defaults usage. Possible values: "record", "preselect" or empty. When set to "record", default values will be saved in records when they are saved, but only if no variant or version was chosen. If set to "preselect" the values entered in defaults will be the initially selected values when creating or editing records. If set to anything else, defaults are used only when the record has empty values in variant or version but the defaults will not be saved to the database.
-		mode = preselect
+		mode = {$plugin.tx_mooxcore.settings.defaults.mode}
 	}
 	constants {
 		auto = auto
 		none = none
 	}
 	header {
-		type = 1
-		types = 1,2,3,4,5,6
-		autoType = 2
-		classNames = page-header,hidden
-		hideIfEmpty = 1
+		type = {$plugin.tx_mooxcore.settings.header.type}
+		types = {$plugin.tx_mooxcore.settings.header.types}
+		autoType = {$plugin.tx_mooxcore.settings.header.autoType}
+		classNames = {$plugin.tx_mooxcore.settings.header.classNames}
+		hideIfEmpty = {$plugin.tx_mooxcore.settings.header.hideIfEmpty}
 	}
 	container {
 		types {
@@ -161,20 +161,20 @@ plugin.tx_mooxcore.settings {
 			html = none
 			list = div
 		}
-		classNames = container, trenner
-		addAnchor = 0
+		classNames = {$plugin.tx_mooxcore.settings.container.classNames}
+		addAnchor = {$plugin.tx_mooxcore.settings.container.addAnchor}
 	}
 	image {
-		classNames = image,img-responsive,img-rounded,img-circle,img-thumbnail,img-grayscale
+		classNames = {$plugin.tx_mooxcore.settings.image.classNames}
 	}
 	table {
-		classNames = table
+		classNames = {$plugin.tx_mooxcore.settings.table.classNames}
 	}
 	caption {
-		types = none,div,span,p
+		types = {$plugin.tx_mooxcore.settings.caption.types}
 	}
 	preview {
-		maxCharacters = 100
+		maxCharacters = {$plugin.tx_mooxcore.settings.preview.maxCharacters}
 	}
 	
 	menu {

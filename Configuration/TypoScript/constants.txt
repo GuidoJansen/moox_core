@@ -5,12 +5,54 @@ plugin.tx_mooxcore.view {
 }
 
 plugin.tx_mooxcore.settings {
+
 	# cat=MOOX_CORE/content/10; type=string; label= Global page title
 	globalpagetitle = MOOX Page
 	# cat=MOOX_CORE/settings/20; type=string; label=domain
 	domain = 
 	# cat=MOOX_CORE/settings/40; type=int+; label=main menu entry level - other menus calculated based on this
 	entryLevel = 0
+	
+	defaults {
+		template = EXT:moox_core/Resources/Private/Templates/CoreContent/Default.html
+		variant =
+		version =
+		# mode of defaults usage. Possible values: "record", "preselect" or empty. When set to "record", default values will be saved in records when they are saved, but only if no variant or version was chosen. If set to "preselect" the values entered in defaults will be the initially selected values when creating or editing records. If set to anything else, defaults are used only when the record has empty values in variant or version but the defaults will not be saved to the database.
+		mode = preselect
+	}
+	header {
+		# cat=MOOX_CORE_CONTENT: header/110/type; type=options[H1=1, H2=2, H3=3, H4=4, H5=5, H6=6]; label=Default header type
+		type = 1
+		# cat=MOOX_CORE_CONTENT: header/120/types; type=string; label=Available header types (comma separated)
+		types = 1,2,3,4,5,6
+		autoType = 2
+		# cat=MOOX_CORE_CONTENT: header/130/classNames; type=string; label=Available header CSS class names (comma separated)
+		classNames = page-header,hidden
+		# cat=MOOX_CORE_CONTENT: header/140/classNames; type=string; label=Hide header if empty
+		hideIfEmpty = 1
+	}
+	container {
+		# cat=MOOX_CORE_CONTENT: container/110/classNames; type=string; label=Available CSS class names for container (comma separated)
+		classNames = container
+		# cat=MOOX_CORE_CONTENT: container/120/addAnchor; type=string; label=Add anchor to content element
+		addAnchor = 0
+	}
+	image {
+		# cat=MOOX_CORE_CONTENT: image/110/classNames; type=string; label=Available CSS class names for images (comma separated)
+		classNames = image,img-responsive,img-rounded,img-circle,img-thumbnail,img-grayscale
+	}
+	caption {
+		# cat=MOOX_CORE_CONTENT: image/120/types; type=string; label=HTML element types for image caption (comma separated)
+		types = none,div,span,p,figure
+	}
+	table {
+		# cat=MOOX_CORE_CONTENT: table/110/classNames; type=string; label=Available CSS class names for tables (comma separated)
+		classNames = table
+	}
+	preview {
+		# cat=MOOX_CORE_CONTENT: preview/110/maxCharacters; type=string; label=Preview max characters
+		maxCharacters = 100
+	}
 	
 	# cat=MOOX_CORE_COOKIES/settings/10; type=boolean; label=Use Cookie Compliance
 	useCookieCompliance = 0
