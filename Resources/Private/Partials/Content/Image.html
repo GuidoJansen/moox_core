@@ -17,7 +17,7 @@
 	<f:if condition="{settings.directInclusion}">
 		<f:then>
 			<figure>
-				<img src="{image.url}" title="{image.title}" alt="{f:if(condition: image.alternative, then: image.alternative, else: image.name)}" class="{settings.image.className}" id="image{record.uid}{image.uid}" />
+				<img src="{image.url}" title="{image.title}" alt="{f:if(condition: image.alternative, then: image.alternative, else: image.name)}" class="{settings.image.className -> v:format.replace(substring: ',', replacement: ' ')}" id="image{record.uid}{image.uid}" />
 				<f:if condition="{image.description}"><figcaption id="figcaption{record.uid}{image.uid}" class="caption-position-{captionpositionclass}">{image.description}</figcaption></f:if>
 			</figure>
 		</f:then>
@@ -25,7 +25,7 @@
 			<figure>
 				<f:image src="{image.url}" treatIdAsReference="TRUE" title="{image.title}" alt="{f:if(condition: image.alternative, then: image.alternative, else: image.name)}"
 					 width="{record.imagewidth -> v:or(alternative: '-1')}{f:if(condition: record.imagewidth, then: settings.scaleMode)}"
-					 height="{record.imageheight -> v:or(alternative: '-1')}{f:if(condition: record.imageheight, then: settings.scaleMode)}" class="{settings.image.className}" id="image{record.uid}{image.uid}" />
+					 height="{record.imageheight -> v:or(alternative: '-1')}{f:if(condition: record.imageheight, then: settings.scaleMode)}" class="{settings.image.className -> v:format.replace(substring: ',', replacement: ' ')}" id="image{record.uid}{image.uid}" />
 				<f:if condition="{image.description}"><figcaption id="figcaption{record.uid}{image.uid}" class="caption-position-{captionpositionclass}">{image.description}</figcaption></f:if>
 			</figure>
 		</f:else>
