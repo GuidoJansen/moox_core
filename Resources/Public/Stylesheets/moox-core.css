@@ -103,7 +103,7 @@ div.indent { margin-left: 2em; }
 {
     position: fixed;
     width: 100%;
-    z-index: 1031;
+    z-index: 9999;
     margin: 0 0 0 0;
     border-radius: 0px;
 }
