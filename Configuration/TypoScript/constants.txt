@@ -89,7 +89,34 @@ plugin.tx_mooxcore.settings {
 	# cat=MOOX_CORE_META/settings/40025; type=string; label= MS Application title color : Default is "#603cba"
 	msApplicationTitleColor = #603cba
 	# cat=MOOX_CORE_META/settings/40026; type=string; label= Google site-verification
-	google-site-verification = 
+	google-site-verification =
+	
+	# cat=MOOX_CORE_LANGUAGE/settings/10; type=boolean; label= Enable language menu : Works only, if your MOOX Template support this feature.
+	languageEnable =
+	# cat=MOOX_CORE_LANGUAGE/settings/20; type=string; label= accesskey : Keyboard shortcut to access this element
+	languageAccesskey =
+	# cat=MOOX_CORE_LANGUAGE/settings/30; type=string; label= class : CSS class(es) for this element
+	languageClass = moox-language-menu
+	# cat=MOOX_CORE_LANGUAGE/settings/40; type=string; label= defaultIsoFlag : ISO code of the default flag
+	languageDefaultIsoFlag = de
+	# cat=MOOX_CORE_LANGUAGE/settings/50; type=string; label= defaultLanguageLabel : Label for the default language
+	languageDefaultLanguageLabel = Deutsch
+	# cat=MOOX_CORE_LANGUAGE/settings/60; type=options[left to right=ltr,right to left=rtl]; label= dir : Text direction for this HTML element.
+	languageDir = ltr
+	# cat=MOOX_CORE_LANGUAGE/settings/70; type=options[png,gif,jpeg]; label= flagImageType : Sets type of flag image: png, gif, jpeg
+	languageFlagImageType = png
+	# cat=MOOX_CORE_LANGUAGE/settings/80; type=string; label= flagPath : Overwrites the path to the flag folder
+	languageFlagPath = typo3/sysext/t3skin/images/flags/
+	# cat=MOOX_CORE_LANGUAGE/settings/90; type=boolean; label= hideNotTranslated : Hides languageIDs which are not translated
+	languageHideNotTranslated = 0
+	# cat=MOOX_CORE_LANGUAGE/settings/110; type=string; label= layout : How to render links when using autorendering. Possible selections: name,flag - use fx "name" or "flag" or "flag,name" or "name,flag"
+	languageLayout = flag,name
+	# cat=MOOX_CORE_LANGUAGE/settings/120; type=string; label= tagName : Tag name to use for enclosing container, list and flags (not finished) only
+	languageTagName = ul
+	# cat=MOOX_CORE_LANGUAGE/settings/130; type=string; label= tagNameChildren : Tag name to use for child nodes surrounding links, list and flags only
+	languageTagNameChildren = li
+	# cat=MOOX_CORE_LANGUAGE/settings/140; type=boolean; label= useCHash : Use cHash for typolink
+	languageUseCHash = 1
 }
 
 styles.content.loginform {

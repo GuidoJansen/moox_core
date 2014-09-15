@@ -206,6 +206,21 @@ plugin.tx_mooxcore.settings {
 	apple-mobile-web-app-status-bar-style = {$plugin.tx_mooxcore.settings.apple-mobile-web-app-status-bar-style}
 	msApplicationTitleColor = {$plugin.tx_mooxcore.settings.msApplicationTitleColor}
 	google-site-verification = {$plugin.tx_mooxcore.settings.google-site-verification}
+	
+	### LANGUAGE ###
+	languageEnable = {$plugin.tx_mooxcore.settings.languageEnable}
+	languageAccesskey = {$plugin.tx_mooxcore.settings.languageAccesskey}
+	languageClass = {$plugin.tx_mooxcore.settings.languageClass}
+	languageDefaultIsoFlag = {$plugin.tx_mooxcore.settings.languageDefaultIsoFlag}
+	languageDefaultLanguageLabel = {$plugin.tx_mooxcore.settings.languageDefaultLanguageLabel}
+	languageDir = {$plugin.tx_mooxcore.settings.languageDir}
+	languageFlagImageType = {$plugin.tx_mooxcore.settings.languageFlagImageType}
+	languageFlagPath = {$plugin.tx_mooxcore.settings.languageFlagPath}
+	languageHideNotTranslated = {$plugin.tx_mooxcore.settings.languageHideNotTranslated}
+	languageLayout = {$plugin.tx_mooxcore.settings.languageLayout}
+	languageTagName = {$plugin.tx_mooxcore.settings.languageTagName}
+	languageTagNameChildren = {$plugin.tx_mooxcore.settings.languageTagNameChildren}
+	languageUseCHash = {$plugin.tx_mooxcore.settings.languageUseCHash}
 }
 
 plugin.tx_mooxcore.bootstrap = USER
