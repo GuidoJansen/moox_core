@@ -185,9 +185,12 @@ plugin.tx_mooxcore.settings {
 	entryLevel = {$plugin.tx_mooxcore.settings.entryLevel}
 	globalpagetitle = {$plugin.tx_mooxcore.settings.globalpagetitle}
 	domain = {$plugin.tx_mooxcore.settings.domain}
+	
+	### COOKIES ###
 	useCookieCompliance = {$plugin.tx_mooxcore.settings.useCookieCompliance}
 	cookieSettingsPage = {$plugin.tx_mooxcore.settings.cookieSettingsPage}
 	cookieAlertBoxPosition = {$plugin.tx_mooxcore.settings.cookieAlertBoxPosition}
+	cookieBoxText = {$plugin.tx_mooxcore.settings.cookieBoxText}
 	
 	### ANALYTICS ###
 	usePiwik = {$plugin.tx_mooxcore.settings.usePiwik}

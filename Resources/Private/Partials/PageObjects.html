@@ -77,6 +77,7 @@
 				// Check if alert has been closed
 				if( $.cookie('moox-alert-cookie-box') === 'closed' ){
 				    $('.alert-cookie').hide();
+				    $('#cookie-modal').hide();
 				}
 				// Grab your button (based on your posted html)
 				$('.cookie-accept').click(function( e ){
@@ -86,12 +87,50 @@
 					$.cookie('moox-alert-cookie-box', 'closed', { path: '/' });
 				});
 			});
+			<f:if condition="{settings.cookieAlertBoxPosition} == 'modal'">
+				$(window).load(function(){
+					$('#cookie-modal').modal('show');
+				});
+			</f:if>
 		</v:asset.script>
-		<div class="alert alert-info alert-cookie cookie-alert-box-position-{settings.cookieAlertBoxPosition}">            
-			<f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxContent" />
-			<button type="button" class="close cookie-accept" data-dismiss="alert"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonAccept" /></button>
-			<f:link.page pageUid="{settings.cookieSettingsPage}"><button type="button" class="close cookie-link-to-page"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonSettings" /></button></f:link.page>
-		</div>
+		<f:if condition="{settings.cookieAlertBoxPosition} == 'modal'">
+			<f:then>
+				<div id="cookie-modal" class="modal fade bs-example-modal-lg in" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-body">
+								<f:if condition="{settings.cookieBoxText} != ''">
+									<f:then>
+										{settings.cookieBoxText}	
+									</f:then>
+									<f:else>
+										<f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxContent" />
+									</f:else>
+								</f:if>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="close cookie-accept" data-dismiss="alert"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonAccept" /></button>
+								<f:link.page pageUid="{settings.cookieSettingsPage}"><button type="button" class="close cookie-link-to-page"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonSettings" /></button></f:link.page>
+							</div>
+						</div>
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<div class="alert alert-info alert-cookie cookie-alert-box-position-{settings.cookieAlertBoxPosition}">            
+					<f:if condition="{settings.cookieBoxText} != ''">
+						<f:then>
+							{settings.cookieBoxText}	
+						</f:then>
+						<f:else>
+							<f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxContent" />
+						</f:else>
+					</f:if>
+					<button type="button" class="close cookie-accept" data-dismiss="alert"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonAccept" /></button>
+					<f:link.page pageUid="{settings.cookieSettingsPage}"><button type="button" class="close cookie-link-to-page"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonSettings" /></button></f:link.page>
+				</div>
+			</f:else>
+		</f:if>
 	</f:if>
 	<f:if condition="{settings.useGoogleAnalytics}">
 		<v:asset.script name="google-analytics" group="moox" standalone="TRUE" allowMoveToFooter="TRUE">					
