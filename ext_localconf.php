@@ -42,8 +42,6 @@ for ($i = 0; $i < count($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['type
 		array());
 }
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms']['db_new_content_el']['wizardItemsHook']['moox_core'] = 'FluidTYPO3\MooxCore\Hooks\WizardItemsHookSubscriber';
-
 
 /***************
  * Use RealUrl Config from MOOX Core
