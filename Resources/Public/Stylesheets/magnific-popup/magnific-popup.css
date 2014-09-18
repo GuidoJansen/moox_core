@@ -311,6 +311,16 @@ img.mfp-img {
 
 .mfp-gallery .mfp-image-holder .mfp-figure {
   cursor: pointer; }
+  
+.white-popup-block
+{
+  position: relative;
+  background: #FFFFFF;
+  padding: 20px;
+  width: auto;
+  max-width: 70%;
+  margin: 20px auto;
+}
 
 @media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
   /**
