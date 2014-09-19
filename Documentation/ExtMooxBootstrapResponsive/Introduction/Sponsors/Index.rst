@@ -38,7 +38,8 @@ The biggest part of moox\_news, moox\_social and moox\_address are
 sponsored by Chemieverbände Baden-Württemberg ( `http://www.chemie.com
 <http://www.chemie.com/>`_ ).
 
-|img-8| 
+.. image:: ../../../Images/manual_html_43c544cd.jpg
+
 Users manual
 ^^^^^^^^^^^^
 
@@ -92,7 +93,9 @@ Screen of the Extension Manager after installing moox\_core. You
 should see three green message boxes stating the correct installation
 of the .htacces, AdditionalConfiguration.php and robots.txt.
 
-|img-9| Got red or grey messages? Read them and refer to the Known Bugs
+.. image:: ../../../Images/manual_html_mb42092f.jpg
+
+Got red or grey messages? Read them and refer to the Known Bugs
 Section if unsure what to do.
 
 After installation, there are a few steps to get MOOX running. Please
