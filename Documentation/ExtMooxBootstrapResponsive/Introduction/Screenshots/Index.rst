@@ -42,30 +42,22 @@ Features
 ^^^^^^^^
 
 - Auto-Installation and easy configuration
-
-- Bootstrap Responsive
-
-- HTML5 Boilerplate
-
-- jQuery Javascript Libraries
-
+- Responsive Bootstrap-Layout and Content-Elements
+- Built on HTML5 Boilerplate, Validated and accesible
+- Using only jQuery and compatible plugins
 - Superfish responsive Dropdown Navigation
-
 - SEO: robots.txt, Google Sitemap (sitemap.xml) and Metatags
-
 - Nice URLs through RealURL and .htaccess
-
 - EU Cookie Law Compliance
-
 - Piwik or Google Analytics ready
-
 - Prepared for site-verification through Google Webmaster Tools (GWT)
-
+- Supports CDN Usage (e. g. Amazon Cloudfront)
+- Use Webfonts like Google Fonts or Fonts.com
+- Use Glyphicons or FontAwesome
+- Support Multilanguage, integrated configurable language-switcher
 - Easy to template and CSS-style
-
 - Easy to extend with own Content Elements and Effects
-
 - Good foundation to start own Extension Development
-
 - Favicon and App-Iconset (comes with any MOOX Template)
-
+- Prepared for Indexed Search, SOLR and Powermail
+- Content-Import from other TYPO3-Installations (like Templavoila) possible
