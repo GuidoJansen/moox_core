@@ -18,7 +18,7 @@
 ChangeLog
 ---------
 
-Version 0.9.5 Beta
+Version 0.9.9 Beta
 ******************
 
 - add google-site-verification
