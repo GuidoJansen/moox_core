@@ -25,7 +25,6 @@ namespace FluidTYPO3\MooxCore\UserFunction;
  *****************************************************************/
 
 use FluidTYPO3\MooxCore\Provider\ContentProvider;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;

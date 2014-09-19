@@ -26,8 +26,6 @@ namespace FluidTYPO3\MooxCore\Controller;
 
 use FluidTYPO3\Flux\Controller\AbstractFluxController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class CoreContentController extends AbstractFluxController {
 
