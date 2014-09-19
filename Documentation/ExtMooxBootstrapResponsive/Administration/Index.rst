@@ -36,7 +36,8 @@ There are some Extension properties to configure
 - **Disable Content Elements** Same as Disable Page Template: you may
   disable moox\_core's content elements as well.
 
-|img-10| 
+.. image:: ../../Images/manual_html_2fbb22ce.jpg
+
 Configuration
 -------------
 
@@ -52,7 +53,9 @@ MOOX Content Extensions (like moox\_sequence)
 
 MOOX Template (extension\_key\_of\_template)
 
-|img-11| On your newly created Rootpage go to  *Template* and choose
+.. image:: ../../Images/manual_html_m33e0d093.jpg
+
+On your newly created Rootpage go to  *Template* and choose
 *Info/Edit* then click on  *Edit the whole template record.* Click the
 Tab *Contains* and add the static templates by doubleclicking them in
 the left window and the will show as added on the left.
@@ -62,7 +65,9 @@ Now you can configure the Domain and Page Title via Constants Editor
 to configure MOOX, but these two are the only necessary configuration
 options.
 
-|img-12| Take a look in the constant editor to see all possible configuration
+.. image:: ../../Images/manual_html_4dc920ff.jpg
+
+Take a look in the constant editor to see all possible configuration
 options:
 
 
