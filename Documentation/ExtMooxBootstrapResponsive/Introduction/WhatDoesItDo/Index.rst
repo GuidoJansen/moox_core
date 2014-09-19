@@ -79,7 +79,7 @@ your own. Use our Kickstarter Extensions:
   <https://github.com/dcngmbh/moox_template_builder>`_
   (moox\_template\_builder)
 
-It is the best practise not to install moox\_core directly but to
+It is the best practice not to install moox\_core directly but to
 install a moox\_template that will install moox\_core automatically.
 See the section Users Manual for more information about the
 installation and dependencies. However MOOX should be installed on a
