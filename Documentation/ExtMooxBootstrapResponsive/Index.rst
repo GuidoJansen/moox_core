@@ -1,4 +1,3 @@
-﻿.. include:: Images.txt
 
 .. ==================================================
 .. FOR YOUR INFORMATION
@@ -15,7 +14,7 @@
 .. role::   php(code)
 
 
-|img-1| |img-2| |img-3| |img-4| EXT: MOOX Bootstrap Responsive
+EXT: MOOX Bootstrap Responsive
 ==============================================================
 
 Extension Key: moox\_core
