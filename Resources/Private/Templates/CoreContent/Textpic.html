@@ -28,7 +28,7 @@
 </f:section>
 
 <f:section name="Preview">
-	{record.bodytext -> f:format.crop(maxCharacters: 100)}
+	{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters, append: '') -> v:or(alternative: row.bodytext)}
 	<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
 		<f:for each="{images}" as="image" iteration="iteration">
 			<v:media.image src="{image.url}" treatIdAsReference="TRUE" alt="{image.id}" height="50" />
