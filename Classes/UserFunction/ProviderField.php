@@ -31,7 +31,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Variants Field TCA user function
- * @package FluidcontentCore
+ * @package MooxCore
  */
 class ProviderField {
 
