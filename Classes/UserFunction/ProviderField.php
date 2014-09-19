@@ -24,7 +24,7 @@ namespace FluidTYPO3\MooxCore\UserFunction;
  *  This copyright notice MUST APPEAR in all copies of the script!
  *****************************************************************/
 
-use FluidTYPO3\MooxCore\Provider\ContentProvider;
+use FluidTYPO3\MooxCore\Provider\CoreContentProvider;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -41,7 +41,7 @@ class ProviderField {
 	protected $objectManager;
 
 	/**
-	 * @var ContentProvider
+	 * @var CoreContentProvider
 	 */
 	protected $provider;
 
@@ -50,7 +50,7 @@ class ProviderField {
 	 */
 	public function __construct() {
 		$this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-		$this->provider = $this->objectManager->get('FluidTYPO3\MooxCore\Provider\ContentProvider');
+		$this->provider = $this->objectManager->get('FluidTYPO3\MooxCore\Provider\CoreContentProvider');
 	}
 
 	/**
@@ -61,7 +61,7 @@ class ProviderField {
 		$extensionKeys = $this->provider->getVariantExtensionKeysForContentType($parameters['row']['CType']);
 		$defaults = $this->provider->getDefaults();
 		$preSelected = $parameters['row']['content_variant'];
-		if (ContentProvider::MODE_RECORD === $defaults['mode'] && TRUE === empty($preSelected)) {
+		if (CoreContentProvider::MODE_RECORD === $defaults['mode'] && TRUE === empty($preSelected)) {
 			$preSelected = $defaults['variant'];
 		}
 		if (TRUE === is_array($extensionKeys) && 0 < count($extensionKeys)) {
@@ -104,7 +104,7 @@ class ProviderField {
 		$defaults = $this->provider->getDefaults();
 		$preSelectedVariant = $parameters['row']['content_variant'];
 		$preSelectedVersion = $parameters['row']['content_version'];
-		if (ContentProvider::MODE_PRESELECT === $defaults['mode']) {
+		if (CoreContentProvider::MODE_PRESELECT === $defaults['mode']) {
 			if (TRUE === empty($preSelectedVariant)) {
 				$preSelectedVariant = $defaults['variant'];
 			}

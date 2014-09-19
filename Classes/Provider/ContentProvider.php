@@ -44,7 +44,7 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  * @package Flux
  * @subpackage Provider
  */
-class ContentProvider extends AbstractProvider implements ProviderInterface {
+class CoreContentProvider extends AbstractProvider implements ProviderInterface {
 
 	const MODE_RECORD = 'record';
 	const MODE_PRESELECT = 'preselect';
@@ -55,6 +55,11 @@ class ContentProvider extends AbstractProvider implements ProviderInterface {
 	 * @var string
 	 */
 	protected $extensionKey = 'moox_core';
+
+	/**
+	 * @var string
+	 */
+	protected $packageName = 'FluidTYPO3.MooxCore';
 
 	/**
 	 * @var integer

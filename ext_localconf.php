@@ -25,7 +25,7 @@ $GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['types'] = array(
 	'header', 'text', 'image', 'textpic', 'bullets', 'uploads', 'table', 'media', 'mailform', 'search', 'menu', 'shortcut', 'div', 'html', 'default'
 );
 
-\FluidTYPO3\Flux\Core::registerConfigurationProvider('FluidTYPO3\MooxCore\Provider\ContentProvider');
+\FluidTYPO3\Flux\Core::registerConfigurationProvider('FluidTYPO3\MooxCore\Provider\CoreContentProvider');
 
 // Prepare a global variants registration array indexed by CType value.
 // To add your own, do fx: $GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['variants']['textpic'][] = 'myextensionkey';
