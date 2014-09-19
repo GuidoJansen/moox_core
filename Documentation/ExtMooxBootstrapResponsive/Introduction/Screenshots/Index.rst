@@ -23,18 +23,21 @@ action. Here are some additional Screenshots for a quick preview. The
 Frontend Output of MOOX Bootstrap Responsive with additional Sequence
 Slider showing the responsive views of the same website:
 
-|img-5|
+.. image:: ../../../Images/manual_html_m3eecc81b.jpg
 
 moox\_core renders all known TYPO3 content elements including Textpic
 as well as all known Bootstrap Elements in a mobile- and tablet-
 optimized manner (so called responsive). At the bottom of the page you
 can see the compliance to the EU cookie law regulations.
 
-|img-6| Welcome to MOOX. Our neat Dashboard gives you a warm welcome. The
+.. image:: ../../../Images/manual_html_m2da9d747.jpg
+
+Welcome to MOOX. Our neat Dashboard gives you a warm welcome. The
 dashboard will soon be evolved to give you more information about your
 system status and fast access to main features of MOOX.
 
-|img-7| 
+.. image:: ../../../Images/manual_html_202e19c4.jpg
+
 Features
 ^^^^^^^^
 
