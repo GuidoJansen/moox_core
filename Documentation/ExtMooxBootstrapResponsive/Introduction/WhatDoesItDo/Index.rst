@@ -31,10 +31,6 @@ other MOOX-Extensions and uses MOOX Templates.
 
 **MOOX Templates available in TER (Beta):**
 
-- `MOOX Template Bootstrap
-  <http://typo3.org/extensions/repository/view/moox_template_free001/>`_
-  (moox\_template\_free001)
-
 - `MOOX Template Silver
   <http://typo3.org/extensions/repository/view/moox_template_free002/>`_
   (moox\_template\_free002)
@@ -56,6 +52,10 @@ other MOOX-Extensions and uses MOOX Templates.
 - `MOOX Flexisel jQuery Carousel
   <http://typo3.org/extensions/repository/view/moox_flexisel/>`_
   (moox\_flexisel)
+  
+- `MOOX FractionSlider
+  <https://github.com/dcngmbh/moox_fractionslider>`_
+  (moox\_fraction\_slider)
 
 **MOOX Extensions available on Github (Alpha):**
 
@@ -65,9 +65,6 @@ other MOOX-Extensions and uses MOOX Templates.
 - `MOOX Social Media Integration
   <https://github.com/dcngmbh/moox_social>`_ (moox\_social)
 
-- `MOOX FractionSlider
-  <https://github.com/dcngmbh/moox_fractionslider>`_
-  (moox\_fraction\_slider)
 
 or if you want to make a Template or some neat effects with jQuery on
 your own. Use our Kickstarter Extensions:
