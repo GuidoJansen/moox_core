@@ -34,8 +34,7 @@ team, thanks 1000 times <3 <3 <3
 MOOX News is a fork of tx\_news, thanks to Georg Ringer. Very good
 job!
 
-The biggest part of moox\_news, moox\_social and moox\_address are
-sponsored by Chemieverbände Baden-Württemberg ( `http://www.chemie.com
+The biggest part of MOOX is sponsored by Chemieverbände Baden-Württemberg ( `http://www.chemie.com
 <http://www.chemie.com/>`_ ).
 
 .. image:: ../../../Images/manual_html_43c544cd.jpg
