@@ -76,7 +76,7 @@ options:
    :titlesonly:
    :glob:
 
-   ((generated))/Index
+   Tutorial/Index
    ForUser/Index
    ForDesigner/Index
    ForSeos/Index
