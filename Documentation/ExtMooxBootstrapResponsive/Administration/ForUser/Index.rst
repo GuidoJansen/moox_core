@@ -18,6 +18,9 @@
 For User
 ^^^^^^^^
 
+Select the special "Fluidpages" backend layout in the "Appearance" tab - 
+and make sure you also set it for sub-pages.
+
 Now select a Page Layout on Root-level and start creating subpages
 (will automatically appear in your main navigation) and contents.
 
