@@ -99,6 +99,3 @@ You may add one or two Domain Records on you Root-Page to get your
 project running with and without the www-prefix.
 
 .. image:: ../../../Images/manual_html_m714dbc87.jpg
-
-Tutorial
---------
