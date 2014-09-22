@@ -4,10 +4,10 @@ if (!defined('TYPO3_MODE')) {
 }
 
 // Use dashboard instead of the default page module
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig('
- 	setup.override.startModule = moox_MooxCoreDashboard
-	mod.moox_MooxCoreDashboard.sideBarEnable = 0
- ');
+//\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig('
+// 	setup.override.startModule = moox_MooxCoreDashboard
+//	mod.moox_MooxCoreDashboard.sideBarEnable = 0
+// ');
 
 if (FALSE === isset($GLOBALS['TYPO3_CONF_VARS']['FE']['contentRenderingTemplates'])) {
 	\TYPO3\CMS\Core\Utility\GeneralUtility::sysLog('MooxCore requires an additional configuration file in typo3conf/AdditionalConfiguration.php - '
