@@ -61,7 +61,7 @@ class ProviderField {
 		$extensionKeys = $this->provider->getVariantExtensionKeysForContentType($parameters['row']['CType']);
 		$defaults = $this->provider->getDefaults();
 		$preSelected = $parameters['row']['content_variant'];
-		if (CoreContentProvider::MODE_RECORD === $defaults['mode'] && TRUE === empty($preSelected)) {
+		if (CoreContentProvider::MODE_PRESELECT === $defaults['mode'] && TRUE === empty($preSelected)) {
 			$preSelected = $defaults['variant'];
 		}
 		if (TRUE === is_array($extensionKeys) && 0 < count($extensionKeys)) {
