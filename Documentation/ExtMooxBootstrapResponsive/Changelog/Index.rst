@@ -18,7 +18,33 @@
 ChangeLog
 ---------
 
-Version 0.9.9 Beta
+Version 1.0 (Planned 10/2014)
+*****************************
+
+- First Stable Release
+- Quality Management
+- Running 3 templates
+- Passed all tests
+- HTML5 Validation
+- CSS Validation
+- Accessibility check
+- SEO check
+- Complete documentation
+
+Version 0.9.7 Beta
+******************
+
+- Minor Fixes
+
+Version 0.9.6 Beta
+******************
+
+- Restored TYPO3 logos
+- Dashboard not as default
+- Corrected docs
+- Improvded dependencies
+
+Version 0.9.5 Beta
 ******************
 
 - add google-site-verification
