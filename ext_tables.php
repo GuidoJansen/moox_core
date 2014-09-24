@@ -148,47 +148,48 @@ $tempColumns = Array (
 
 if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 	
-    $mainModuleName = 'moox';
-
     /***************
      * Register Main Module
      */
-    if (!isset($TBE_MODULES[$mainModuleName])) {
+	$mainModuleName = "moox";
+	if (!isset($TBE_MODULES[$mainModuleName])) {
         $temp_TBE_MODULES = array();
         foreach ($TBE_MODULES as $key => $val) {
             if ($key == 'web') {
                 $temp_TBE_MODULES[$key] = $val;
-		$temp_TBE_MODULES[$mainModuleName] = '';
+                $temp_TBE_MODULES[$mainModuleName] = '';
             } else {
                 $temp_TBE_MODULES[$key] = $val;
             }
         }
-        $TBE_MODULES = $temp_TBE_MODULES;
-    }
+        $TBE_MODULES = $temp_TBE_MODULES;		
+		\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+			'FluidTYPO3.'.$_EXTKEY,
+			$mainModuleName,
+			'',
+			'',
+			array(),
+			array(
+				'access' => 'user,group',
+				'icon'   => 'EXT:'.$_EXTKEY.'/ext_icon32.png',
+				'labels' => 'LLL:EXT:'.$_EXTKEY.'/Resources/Private/Language/MainModule.xlf',
+			)
+		);
+    }	
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-        $_EXTKEY,
-        $mainModuleName,
-        '',
-        '',
-        array()
-    );
-    $TBE_MODULES['_configuration'][$mainModuleName]['access'] = 'user,group';
-    $TBE_MODULES['_configuration'][$mainModuleName]['icon'] = 'EXT:' . $_EXTKEY . '/ext_icon32.png';
-    $TBE_MODULES['_configuration'][$mainModuleName]['labels'] = 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/MainModule.xlf';
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-        'FluidTYPO3.MooxCore',
+        'FluidTYPO3.'.$_EXTKEY,
         $mainModuleName,
         'dashboard',
         'top',
         array(
-		'Administration' => 'dashboard',
-	),
-	array(
-        'access' => 'user,group',
-        'icon' => 'EXT:' . $_EXTKEY . '/ext_icon32.png',
-        'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/DashboardModule.xlf',
-	)
-    );
+			'Administration' => 'dashboard',
+		),
+		array(
+			'access' => 'user,group',
+			'icon' => 'EXT:' . $_EXTKEY . '/ext_icon32.png',
+			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/DashboardModule.xlf',
+		)
+    );	
 }
 
 /***************
