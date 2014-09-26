@@ -373,16 +373,6 @@ page.headerData {
 	<meta name="generator" content="MOOX for TYPO3" />
     )
     10.insertData = 1
-    20 = TEXT
-    20.value (
-	<!--[if lt IE 9]>
-		<link href="//netdna.bootstrapcdn.com/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
-		<link href="typo3conf/ext/moox_core/Resources/Public/Respond/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
-		<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>	
-		<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<script src="typo3conf/ext/moox_core/Resources/Public/Respond/respond.proxy.js"></script>
-	<![endif]-->
-    )
 }
 
 # Auto XML-Sitemap
