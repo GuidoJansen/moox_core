@@ -33,3 +33,18 @@
 .audiojs .loading { background: url("../../Js/audio-js/player-graphics.gif") -8px -31px no-repeat; }
 .audiojs .error { background: url("../../Js/audio-js/player-graphics.gif") -8px -61px no-repeat; }
 .audiojs .pause { background: url("../../Js/audio-js/player-graphics.gif") -8px -91px no-repeat; }
+
+/*
+ * Media Query
+ ***************************/
+ @media (max-width : 767px)
+{
+  .audiojs
+  {
+    width: 100%;
+  }
+  .audiojs .scrubber
+  {
+    width: 55%;
+  }
+}
