@@ -41,6 +41,9 @@ div.indent { margin-left: 2em; }
 # MOOX Style Rules
 # ***************************************************************************************/
 
+/*IE8 FIX*/
+img {width: auto; height: auto;}
+
 /* IMAGE STYLES */
 .img-grayscale
 {
