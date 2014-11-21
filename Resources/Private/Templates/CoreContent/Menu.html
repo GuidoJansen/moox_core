@@ -9,7 +9,9 @@
 	<flux:form id="menu">
 		<f:render partial="Properties/Header" arguments="{_all}" />
 		<f:render partial="Properties/Container" arguments="{_all}" />
-		<f:render partial="Properties/Menu/{menuPartialTemplateName}" optional="TRUE" arguments="{_all}" />
+		<f:if condition="{menuPartialTemplateName}">
+			<f:render partial="Properties/Menu/{menuPartialTemplateName}" optional="TRUE" arguments="{_all}" />
+		</f:if>
  	</flux:form>
 </f:section>
 
