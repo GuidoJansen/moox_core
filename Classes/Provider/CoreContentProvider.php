@@ -32,6 +32,7 @@ use FluidTYPO3\Flux\Utility\ResolveUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * ConfigurationProvider for records in tt_content
@@ -49,6 +50,7 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	const MODE_RECORD = 'record';
 	const MODE_PRESELECT = 'preselect';
 	const CTYPE_MENU = 'menu';
+	const CTYPE_TABLE = 'table';
 	const CTYPE_FIELDNAME = 'CType';
 	const MENUTYPE_FIELDNAME = 'menu_type';
 	const MENU_SELECTEDPAGES = 0;
@@ -62,6 +64,9 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	const MENU_RELATEDPAGES = 6;
 	const MENU_CATEGORIZEDPAGES = 'categorized_pages';
 	const MENU_CATEGORIZEDCONTENT = 'categorized_content';
+	const THEAD_NONE = 'none';
+	const THEAD_TOP = 'top';
+	const THEAD_LEFT = 'left';
 
 	/**
 	 * @var string
@@ -162,6 +167,13 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 			$partialTemplateName = $this->menuTypeToSectionNameMap[$menuType];
 			$this->templateVariables['menuPartialTemplateName'] = $partialTemplateName;
 			$this->templateVariables['pageUids'] = GeneralUtility::trimExplode(',', $row['pages']);
+		}
+		if (self::CTYPE_TABLE == $row[self::CTYPE_FIELDNAME]) {
+			$this->templateVariables['tableHeadPositions'] = array(
+				self::THEAD_NONE => LocalizationUtility::translate('tableHead.none', 'moox_core'),
+				self::THEAD_TOP => LocalizationUtility::translate('tableHead.top', 'moox_core'),
+				self::THEAD_LEFT => LocalizationUtility::translate('tableHead.left', 'moox_core'),
+			);
 		}
 		return parent::getForm($row);
 	}

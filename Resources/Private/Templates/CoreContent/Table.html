@@ -12,18 +12,23 @@
 	</flux:form>
 </f:section>
 
-<f:section name="Preview"></f:section>
+<f:section name="Preview">
+	{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters) -> f:format.nl2br()}
+</f:section>
 
 <f:section name="Main">
-	<table class="{settings.table.className -> v:iterator.explode() -> v:iterator.implode(glue: ' ')}">
-		<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString">
+	<v:tag name="table" class="{settings.table.className -> v:iterator.explode() -> v:iterator.implode(glue: ' ')}">
+		<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString" iteration="rowIteration">
 			<tr>
-				<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column">
-					<td>{column -> f:format.raw()}</td>
+				<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column" iteration="columnIteration">
+					<f:if condition="{0: rowIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: 'top'}">
+						<f:then><th>{column -> f:format.raw()}</th></f:then>
+						<f:else><v:tag name="{f:if(condition: '{0: columnIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: \'left\'}', then: 'th', else: 'td')}">{column -> f:format.raw()}</v:tag></f:else>
+					</f:if>
 				</f:for>
 			</tr>
 		</f:for>
-	</table>
+	</v:tag>
 </f:section>
 
 </div>

@@ -63,6 +63,18 @@
 			<trans-unit id="fields.menuLimit">
 				<source>Maximum number of page links to display</source>
 			</trans-unit>
+			<trans-unit id="fields.tableHeadPosition">
+				<source>Table Header Position</source>
+			</trans-unit>
+			<trans-unit id="tableHead.none">
+				<source>No header</source>
+			</trans-unit>
+			<trans-unit id="tableHead.top">
+				<source>Top</source>
+			</trans-unit>
+			<trans-unit id="tableHead.left">
+				<source>Left</source>
+			</trans-unit>
 			<trans-unit id="list.ol">
 				<source>Ordered list</source>
 			</trans-unit>
