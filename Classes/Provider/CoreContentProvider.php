@@ -50,7 +50,19 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	const MODE_PRESELECT = 'preselect';
 	const CTYPE_MENU = 'menu';
 	const CTYPE_FIELDNAME = 'CType';
- 
+	const MENUTYPE_FIELDNAME = 'menu_type';
+	const MENU_SELECTEDPAGES = 0;
+	const MENU_SUBPAGESOFSELECTEDPAGES = 1;
+	const MENU_SUBPAGESOFSELECTEDPAGESWITHABSTRACT = 4;
+	const MENU_SUBPAGESOFSELECTEDPAGESWITHSECTIONS = 7;
+	const MENU_SITEMAP = 2;
+	const MENU_SITEMAPSOFSELECTEDPAGES = 8;
+	const MENU_SECTIONINDEX = 3;
+	const MENU_RECENTLYUPDATED = 5;
+	const MENU_RELATEDPAGES = 6;
+	const MENU_CATEGORIZEDPAGES = 'categorized_pages';
+	const MENU_CATEGORIZEDCONTENT = 'categorized_content';
+
 	/**
 	 * @var string
 	 */
@@ -96,17 +108,17 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	 * @var array
 	 */
 	protected $menuTypeToSectionNameMap = array(
-		'0' => 'SelectedPages',
-		'1' => 'SubPagesOfSelectedPages',
-		'4' => 'SubPagesOfSelectedPagesWithAbstract',
-		'7' => 'SubPagesOfSelectedPagesWithSections',
-		'2' => 'SiteMap',
-		'8' => 'SiteMapsOfSelectedPages',
-		'3' => 'SectionIndex',
-		'5' => 'RecentlyUpdated',
-		'6' => 'RelatedPages',
-		'categorized_pages' => 'CategorizedPages',
-		'categorized_content' => 'CategorizedContent'
+		self::MENU_SELECTEDPAGES => 'SelectedPages',
+		self::MENU_SUBPAGESOFSELECTEDPAGES => 'SubPagesOfSelectedPages',
+		self::MENU_SUBPAGESOFSELECTEDPAGESWITHABSTRACT => 'SubPagesOfSelectedPagesWithAbstract',
+		self::MENU_SUBPAGESOFSELECTEDPAGESWITHSECTIONS => 'SubPagesOfSelectedPagesWithSections',
+		self::MENU_SITEMAP => 'SiteMap',
+		self::MENU_SITEMAPSOFSELECTEDPAGES => 'SiteMapsOfSelectedPages',
+		self::MENU_SECTIONINDEX => 'SectionIndex',
+		self::MENU_RECENTLYUPDATED => 'RecentlyUpdated',
+		self::MENU_RELATEDPAGES => 'RelatedPages',
+		self::MENU_CATEGORIZEDPAGES => 'CategorizedPages',
+		self::MENU_CATEGORIZEDCONTENT => 'CategorizedContent'
 	);
 
 	/**
@@ -146,7 +158,7 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	public function getForm(array $row) {
 		if (self::CTYPE_MENU === $row[self::CTYPE_FIELDNAME]) {
 			// addtional menu variables
-			$menuType = $row['menu_type'];
+			$menuType = $row[self::MENUTYPE_FIELDNAME];
 			$partialTemplateName = $this->menuTypeToSectionNameMap[$menuType];
 			$this->templateVariables['menuPartialTemplateName'] = $partialTemplateName;
 			$this->templateVariables['pageUids'] = GeneralUtility::trimExplode(',', $row['pages']);

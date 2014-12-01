@@ -63,15 +63,16 @@ unset(
 	$GLOBALS['TCA']['tt_content']['columns']['accessibility_title'],
 	$GLOBALS['TCA']['tt_content']['columns']['accessibility_bypass'],
 	$GLOBALS['TCA']['tt_content']['columns']['accessibility_bypass_text'],
+	$GLOBALS['TCA']['tt_content']['columns']['table_bgColor'],
+	$GLOBALS['TCA']['tt_content']['columns']['table_border'],
+	$GLOBALS['TCA']['tt_content']['columns']['table_cellspacing'],
+	$GLOBALS['TCA']['tt_content']['columns']['table_cellpadding'],
+	$GLOBALS['TCA']['tt_content']['columns']['category_field'],
 	$GLOBALS['TCA']['tt_content']['palettes']['imageblock'],
 	$GLOBALS['TCA']['tt_content']['palettes']['image_accessibility'],
 	//$GLOBALS['TCA']['tt_content']['palettes']['image_settings'],
 	$GLOBALS['TCA']['tt_content']['palettes']['imagelinks'],
-	$GLOBALS['TCA']['tt_content']['palettes']['table'],
-	$GLOBALS['TCA']['tt_content']['columns']['table_bgColor'],
-	$GLOBALS['TCA']['tt_content']['columns']['table_border'],
-	$GLOBALS['TCA']['tt_content']['columns']['table_cellspacing'],
-	$GLOBALS['TCA']['tt_content']['columns']['table_cellpadding']
+	$GLOBALS['TCA']['tt_content']['palettes']['table']
 );
 
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['moox_core']['setup'] = unserialize($_EXTCONF);
