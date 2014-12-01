@@ -50,7 +50,7 @@ plugin.tx_mooxcore.settings {
 		classNames = table
 	}
 	preview {
-		# cat=MOOX_CORE_CONTENT: preview/110/maxCharacters; type=string; label=Preview max characters
+		# cat=MOOX_CORE_CONTENT: preview/110/maxCharacters; type=string; label=Maximum number of characters to display in previews
 		maxCharacters = 100
 	}
 	
