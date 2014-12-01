@@ -1,5 +1,4 @@
 <div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
-     xmlns:fcc="http://typo3.org/ns/FluidTYPO3/MooxCore/ViewHelpers"
      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 
@@ -48,50 +47,50 @@
 					<v:switch value="{settings.cols}">
 						<v:case case="1" break="TRUE">
 							<div class="col-md-12">
-								<fcc:tag name="{settings.caption.tagName}">
+								<v:tag name="{settings.caption.tagName}">
 									<f:render partial="Content/Image" arguments="{_all}" />
 									<flux:content.render area="content{image.checksum}" />
-								</fcc:tag>
+								</v:tag>
 							</div>			
 						</v:case>
 						<v:case case="2" break="TRUE">
 							<div class="col-md-6">
-								<fcc:tag name="{settings.caption.tagName}">
+								<v:tag name="{settings.caption.tagName}">
 									<f:render partial="Content/Image" arguments="{_all}" />
 									<flux:content.render area="content{image.checksum}" />
-								</fcc:tag>
+								</v:tag>
 							</div>	
 						</v:case>	
 						<v:case case="3" break="TRUE">
 							<div class="col-md-4">
-								<fcc:tag name="{settings.caption.tagName}">
+								<v:tag name="{settings.caption.tagName}">
 									<f:render partial="Content/Image" arguments="{_all}" />
 									<flux:content.render area="content{image.checksum}" />
-								</fcc:tag>
+								</v:tag>
 							</div>	
 						</v:case>
 						<v:case case="4" break="TRUE">
 							<div class="col-md-3">
-								<fcc:tag name="{settings.caption.tagName}">
+								<v:tag name="{settings.caption.tagName}">
 									<f:render partial="Content/Image" arguments="{_all}" />
 									<flux:content.render area="content{image.checksum}" />
-								</fcc:tag>
+								</v:tag>
 							</div>	
 						</v:case>
 						<v:case case="5" break="TRUE">
 							<div class="col-md-2">
-								<fcc:tag name="{settings.caption.tagName}">
+								<v:tag name="{settings.caption.tagName}">
 									<f:render partial="Content/Image" arguments="{_all}" />
 									<flux:content.render area="content{image.checksum}" />
-								</fcc:tag>
+								</v:tag>
 							</div>	
 						</v:case>
 						<v:case case="6" break="TRUE">
 							<div class="col-md-1">
-								<fcc:tag name="{settings.caption.tagName}">
+								<v:tag name="{settings.caption.tagName}">
 									<f:render partial="Content/Image" arguments="{_all}" />
 									<flux:content.render area="content{image.checksum}" />
-								</fcc:tag>
+								</v:tag>
 							</div>	
 						</v:case>
 					</v:switch>

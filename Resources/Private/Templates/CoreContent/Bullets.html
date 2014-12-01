@@ -1,5 +1,4 @@
 <div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
-     xmlns:fcc="http://typo3.org/ns/FluidTYPO3/MooxCore/ViewHelpers"
      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 
@@ -28,12 +27,12 @@
 
 <f:section name="Main">
 	{settings.start -> f:if(condition: '{settings.tagName} == \'ol\'') -> v:variable.set(name: 'startIndex')}
-	<fcc:tag name="{settings.tagName}" additionalAttributes="{start: '{startIndex -> v:or(alternative: 1)}'}">
+	<v:tag name="{settings.tagName}" additionalAttributes="{start: '{startIndex -> v:or(alternative: 1)}'}">
 		<f:for each="{record.bodytext -> v:format.eliminate(windowsBreaks: 1) -> v:format.trim()
 			-> v:iterator.explode(glue: 'constant:LF')}" as="item">
 			<li>{item}</li>
 		</f:for>
-	</fcc:tag>
+	</v:tag>
 </f:section>
 
 </div>
