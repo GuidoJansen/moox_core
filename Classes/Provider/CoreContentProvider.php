@@ -3,7 +3,7 @@ namespace FluidTYPO3\MooxCore\Provider;
 /*****************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Claus Due <claus@namelesscoder.net>
+ *  (c) 2014 Claus Due <claus@namelesscoder.net>
  *
  *  All rights reserved
  *
@@ -40,10 +40,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  * This Configuration Provider has the lowest possible priority
  * and is only used to execute a set of hook-style methods for
  * processing records. This processing ensures that relationships
- * between content elements get stored correctly -
- *
- * @package Flux
- * @subpackage Provider
+ * between content elements get stored correctly.
  */
 class CoreContentProvider extends AbstractProvider implements ProviderInterface {
 

@@ -3,7 +3,7 @@ namespace FluidTYPO3\MooxCore\UserFunction;
 /*****************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Claus Due <claus@namelesscoder.net>
+ *  (c) 2014 Claus Due <claus@namelesscoder.net>
  *
  *  All rights reserved
  *
@@ -31,7 +31,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Variants Field TCA user function
- * @package MooxCore
  */
 class ProviderField {
 

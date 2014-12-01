@@ -3,7 +3,7 @@ namespace FluidTYPO3\MooxCore\Controller;
 /*****************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Claus Due <claus@namelesscoder.net>
+ *  (c) 2014 Claus Due <claus@namelesscoder.net>
  *
  *  All rights reserved
  *
@@ -28,6 +28,9 @@ use FluidTYPO3\Flux\Controller\AbstractFluxController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 
+/**
+ * Class CoreContentController
+ */
 class CoreContentController extends AbstractFluxController {
 
 	/**
