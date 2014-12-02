@@ -261,6 +261,17 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	 * @param array $row
 	 * @return string
 	 */
+	public function getControllerExtensionKeyFromRecord(array $row) {
+		if (FALSE === empty($row['content_variant'])) {
+			return $row['content_variant'];
+		}
+		return $this->extensionKey;
+	}
+
+	/**
+	 * @param array $row
+	 * @return string
+	 */
 	public function getTemplatePathAndFilename(array $row) {
 		$extensionKey = $this->getExtensionKey($row);
 		$variant = $this->getVariant($row);

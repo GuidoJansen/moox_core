@@ -38,7 +38,7 @@ for ($i = 0; $i < count($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['type
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 		'FluidTYPO3.MooxCore',
 		ucfirst($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['types'][$i]),
-		array('CoreContent' => $GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['types'][$i]),
+		array('CoreContent' => 'render,error'),
 		array());
 }
 
