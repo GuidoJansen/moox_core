@@ -62,6 +62,7 @@
 </f:section>
 
 <f:section name="MooxHeadSection">
+	<v:asset.prefetch domains="maxcdn.bootstrapcdn.com,ajax.googleapis.com<f:if condition="{settings.dnsPrefetch}">,{settings.dnsPrefetch}</f:if>" />
 	<v:asset name="respondjs" group="moox" dependencies="mooxtemplatecss" standalone="TRUE" allowMoveToFooter="FALSE">
 		<!--[if lt IE 9]>
 			<link href="http://netdna.bootstrapcdn.com/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />

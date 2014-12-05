@@ -8,8 +8,10 @@ plugin.tx_mooxcore.settings {
 
 	# cat=MOOX_CORE/content/10; type=string; label= Global page title
 	globalpagetitle = MOOX Page
-	# cat=MOOX_CORE/settings/20; type=string; label=domain
-	domain = 
+	# cat=MOOX_CORE/settings/20; type=string; label= Base-URL Domain
+	domain =
+	# cat=MOOX_CORE/settings/30; type=string; label= DNS Prefetch : Insert your domains that should be prefetched, comma separated in this field below.
+	dnsPrefetch = 
 	# cat=MOOX_CORE/settings/40; type=int+; label=main menu entry level - other menus calculated based on this
 	entryLevel = 0
 	

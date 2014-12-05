@@ -89,7 +89,7 @@ plugin.tx_vhs.settings.asset{
 	}
 
 	fontawesome {
-		path = //netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css
+		path = //maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css
 		external = 1
 		group = cdn
 		standalone = 1
@@ -185,6 +185,7 @@ plugin.tx_mooxcore.settings {
 	entryLevel = {$plugin.tx_mooxcore.settings.entryLevel}
 	globalpagetitle = {$plugin.tx_mooxcore.settings.globalpagetitle}
 	domain = {$plugin.tx_mooxcore.settings.domain}
+	dnsPrefetch = {$plugin.tx_mooxcore.settings.dnsPrefetch}
 	
 	### COOKIES ###
 	useCookieCompliance = {$plugin.tx_mooxcore.settings.useCookieCompliance}
