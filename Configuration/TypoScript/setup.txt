@@ -16,7 +16,7 @@ config {
 
 plugin.tx_vhs.settings.asset{
 	bootstrapcss {
-		path = http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+		path = //maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css
 		external = 1
 		group = cdn
 		standalone = 1
@@ -32,7 +32,7 @@ plugin.tx_vhs.settings.asset{
 	}
 
 	bootstrapcore {
-		path = http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
+		path = //maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js
 		external = 1
 		dependencies = jquery
 		group = cdn
@@ -51,7 +51,7 @@ plugin.tx_vhs.settings.asset{
 	}
 
 	jquery {
-		path = http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
+		path = //ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 		external = 1
 		group = cdn
 		standalone = 1
@@ -60,7 +60,7 @@ plugin.tx_vhs.settings.asset{
 	}
 
 	jqueryuid {
-		path = http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js
+		path = //ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js
 		external = 1
 		dependencies = jquery
 		group = cdn
@@ -89,7 +89,7 @@ plugin.tx_vhs.settings.asset{
 	}
 
 	fontawesome {
-		path = http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css
+		path = //netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css
 		external = 1
 		group = cdn
 		standalone = 1
