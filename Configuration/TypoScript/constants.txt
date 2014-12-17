@@ -8,7 +8,7 @@ plugin.tx_mooxcore.settings {
 
 	# cat=MOOX_CORE/content/10; type=string; label= Global page title
 	globalpagetitle = MOOX Page
-	# cat=MOOX_CORE/settings/20; type=string; label= Base-URL Domain
+	# cat=MOOX_CORE/settings/20; type=string; label= Base-URL Domain : Domain without protocol and trailing slash on the end. (e.g. moox.org, www.moox.org or moox.org/subfolder)
 	domain =
 	# cat=MOOX_CORE/settings/30; type=string; label= DNS Prefetch : Insert your domains that should be prefetched, comma separated in this field below.
 	dnsPrefetch = 
@@ -62,7 +62,7 @@ plugin.tx_mooxcore.settings {
 	cookieSettingsPage =
 	# cat=MOOX_CORE_COOKIES/settings/30; type=options [Alert Top=top,Alert Bottom=bottom,Modal on page load=modal]; label=Cookie Alert Box Position: Options: Alert Top, Alert Bottom and Modal on page load
 	cookieAlertBoxPosition = bottom
-	# cat=MOOX_CORE_COOKIES/settings/40; type=string; label=Text for Cookie Box : If it´s empty, the default text will be used.
+	# cat=MOOX_CORE_COOKIES/settings/40; type=string; label=Text for Cookie Box : If itÂ´s empty, the default text will be used.
 	cookieBoxText =
 	
 	# cat=MOOX_ANALYTICS/settings/10; type=boolean; label=Use Piwik
