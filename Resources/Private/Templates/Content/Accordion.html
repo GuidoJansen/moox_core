@@ -51,7 +51,7 @@
 							</a>
 						</h4>
 					</div>
-					<div id="panel-{record.uid}-{iteration.index}" class="panel-collapse collapse {f:if(condition: '{activeTabIndex} == {iteration.index}', then: 'in')}">
+					<div id="panel-{record.uid}-{iteration.index}" class="panel-collapse collapse {f:if(condition: panel.panel.active, then: 'in')}">
 						<div class="panel-body">
 							<flux:content.render area="content.{iteration.index}" />
 						</div>
