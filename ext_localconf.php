@@ -42,6 +42,11 @@ for ($i = 0; $i < count($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['type
 		array());
 }
 
+/***************
+ * Use moox_cote PAGE & USER TSconfig
+ */
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/TypoScript/pageTSconfig.txt">');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/TypoScript/userTSconfig.txt">');
 
 /***************
  * Use RealUrl Config from MOOX Core
@@ -89,3 +94,8 @@ if (TYPO3_MODE === 'BE') {
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Backend\\View\\LogoView']['className'] = 'FluidTYPO3\\MooxCore\\Xclass\\Backend\\View\\LogoView';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/backend.php']['renderPreProcess'][] = 'FluidTYPO3\\MooxCore\\Hooks\\Backend\\RenderPreProcess->addStyles';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/template.php']['preHeaderRenderHook'][] = 'FluidTYPO3\\MooxCore\\Hooks\\Backend\\PreHeaderRender->addStyles';
+
+/***************
+ * Register hook for processing less files
+ */
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-preProcess'][] = 'FluidTYPO3\\MooxCore\\Hooks\\PageRendererRender\\PreProcessHook->execute';

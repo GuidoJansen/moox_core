@@ -1,0 +1,58 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Default" />
+
+<div xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+	 xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+	<f:section name="Configuration">
+		<flux:form id="blockquote" options="{group: 'Bootstrap', icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-alert.png'}">
+			<flux:field.select name="class" items="left,right" default="left" />
+			<flux:field.text name="contentblockquote" enableRichText="1" />
+			<flux:field.checkbox name="footer" />
+			<flux:field.input name="footercontent" />
+			<flux:field.input name="footercontentcite" />
+			<flux:field.input name="citetitle" />
+			<flux:field.input name="citetarget">
+				<flux:wizard.link activeTab="Page"/>
+			</flux:field.input>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<strong>Blockquote</strong>
+	</f:section>
+
+	<f:section name="Main">
+		<f:if condition="{class}=='left'">
+			<f:then>
+				<blockquote>
+			</f:then>
+			<f:else>
+				<blockquote class="blockquote-reverse">
+			</f:else>
+		</f:if>
+			{contentblockquote}
+			<f:if condition="{footer}">
+				<footer>
+					<f:if condition="{footercontent}">
+						{footercontentfirst}
+					</f:if>
+					<f:if condition="{footercontentcite}">
+						<cite title="{citetitle}">
+							<f:if condition="{citetarget}">
+								<a href="{citetarget}" target="_blank">
+							</f:if>
+								{footercontentcite}
+							<f:if condition="{citetarget}">
+								</a>
+							</f:if>
+						</cite>
+					</f:if>
+				</footer>
+			</f:if>
+		</blockquote>
+	</f:section>
+</div>

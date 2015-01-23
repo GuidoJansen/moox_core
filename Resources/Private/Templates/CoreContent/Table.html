@@ -19,15 +19,31 @@
 <f:section name="Main">
 	<v:tag name="table" class="{settings.table.className -> v:iterator.explode() -> v:iterator.implode(glue: ' ')}">
 		<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString" iteration="rowIteration">
-			<tr>
-				<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column" iteration="columnIteration">
-					<f:if condition="{0: rowIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: 'top'}">
-						<f:then><th>{column -> f:format.raw()}</th></f:then>
-						<f:else><v:tag name="{f:if(condition: '{0: columnIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: \'left\'}', then: 'th', else: 'td')}">{column -> f:format.raw()}</v:tag></f:else>
-					</f:if>
-				</f:for>
-			</tr>
+			<f:if condition="{0: rowIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: 'top'}">
+				<f:then>
+					<thead>
+						<tr>
+							<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column" iteration="columnIteration">
+								<th>{column -> f:format.raw()}</th>
+							</f:for>
+						</tr>
+					</thead>
+				</f:then>
+			</f:if>
 		</f:for>
+		<tbody>
+			<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString" iteration="rowIteration">
+				<f:if condition="{0: rowIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: 'top'}">
+					<f:else>
+						<tr>
+							<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column" iteration="columnIteration">
+								<v:tag name="{f:if(condition: '{0: columnIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: \'left\'}', then: 'th', else: 'td')}">{column -> f:format.raw()}</v:tag>
+							</f:for>
+						</tr>
+					</f:else>
+				</f:if>
+			</f:for>
+		</tbody>
 	</v:tag>
 </f:section>
 

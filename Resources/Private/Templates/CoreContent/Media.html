@@ -16,27 +16,24 @@
 
 <f:section name="Main">
 	<f:if condition="{settings.media.type} == 'video'">
-		<v:asset.style name="videojs-css" group="video-js" path="typo3conf/ext/moox_core/Resources/Public/Stylesheets/video-js/video-js.min.css" standalone="TRUE" allowMoveToFooter="FALSE" external="1" />
-		<v:asset.script name="videojs-js" group="video-js" path="typo3conf/ext/moox_core/Resources/Public/Js/video-js/video.js" standalone="TRUE" allowMoveToFooter="TRUE" external="1" />
-		<v:asset.script name="videojs-js-init-{record.uid}" group="video-js" standalone="TRUE" allowMoveToFooter="TRUE">
+		<v:asset.script name="videojs-js" group="moox" dependencies="mooxcore" path="EXT:moox_core/Resources/Public/Js/video-js/video.min.js" standalone="FALSE" allowMoveToFooter="TRUE" external="0" />
+		<v:asset.script name="videojs-js-init-{record.uid}" dependencies="videojs-js" group="moox" standalone="FALSE" allowMoveToFooter="TRUE">
 			<![CDATA[
 			videojs.options.flash.swf = "typo3conf/ext/moox_core/Resources/Public/Js/video-js/video-js.swf";
 			]]>
 			<f:if condition="{settings.media.width} == ''">				
 			<![CDATA[
 			videojs("video_]]>{record.uid}<![CDATA[", {"height":"auto", "width":"auto"}).ready(function(){
-				var myPlayer = this;    // Store the video object
-				var aspectRatio = 5/12; // Make up an aspect ratio
+				var myPlayer = this;
+				var aspectRatio = 5/12;
 			    
 				function resizeVideoJS(){
-				  // Get the parent element's actual width
 				  var width = document.getElementById(myPlayer.id()).parentElement.offsetWidth;
-				  // Set width to fill parent element, Set height
 				  myPlayer.width(width).height( width * aspectRatio );
 				}
 			    
-				resizeVideoJS(); // Initialize the function
-				window.onresize = resizeVideoJS; // Call the function on resize
+				resizeVideoJS();
+				window.onresize = resizeVideoJS;
 			});
 			]]>
 			</f:if>
@@ -53,9 +50,8 @@
 		</div>
 	</f:if>
 	<f:if condition="{settings.media.type} == 'audio'">
-		<v:asset.style name="audiojs-css" group="audio-js" path="typo3conf/ext/moox_core/Resources/Public/Stylesheets/audio-js/audio-js.css" standalone="TRUE" allowMoveToFooter="FALSE" external="1" />
-		<v:asset.script name="audiojs-js" group="audio-js" path="typo3conf/ext/moox_core/Resources/Public/Js/audio-js/audio.js" standalone="TRUE" allowMoveToFooter="TRUE" external="1" />
-		<v:asset.script name="audiojs-js-init" group="audio-js" standalone="TRUE" allowMoveToFooter="TRUE">
+		<v:asset.script name="audiojs-js" group="moox" dependencies="mooxcore" path="EXT:moox_core/Resources/Public/Js/audio-js/audio.min.js" standalone="FALSE" allowMoveToFooter="TRUE" external="0" />
+		<v:asset.script name="audiojs-js-init" group="moox" dependencies="audiojs-js" standalone="FALSE" allowMoveToFooter="TRUE">
 			<![CDATA[
 			audiojs.events.ready(function() {
 				var as = audiojs.createAll({

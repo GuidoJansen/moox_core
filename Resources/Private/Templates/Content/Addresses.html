@@ -1,0 +1,87 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Default" />
+
+<div xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+	 xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+	<f:section name="Configuration">
+		<flux:form id="addresses" options="{group: 'Bootstrap', icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-accordion.png'}">
+			<flux:field.input name="addressname" />
+			<flux:form.section name="addressitems">
+				<flux:form.object name="addresscolsobj">
+					<flux:field.input name="addresscolinput" />
+				</flux:form.object>
+				<flux:form.object name="addressitemphone">
+					<flux:field.input name="phoneabbr" />
+					<flux:field.input name="phoneabbrtitle" />
+					<flux:field.input name="phonecontent" />
+				</flux:form.object>
+				<flux:form.object name="addressitemmobile">
+					<flux:field.input name="mobileabbr" />
+					<flux:field.input name="mobileabbrtitle" />
+					<flux:field.input name="mobilecontent" />
+				</flux:form.object>
+				<flux:form.object name="addressitemfax">
+					<flux:field.input name="faxabbr" />
+					<flux:field.input name="faxabbrtitle" />
+					<flux:field.input name="faxcontent" />
+				</flux:form.object>
+				<flux:form.object name="addressitemmail">
+					<flux:field.input name="mailabbr" />
+					<flux:field.input name="mailabbrtitle" />
+					<flux:field.input name="mail" />
+				</flux:form.object>
+				<flux:form.object name="addressitemwebsite">
+					<flux:field.input name="websiteabbr" />
+					<flux:field.input name="websiteabbrtitle" />
+					<flux:field.input name="website" />
+				</flux:form.object>
+			</flux:form.section>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<strong>Addresses:</strong>{addressname}
+		<flux:widget.grid />
+	</f:section>
+
+	<f:section name="Main">
+		<address>
+			<strong>{addressname}</strong>
+			<f:for each="{addressitems}" as="type" iteration="iteration">
+				<f:for each="{type}" key="elementType" as="elementData">
+					<f:render section="{elementType -> v:format.case(case: 'ucfirst')}" arguments="{_all}" />
+				</f:for>
+			</f:for>
+		</address>
+	</f:section>
+	
+	
+	<f:section name="Addresscolsobj">
+		<div class="addresscol.{iteration.cycle}">{elementData.addresscolinput}</div>
+	</f:section>
+	
+	<f:section name="Addressitemphone">
+		<div class="address-phone"><abbr title="{elementData.phoneabbrtitle}">{elementData.phoneabbr}</abbr>&nbsp;&nbsp;{elementData.phonecontent}</div>
+	</f:section>
+	
+	<f:section name="Addressitemmobile">
+		<div class="address-mobile"><abbr title="{elementData.mobileabbrtitle}">{elementData.mobileabbr}</abbr>&nbsp;&nbsp;{elementData.mobilecontent}</div>
+	</f:section>
+	
+	<f:section name="Addressitemfax">
+		<div class="address-fax"><abbr title="{elementData.faxabbrtitle}">{elementData.faxabbr}</abbr>&nbsp;&nbsp;{elementData.faxcontent}</div>
+	</f:section>
+	
+	<f:section name="Addressitemmail">
+		<div class="address-mail"><abbr title="{elementData.mailabbrtitle}">{elementData.mailabbr}</abbr>&nbsp;&nbsp;<a href="mailto:{elementData.mail}">{elementData.mail}</a></div>
+	</f:section>
+	
+	<f:section name="Addressitemwebsite">
+		<div class="address-website"><abbr title="{elementData.websiteabbrtitle}">{elementData.websiteabbr}</abbr>&nbsp;&nbsp;<a href="{elementData.website}" target="_blank">{elementData.website}</a></div>
+	</f:section>
+</div>

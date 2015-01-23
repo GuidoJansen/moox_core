@@ -488,7 +488,7 @@
 				<target>Konfigurierbare Navigations-Liste mit verschiedenen Elementen</target>
 			</trans-unit>
 			<trans-unit id="flux.pageheader" xml:space="preserve">
-				<target> Page Header</target>
+				<target> Bootstrap Header</target>
 			</trans-unit>
 			<trans-unit id="flux.pageheader.description" xml:space="preserve">
 				<target>Unterstrichene Seitenüberschrift mit optional kleiner Unterüberschrift.</target>
@@ -670,6 +670,9 @@
 			<trans-unit id="flux.pageheader.fields.subheader" xml:space="preserve">
 				<target>Kleiner Text, der neben dem großen Text platziert wird</target>
 			</trans-unit>
+			<trans-unit id="flux.pageheader.fields.pageheader" xml:space="preserve">
+				<target>Als Seiten-Überschrift setzen.</target>
+			</trans-unit>
 			<trans-unit id="flux.row.fields.settings.fluid" xml:space="preserve">
 				<target>Use "fluid" row type instead of standard row</target>
 			</trans-unit>
@@ -743,6 +746,241 @@
 			<trans-unit id="cookieAlertBoxButtonSettings">
 				<target>Datenschutz-Einstellungen</target>
 			</trans-unit>
+			
+			<trans-unit id="flux.panels">
+				<target>Panels</target>
+			</trans-unit>
+			<trans-unit id="flux.panels.description">
+			    <target>Mit diesem Element können Inhalte speziell dargestellt werden.</target>
+			</trans-unit>
+			<trans-unit id="flux.panels.columns.contentheader" xml:space="preserve">
+				<target>Panel Kopf-Inhalte</target>
+			</trans-unit>
+			<trans-unit id="flux.panels.columns.content" xml:space="preserve">
+				<target>Panel Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.panels.columns.contentfooter" xml:space="preserve">
+				<target>Panel Fuß-Inhalte</target>
+			</trans-unit>
+			<trans-unit id="flux.panels.fields.type" xml:space="preserve">
+				<target>Typ des Panels.</target>
+			</trans-unit>
+			<trans-unit id="flux.panels.fields.header" xml:space="preserve">
+				<target>Überschrift.</target>
+			</trans-unit>
+			<trans-unit id="flux.panels.fields.headertitle" xml:space="preserve">
+				<target>Überschrift als Title definieren.</target>
+			</trans-unit>
+			<trans-unit id="flux.panels.fields.class" xml:space="preserve">
+				<target>Stil des Panels auswählen.</target>
+			</trans-unit>
+			
+			
+			<trans-unit id="flux.blockquote">
+				<target>Blockquote</target>
+			</trans-unit>
+			<trans-unit id="flux.blockquote.description">
+			    <target>Inhaltsblöcke von einer anderen Quelle zitieren.</target>
+			</trans-unit>
+			<trans-unit id="flux.blockquote.fields.class">
+			    <target>Blockquote-Ausrichtung</target>
+			</trans-unit>
+			<trans-unit id="flux.blockquote.fields.contentblockquote">
+			    <target>Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.blockquote.fields.footer">
+			    <target>Fußzeile aktivieren</target>
+			</trans-unit>
+			<trans-unit id="flux.blockquote.fields.footercontent">
+			    <target>Inhalt der Fußzeile</target>
+			</trans-unit>
+			<trans-unit id="flux.blockquote.fields.footercontentcite">
+			    <target>Zitat-Inhalt in der Fußzeile</target>
+			</trans-unit>
+			<trans-unit id="flux.blockquote.fields.citetitle">
+			    <target>Titel des Zitat-Inhalts</target>
+			</trans-unit>
+			<trans-unit id="flux.blockquote.fields.citetarget">
+			    <target>Link des Zitat-Inhalts (optional)</target>
+			</trans-unit>
+			
+			
+			
+			<trans-unit id="flux.addresses">
+				<target>Addresses</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.description">
+				<target>Mit diesem Element können Adressen angelegt werden.</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.fields.addressname">
+				<target>Titel der Adresse</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.sections.addressitems">
+				<target>Adressen-Items</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addresscol">
+				<target>Adressen-Zeile</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemphone">
+				<target>Telefon</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemmobile">
+				<target>Mobil</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemfax">
+				<target>Fax</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemmail">
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemwebsite">
+				<target>Website</target>
+			</trans-unit>
+			
+			
+			<trans-unit id="flux.addresses.objects.addresscolsobj">
+				<target>Adress-Zeile</target>
+			</trans-unit>
+			
+			<trans-unit id="flux.addresses.objects.addressitemphone.phoneabbr">
+				<target>Telefonbezeichnung oder Abkürzung</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemphone.phoneabbrtitle">
+				<target>Titel der Bezeichnung bzw. Abkürzung (Anzeige bei MouseOver)</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemphone.phonecontent">
+				<target>Telefon-Nummer</target>
+			</trans-unit>
+			
+			<trans-unit id="flux.addresses.objects.addressitemmobile.mobileabbr">
+				<target>Bezeichnung bzw. Abkürzung der Mobil-Nummer</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemmobile.mobileabbrtitle">
+				<target>Titel der Bezeichnung bzw. Abkürzung (Anzeige bei MouseOver)</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemmobile.mobilecontent">
+				<target>Mobil-Nummer</target>
+			</trans-unit>
+			
+			<trans-unit id="flux.addresses.objects.addressitemmail.mailabbr">
+				<target>E-Mailbezeichnung oder Abkürzung</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemmail.mailabbrtitle">
+				<target>Titel der Bezeichnung bzw. Abkürzung (Anzeige bei MouseOver)</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemmail.mail">
+				<target>E-Mail</target>
+			</trans-unit>
+			
+			<trans-unit id="flux.addresses.objects.addressitemwebsite.websiteabbr">
+				<target>Websitebezeichnung oder Abkürzung</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemwebsite.websiteabbrtitle">
+				<target>Titel der Bezeichnung bzw. Abkürzung (Anzeige bei MouseOver)</target>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemwebsite.website">
+				<target>Website</target>
+			</trans-unit>
+			
+			
+			
+			<!-- ButtonWithDropDown.html -->
+			<trans-unit id="flux.buttonwithdropdown">
+			    <target>Button mit Dropdown</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.description">
+			    <target>Button mit Dropdown-Menü erstellen.</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.sheets.ButtonSheetOne">
+			    <target>Button Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.fields.settings.ButtonSize">
+			    <target>Button Größe</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.sheets.ButtonSheetTwo">
+			    <target>Buttons erstellen</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.sections.ButtonSection">
+			    <target>Neuen Button erstellen</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.objects.ButtonObject">
+			    <target>Button</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.objects.ButtonObject.ButtonText">
+			    <target>Button Text</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.objects.ButtonObject.target">
+			    <target>Button Link</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.objects.ButtonObject.ButtonOptions">
+			    <target>Button Optionen</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.objects.DropDownLink">
+			    <target>DropDown Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.objects.DropDownDivider">
+			    <target>DropDown Trenner</target>
+			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.objects.DropDownDivider.divider">
+			    <target>Dies ist nur ein Platzhalter</target>
+			</trans-unit>
+			<!-- Button.html -->
+			
+			
+			<!-- SplitButtonWithDropDown.html -->
+			<trans-unit id="flux.splitbuttonwithdropdown">
+			    <target>Geteilter Button mit Dropdown</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.description">
+			    <target>Geteilten Button mit Dropdown-Menü erstellen.</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.sheets.ButtonSheetOne">
+			    <target>Button Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.fields.settings.ButtonSize">
+			    <target>Button Größe</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.sheets.ButtonSheetTwo">
+			    <target>Buttons erstellen</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.sections.ButtonSection">
+			    <target>Neuen Button erstellen</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.ButtonObject">
+			    <target>Button erstellen</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.ButtonObject.ButtonText">
+			    <target>Button Text</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.ButtonObject.ButtonTextLink">
+			    <target>Button Link</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.ButtonObject.ButtonOptions">
+			    <target>Button Optionen</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.ButtonObject.dropup">
+			    <target>DropDown nach oben aufklappen</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.ButtonObject.rightdropup">
+			    <target>DropDown rechtsbündig</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.DropDownLink">
+			    <target>DropDown Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.DropDownLink.DropDownContent">
+			    <target>Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.DropDownLink.target">
+			    <target>Link (muss ausgefüllt sein)</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.DropDownDivider">
+			    <target>DropDown Trenner</target>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.objects.DropDownDivider.divider">
+			    <target>Dies ist nur ein Platzhalter</target>
+			</trans-unit>
+			
+			<!-- Button.html -->
 		</body>
 	</file>
 </xliff>

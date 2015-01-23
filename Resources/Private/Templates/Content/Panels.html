@@ -1,0 +1,87 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Default" />
+
+<div xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+	 xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+	<f:section name="Configuration">
+		<flux:form id="panels" options="{group: 'Bootstrap', icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-alert.png'}">
+			<flux:field.select name="type" items="PanelBasic,PanelWithHeading,PanelWithFooter" requestUpdate="TRUE" />
+                        <f:if condition="{type}=='PanelBasic'">
+                            <flux:field.select name="class" items="panel-default,panel-primary,panel-success,panel-info,panel-warning,panel-danger" default="panel-default" />
+                            <flux:grid>
+                                <flux:grid.row>
+                                        <flux:grid.column name="content" />
+                                </flux:grid.row>
+                            </flux:grid>
+                        </f:if>
+                        <f:if condition="{type}=='PanelWithHeading'">
+                                <flux:field.input name="header" />
+                                <flux:field.checkbox name="headertitle" />
+                                <flux:field.select name="class" items="panel-default,panel-primary,panel-success,panel-info,panel-warning,panel-danger" default="panel-default" />
+                                <flux:grid>
+                                    <flux:grid.row>
+                                            <flux:grid.column name="contentheader" />
+                                    </flux:grid.row>
+                                    <flux:grid.row>
+                                            <flux:grid.column name="content" />
+                                    </flux:grid.row>
+                                </flux:grid>
+                        </f:if>
+                        <f:if condition="{type}=='PanelWithFooter'">
+                                <flux:grid>
+                                    <flux:grid.row>
+                                            <flux:grid.column name="content" />
+                                    </flux:grid.row>
+                                    <flux:grid.row>
+                                            <flux:grid.column name="contentfooter" />
+                                    </flux:grid.row>
+                                </flux:grid>
+                        </f:if>
+                        
+                        
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+            <strong>{type}</strong>
+		<flux:widget.grid />
+	</f:section>
+
+	<f:section name="Main">
+            <f:if condition="{type}=='PanelBasic'">
+                <div class="panel {class}">
+                    <div class="panel-body">
+                      <flux:content.render area="content" />
+                    </div>
+                </div>
+            </f:if>
+            <f:if condition="{type}=='PanelWithHeading'">
+                    <div class="panel {class}">
+                        <div class="panel-heading">
+                            <f:if condition="{headertitle}"><h3 class="panel-title"></f:if>
+                            {header}
+                            <f:if condition="{headertitle}"></h3></f:if>
+                            <flux:content.render area="contentheader" />
+                        </div>
+                        <div class="panel-body">
+                             <flux:content.render area="content" />
+                        </div>
+                      </div>
+            </f:if>
+            <f:if condition="{type}=='PanelWithFooter'">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                       <flux:content.render area="content" />
+                    </div>
+                    <div class="panel-footer">
+                        {footer}
+                        <flux:content.render area="contentfooter" />
+                    </div>
+                </div>
+            </f:if>
+	</f:section>
+</div>

@@ -8,6 +8,7 @@
 		<flux:field.select name="headerType" items="{h1: 'h1', h2: 'h2', h3: 'h3', h4: 'h4', h5: 'h5', h6: 'h6'}" default="h1" />
 		<flux:field.input name="header" />
 		<flux:field.input name="subheader" />
+		<flux:field.checkbox name="pageheader" />
 	</flux:form>
 </f:section>
 
@@ -20,7 +21,7 @@
 </f:section>
 
 <f:section name="Main">
-	<div class="page-header">
+	<div class="bootstrap-header {f:if(condition: pageheader, then: 'page-header', else: '')}">
 		<{headerType}>{header}
 			<f:if condition="{subheader}">
 				<small>{subheader}</small>

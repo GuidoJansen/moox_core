@@ -1,55 +1,28 @@
+################
+#### CONFIG ####
+################
 config {
     doctype = html5
     language = de
     locale_all = de_DE
     noPageTitle = 2
     admPanel = 0	
-    compressCss = 0
+    compressCss = 1
     compressJs = 0
     simulateStaticDocuments = 0
-    baseURL  = http://{$plugin.tx_mooxcore.settings.domain}/
+    baseURL  = {$protocol}://{$plugin.tx_mooxcore.settings.domain}/
     tx_realurl_enable = 1
     prefixLocalAnchors = all
     tx_cooluri_enable = 0
     disableImgBorderAttr = 1
 }
 
+page.includeCSS {
+	theme = EXT:moox_core/Resources/Private/Less/Bootstrap/bootstrap.less
+}
+
+plugin.tx_vhs.assets.mergedAssetsUseHashedFilename = 1
 plugin.tx_vhs.settings.asset{
-	bootstrapcss {
-		path = //maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css
-		external = 1
-		group = cdn
-		standalone = 1
-		type = css
-	}
-	
-	mooxcorecss {
-		path = EXT:moox_core/Resources/Public/Stylesheets/moox-core.css
-		external = 0
-		group = moox
-		standalone = 1
-		type = css
-	}
-
-	bootstrapcore {
-		path = //maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js
-		external = 1
-		dependencies = jquery
-		group = cdn
-		standalone = 1
-		movable = 1
-		type = js
-	}
-	
-	magnificpopupcss {
-		path = EXT:moox_core/Resources/Public/Stylesheets/magnific-popup/magnific-popup.css
-		external = 0
-		dependencies = mooxcorecss
-		group = moox
-		standalone = 1
-		type = css
-	}
-
 	jquery {
 		path = //ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 		external = 1
@@ -58,7 +31,6 @@ plugin.tx_vhs.settings.asset{
 		movable = 0
 		type = js
 	}
-
 	jqueryuid {
 		path = //ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js
 		external = 1
@@ -68,50 +40,30 @@ plugin.tx_vhs.settings.asset{
 		movable = 1
 		type = js
 	}
-	
-	jquerycookie {
-		path = EXT:moox_core/Resources/Public/Js/jquery.cookie.js
+	bootstrapcore {
+		path = //maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js
+		external = 1
+		dependencies = jquery
+		group = cdn
+		standalone = 1
+		movable = 1
+		type = js
+	}
+	mooxcore {
+		path = EXT:moox_core/Resources/Public/Js/moox-scripts.min.js
 		external = 0
-		dependencies = jquery
+		dependencies = bootstrapcore
 		group = moox
-		standalone = 1
+		standalone = 0
 		movable = 1
 		type = js
 	}
-
-	eqheight {
-		path = EXT:moox_core/Resources/Public/Js/eqheight.js
-		dependencies = jquery
-		standalone = 1
-		group = JS
-		movable = 1
-		type = js
-	}
-
 	fontawesome {
 		path = //maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css
 		external = 1
 		group = cdn
 		standalone = 1
 		type = css
-	}
-	
-	magnificpopupjs {
-		path = EXT:moox_core/Resources/Public/Js/magnific-popup/jquery.magnific-popup.min.js
-		dependencies = jquery
-		standalone = 1
-		group = JS
-		movable = 1
-		type = js
-	}
-	
-	initmagnificpopup {
-		path = EXT:moox_core/Resources/Public/Js/magnific-popup/moox-init-lightbox.js
-		dependencies = magnificpopupjs
-		standalone = 1
-		group = JS
-		movable = 1
-		type = js
 	}
 }
 
@@ -395,7 +347,7 @@ google_sitemap {
     xhtml_cleaning = 0
   }
 
-  # Hilfs Code fÃ¼r manuellen Zeilenumbruch im Quellcode
+  # Hilfs Code für manuellen Zeilenumbruch im Quellcode
   append = TEXT
   append.char = 10
  
@@ -447,7 +399,7 @@ google_sitemap {
       30 = TEXT
       30 {
         wrap = <changefreq>|</changefreq>
-        # MÃ¶gliche Werte:
+        # Mögliche Werte:
         # always / hourly / daily / weekly / monthly / yearly / never
         value = daily
         # output kosmetik
@@ -571,9 +523,9 @@ google_sitemap {
       6.NO.stdWrap2.cObject.40.value = 0.7
     }
  
-    # Spezielle Seiten, welche nicht Ã¼ber die normale Navigation wie
+    # Spezielle Seiten, welche nicht über die normale Navigation wie
     # zum Beispiel: News / Events / Disclaimer / Impressum / Metanavigation
-    # erreichbar sind und im *MenÃ¼ nicht anzeigen* haben.
+    # erreichbar sind und im *Menü nicht anzeigen* haben.
     30 = HMENU
     30 < .20
     30 {
