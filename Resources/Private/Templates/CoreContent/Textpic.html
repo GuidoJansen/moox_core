@@ -37,19 +37,20 @@
 </f:section>
 
 <f:section name="mediaImage">
-	<div class="pull-{positionclass}">
+	<div class="image-{positionclass} <f:if condition="{positionclass} == 'beside-left'">image-beside</f:if><f:if condition="{positionclass} == 'beside-right'">image-beside</f:if><f:if condition="{positionclass} == 'intext-left'">image-intext</f:if><f:if condition="{positionclass} == 'intext-right'">image-intext</f:if>">
 		<f:if condition="{settings.lightbox}"><div class="lightbox-gallery"></f:if>
-			<div class="row<f:if condition="{positionclass} == 'top'"> image-position-{imagealignmentclass}</f:if><f:if condition="{positionclass} == 'bottom'"> image-position-{imagealignmentclass}</f:if>">
+		<f:if condition="{positionclass} == 'bottom'">
+			<f:render section="mediaBody" arguments="{_all}" />
+		</f:if>
+			<div class="image-wrap <f:if condition="{positionclass} == 'top'"> image-position-{imagealignmentclass}</f:if><f:if condition="{positionclass} == 'bottom'"> image-position-{imagealignmentclass}</f:if>">
 				<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
 					<f:for each="{images}" as="image" iteration="iteration">
 						<v:switch value="{settings.cols}">
 							<v:case case="1" break="TRUE">
-								<div class="col-md-12">
-									<v:tag name="{settings.caption.tagName}">
+								<v:tag name="{settings.caption.tagName}">
 										<f:render partial="Content/Image" arguments="{_all}" />
 										<flux:content.render area="content{image.checksum}" />
-									</v:tag>
-								</div>			
+								</v:tag>		
 							</v:case>
 							<v:case case="2" break="TRUE">
 								<div class="col-md-6">
@@ -95,12 +96,13 @@
 					</f:for>
 				</v:resource.record.fal>
 			</div>
+		<f:if condition="{positionclass} != 'bottom'"><f:render section="mediaBody" arguments="{_all}" /></f:if>
 		<f:if condition="{settings.lightbox}"></div></f:if>
 	</div>
 </f:section>
 
 <f:section name="mediaBody">
-	<div class="media-body">
+	<div class="text">
 		{record.bodytext -> f:format.html()}
 	</div>
 </f:section>
@@ -109,12 +111,11 @@
 	<div class="media">
 		<f:if condition="{positionclass} == 'bottom'">
 			<f:then>
-				<f:render section="mediaBody" arguments="{_all}" />
+				
 				<f:render section="mediaImage" arguments="{_all}" />
 			</f:then>
 			<f:else>
 				<f:render section="mediaImage" arguments="{_all}" />
-				<f:render section="mediaBody" arguments="{_all}" />
 			</f:else>
 		</f:if>
 	</div>
