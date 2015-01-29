@@ -46,26 +46,6 @@
 					</flux:form.object>
 				</flux:form.section>
 			</flux:form.sheet>
-			<flux:form.sheet name="styles">
-				<flux:field.custom name="void">
-					<h3>Styling</h3>
-
-					<p>
-						Below you can enter a few styles to be used for this specific carousel instance.
-						Selector and curly braces are automatically added. In other words, these work just
-						like inline CSS "style" attributes in HTML elements.
-					</p>
-					<h4>Example definitions</h4>
-					<ul>
-						<li>background-color: #440033</li>
-						<li>font-size: 18px; color: #000000</li>
-					</ul>
-				</flux:field.custom>
-				<flux:field.text name="settings.carousel.quickselectStyles" cols="130" rows="3" />
-				<flux:field.text name="settings.carousel.quickselectDotStyles" cols="130" rows="3" />
-				<flux:field.text name="settings.carousel.navigationStyles" cols="130" rows="3" />
-				<flux:field.text name="settings.carousel.innerStyles" cols="130" rows="3" />
-			</flux:form.sheet>
 		</flux:form>
 	</f:section>
 
@@ -81,34 +61,6 @@
 	</f:section>
 
 	<f:section name="Main">
-		<f:if condition="{settings.carousel.quickselectDotStyles">
-			<v:asset.style name="carousel{settings.carousel.id}quickselectdots">
-				.{settings.carousel.id} .carousel-indicators li {
-				<v:variable.get name="settings.carousel.quickselectDotStyles" />
-				}
-			</v:asset.style>
-		</f:if>
-		<f:if condition="{settings.carousel.quickselectStyles">
-			<v:asset.style name="carousel{settings.carousel.id}quickselect">
-				.{settings.carousel.id} .carousel-indicators {
-				<v:variable.get name="settings.carousel.quickselectStyles" />
-				}
-			</v:asset.style>
-		</f:if>
-		<f:if condition="{settings.carousel.navigationStyles">
-			<v:asset.style name="carousel{settings.carousel.id}navigation">
-				.{settings.carousel.id} .carousel-control {
-				<v:variable.get name="settings.carousel.navigationStyles" />
-				}
-			</v:asset.style>
-		</f:if>
-		<f:if condition="{settings.carousel.innerStyles">
-			<v:asset.style name="carousel{settings.carousel.id}inner">
-				.{settings.carousel.id} .carousel-inner {
-				<v:variable.get name="settings.carousel.innerStyles" />
-				}
-			</v:asset.style>
-		</f:if>
 		<div id="{settings.carousel.id}" class="{settings.carousel.id} carousel slide" data-interval="{settings.carousel.interval}"
 		{f:if(condition: settings.carousel.autostart, then: ' data-ride="carousel"')}>
 			<f:if condition="{settings.carousel.quickselect}">
