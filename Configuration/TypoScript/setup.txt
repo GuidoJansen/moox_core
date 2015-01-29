@@ -16,6 +16,47 @@ config {
     tx_cooluri_enable = 0
     disableImgBorderAttr = 1
     removeDefaultCss = 1
+    htmlTag_stdWrap {
+	    setContentToCurrent = 1
+	    cObject = COA
+	    cObject {
+		    temp = TEXT
+		    temp.addParams.class = no-js
+		    temp.append = TEXT
+		    temp.append.char = 10
+		    temp.current = 1
+
+		    # smaller IE7
+		    10 < .temp
+		    10.addParams.class = no-js ie6 oldie
+		    10.wrap = <!--[if lt IE 7 ]>|<![endif]-->
+
+		    # IE7
+		    20 < .temp
+		    20.addParams.class = no-js ie7 oldie
+		    20.wrap = <!--[if IE 7 ]>|<![endif]-->
+
+		    # IE8
+		    30 < .temp
+		    30.addParams.class = no-js ie8 oldie
+		    30.wrap = <!--[if IE 8 ]>|<![endif]-->
+
+		    # IE9
+		    40 < .temp
+		    40.addParams.class = no-js ie9
+		    40.wrap = <!--[if IE 9 ]>|<![endif]-->
+
+		    # IE10
+		    #50 < .temp
+		    #50.addParams.class = no-js ie10
+		    #50.wrap = <!--[if IE 10 ]>|<![endif]-->
+
+		    # no IE or bigger then IE9
+		    60 < .temp
+		    60.wrap = <!--[if (gt IE 9)|!(IE)]><!--> # <!--<![endif]-->
+		    60.wrap.splitChar = #
+	    }
+    }
 }
 
 page.includeCSS {
@@ -348,7 +389,7 @@ google_sitemap {
     xhtml_cleaning = 0
   }
 
-  # Hilfs Code für manuellen Zeilenumbruch im Quellcode
+  # Hilfs Code fÃ¼r manuellen Zeilenumbruch im Quellcode
   append = TEXT
   append.char = 10
  
@@ -400,7 +441,7 @@ google_sitemap {
       30 = TEXT
       30 {
         wrap = <changefreq>|</changefreq>
-        # Mögliche Werte:
+        # MÃ¶gliche Werte:
         # always / hourly / daily / weekly / monthly / yearly / never
         value = daily
         # output kosmetik
@@ -524,9 +565,9 @@ google_sitemap {
       6.NO.stdWrap2.cObject.40.value = 0.7
     }
  
-    # Spezielle Seiten, welche nicht über die normale Navigation wie
+    # Spezielle Seiten, welche nicht Ã¼ber die normale Navigation wie
     # zum Beispiel: News / Events / Disclaimer / Impressum / Metanavigation
-    # erreichbar sind und im *Menü nicht anzeigen* haben.
+    # erreichbar sind und im *MenÃ¼ nicht anzeigen* haben.
     30 = HMENU
     30 < .20
     30 {
