@@ -15,6 +15,7 @@ config {
     prefixLocalAnchors = all
     tx_cooluri_enable = 0
     disableImgBorderAttr = 1
+    removeDefaultCss = 1
 }
 
 page.includeCSS {
@@ -24,7 +25,7 @@ page.includeCSS {
 plugin.tx_vhs.assets.mergedAssetsUseHashedFilename = 1
 plugin.tx_vhs.settings.asset{
 	jquery {
-		path = //ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
+		path = //ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js
 		external = 1
 		group = cdn
 		standalone = 1
@@ -32,7 +33,7 @@ plugin.tx_vhs.settings.asset{
 		type = js
 	}
 	jqueryuid {
-		path = //ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js
+		path = //ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js
 		external = 1
 		dependencies = jquery
 		group = cdn
