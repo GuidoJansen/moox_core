@@ -1,4 +1,73 @@
 # ------------------------------------------------------------------------------
+# | Static File Cache (Ext: nc_staticfilecache                                 |
+# ------------------------------------------------------------------------------
+
+# Remember to replace %{DOCUMENT_ROOT} with your full path if you're in an shared hosting environment
+# for example: RewriteCond /www/infoarchitekt.de/hosting/project/typo3temp/tx_ncstaticfilecache/%{HTTP_HOST}/%{REQUEST_URI} !-f
+
+# Set gzip extension into an environment variable if the visitors browser can handle gzipped content.
+RewriteCond %{HTTP:Accept-Encoding} gzip [NC]
+RewriteRule .* - [E=TX_NCSTATICFILECACHE_GZIP:.gz]
+
+# Check if the requested file exists in the cache, otherwise default to index.html that
+# set in an environment variable that is used later on
+RewriteCond %{DOCUMENT_ROOT}/typo3temp/tx_ncstaticfilecache/%{HTTP_HOST}/%{REQUEST_URI} !-f
+RewriteRule .* - [E=TX_NCSTATICFILECACHE_FILE:/index.html]
+
+# Don't cache HTTPS traffic. You may choose to comment out this
+# option if your site runs fully on https. If your site runs mixed, you will
+# not want https traffic to be cached in the same typo3temp folder where it can
+# be requested over http.
+# Enable this if you use a mixed setup.
+#RewriteCond %{HTTPS} off
+
+# We only redirect URI's without query strings
+RewriteCond %{QUERY_STRING} ^$
+
+# It only makes sense to do the other checks if a static file actually exists.
+RewriteCond %{DOCUMENT_ROOT}/typo3temp/tx_ncstaticfilecache/%{HTTP_HOST}/%{REQUEST_URI}%{ENV:TX_NCSTATICFILECACHE_FILE}%{ENV:TX_NCSTATICFILECACHE_GZIP} -f
+
+# NO frontend user is logged in. Logged in frontend users may see different
+# information than anonymous users. But the anonymous version is cached. So
+# don't show the anonymous version to logged in frontend users.
+RewriteCond %{HTTP_COOKIE} !nc_staticfilecache [NC]
+
+# We only redirect GET requests
+RewriteCond %{REQUEST_METHOD} GET
+
+# NO backend user is logged in. Please note that the be_typo_user cookie expires at the
+# end of the browser session. If you have logged out of the TYPO3 backend and are expecting to see cached pages but don't. Please close this browser settion first or remove the cookie manually or use another browser to hit your frontend.
+RewriteCond %{HTTP_COOKIE} !be_typo_user [NC]
+
+# Check for Ctrl Shift reload
+RewriteCond %{HTTP:Pragma} !no-cache
+RewriteCond %{HTTP:Cache-Control} !no-cache
+
+# Rewrite the request to the static file.
+RewriteRule .* /typo3temp/tx_ncstaticfilecache/%{HTTP_HOST}%{REQUEST_URI}/index.html%{ENV:TX_NCSTATICFILECACHE_GZIP} [L]
+
+# Set proper content type and encoding for gzipped html.
+<FilesMatch "\.gz">
+	<IfModule mod_headers.c>
+		Header set Content-Encoding gzip
+	</IfModule>
+</FilesMatch>
+
+# Set proper content type gzipped html
+<FilesMatch "\.html\.gz">
+	ForceType text/html
+</FilesMatch>
+# Set proper content type gzipped xml and rss feeds
+<FilesMatch "\.(xml|rss)\.gz">
+	ForceType text/xml
+</FilesMatch>
+
+# Keep alive (not on df-servers, must be manually enabled)
+<ifModule mod_headers.c>
+        Header set Connection keep-alive
+</ifModule> 
+
+# ------------------------------------------------------------------------------
 # | CORS-enabled images                                                        |
 # ------------------------------------------------------------------------------
 <IfModule mod_setenvif.c>
@@ -10,7 +79,6 @@
     </IfModule>
 </IfModule>
 
-
 # ------------------------------------------------------------------------------
 # | Web fonts access                                                           |
 # ------------------------------------------------------------------------------
@@ -20,12 +88,10 @@
     </FilesMatch>
 </IfModule>
 
-
 # ------------------------------------------------------------------------------
 # | 404 error prevention for non-existing redirected folders                   |
 # ------------------------------------------------------------------------------
 Options -MultiViews
-
 
 # ------------------------------------------------------------------------------
 # | Force IE to render pages in the highest available mode in the various      |
@@ -37,7 +103,6 @@ Options -MultiViews
     </FilesMatch>
 </IfModule>
 
-
 # ------------------------------------------------------------------------------
 # | Proper MIME types for all files                                            |
 # ------------------------------------------------------------------------------
@@ -45,24 +110,18 @@ Options -MultiViews
 
     AddType audio/mp4                                   m4a f4a f4b
     AddType audio/ogg                                   oga ogg
-
     AddType application/javascript                      js
     AddType application/json                            json
-
     AddType video/mp4                                   mp4 m4v f4v f4p
     AddType video/ogg                                   ogv
     AddType video/webm                                  webm
     AddType video/x-flv                                 flv
-
     AddType application/font-woff                       woff
     AddType application/vnd.ms-fontobject               eot
-
     AddType application/x-font-ttf                      ttc ttf
     AddType font/opentype                               otf
-
     AddType     image/svg+xml                           svg svgz
     AddEncoding gzip                                    svgz
-
     AddType application/octet-stream                    safariextz
     AddType application/x-chrome-extension              crx
     AddType application/x-opera-extension               oex
@@ -79,7 +138,6 @@ Options -MultiViews
 
 </IfModule>
 
-
 # ------------------------------------------------------------------------------
 # | UTF-8 encoding                                                             |
 # ------------------------------------------------------------------------------
@@ -87,7 +145,6 @@ AddDefaultCharset utf-8
 <IfModule mod_mime.c>
     AddCharset utf-8 .atom .css .js .json .rss .vtt .webapp .xml
 </IfModule>
-
 
 # ------------------------------------------------------------------------------
 # | Rewrite engine                                                             |
@@ -116,14 +173,12 @@ AddDefaultCharset utf-8
 
 </IfModule>
 
-
 # ------------------------------------------------------------------------------
 # | Block access to directories without a default document.                    |
 # ------------------------------------------------------------------------------
 <IfModule mod_autoindex.c>
     Options -Indexes
 </IfModule>
-
 
 # ------------------------------------------------------------------------------
 # | Block access to hidden files and directories.                              |
@@ -134,7 +189,6 @@ AddDefaultCharset utf-8
     RewriteRule "(^|/)\." - [F]
 </IfModule>
 
-
 # ------------------------------------------------------------------------------
 # | lock access to backup and source files.                                    |
 # ------------------------------------------------------------------------------
@@ -143,7 +197,6 @@ AddDefaultCharset utf-8
     Deny from all
     Satisfy All
 </FilesMatch>
-
 
 # ------------------------------------------------------------------------------
 # | Compression                                                                |
@@ -174,8 +227,13 @@ AddDefaultCharset utf-8
                                       text/x-component \
                                       text/xml
     </IfModule>
-</IfModule>
 
+  # Remove browser bugs (only needed for really old browsers)
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  Header append Vary User-Agent
+</IfModule>
 
 # ------------------------------------------------------------------------------
 # | ETag removal                                                               |
@@ -184,7 +242,6 @@ AddDefaultCharset utf-8
     Header unset ETag
 </IfModule>
 FileETag None
-
 
 # ------------------------------------------------------------------------------
 # | Expires headers (for better cache control)                                 |
@@ -229,74 +286,3 @@ FileETag None
     ExpiresByType image/svg+xml                         "access plus 1 month"
 
 </IfModule>
-
-
-
-
-
-#------------------------------------------------------------------------------
-# beginning of static file cache rulesets
-
-# Set gzip extension into an environment variable if the visitors browser can handle gzipped content.
-RewriteCond %{HTTP:Accept-Encoding} gzip [NC]
-RewriteRule .* - [E=TX_NCSTATICFILECACHE_GZIP:.gz]
-
-# Check if the requested file exists in the cache, otherwise default to index.html that
-# set in an environment variable that is used later on
-RewriteCond %{DOCUMENT_ROOT}/typo3temp/tx_ncstaticfilecache/%{HTTP_HOST}/%{REQUEST_URI} !-f
-RewriteRule .* - [E=TX_NCSTATICFILECACHE_FILE:/index.html]
-
-# Don't cache HTTPS traffic. You may choose to comment out this
-# option if your site runs fully on https. If your site runs mixed, you will
-# not want https traffic to be cached in the same typo3temp folder where it can
-# be requested over http.
-# Enable this if you use a mixed setup.
-#RewriteCond %{HTTPS} off
-
-# We only redirect URI's without query strings
-RewriteCond %{QUERY_STRING} ^$
-
-# It only makes sense to do the other checks if a static file actually exists.
-RewriteCond %{DOCUMENT_ROOT}/typo3temp/tx_ncstaticfilecache/%{HTTP_HOST}/%{REQUEST_URI}%{ENV:TX_NCSTATICFILECACHE_FILE}%{ENV:TX_NCSTATICFILECACHE_GZIP} -f
-
-# NO frontend user is logged in. Logged in frontend users may see different
-# information than anonymous users. But the anonymous version is cached. So
-# don't show the anonymous version to logged in frontend users.
-RewriteCond %{HTTP_COOKIE} !nc_staticfilecache [NC]
-
-# Uncomment the following line if you use MnoGoSearch
-#RewriteCond %{HTTP:X-TYPO3-mnogosearch} ^$
-
-# We only redirect GET requests
-RewriteCond %{REQUEST_METHOD} GET
-
-# NO backend user is logged in. Please note that the be_typo_user cookie expires at the
-# end of the browser session. If you have logged out of the TYPO3 backend and are expecting to see cached pages but don't. Please close this browser settion first or remove the cookie manually or use another browser to hit your frontend.
-RewriteCond %{HTTP_COOKIE} !be_typo_user [NC]
-
-# Check for Ctrl Shift reload
-RewriteCond %{HTTP:Pragma} !no-cache
-RewriteCond %{HTTP:Cache-Control} !no-cache
-
-# Rewrite the request to the static file.
-RewriteRule .* typo3temp/tx_ncstaticfilecache/%{HTTP_HOST}/%{REQUEST_URI}%{ENV:TX_NCSTATICFILECACHE_FILE}%{ENV:TX_NCSTATICFILECACHE_GZIP} [L]
-
-# Set proper content type and encoding for gzipped html.
-<FilesMatch "\.gz">
-	<IfModule mod_headers.c>
-		Header set Content-Encoding gzip
-	</IfModule>
-</FilesMatch>
-
-# Set proper content type gzipped html
-<FilesMatch "\.html\.gz">
-	ForceType text/html
-</FilesMatch>
-# Set proper content type gzipped xml and rss feeds
-<FilesMatch "\.(xml|rss)\.gz">
-	ForceType text/xml
-</FilesMatch>
-
-
-# end of static file cache ruleset
-#------------------------------------------------------------------------------
