@@ -34,18 +34,18 @@
 				<blockquote class="blockquote-reverse">
 			</f:else>
 		</f:if>
-			{contentblockquote}
+			<f:format.raw>{contentblockquote}</f:format.raw>
 			<f:if condition="{footer}">
 				<footer>
 					<f:if condition="{footercontent}">
-						{footercontentfirst}
+						<f:format.raw>{footercontent}</f:format.raw>
 					</f:if>
 					<f:if condition="{footercontentcite}">
 						<cite title="{citetitle}">
 							<f:if condition="{citetarget}">
 								<a href="{citetarget}" target="_blank">
 							</f:if>
-								{footercontentcite}
+								<f:format.raw>{footercontentcite}</f:format.raw>
 							<f:if condition="{citetarget}">
 								</a>
 							</f:if>
