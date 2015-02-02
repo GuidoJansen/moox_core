@@ -24,8 +24,6 @@ namespace FluidTYPO3\MooxCore\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  *****************************************************************/
 use FluidTYPO3\MooxCore\Provider\CoreContentProvider;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 
 /**
  * Class CoreContentController
