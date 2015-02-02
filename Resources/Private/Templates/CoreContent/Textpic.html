@@ -30,7 +30,7 @@
 	{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters, append: '') -> v:or(alternative: row.bodytext)}
 	<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
 		<f:for each="{images}" as="image" iteration="iteration">
-			<v:media.image src="{image.url}" treatIdAsReference="TRUE" alt="{image.id}" height="50" />
+			<v:media.image src="{image.uid}" treatIdAsReference="TRUE" alt="{image.id}" height="50" />
 		</f:for>
 	</v:resource.record.fal>
 	<flux:widget.grid />
