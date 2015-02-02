@@ -64,11 +64,31 @@ class ProviderField {
 			$preSelected = $defaults['variant'];
 		}
 		if (TRUE === is_array($extensionKeys) && 0 < count($extensionKeys)) {
-			$options = array_combine($extensionKeys, $extensionKeys);
+			$options = $this->renderOptions($extensionKeys);
 		} else {
 			$options = array();
 		}
 		return $this->renderSelectField($parameters, $options, $preSelected);
+	}
+	
+	/**
+	 * @param array $variants
+	 * @return array
+	 */
+	protected function renderOptions(array $variants) {
+		$options = array();
+		foreach ($variants as $variantSetup) {
+			list ($extensionKey, $labelReference, $icon) = $variantSetup;
+			$translatedLabel = LocalizationUtility::translate($labelReference, $extensionKey);
+			if (NULL === $translatedLabel) {
+				$translatedLabel = $extensionKey;
+			}
+			if (NULL !== $icon) {
+				$translatedLabel = '<img src="' . $icon . '" alt="' . $extensionKey . '" /> ' . $translatedLabel;
+			}
+			$options[$extensionKey] = $translatedLabel;
+		}
+		return $options;
 	}
 
 	/**

@@ -189,9 +189,18 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 		}
 		self::$variants[$contentType] = array();
 		foreach ($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['variants'][$contentType] as $variantExtensionKey) {
+			$icon = NULL;
+			if (TRUE === is_array($variantExtensionKey) && 3 === count($variantExtensionKey)) {
+				list ($variantExtensionKey, $labelReference, $icon) = $variantExtensionKey;
+			} elseif (TRUE === is_array($variantExtensionKey) && 2 === count($variantExtensionKey)) {
+				list ($variantExtensionKey, $labelReference) = $variantExtensionKey;
+			} else {
+				$actualKey = ExtensionNamingUtility::getExtensionKey($variantExtensionKey);
+				$labelReference = 'EXT:' . $actualKey. '/Resources/Private/Language/locallang.xlf:moox_core.variantLabel';
+			}
 			$templatePathAndFilename = $this->getTemplatePathAndFilenameByExtensionKeyAndContentTypeAndVariantAndVersion($variantExtensionKey, $contentType, $variantExtensionKey);
 			if (TRUE === file_exists(PathUtility::translatePath($templatePathAndFilename))) {
-				array_push(self::$variants[$contentType], $variantExtensionKey);
+				array_push(self::$variants[$contentType], array($variantExtensionKey, $labelReference, $icon));
 			}
 		}
 		return self::$variants[$contentType];
