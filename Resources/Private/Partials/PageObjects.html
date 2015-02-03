@@ -16,7 +16,8 @@
 	<v:page.header.meta name="application-name" content="{settings.globalpagetitle}" />
 	<v:page.header.meta name="apple-mobile-web-app-capable" content="yes" />
 	<v:page.header.meta name="apple-mobile-web-app-status-bar-style" content="{settings.apple-mobile-web-app-status-bar-style}" />
-
+	<f:if condition="{settings.google-site-verification} != ''"><v:page.header.meta name="google-site-verification" content="{settings.google-site-verification}" /></f:if>
+	
 	<v:page.header.meta additionalAttributes="{property: 'og:title'}" content="{page.title}" />
 	<v:page.header.meta additionalAttributes="{property: 'og:site_name'}" content="{settings.globalpagetitle}" />
 	<v:page.header.meta additionalAttributes="{property: 'og:description'}" content="{settings.description}" />
