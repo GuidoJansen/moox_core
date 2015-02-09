@@ -46,7 +46,7 @@ plugin.tx_mooxcore.settings {
 	}
 	image {
 		# cat=MOOX_CORE_CONTENT: image/110/classNames; type=string; label=Available CSS class names for images (comma separated)
-		classNames = image,img-responsive,img-rounded,img-circle,img-thumbnail,img-grayscale
+		classNames = img-rounded,img-circle,img-thumbnail,img-grayscale
 	}
 	caption {
 		# cat=MOOX_CORE_CONTENT: image/120/types; type=string; label=HTML element types for image caption (comma separated)
