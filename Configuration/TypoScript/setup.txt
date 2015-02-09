@@ -70,7 +70,7 @@ plugin.tx_vhs.settings.asset{
 		external = 1
 		group = cdn
 		standalone = 1
-		movable = 0
+		movable = 1
 		type = js
 	}
 	jqueryuid {

@@ -115,7 +115,7 @@
 				<source>Create content containers for image captions</source>
 			</trans-unit>
 			<trans-unit id="flux.image.fields.settings.directInclusion" xml:space="preserve">
-				<source>Include image directly, only assign "src", "alt" and CSS class names (nice for responsive images)</source>
+				<source>Responsive image (You can not use the scaling mode as soon as you select it)</source>
 			</trans-unit>
 			<trans-unit id="fields.lightbox" xml:space="preserve">
 				<source>Open image(s) in lightbox</source>

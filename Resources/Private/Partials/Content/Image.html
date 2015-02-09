@@ -16,7 +16,17 @@
 	<f:if condition="{settings.directInclusion}">
 		<f:then>
 			<figure class="image">
-				<img src="{image.url}" title="{image.title}" alt="{f:if(condition: image.alternative, then: image.alternative, else: image.name)}" class="{settings.image.className -> v:format.replace(substring: ',', replacement: ' ')}" id="image{record.uid}{image.uid}" />
+				<picture>
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source srcset="{v:uri.image(src: image.url, maxW: 1200)}" media="(min-width: 1200px)">
+					<source srcset="{v:uri.image(src: image.url, maxW: 992)}" media="(min-width: 992px)">
+					<source srcset="{v:uri.image(src: image.url, maxW: 768)}" media="(min-width: 768px)">
+					<source srcset="{v:uri.image(src: image.url, maxW: 640)}" media="(min-width: 640px)">
+					<source srcset="{v:uri.image(src: image.url, maxW: 480)}" media="(min-width: 480px)">
+					<source srcset="{v:uri.image(src: image.url, maxW: 400)}" media="(min-width: 400px)">
+					<!--[if IE 9]></video><![endif]-->
+					<img srcset="{v:uri.image(src: image.url, maxW: 320)}" title="{image.title}" alt="{f:if(condition: image.alternative, then: image.alternative, else: image.name)}" class="img-responsive {settings.image.className -> v:format.replace(substring: ',', replacement: ' ')}" id="image{record.uid}{image.uid}">
+				</picture>
 				<f:if condition="{image.description}"><figcaption id="figcaption{record.uid}{image.uid}" class="caption-position-{captionpositionclass}"><f:format.html>{image.description}</f:format.html></figcaption></f:if>
 			</figure>
 		</f:then>

@@ -94,7 +94,7 @@
 				<target>Erstelle eine Inhaltsspalte für die Bildunterschrift</target>
 			</trans-unit>
 			<trans-unit id="flux.image.fields.settings.directInclusion" xml:space="preserve">
-				<target>Bild direkt einbinden und nur mit "src", "alt" und CSS Klassen bezeichnen (für repsonsive Bilder)</target>
+				<target>Responsive Bild (Sobald das Häckchen gesetzt ist, kann der Skalierungs Modus nicht verwendet werden)</target>
 			</trans-unit>
 			<trans-unit id="fields.lightbox" xml:space="preserve">
 				<target>Bilder bei Klick in Lightbox öffnen</target>
