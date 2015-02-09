@@ -196,7 +196,7 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 				list ($variantExtensionKey, $labelReference) = $variantExtensionKey;
 			} else {
 				$actualKey = ExtensionNamingUtility::getExtensionKey($variantExtensionKey);
-				$labelReference = 'EXT:' . $actualKey. '/Resources/Private/Language/locallang.xlf:moox_core.variantLabel';
+				$labelReference = 'moox_core.variantLabel';
 			}
 			$templatePathAndFilename = $this->getTemplatePathAndFilenameByExtensionKeyAndContentTypeAndVariantAndVersion($variantExtensionKey, $contentType, $variantExtensionKey);
 			if (TRUE === file_exists(PathUtility::translatePath($templatePathAndFilename))) {
