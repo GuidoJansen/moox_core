@@ -98,7 +98,7 @@ class ProviderField {
 	 * @return string
 	 */
 	protected function renderSelectField($parameters, $options, $selectedValue) {
-		$hasSelectedValue = (TRUE === empty($selectedValue) || TRUE === in_array($selectedValue, $options));
+		$hasSelectedValue = (TRUE === empty($selectedValue) || TRUE === array_key_exists($selectedValue, $options));
 		$selected = (TRUE === empty($selectedValue) ? ' selected="selected"' : NULL);
 		$html = array(
 			'<select class="select" name="' . $parameters['itemFormElName'] . '" onchange="' . $parameters['fieldChangeFunc']['TBE_EDITOR_fieldChanged'] . ';' . $parameters['fieldChangeFunc']['alert'] . '">',
