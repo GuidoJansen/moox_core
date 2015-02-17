@@ -20,3 +20,5 @@ Watch Video: https://www.youtube.com/watch?v=3dL-VImR2x8
 Sourceforge: https://sourceforge.net/projects/moox-typo3-bootstrap/
 
 TYPO3 Forge: https://forge.typo3.org/projects/extension-moox_core/
+
+[![Build Status](https://travis-ci.org/dcngmbh/moox_core.svg)](https://travis-ci.org/dcngmbh/moox_core)
