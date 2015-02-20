@@ -1,6 +1,6 @@
 <?php
 
-namespace GeorgRinger\News\Tests\Unit\Functional\ViewHelpers;
+namespace dcngmbh\moox_core\Tests\Unit\Functional\ViewHelpers;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -29,7 +29,7 @@ class SimplePrevNextViewHelperTest extends \TYPO3\CMS\Core\Tests\FunctionalTestC
 	/** @var \Tx_News_Domain_Model_News */
 	protected $news;
 
-	protected $testExtensionsToLoad = array('typo3conf/ext/news');
+	protected $testExtensionsToLoad = array('typo3conf/ext/moox_core');
 	protected $coreExtensionsToLoad = array('extbase', 'fluid');
 
 	public function setUp() {
