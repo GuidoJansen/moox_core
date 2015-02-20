@@ -30,13 +30,13 @@ script:
     if [[ "$COVERAGE" = "0" ]]; then
       echo;
       echo "Running unit tests";
-      ./bin/phpunit --colors -c typo3/sysext/core/Build/UnitTests.xml typo3conf/ext/news/Tests/Unit/
+      ./bin/phpunit --colors -c typo3/sysext/core/Build/UnitTests.xml typo3conf/ext/moox_core/Tests/Unit/
     fi
   - >
     if [[ "$COVERAGE" = "1" ]]; then
       echo;
       echo "Running code coverage";
-      ./bin/phpunit --coverage-clover=coverage.clover --colors -c typo3/sysext/core/Build/UnitTests.xml typo3conf/ext/news/Tests/Unit/;
+      ./bin/phpunit --coverage-clover=coverage.clover --colors -c typo3/sysext/core/Build/UnitTests.xml typo3conf/ext/moox_core/Tests/Unit/;
       wget https://scrutinizer-ci.com/ocular.phar;
       ocular.phar code-coverage:upload --format=php-clover coverage.clover;
     fi
