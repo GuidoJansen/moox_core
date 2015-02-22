@@ -3,10 +3,10 @@
 ***
 
 <img align="right" src="https://raw.github.com/dcngmbh/moox_core/master/ext_icon64.png"><h3>MOOX Bootstrap Responsive</h3>
+<h5>TYPO3-Extension moox_core</h5>
 
 ***
 
-<h5>TYPO3-Extension moox_core</h5>
 
 MOOX Bootstrap Responsive is the Core-Extension for MOOX. MOOX is a set of Extensions for the TYPO3 CMS. While this TYPO3 Extension provides Responsive Page-Layouts and Content Elements using Bootstrap, it also can be easily extended by other MOOX-Extensions like News & Blog, jQuery Effects and more.
 
