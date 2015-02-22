@@ -17,7 +17,7 @@
     },
     "suggest": {
 
-    };
+    },
     "authors": [
         {
             "name": "DCN GmbH",
@@ -25,5 +25,5 @@
             "homepage": "http://www.dcn.de",
             "role": "Company"
         }
-    ],
+    ]
 }
