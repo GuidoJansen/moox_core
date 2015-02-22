@@ -3,9 +3,9 @@
     "description": "Replace css_styled_content with your own templates",
     "require": {
        "fluidtypo3/flux": "*",
-       "fluidtypo3/vhs": "*"
+       "fluidtypo3/vhs": "*",
        "fluidtypo3/fluidcontent": "*",
-       "fluidtypo3/fluidpages": "*",
+       "fluidtypo3/fluidpages": "*"
     },
     "type": "typo3-cms-extension",
     "keywords": ["MOOX", "TYPO3 CMS", "templating", "bootstrap", "flux", "fluidcontent", "fedext", "fluid"],
