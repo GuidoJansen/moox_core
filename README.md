@@ -21,8 +21,4 @@ Sourceforge: https://sourceforge.net/projects/moox-typo3-bootstrap/
 
 TYPO3 Forge: https://forge.typo3.org/projects/extension-moox_core/
 
-[![Build Status](https://scrutinizer-ci.com/g/dcngmbh/moox_core/badges/build.png?b=master)](https://scrutinizer-ci.com/g/dcngmbh/moox_core/build-status/master)
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dcngmbh/moox_core/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dcngmbh/moox_core/?branch=master)
-
-[![Code Coverage](https://scrutinizer-ci.com/g/dcngmbh/moox_core/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/dcngmbh/moox_core/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/dcngmbh/moox_core/badges/build.png?b=master)](https://scrutinizer-ci.com/g/dcngmbh/moox_core/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dcngmbh/moox_core/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dcngmbh/moox_core/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/dcngmbh/moox_core/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/dcngmbh/moox_core/?branch=master) [![Build Status](https://travis-ci.org/dcngmbh/moox_core.svg?branch=master)](https://travis-ci.org/dcngmbh/moox_core)
