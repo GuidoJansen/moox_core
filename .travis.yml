@@ -24,12 +24,6 @@ before_script:
 
 script:
   - >
-    if [[ "$COVERAGE" = "0" ]]; then
-      echo;
-      echo "Running unit tests";
-      ./bin/phpunit --colors -c typo3/sysext/core/Build/UnitTests.xml typo3conf/ext/moox_core/Tests/Unit/
-    fi
-  - >
     echo;
     echo "Running php lint";
     /bin/bash -c "
