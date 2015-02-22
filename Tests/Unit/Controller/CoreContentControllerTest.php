@@ -1,5 +1,5 @@
 <?php
-namespace FluidTYPO3\FluidcontentCore\Tests\Unit\Controller;
+namespace dcngmbh\moox_core\Tests\Unit\Controller;
 
 /*
  * This file is part of the FluidTYPO3/FluidcontentCore project under GPLv2 or later.
@@ -8,8 +8,8 @@ namespace FluidTYPO3\FluidcontentCore\Tests\Unit\Controller;
  * LICENSE.md file that was distributed with this source code.
  */
 
-use FluidTYPO3\FluidcontentCore\Controller\CoreContentController;
-use FluidTYPO3\FluidcontentCore\Provider\CoreContentProvider;
+use dcngmbh\moox_core\Controller\CoreContentController;
+use dcngmbh\moox_core\Provider\CoreContentProvider;
 use TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
@@ -23,10 +23,10 @@ class CoreContentControllerTest extends BaseTestCase {
 	 * @return void
 	 */
 	public function testInitializeProvider() {
-		$instance = $this->getMock('FluidTYPO3\\FluidcontentCore\\Controller\\CoreContentController', array('dummy'));
+		$instance = $this->getMock('dcngmbh\\moox_core\\Controller\\CoreContentController', array('dummy'));
 		$instance->injectObjectManager(GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager'));
 		$this->callInaccessibleMethod($instance, 'initializeProvider');
-		$this->assertAttributeInstanceOf('FluidTYPO3\\FluidcontentCore\\Provider\\CoreContentProvider', 'provider', $instance);
+		$this->assertAttributeInstanceOf('dcngmbh\\moox_core\\Provider\\CoreContentProvider', 'provider', $instance);
 	}
 
 	/**
@@ -34,7 +34,7 @@ class CoreContentControllerTest extends BaseTestCase {
 	 */
 	public function testInitializeViewVariables() {
 		$instance = $this->getMock(
-			'FluidTYPO3\\FluidcontentCore\\Controller\\CoreContentController',
+			'dcngmbh\\moox_core\\Controller\\CoreContentController',
 			array('getRecord', 'initializeSettings', 'initializeViewObject')
 		);
 		$instance->expects($this->atLeastOnce())->method('getRecord')->willReturn(array('uid' => 0));
@@ -87,7 +87,7 @@ class CoreContentControllerTest extends BaseTestCase {
 		$GLOBALS['TYPO3_DB'] = $this->getMock('TYPO3\\CMS\\Core\\Database\\DatabaseConnection', array('exec_SELECTgetRows'), array(), '', FALSE);
 		$GLOBALS['TYPO3_DB']->expects($this->any())->method('exec_SELECTgetRows')->willReturn(array());
 		$instance = $this->getMock(
-			'FluidTYPO3\\FluidcontentCore\\Controller\\CoreContentController',
+			'dcngmbh\\moox_core\\Controller\\CoreContentController',
 			array('getRecord', 'initializeViewVariables', 'initializeViewSettings', 'initializeViewObject', 'initializeSettings')
 		);
 		$instance->expects($this->any())->method('getRecord')->willReturn($record);
