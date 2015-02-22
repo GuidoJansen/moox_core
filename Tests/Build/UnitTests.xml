@@ -14,7 +14,7 @@
 	verbose="false">
 
 	<testsuites>
-		<testsuite name="EXT:news tests">
+		<testsuite name="moox_core tests">
 			<directory>../Unit/</directory>
 		</testsuite>
 

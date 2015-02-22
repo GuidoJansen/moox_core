@@ -15,7 +15,7 @@
 	verbose="false"
 >
 	<testsuites>
-		<testsuite name="News tests">
+		<testsuite name="MOOX Core tests">
 			<directory>../Functional/</directory>
 		</testsuite>
 	</testsuites>
