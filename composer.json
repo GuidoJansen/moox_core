@@ -18,4 +18,12 @@
     "suggest": {
 
     }
+    "authors": [
+        {
+            "name": "DCN GmbH",
+            "email": "moox@dcn.de",
+            "homepage": "http://www.dcn.de",
+            "role": "Company"
+        }
+    ],
 }
