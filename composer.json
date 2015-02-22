@@ -11,7 +11,7 @@
     "keywords": ["MOOX", "TYPO3 CMS", "templating", "bootstrap", "flux", "fluidcontent", "fedext", "fluid"],
     "homepage": "http://www.moox.org/",
     "license": "GPL-2.0+",
-    "version": "1.0.0",
+    "version": "0.9.50",
     "support": {
         "issues": "https://github.com/dcngmbh/moox_core/issues"
     },
