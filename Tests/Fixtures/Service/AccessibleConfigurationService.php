@@ -1,5 +1,5 @@
 <?php
-namespace FluidTYPO3\FluidcontentCore\Tests\Fixtures\Service;
+namespace dcngmbh\moox_core\Tests\Fixtures\Service;
 
 /*
  * This file is part of the FluidTYPO3/FluidcontentCore project under GPLv2 or later.
@@ -8,7 +8,7 @@ namespace FluidTYPO3\FluidcontentCore\Tests\Fixtures\Service;
  * LICENSE.md file that was distributed with this source code.
  */
 
-use FluidTYPO3\FluidcontentCore\Service\ConfigurationService;
+use dcngmbh\moox_core\Service\ConfigurationService;
 
 /**
  * Class AccessibleConfigurationService
