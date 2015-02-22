@@ -8,8 +8,8 @@ namespace FluidTYPO3\FluidcontentCore\Tests\Unit\Service;
  * LICENSE.md file that was distributed with this source code.
  */
 
-use FluidTYPO3\FluidcontentCore\Service\ConfigurationService;
-use FluidTYPO3\FluidcontentCore\Tests\Fixtures\Service\AccessibleConfigurationService;
+use dcngmbh\moox_coreService\ConfigurationService;
+use dcngmbh\moox_core\Tests\Fixtures\Service\AccessibleConfigurationService;
 use FluidTYPO3\Flux\View\TemplatePaths;
 use TYPO3\CMS\Core\Tests\UnitTestCase;
 
@@ -43,7 +43,7 @@ class ConfigurationServiceTest extends UnitTestCase {
 	 * @param array $expectedVersions
 	 */
 	public function testInitializeVariants(array $variants, array $expectedVariants, array $expectedVersions) {
-		$templatePaths = new TemplatePaths('fluidcontent_core');
+		$templatePaths = new TemplatePaths('moox_core');
 		$paths = $templatePaths->toArray();
 		$instance = new AccessibleConfigurationService();
 		$instance->setRegisteredVariants($variants);
@@ -60,23 +60,23 @@ class ConfigurationServiceTest extends UnitTestCase {
 		return array(
 			array(array(), array(), array()),
 			array(
-				array('test' => 'fluidcontent_core'),
-				array('test' => array(array('fluidcontent_core', 'fluidcontent_core.variantLabel', NULL))),
-				array('test' => array('fluidcontent_core' => $this->defaultTypes))
+				array('test' => 'moox_core'),
+				array('test' => array(array('moox_core', 'moox_core.variantLabel', NULL))),
+				array('test' => array('moox_core' => $this->defaultTypes))
 			),
 			array(
-				array('test' => array('fluidcontent_core', 'customlabel')),
-				array('test' => array(array('fluidcontent_core', 'customlabel', NULL))),
-				array('test' => array('fluidcontent_core' => $this->defaultTypes))
+				array('test' => array('moox_core', 'customlabel')),
+				array('test' => array(array('moox_core', 'customlabel', NULL))),
+				array('test' => array('moox_core' => $this->defaultTypes))
 			),
 			array(
-				array('test' => array('fluidcontent_core', 'customlabel', 'customicon')),
-				array('test' => array(array('fluidcontent_core', 'customlabel', 'customicon'))),
-				array('test' => array('fluidcontent_core' => $this->defaultTypes))
+				array('test' => array('moox_core', 'customlabel', 'customicon')),
+				array('test' => array(array('moox_core', 'customlabel', 'customicon'))),
+				array('test' => array('moox_core' => $this->defaultTypes))
 			),
 			array(
 				array('test' => 'otherext'),
-				array('test' => array(array('otherext', 'fluidcontent_core.variantLabel', NULL))),
+				array('test' => array(array('otherext', 'moox_core.variantLabel', NULL))),
 				array('test' => array('otherext' => $this->defaultTypes))
 			),
 		);
@@ -99,7 +99,7 @@ class ConfigurationServiceTest extends UnitTestCase {
 	 * @return array
 	 */
 	public function getVariantExtensionKeysForContentTypeTestValues() {
-		$config = array('fluidcontent_core', 'label', 'icon');
+		$config = array('moox_core', 'label', 'icon');
 		return array(
 			array(array(), 'default', array()),
 			array(array('test' => array($config)), 'test', array($config)),
@@ -128,12 +128,12 @@ class ConfigurationServiceTest extends UnitTestCase {
 	public function getVariantVersionsTestValues() {
 		return array(
 			array(array(), array(), 'default', 'default', array()),
-			array(array('test' => array(array('fluidcontent_core', 'label', 'icon'))), array(), 'test', 'test', array()),
+			array(array('test' => array(array('moox_core', 'label', 'icon'))), array(), 'test', 'test', array()),
 			array(
-				array('test' => array(array('fluidcontent_core', 'label', 'icon'))),
-				array('test' => array('fluidcontent_core' => array('foo'))),
+				array('test' => array(array('moox_core', 'label', 'icon'))),
+				array('test' => array('moox_core' => array('foo'))),
 				'test',
-				'fluidcontent_core',
+				'moox_core',
 				array('foo')
 			),
 		);
