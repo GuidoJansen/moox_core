@@ -1,5 +1,5 @@
 <?php
-namespace FluidTYPO3\FluidcontentCore\Tests\Unit\Provider;
+namespace dcngmbh\moox_core\Tests\Unit\Provider;
 
 /*
  * This file is part of the FluidTYPO3/FluidcontentCore project under GPLv2 or later.
@@ -8,7 +8,7 @@ namespace FluidTYPO3\FluidcontentCore\Tests\Unit\Provider;
  * LICENSE.md file that was distributed with this source code.
  */
 
-use FluidTYPO3\FluidcontentCore\Provider\CoreContentProvider;
+use dcngmbh\moox_core\Provider\CoreContentProvider;
 use FluidTYPO3\Flux\Form;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Tests\UnitTestCase;
@@ -50,7 +50,7 @@ class CoreContentProviderTest extends UnitTestCase {
 	 */
 	public function testGetForm(array $record) {
 		$instance = $this->getMock(
-			'FluidTYPO3\\FluidcontentCore\\Provider\\CoreContentProvider',
+			'dcngmbh\\moox_core\\Provider\\CoreContentProvider',
 			array('resolveFormClassName', 'setDefaultValuesInFieldsWithInheritedValues')
 		);
 		$form = Form::create();
@@ -97,7 +97,7 @@ class CoreContentProviderTest extends UnitTestCase {
 	 */
 	public function getExtensionKeyTestValues() {
 		return array(
-			array(array(), 'fluidcontent_core'),
+			array(array(), 'moox_core'),
 			array(array('content_variant' => 'test'), 'test'),
 			array(array('content_variant' => 'Vendor.Test'), 'test')
 		);
@@ -111,7 +111,7 @@ class CoreContentProviderTest extends UnitTestCase {
 	public function testGetVariant(array $row, $expected) {
 		$defaults = array('version' => 'version', 'variant' => 'variant');
 		$instance = new CoreContentProvider();
-		$service = $this->getMock('FluidTYPO3\\FluidcontentCore\\Service\\ConfigurationService', array('getDefaults'));
+		$service = $this->getMock('dcngmbh\\moox_core\\Service\\ConfigurationService', array('getDefaults'));
 		$service->expects($this->once())->method('getDefaults')->willReturn($defaults);
 		$instance->injectConfigurationService($service);
 		$result = $this->callInaccessibleMethod($instance, 'getVariant', $row);
@@ -126,7 +126,7 @@ class CoreContentProviderTest extends UnitTestCase {
 	public function testGetVersion(array $row, $expected) {
 		$defaults = array('version' => 'version', 'variant' => 'variant');
 		$instance = new CoreContentProvider();
-		$service = $this->getMock('FluidTYPO3\\FluidcontentCore\\Service\\ConfigurationService', array('getDefaults'));
+		$service = $this->getMock('dcngmbh\\moox_core\\Service\\ConfigurationService', array('getDefaults'));
 		$service->expects($this->once())->method('getDefaults')->willReturn($defaults);
 		$instance->injectConfigurationService($service);
 		$result = $this->callInaccessibleMethod($instance, 'getVersion', $row);
@@ -175,7 +175,7 @@ class CoreContentProviderTest extends UnitTestCase {
 	 */
 	public function testPostProcessRecord(array $row, array $defaults, $expected) {
 		$instance = new CoreContentProvider();
-		$service = $this->getMock('FluidTYPO3\\FluidcontentCore\\Service\\ConfigurationService', array('getDefaults'));
+		$service = $this->getMock('dcngmbh\\moox_core\\Service\\ConfigurationService', array('getDefaults'));
 		$service->expects($this->once())->method('getDefaults')->willReturn($defaults);
 		$instance->injectConfigurationService($service);
 		$copy = $row;
@@ -212,7 +212,7 @@ class CoreContentProviderTest extends UnitTestCase {
 	 */
 	public function testGetTemplatePaths(array $row, array $expected) {
 		$instance = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')
-			->get('FluidTYPO3\\FluidcontentCore\\Provider\\CoreContentProvider');
+			->get('dcngmbh\\moox_core\\Provider\\CoreContentProvider');
 		$instance->setTemplatePaths(array('foo' => 'bar'));
 		$result = $instance->getTemplatePaths($row);
 		$this->assertEquals($expected, $result);
