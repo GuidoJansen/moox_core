@@ -8,15 +8,14 @@
        "fluidtypo3/fluidpages": "*"
     },
     "type": "typo3-cms-extension",
-    "keywords": ["MOOX", "TYPO3 CMS", "templating", "bootstrap", "flux", "fluidcontent", "fedext", "fluid"],
+    "keywords": ["MOOX", "TYPO3", "Bootstrap", "Template", "CMS", "Responsive", "Fluid", "Enterprise"],
     "homepage": "http://www.moox.org/",
     "license": "GPL-2.0+",
-    "version": "0.9.50",
     "support": {
         "issues": "https://github.com/dcngmbh/moox_core/issues"
     },
     "suggest": {
-
+       "dcngmbh/moox_template_free001": "*"
     },
     "authors": [
         {
