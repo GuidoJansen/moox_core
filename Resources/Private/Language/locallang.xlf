@@ -224,6 +224,9 @@
 			<trans-unit id="flux.button.fields.settings.ButtonBlock">
 			    <source>Block level Button</source>
 			</trans-unit>
+			<trans-unit id="flux.button.fields.settings.ButtonCenter">
+			    <source>Button align center</source>
+			</trans-unit>
 			<trans-unit id="flux.button.fields.settings.ButtonGroup">
 			    <source>Group Buttons Horizontal</source>
 			</trans-unit>
@@ -996,6 +999,9 @@
 			<trans-unit id="flux.buttonwithdropdown.fields.settings.ButtonSize">
 			    <source>Button Size</source>
 			</trans-unit>
+			<trans-unit id="flux.buttonwithdropdown.fields.settings.ButtonCenter">
+			    <source>Button align center</source>
+			</trans-unit>
 			<trans-unit id="flux.buttonwithdropdown.sheets.ButtonSheetTwo">
 			    <source>Add Buttons</source>
 			</trans-unit>
@@ -1038,6 +1044,9 @@
 			</trans-unit>
 			<trans-unit id="flux.splitbuttonwithdropdown.fields.settings.ButtonSize">
 			    <source>Button size</source>
+			</trans-unit>
+			<trans-unit id="flux.splitbuttonwithdropdown.fields.settings.ButtonCenter">
+			    <source>Button align center</source>
 			</trans-unit>
 			<trans-unit id="flux.splitbuttonwithdropdown.sheets.ButtonSheetTwo">
 			    <source>Buttons</source>
