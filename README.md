@@ -31,3 +31,4 @@ TYPO3 Forge: https://forge.typo3.org/projects/extension-moox_core/
 
 [![Build Status](https://travis-ci.org/dcngmbh/moox_core.svg?branch=master)](https://travis-ci.org/dcngmbh/moox_core) [![Coverage Status](https://coveralls.io/repos/dcngmbh/moox_core/badge.svg)](https://coveralls.io/r/dcngmbh/moox_core)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/mooxie)](https://saucelabs.com/u/mooxie)
+ 
