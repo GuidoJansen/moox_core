@@ -111,7 +111,7 @@ plugin.tx_vhs.settings.asset{
 
 plugin.tx_mooxcore.view {
 	label = MOOX Content Elements
-	extensionKey = FluidTYPO3.MooxCore
+	extensionKey = DCNGmbH.MooxCore
 	templateRootPath = {$plugin.tx_mooxcore.view.templateRootPath}
 	partialRootPath = {$plugin.tx_mooxcore.view.partialRootPath}
 	layoutRootPath = {$plugin.tx_mooxcore.view.layoutRootPath}

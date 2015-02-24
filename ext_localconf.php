@@ -21,23 +21,23 @@ if (FALSE === isset($GLOBALS['TYPO3_CONF_VARS']['FE']['contentRenderingTemplates
 	);
 }
 
-$GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['types'] = array(
+$GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types'] = array(
 	'header', 'text', 'image', 'textpic', 'bullets', 'uploads', 'table', 'media', 'mailform', 'search', 'menu', 'shortcut', 'div', 'html', 'default'
 );
 
-\FluidTYPO3\Flux\Core::registerConfigurationProvider('FluidTYPO3\MooxCore\Provider\CoreContentProvider');
+\FluidTYPO3\Flux\Core::registerConfigurationProvider('DCNGmbH\MooxCore\Provider\CoreContentProvider');
 
 // Prepare a global variants registration array indexed by CType value.
-// To add your own, do fx: $GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['variants']['textpic'][] = 'myextensionkey';
-$GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['variants'] = array_combine(
-	array_values($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['types']),
-	array_fill(0, count($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['types']), array())
+// To add your own, do fx: $GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants']['textpic'][] = 'myextensionkey';
+$GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants'] = array_combine(
+	array_values($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types']),
+	array_fill(0, count($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types']), array())
 );
 
-for ($i = 0; $i < count($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['types']); $i++) {
+for ($i = 0; $i < count($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types']); $i++) {
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-		'FluidTYPO3.MooxCore',
-		ucfirst($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['types'][$i]),
+		'DCNGmbH.MooxCore',
+		ucfirst($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types'][$i]),
 		array('CoreContent' => 'render,error'),
 		array());
 }
@@ -65,7 +65,7 @@ if (TYPO3_MODE === 'BE') {
     $signalSlotDispatcher->connect(
         'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
         'hasInstalledExtensions',
-        'FluidTYPO3\\MooxCore\\Service\\InstallService',
+        'DCNGmbH\\MooxCore\\Service\\InstallService',
         'generateApacheHtaccess'
     );
     /**
@@ -74,7 +74,7 @@ if (TYPO3_MODE === 'BE') {
     $signalSlotDispatcher->connect(
         'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
         'hasInstalledExtensions',
-        'FluidTYPO3\\MooxCore\\Service\\InstallService',
+        'DCNGmbH\\MooxCore\\Service\\InstallService',
         'createDefaultAdditionalConfiguration'
     );
     /**
@@ -83,7 +83,7 @@ if (TYPO3_MODE === 'BE') {
     $signalSlotDispatcher->connect(
         'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
         'hasInstalledExtensions',
-        'FluidTYPO3\\MooxCore\\Service\\InstallService',
+        'DCNGmbH\\MooxCore\\Service\\InstallService',
         'createDefaultRobots'
     );
 }
@@ -91,11 +91,11 @@ if (TYPO3_MODE === 'BE') {
 /***************
  * Backend Styling
  */
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Backend\\View\\LogoView']['className'] = 'FluidTYPO3\\MooxCore\\Xclass\\Backend\\View\\LogoView';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/backend.php']['renderPreProcess'][] = 'FluidTYPO3\\MooxCore\\Hooks\\Backend\\RenderPreProcess->addStyles';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/template.php']['preHeaderRenderHook'][] = 'FluidTYPO3\\MooxCore\\Hooks\\Backend\\PreHeaderRender->addStyles';
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Backend\\View\\LogoView']['className'] = 'DCNGmbH\\MooxCore\\Xclass\\Backend\\View\\LogoView';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/backend.php']['renderPreProcess'][] = 'DCNGmbH\\MooxCore\\Hooks\\Backend\\RenderPreProcess->addStyles';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/template.php']['preHeaderRenderHook'][] = 'DCNGmbH\\MooxCore\\Hooks\\Backend\\PreHeaderRender->addStyles';
 
 /***************
  * Register hook for processing less files
  */
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-preProcess'][] = 'FluidTYPO3\\MooxCore\\Hooks\\PageRendererRender\\PreProcessHook->execute';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-preProcess'][] = 'DCNGmbH\\MooxCore\\Hooks\\PageRendererRender\\PreProcessHook->execute';

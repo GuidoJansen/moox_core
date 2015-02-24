@@ -1,5 +1,5 @@
 <?php
-namespace FluidTYPO3\MooxCore\UserFunction;
+namespace DCNGmbH\MooxCore\UserFunction;
 /*****************************************************************
  *  Copyright notice
  *
@@ -24,7 +24,7 @@ namespace FluidTYPO3\MooxCore\UserFunction;
  *  This copyright notice MUST APPEAR in all copies of the script!
  *****************************************************************/
 
-use FluidTYPO3\MooxCore\Provider\CoreContentProvider;
+use DCNGmbH\MooxCore\Provider\CoreContentProvider;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -49,7 +49,7 @@ class ProviderField {
 	 */
 	public function __construct() {
 		$this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-		$this->provider = $this->objectManager->get('FluidTYPO3\MooxCore\Provider\CoreContentProvider');
+		$this->provider = $this->objectManager->get('DCNGmbH\MooxCore\Provider\CoreContentProvider');
 	}
 
 	/**

@@ -1,5 +1,5 @@
 <?php
-namespace FluidTYPO3\MooxCore\Service;
+namespace DCNGmbH\MooxCore\Service;
 
 /***************************************************************
  *

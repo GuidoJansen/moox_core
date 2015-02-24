@@ -15,7 +15,7 @@ $GLOBALS['TCA']['tt_content']['columns']['content_variant'] = array(
 	'exclude' => 1,
 	'config' => array(
 		'type' => 'user',
-		'userFunc' => 'FluidTYPO3\MooxCore\UserFunction\ProviderField->createVariantsField',
+		'userFunc' => 'DCNGmbH\MooxCore\UserFunction\ProviderField->createVariantsField',
 	)
 );
 $GLOBALS['TCA']['tt_content']['columns']['content_version'] = array(
@@ -23,7 +23,7 @@ $GLOBALS['TCA']['tt_content']['columns']['content_version'] = array(
 	'exclude' => 1,
 	'config' => array(
 		'type' => 'user',
-		'userFunc' => 'FluidTYPO3\MooxCore\UserFunction\ProviderField->createVersionsField',
+		'userFunc' => 'DCNGmbH\MooxCore\UserFunction\ProviderField->createVersionsField',
 	)
 );
 
