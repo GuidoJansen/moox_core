@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eed59793bdb2f5532c754a7814c4b463",
+    "hash": "98e83d5c7b411499031df46a049f1781",
     "packages": [
         {
             "name": "fluidtypo3/fluidcontent",
