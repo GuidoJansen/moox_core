@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DCNGmbH\\MooxCore\\": "Classes/"
+            "FluidTYPO3\\MooxCore\\": "Classes/"
         }
     },
     "type": "typo3-cms-extension",

@@ -9,15 +9,15 @@ if ('BE' === TYPO3_MODE) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript($_EXTKEY, 'setup', '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:moox_core/Configuration/TypoScript/setup.txt">');
 }
 
-\FluidTYPO3\Flux\Core::registerConfigurationProvider('DCNGmbH\MooxCore\Provider\CoreContentProvider');
+\FluidTYPO3\Flux\Core::registerConfigurationProvider('FluidTYPO3\MooxCore\Provider\CoreContentProvider');
 
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['moox_core']['setup'] = unserialize($_EXTCONF);
 
 if (FALSE === (boolean) $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['moox_core']['setup']['disablePageTemplates']) {
-	\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DCNGmbH.MooxCore', 'Page');
+	\FluidTYPO3\Flux\Core::registerProviderExtensionKey('FluidTYPO3.MooxCore', 'Page');
 }
 if (FALSE === (boolean) $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['moox_core']['setup']['disableContentTemplates']) {
-	\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DCNGmbH.MooxCore', 'Content');
+	\FluidTYPO3\Flux\Core::registerProviderExtensionKey('FluidTYPO3.MooxCore', 'Content');
 }
 
 

@@ -1,5 +1,5 @@
 <?php
-namespace DCNGmbH\MooxCore\Controller;
+namespace FluidTYPO3\MooxCore\Controller;
 
 /***************************************************************
  *  Copyright notice

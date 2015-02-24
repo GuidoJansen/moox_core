@@ -1,5 +1,5 @@
 <?php
-namespace DCNGmbH\MooxCore\Controller;
+namespace FluidTYPO3\MooxCore\Controller;
 /*****************************************************************
  *  Copyright notice
  *
@@ -23,7 +23,7 @@ namespace DCNGmbH\MooxCore\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  *****************************************************************/
-use DCNGmbH\MooxCore\Provider\CoreContentProvider;
+use FluidTYPO3\MooxCore\Provider\CoreContentProvider;
 
 /**
  * Class CoreContentController

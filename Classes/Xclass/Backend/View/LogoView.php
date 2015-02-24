@@ -1,5 +1,5 @@
 <?php
-namespace DCNGmbH\MooxCore\Xclass\Backend\View;
+namespace FluidTYPO3\MooxCore\Xclass\Backend\View;
 
 /**
  * @author Jakub Czyz <jc@dcn.de>

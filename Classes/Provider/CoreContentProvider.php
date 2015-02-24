@@ -1,5 +1,5 @@
 <?php
-namespace DCNGmbH\MooxCore\Provider;
+namespace FluidTYPO3\MooxCore\Provider;
 /*****************************************************************
  *  Copyright notice
  *
@@ -74,7 +74,7 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	/**
 	 * @var string
 	 */
-	protected $packageName = 'DCNGmbH.MooxCore';
+	protected $packageName = 'FluidTYPO3.MooxCore';
 
 	/**
 	 * @var integer
@@ -181,14 +181,14 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	 * @return array
 	 */
 	public function getVariantExtensionKeysForContentType($contentType) {
-		if (FALSE === isset($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants'][$contentType])) {
+		if (FALSE === isset($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['variants'][$contentType])) {
 			return array();
 		}
 		if (TRUE === isset(self::$variants[$contentType])) {
 			return self::$variants[$contentType];
 		}
 		self::$variants[$contentType] = array();
-		foreach ($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants'][$contentType] as $variantExtensionKey) {
+		foreach ($GLOBALS['TYPO3_CONF_VARS']['FluidTYPO3.MooxCore']['variants'][$contentType] as $variantExtensionKey) {
 			$icon = NULL;
 			if (TRUE === is_array($variantExtensionKey) && 3 === count($variantExtensionKey)) {
 				list ($variantExtensionKey, $labelReference, $icon) = $variantExtensionKey;

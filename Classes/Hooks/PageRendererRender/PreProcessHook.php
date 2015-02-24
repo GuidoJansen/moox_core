@@ -1,5 +1,5 @@
 <?php
-namespace DCNGmbH\MooxCore\Hooks\PageRendererRender;
+namespace FluidTYPO3\MooxCore\Hooks\PageRendererRender;
 
 /***************************************************************
  *
@@ -27,7 +27,7 @@ namespace DCNGmbH\MooxCore\Hooks\PageRendererRender;
  *
  ***************************************************************/
 
-use DCNGmbH\MooxCore\Service\CompileService;
+use FluidTYPO3\MooxCore\Service\CompileService;
 
 /**
  * @author Benjamin Kott <info@bk2k.info>
