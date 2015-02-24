@@ -42,9 +42,6 @@
 			<trans-unit id="fields.additionalClassNames">
 				<target>Optional, zusätzliche CSS-Klassen</target>
 			</trans-unit>
-			<trans-unit id="fields.spacingNames">
-				<target>Abstand</target>
-			</trans-unit>
 			<trans-unit id="fields.tagName">
 				<target>HTML Elementtyp</target>
 			</trans-unit>
@@ -205,9 +202,6 @@
 			</trans-unit>
 			<trans-unit id="flux.button.fields.settings.ButtonBlock">
 			    <target>Buttons als Block anzeigen</target>
-			</trans-unit>
-			<trans-unit id="flux.button.fields.settings.ButtonCenter">
-			    <target>Button zentrieren</target>
 			</trans-unit>
 			<trans-unit id="flux.button.fields.settings.ButtonGroup">
 			    <target>Buttons horizontal anordnen</target>
@@ -903,9 +897,6 @@
 			<trans-unit id="flux.buttonwithdropdown.fields.settings.ButtonSize">
 			    <target>Button Größe</target>
 			</trans-unit>
-			<trans-unit id="flux.buttonwithdropdown.fields.settings.ButtonCenter">
-			    <target>Button zentrieren</target>
-			</trans-unit>
 			<trans-unit id="flux.buttonwithdropdown.sheets.ButtonSheetTwo">
 			    <target>Buttons erstellen</target>
 			</trans-unit>
@@ -948,9 +939,6 @@
 			</trans-unit>
 			<trans-unit id="flux.splitbuttonwithdropdown.fields.settings.ButtonSize">
 			    <target>Button Größe</target>
-			</trans-unit>
-			<trans-unit id="flux.splitbuttonwithdropdown.fields.settings.ButtonCenter">
-			    <target>Button zentrieren</target>
 			</trans-unit>
 			<trans-unit id="flux.splitbuttonwithdropdown.sheets.ButtonSheetTwo">
 			    <target>Buttons erstellen</target>

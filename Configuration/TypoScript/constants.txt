@@ -41,10 +41,6 @@ plugin.tx_mooxcore.settings {
 	container {
 		# cat=MOOX_CORE_CONTENT: container/110/classNames; type=string; label=Available CSS class names for container (comma separated)
 		classNames = container
-		# cat=MOOX_CORE_CONTENT: container/115/10; type=string; label=Available spacing types for container (comma separated)
-		spacingNames = top-space-small,top-space-base,top-space-large,bottom-space-small,bottom-space-base,bottom-space-large
-		# cat=MOOX_CORE_CONTENT: container/115/11; type=string; label=Set default spacing types for container (comma separated)
-		defaultSpacingNames = 
 		# cat=MOOX_CORE_CONTENT: container/120/addAnchor; type=boolean; label=Add anchor to content element
 		addAnchor = 0
 	}
@@ -63,20 +59,6 @@ plugin.tx_mooxcore.settings {
 	preview {
 		# cat=MOOX_CORE_CONTENT: preview/110/maxCharacters; type=string; label=Maximum number of characters to display in previews
 		maxCharacters = 100
-	}
-	less {
-		# cat=MOOX_CORE_CONTENT: container/115/12; type=string; label=@top-space-small:
-		top-space-small = (@padding-small-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/13; type=string; label=@top-space-base:
-		top-space-base = (@padding-base-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/14; type=string; label=@top-space-large:
-		top-space-large = (@padding-large-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/15; type=string; label=@bottom-space-small:
-		bottom-space-small = (@padding-small-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/16; type=string; label=@bottom-space-base:
-		bottom-space-base = (@padding-base-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/17; type=string; label=@bottom-space-large:
-		bottom-space-large = (@padding-large-vertical * 3)
 	}
 	
 	# cat=MOOX_CORE_COOKIES/settings/10; type=boolean; label=Use Cookie Compliance

@@ -14,11 +14,6 @@
        "fluidtypo3/fluidpages": "dev-development",
        "fluidtypo3/development": "*"
     },
-    "autoload": {
-        "psr-4": {
-            "FluidTYPO3\\MooxCore\\": "Classes/"
-        }
-    },
     "type": "typo3-cms-extension",
     "keywords": ["MOOX", "TYPO3", "Bootstrap", "Template", "CMS", "Responsive", "Fluid", "Enterprise"],
     "homepage": "http://www.moox.org/",

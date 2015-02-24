@@ -156,8 +156,6 @@ plugin.tx_mooxcore.settings {
 			list = div
 		}
 		classNames = {$plugin.tx_mooxcore.settings.container.classNames}
-		spacingNames = {$plugin.tx_mooxcore.settings.container.spacingNames}
-		defaultSpacingNames = {$plugin.tx_mooxcore.settings.container.defaultSpacingNames}
 		addAnchor = {$plugin.tx_mooxcore.settings.container.addAnchor}
 	}
 	image {

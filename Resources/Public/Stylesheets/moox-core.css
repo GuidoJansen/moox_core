@@ -41,12 +41,6 @@ div.indent { margin-left: 2em; }
 # MOOX Style Rules
 # ***************************************************************************************/
 
-/* Alignment */
-.align-center
-{
-	text-align:center;
-}
-
 /*IE8 FIX*/
 img {width: auto; height: auto;}
 

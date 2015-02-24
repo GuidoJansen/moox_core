@@ -13,7 +13,6 @@
                 <flux:field.select items="xs,sm,default,lg" name="settings.ButtonSize" default="default"/>
                 <flux:field.checkbox name="settings.ButtonBlock" default="0"/>
                 <flux:field.checkbox name="settings.ButtonGroup" default="0"/>
-                <flux:field.checkbox name="settings.ButtonCenter" default="0" />
             </flux:form.sheet>
             <flux:form.sheet name="ButtonSheetTwo">
                 <flux:form.section name="ButtonSection">
@@ -58,7 +57,7 @@
                 </div>
             </f:then>
             <f:else>
-                <div class="buttonwrap {f:if(condition: settings.ButtonCenter, then: 'align-center', else: '')}">
+                <div class="buttonwrap">
                     <f:render section="Button" arguments="{_all}"/>
                 </div>
             </f:else>
