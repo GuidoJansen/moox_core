@@ -8,7 +8,7 @@
 		<a id="{record.header -> v:or(alternative: record.titleAttribute) -> v:or(alternative: 'content {record.uid}') -> v:format.url.sanitizeString()}"></a>
 	</f:if>
 	<v:tag name="{v:variable.get(name: 'settings.container.types.{record.CType}') -> v:or(alternative: settings.container.types.default)}"
-	         class="{content.settings.container.className}">
+	         class="{content.settings.container.className} {content.settings.container.spacingName}">
 		
 		<f:if condition="{record.tx_mooxcore_hide_desktop} == '1'">
 			<div class="hidden-lg">

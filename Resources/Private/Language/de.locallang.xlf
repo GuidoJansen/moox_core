@@ -42,6 +42,9 @@
 			<trans-unit id="fields.additionalClassNames">
 				<target>Optional, zusätzliche CSS-Klassen</target>
 			</trans-unit>
+			<trans-unit id="fields.spacingNames">
+				<target>Abstand</target>
+			</trans-unit>
 			<trans-unit id="fields.tagName">
 				<target>HTML Elementtyp</target>
 			</trans-unit>
