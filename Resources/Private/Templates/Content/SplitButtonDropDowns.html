@@ -11,6 +11,7 @@
             <flux:form id="splitbuttonwithdropdown" options="{group: 'Bootstrap', icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-button.png'}">
                     <flux:form.sheet name="ButtonSheetOne">
                             <flux:field.select items="xs,sm,default,lg" name="settings.ButtonSize" default="default"/>
+                            <flux:field.checkbox name="settings.ButtonCenter" default="0" />
                     </flux:form.sheet>
                     <flux:form.sheet name="ButtonSheetTwo">
                             <flux:form.section name="ButtonSection">
@@ -52,6 +53,9 @@
         
         <f:for each="{ButtonSection}" as="ButtonObjectItem" iteration="iter">
             <v:variable.set name="btnlinkclass" value="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions} btn-{settings.ButtonSize}" />
+                <f:if condition="{settings.ButtonCenter}">
+                        <div class="align-center">
+                </f:if>
                 <div class="btn-group{f:if(then: ' dropup', else: '', condition: '{ButtonObjectItem.ButtonObject.dropup}')}">
                         <v:link.typolink configuration="{parameter: ButtonObjectItem.ButtonObject.ButtonTextLink,ATagParams:'class=\"{btnlinkclass}\"'}">
                             {ButtonObjectItem.ButtonObject.ButtonText}
@@ -73,6 +77,9 @@
                                 </f:for>
                         </ul>
                 </div>
+                <f:if condition="{settings.ButtonCenter}">
+                        </div>
+                </f:if>
         </f:for>
     </f:section>
 
