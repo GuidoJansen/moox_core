@@ -1,5 +1,5 @@
 <?php
-namespace FluidTYPO3\MooxCore\Controller;
+namespace DCNGmbH\MooxCore\Controller;
 /*****************************************************************
  *  Copyright notice
  *
@@ -41,7 +41,7 @@ abstract class AbstractCoreContentController extends AbstractFluxController {
 	 * @return void
 	 */
 	protected function initializeProvider() {
-		$this->provider = $this->objectManager->get('FluidTYPO3\MooxCore\Provider\CoreContentProvider');
+		$this->provider = $this->objectManager->get('DCNGmbH\MooxCore\Provider\CoreContentProvider');
 	}
 	/**
 	 * @return void

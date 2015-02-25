@@ -9,15 +9,15 @@ if ('BE' === TYPO3_MODE) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript($_EXTKEY, 'setup', '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:moox_core/Configuration/TypoScript/setup.txt">');
 }
 
-\FluidTYPO3\Flux\Core::registerConfigurationProvider('FluidTYPO3\MooxCore\Provider\CoreContentProvider');
+\FluidTYPO3\Flux\Core::registerConfigurationProvider('DCNGmbH\MooxCore\Provider\CoreContentProvider');
 
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['moox_core']['setup'] = unserialize($_EXTCONF);
 
 if (FALSE === (boolean) $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['moox_core']['setup']['disablePageTemplates']) {
-	\FluidTYPO3\Flux\Core::registerProviderExtensionKey('FluidTYPO3.MooxCore', 'Page');
+	\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DCNGmbH.MooxCore', 'Page');
 }
 if (FALSE === (boolean) $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['moox_core']['setup']['disableContentTemplates']) {
-	\FluidTYPO3\Flux\Core::registerProviderExtensionKey('FluidTYPO3.MooxCore', 'Content');
+	\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DCNGmbH.MooxCore', 'Content');
 }
 
 
@@ -101,7 +101,7 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
         }
         $TBE_MODULES = $temp_TBE_MODULES;		
 		\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-			'FluidTYPO3.'.$_EXTKEY,
+			'DCNGmbH.'.$_EXTKEY,
 			$mainModuleName,
 			'',
 			'',
@@ -114,7 +114,7 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 		);
     }	
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-        'FluidTYPO3.'.$_EXTKEY,
+        'DCNGmbH.'.$_EXTKEY,
         $mainModuleName,
         'dashboard',
         'top',

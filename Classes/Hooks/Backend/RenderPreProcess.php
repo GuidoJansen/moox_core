@@ -1,5 +1,5 @@
 <?php
-namespace FluidTYPO3\MooxCore\Hooks\Backend;
+namespace DCNGmbH\MooxCore\Hooks\Backend;
 
 /**
  * @author Jakub Czyz <jc@dcn.de>
