@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array (
 	'title' => 'MOOX Bootstrap Core',
-	'description' => 'TYPO3 Responsive using Less, Bootstrap, HTML5 Boilerplate, jQuery and Superfish. Extended by MOOX Design Templates, MOOX News and other MOOX Extensions. Just install a MOOX Template and moox_core will be autoinstalled by dependencies.',
+	'description' => 'TYPO3 Responsive using Less, Bootstrap, HTML5 Boilerplate, jQuery and Superfish. Extended by MOOX Design Templates, MOOX News and other MOOX Extensions.',
 	'category' => 'fe',
 	'version' => '0.9.56',
 	'state' => 'beta',
