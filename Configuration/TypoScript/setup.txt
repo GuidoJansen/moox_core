@@ -145,17 +145,19 @@ plugin.tx_mooxcore.settings {
 			default = div
 			text = div
 			textpic = div
-			header = none
+			header = div
 			image = div
 			bullets = div
 			uploads = div
 			table = none
 			media = div
-			menu = navigation
+			menu = nav
 			html = none
 			list = div
 		}
 		classNames = {$plugin.tx_mooxcore.settings.container.classNames}
+		spacingNames = {$plugin.tx_mooxcore.settings.container.spacingNames}
+		defaultSpacingNames = {$plugin.tx_mooxcore.settings.container.defaultSpacingNames}
 		addAnchor = {$plugin.tx_mooxcore.settings.container.addAnchor}
 	}
 	image {
