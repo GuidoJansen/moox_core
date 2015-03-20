@@ -240,9 +240,10 @@ class CoreContentProvider extends ContentProvider implements ProviderInterface {
 	 * @param integer $id
 	 * @param array $row
 	 * @param DataHandler $reference
+	 * @param array $removals Allows overridden methods to pass an additional array of field names to remove from the stored Flux value
 	 * @return void
 	 */
-	public function postProcessRecord($operation, $id, array &$row, DataHandler $reference) {
+	public function postProcessRecord($operation, $id, array &$row, DataHandler $reference, array $removals = array()) {
 		$defaults = $this->configurationService->getDefaults();
 		if (self::MODE_RECORD === $defaults['mode']) {
 			if (TRUE === empty($row['content_variant'])) {
