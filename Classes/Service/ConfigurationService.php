@@ -57,8 +57,11 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 	 * @return void
 	 */
 	protected function initializeVariants() {
-		$variants = $this->getAllRegisteredVariants();
+		$variants = (array) $this->getAllRegisteredVariants();
 		foreach ($variants as $contentType => $extensionKeyOrArray) {
+                        if (TRUE === empty($extensionKeyOrArray)) {
+				continue;
+			}
 			$this->variants[$contentType] = array();
 			$icon = NULL;
 			if (TRUE === is_array($extensionKeyOrArray) && 3 === count($extensionKeyOrArray)) {
