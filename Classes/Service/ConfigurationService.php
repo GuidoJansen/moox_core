@@ -132,12 +132,10 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 	 */
 	public function resolveTemplateFileForVariant($extensionKey, $contentType, $variant = NULL, $version = NULL) {
 		$paths = $this->getViewConfigurationForExtensionName(FALSE === empty($variant) ? $variant : $extensionKey);
-		$controllerName = 'CoreContent';
+		$templatePaths = new TemplatePaths($paths);
+                $controllerName = 'CoreContent';
 		$controllerAction = FALSE === empty($version) ? $contentType . '/' . $version : $contentType;
-		$templatePathAndFilename = ResolveUtility::resolveTemplatePathAndFilenameByPathAndControllerNameAndActionAndFormat(
-			$paths, $controllerName, $controllerAction
-		);
-		return $templatePathAndFilename;
+		return $templatePaths->resolveTemplateFileForControllerAndActionAndFormat($controllerName, $controllerAction);
 	}
 
 }
