@@ -197,8 +197,10 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 		$extensionKey = $this->getExtensionKey($row);
 		$variant = $this->getVariant($row);
 		$version = $this->getVersion($row);
-		$template = $this->configurationService->resolveTemplateFileForVariant($extensionKey, $row['CType'], $variant, $version);
-		return $template;
+		$registeredTypes = (array) $GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types'];
+		$templateName = TRUE === in_array($row['CType'], $registeredTypes) ? $row['CType'] : 'default';
+		$template = $this->configurationService->resolveTemplateFileForVariant($extensionKey, $templateName, $variant, $version);
+ 		return $template;
 	}
 
 	/**
