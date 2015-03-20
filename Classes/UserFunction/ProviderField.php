@@ -118,7 +118,7 @@ class ProviderField {
 		$hasSelectedValue = (TRUE === empty($selectedValue) || TRUE === array_key_exists($selectedValue, $options));
 		$selected = (TRUE === empty($selectedValue) ? ' selected="selected"' : NULL);
 		$html = array(
-			'<select class="select" name="' . $parameters['itemFormElName'] . '" onchange="' . $parameters['fieldChangeFunc']['TBE_EDITOR_fieldChanged'] . ';' . $parameters['fieldChangeFunc']['alert'] . '">',
+			'<div class="form-control-wrap"><select class="select form-control" name="' . $parameters['itemFormElName'] . '" onchange="' . $parameters['fieldChangeFunc']['TBE_EDITOR_fieldChanged'] . ';' . $parameters['fieldChangeFunc']['alert'] . '">',
 			'<option' . $selected . ' value="">' . LocalizationUtility::translate('tt_content.nativeLabel', 'MooxCore') . '</option>'
 		);
 		foreach ($options as $value => $label) {
@@ -128,7 +128,7 @@ class ProviderField {
 		if (FALSE === $hasSelectedValue) {
 			$html[] = '<option selected="selected">INVALID: ' . $selectedValue . '</option>';
 		}
-		$html[] = '</select>';
+		$html[] = '</select></div>';
 		return implode(LF, $html);
 	}
 
