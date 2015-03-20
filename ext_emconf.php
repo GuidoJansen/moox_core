@@ -27,8 +27,8 @@ $EM_CONF[$_EXTKEY] = array (
 		'depends' => 
 		array (
 			'typo3' => '6.2.0-6.2.99',
-			'flux' => '7.1.0-7.2.99',
-			'vhs' => '2.1.0-2.2.99',
+			'flux' => '7.2.0-7.2.99',
+			'vhs' => '2.1.0-2.3.99',
 			'fluidcontent' => '',
 			'fluidpages' => '',
 			'realurl' => '',
