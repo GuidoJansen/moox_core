@@ -126,14 +126,9 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	 * @return void
 	 */
 	public function initializeObject() {
-		$typoScript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-		$settings = (array) $typoScript['plugin.']['tx_mooxcore.']['settings.'];
-		$settings = GeneralUtility::removeDotsFromTS($settings);
-		$paths = (array) $typoScript['plugin.']['tx_mooxcore.']['view.'];
-		$paths = GeneralUtility::removeDotsFromTS($paths);
-		$paths = PathUtility::translatePath($paths);
+		$typoScript = $this->configurationService->getAllTypoScript();
+		$settings = $typoScript['plugin']['tx_mooxcore']['settings'];
 		$this->templateVariables['settings'] = $settings;
-		$this->templatePaths = $paths;
 		$this->templatePathAndFilename = PathUtility::translatePath($settings['defaults']['template']);
 	}
 

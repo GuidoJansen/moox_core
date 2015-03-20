@@ -49,9 +49,8 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 	 * @return void
 	 */
 	protected function initializeDefaults() {
-		$typoScript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-		$defaults = (array) $typoScript['plugin.']['tx_mooxcore.']['settings.']['defaults.'];
-		$this->defaults = GeneralUtility::removeDotsFromTS($defaults);
+		$typoScript = $this->getAllTypoScript();
+		$this->defaults = (array) $typoScript['plugin']['tx_mooxcore']['settings']['defaults'];
 	}
 
 	/**
