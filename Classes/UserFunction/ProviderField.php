@@ -25,6 +25,7 @@ namespace DCNGmbH\MooxCore\UserFunction;
  *****************************************************************/
 
 use DCNGmbH\MooxCore\Provider\CoreContentProvider;
+use DCNGmbH\MooxCore\Service\ConfigurationService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -40,16 +41,32 @@ class ProviderField {
 	protected $objectManager;
 
 	/**
-	 * @var CoreContentProvider
+	 * @var ConfigurationService
 	 */
-	protected $provider;
+	protected $configurationService;
+
+	/**
+	 * @param ObjectManagerInterface $objectManager
+	 * @reutrn void
+	 */
+	public function injectObjectManager(ObjectManagerInterface $objectManager) {
+		$this->objectManager = $objectManager;
+	}
+
+	/**
+	 * @param ConfigurationService $configurationService
+	 * @return void
+	 */
+	public function injectConfigurationService(ConfigurationService $configurationService) {
+		$this->configurationService = $configurationService;
+	}
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-		$this->provider = $this->objectManager->get('DCNGmbH\MooxCore\Provider\CoreContentProvider');
+		$this->injectObjectManager(GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager'));
+		$this->injectConfigurationService($this->objectManager->get('DCNGmbH\MooxCore\Service\ConfigurationService'));
 	}
 
 	/**
@@ -57,8 +74,8 @@ class ProviderField {
 	 * @return string
 	 */
 	public function createVariantsField(array $parameters) {
-		$extensionKeys = $this->provider->getVariantExtensionKeysForContentType($parameters['row']['CType']);
-		$defaults = $this->provider->getDefaults();
+		$extensionKeys = $this->configurationService->getVariantExtensionKeysForContentType($parameters['row']['CType']);
++		$defaults = $this->configurationService->getDefaults();
 		$preSelected = $parameters['row']['content_variant'];
 		if (CoreContentProvider::MODE_PRESELECT === $defaults['mode'] && TRUE === empty($preSelected)) {
 			$preSelected = $defaults['variant'];
@@ -120,7 +137,7 @@ class ProviderField {
 	 * @return string
 	 */
 	public function createVersionsField(array $parameters) {
-		$defaults = $this->provider->getDefaults();
+		$defaults = $this->configurationService->getDefaults();
 		$preSelectedVariant = $parameters['row']['content_variant'];
 		$preSelectedVersion = $parameters['row']['content_version'];
 		if (CoreContentProvider::MODE_PRESELECT === $defaults['mode']) {
@@ -132,7 +149,7 @@ class ProviderField {
 			}
 		}
 
-		$versions = $this->provider->getVariantVersions($parameters['row']['CType'], $preSelectedVariant);
+		$versions = $this->configurationService->getVariantVersions($parameters['row']['CType'], $preSelectedVariant);
 		if (TRUE === is_array($versions) && 0 < count($versions)) {
 			$options = array_combine($versions, $versions);
 		} else {
