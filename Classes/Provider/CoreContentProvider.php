@@ -26,7 +26,7 @@ namespace DCNGmbH\MooxCore\Provider;
 
 use FluidTYPO3\FluidcontentCore\Service\ConfigurationService;
 use FluidTYPO3\Flux\Form;
-use FluidTYPO3\Flux\Provider\AbstractProvider;
+use FluidTYPO3\Flux\Provider\ContentProvider;
 use FluidTYPO3\Flux\Provider\ProviderInterface;
 use FluidTYPO3\Flux\Utility\ExtensionNamingUtility;
 use FluidTYPO3\Flux\Utility\PathUtility;
@@ -43,7 +43,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  * processing records. This processing ensures that relationships
  * between content elements get stored correctly.
  */
-class CoreContentProvider extends AbstractProvider implements ProviderInterface {
+class CoreContentProvider extends ContentProvider implements ProviderInterface {
 
 	const MODE_RECORD = 'record';
 	const MODE_PRESELECT = 'preselect';
