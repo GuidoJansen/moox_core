@@ -112,9 +112,9 @@ plugin.tx_vhs.settings.asset{
 plugin.tx_mooxcore.view {
 	label = MOOX Content Elements
 	extensionKey = DCNGmbH.MooxCore
-	templateRootPath = {$plugin.tx_mooxcore.view.templateRootPath}
-	partialRootPath = {$plugin.tx_mooxcore.view.partialRootPath}
-	layoutRootPath = {$plugin.tx_mooxcore.view.layoutRootPath}
+	templateRootPaths.0 = {$plugin.tx_mooxcore.view.templateRootPaths.default}
+	partialRootPaths.0 = {$plugin.tx_mooxcore.view.partialRootPaths.default}
+	layoutRootPaths.0 = {$plugin.tx_mooxcore.view.layoutRootPaths.default}
 	widget {
 		Tx_Fluid_ViewHelpers_Widget_PaginateViewHelper.templateRootPath < plugin.tx_mooxcore.view.templateRootPath
 		TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath < plugin.tx_mooxcore.view.templateRootPath

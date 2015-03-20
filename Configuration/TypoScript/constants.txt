@@ -1,7 +1,7 @@
 plugin.tx_mooxcore.view {
-	templateRootPath = EXT:moox_core/Resources/Private/Templates/
-	partialRootPath = EXT:moox_core/Resources/Private/Partials/
-	layoutRootPath = EXT:moox_core/Resources/Private/Layouts/
+	templateRootPaths.default = EXT:moox_core/Resources/Private/Templates/
+	partialRootPaths.default = EXT:moox_core/Resources/Private/Partials/
+	layoutRootPaths.default = EXT:moox_core/Resources/Private/Layouts/
 }
 
 protocol = http
