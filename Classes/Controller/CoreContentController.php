@@ -24,11 +24,40 @@ namespace DCNGmbH\MooxCore\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  *****************************************************************/
 use DCNGmbH\MooxCore\Provider\CoreContentProvider;
+use FluidTYPO3\Flux\Controller\AbstractFluxController;
+use FluidTYPO3\Flux\Utility\RecursiveArrayUtility;
 
 /**
  * Class CoreContentController
  */
-class CoreContentController extends AbstractCoreContentController {
+class CoreContentController extends AbstractFluxController {
+
+	/**
+	 * @var string
+	 */
+	protected $fluxRecordField = 'content_options';
+
+	/**
+	 * @var string
+	 */
+	protected $fluxTableName = 'tt_content';
+
+	/**
+	 * @return void
+	 */
+	protected function initializeProvider() {
+		$this->provider = $this->objectManager->get('DCNGmbH\MooxCore\Provider\CoreContentProvider');
+	}
+
+	/**
+	 * @return void
+	 */
+	protected function initializeViewVariables() {
+		$row = $this->getRecord();
+		$flexFormData = $this->configurationService->convertFlexFormContentToArray($row['pi_flexform']);
+		$this->settings = RecursiveArrayUtility::merge($this->settings, $flexFormData, FALSE, FALSE);
+		parent::initializeViewVariables();
+	}
 
 	/**
 	 * @return void
