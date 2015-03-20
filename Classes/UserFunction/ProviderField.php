@@ -158,11 +158,4 @@ class ProviderField {
 		return $this->renderSelectField($parameters, $options, $preSelectedVersion);
 	}
 
-	/**
-	 * @return string
-	 */
-	protected function getNoneFoundLabel() {
-		return LocalizationUtility::translate('tt_content.noneFoundLabel', 'MooxCore');
-	}
-
 }

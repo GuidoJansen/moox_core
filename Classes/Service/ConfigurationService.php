@@ -75,7 +75,6 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 			$paths = $this->getViewConfigurationForExtensionName($variant);
 			$templatePaths = new TemplatePaths($paths);
 			$files = $templatePaths->resolveAvailableTemplateFiles($controllerName);
-			$versions = array();
 			foreach ($files as $file) {
 				$versions[] = basename($file, '.' . TemplatePaths::DEFAULT_FORMAT);
 			}
@@ -105,7 +104,7 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 	 */
 	public function getVariantExtensionKeysForContentType($contentType) {
 		if (TRUE === isset($this->variants[$contentType])) {
-			return array_map('reset', $this->variants[$contentType]);
+			return $this->variants[$contentType];
 		}
 		return array();
 	}
