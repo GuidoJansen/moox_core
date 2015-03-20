@@ -12,6 +12,7 @@ use FluidTYPO3\Flux\Service\FluxService;
 use FluidTYPO3\Flux\Utility\ExtensionNamingUtility;
 use FluidTYPO3\Flux\Utility\PathUtility;
 use FluidTYPO3\Flux\Utility\ResolveUtility;
+use FluidTYPO3\Flux\View\TemplatePaths;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -24,21 +25,71 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 	/**
 	 * @var array
 	 */
-	protected static $variants = array();
+	protected $variants = array();
 
 	/**
 	 * @var array
 	 */
-	protected static $versions = array();
+	protected $versions = array();
+
+	/**
+	 * @var array
+	 */
+	protected $defaults = array();
+
+	/**
+	 * @return void
+	 */
+	public function initializeObject() {
+		$this->initializeDefaults();
+		$this->initializeVariants();
+	}
+
+	/**
+	 * @return void
+	 */
+	protected function initializeDefaults() {
+		$typoScript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+		$defaults = (array) $typoScript['plugin.']['tx_mooxcore.']['settings.']['defaults.'];
+		$this->defaults = GeneralUtility::removeDotsFromTS($defaults);
+	}
+
+	/**
+	 * @return void
+	 */
+	protected function initializeVariants() {
+		$variants = $this->getAllRegisteredVariants();
+		foreach ($variants as $contentType => $extensionKeyOrArray) {
+			$this->variants[$contentType] = array();
+			$icon = NULL;
+			if (TRUE === is_array($extensionKeyOrArray) && 3 === count($extensionKeyOrArray)) {
+				list ($extensionKey, $labelReference, $icon) = $extensionKeyOrArray;
+			} elseif (TRUE === is_array($extensionKeyOrArray) && 2 === count($extensionKeyOrArray)) {
+				list ($extensionKey, $labelReference) = $extensionKeyOrArray;
+			} else {
+				$extensionKey = ExtensionNamingUtility::getExtensionKey($extensionKeyOrArray);
+				$labelReference = 'moox_core.variantLabel';
+			}
+			$templatePathAndFilename = $this->resolveTemplateFileForVariant($extensionKey, $contentType, $extensionKeyOrArray);
+			$controllerName = 'CoreContent/' . ucfirst($contentType);
+			$paths = $this->getViewConfigurationForExtensionName($variant);
+			$templatePaths = new TemplatePaths($paths);
+			$files = $templatePaths->resolveAvailableTemplateFiles($controllerName);
+			$versions = array();
+			foreach ($files as $file) {
+				$versions[] = basename($file, '.' . TemplatePaths::DEFAULT_FORMAT);
+			}
+			$versions = array_unique($versions);
+			$this->versions[$contentType] = array($extensionKey => $versions);
+			$this->variants[$contentType][] = array($extensionKey, $labelReference, $icon);
+		}
+	}
 
 	/**
 	 * @return array
 	 */
 	public function getDefaults() {
-		$typoScript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-		$defaults = (array) $typoScript['plugin.']['tx_mooxcore.']['settings.']['defaults.'];
-		$defaults = GeneralUtility::removeDotsFromTS($defaults);
-		return $defaults;
+		return $this->defaults;
 	}
 
 	/**
@@ -53,32 +104,10 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 	 * @return array
 	 */
 	public function getVariantExtensionKeysForContentType($contentType) {
-		$variants = $this->getAllRegisteredVariants();
-		if (FALSE === isset($variants[$contentType])) {
-			return array();
+		if (TRUE === isset($this->variants[$contentType])) {
+			return array_map('reset', $this->variants[$contentType]);
 		}
-		if (TRUE === isset(self::$variants[$contentType])) {
-			return self::$variants[$contentType];
-		}
-		self::$variants[$contentType] = array();
-		foreach ($variants[$contentType] as $variantExtensionKey) {
-			$icon = NULL;
-			if (TRUE === is_array($variantExtensionKey) && 3 === count($variantExtensionKey)) {
-				list ($variantExtensionKey, $labelReference, $icon) = $variantExtensionKey;
-			} elseif (TRUE === is_array($variantExtensionKey) && 2 === count($variantExtensionKey)) {
-				list ($variantExtensionKey, $labelReference) = $variantExtensionKey;
-			} else {
-				$actualKey = ExtensionNamingUtility::getExtensionKey($variantExtensionKey);
-				$labelReference = 'moox_core.variantLabel';
-			}
-			$templatePathAndFilename = $this->resolveTemplateFileForVariant(
-				$variantExtensionKey, $contentType, $variantExtensionKey
-			);
-			if (TRUE === file_exists(PathUtility::translatePath($templatePathAndFilename))) {
-				array_push(self::$variants[$contentType], array($variantExtensionKey, $labelReference, $icon));
-			}
-		}
-		return self::$variants[$contentType];
+		return array();
 	}
 
 	/**
@@ -87,25 +116,10 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 	 * @return array
 	 */
 	public function getVariantVersions($contentType, $variant) {
-		if (TRUE === isset(self::$versions[$contentType][$variant])) {
-			return self::$versions[$contentType][$variant];
+		if (TRUE === isset($this->versions[$contentType][$variant])) {
+			return $this->versions[$contentType][$variant];
 		}
-		if (FALSE === isset(self::$versions[$contentType])) {
-			self::$versions[$contentType] = array();
-		}
-		$paths = $this->getViewConfigurationForExtensionName($variant);
-		$versionsDirectory = rtrim($paths['templateRootPath'], '/') . '/CoreContent/' . ucfirst($contentType) . '/';
-		$versionsDirectory = PathUtility::translatePath($versionsDirectory);
-		if (FALSE === is_dir($versionsDirectory)) {
-			self::$versions[$contentType][$variant] = array();
-		} else {
-			$files = glob($versionsDirectory . '*.html');
-			foreach ($files as &$file) {
-				$file = basename($file, '.html');
-			}
-			self::$versions[$contentType][$variant] = $files;
-		}
-		return self::$versions[$contentType][$variant];
+		return array();
 	}
 
 	/**
@@ -116,19 +130,11 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 	 * @return string
 	 */
 	public function resolveTemplateFileForVariant($extensionKey, $contentType, $variant = NULL, $version = NULL) {
-		if (FALSE === empty($variant)) {
-			$extensionKey = $variant;
-		}
-		$paths = $this->getViewConfigurationForExtensionName($extensionKey);
+		$paths = $this->getViewConfigurationForExtensionName(FALSE === empty($variant) ? $variant : $extensionKey);
 		$controllerName = 'CoreContent';
-		$controllerAction = $contentType;
-		$format = 'html';
-		if (FALSE === empty($version)) {
-			$controllerAction .= '/' . $version;
-		}
-
+		$controllerAction = FALSE === empty($version) ? $contentType . '/' . $version : $contentType;
 		$templatePathAndFilename = ResolveUtility::resolveTemplatePathAndFilenameByPathAndControllerNameAndActionAndFormat(
-			$paths, $controllerName, $controllerAction, $format
+			$paths, $controllerName, $controllerAction
 		);
 		return $templatePathAndFilename;
 	}
