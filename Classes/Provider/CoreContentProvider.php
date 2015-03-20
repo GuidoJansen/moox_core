@@ -24,7 +24,7 @@ namespace DCNGmbH\MooxCore\Provider;
  *  This copyright notice MUST APPEAR in all copies of the script!
  *****************************************************************/
 
-use FluidTYPO3\FluidcontentCore\Service\ConfigurationService;
+use DCNGmbH\MooxCore\Service\ConfigurationService;
 use FluidTYPO3\Flux\Form;
 use FluidTYPO3\Flux\Provider\ContentProvider;
 use FluidTYPO3\Flux\Provider\ProviderInterface;

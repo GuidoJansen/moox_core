@@ -75,7 +75,7 @@ class ProviderField {
 	 */
 	public function createVariantsField(array $parameters) {
 		$extensionKeys = $this->configurationService->getVariantExtensionKeysForContentType($parameters['row']['CType']);
-+		$defaults = $this->configurationService->getDefaults();
+		$defaults = $this->configurationService->getDefaults();
 		$preSelected = $parameters['row']['content_variant'];
 		if (CoreContentProvider::MODE_PRESELECT === $defaults['mode'] && TRUE === empty($preSelected)) {
 			$preSelected = $defaults['variant'];

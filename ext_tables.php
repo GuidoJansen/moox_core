@@ -73,7 +73,7 @@ $tempColumns = Array (
 		)
 	),
 );
-\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tt_content');
+//\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tt_content');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns, 1);
 
 // create palette
