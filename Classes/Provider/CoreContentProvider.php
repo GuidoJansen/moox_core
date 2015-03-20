@@ -24,12 +24,12 @@ namespace DCNGmbH\MooxCore\Provider;
  *  This copyright notice MUST APPEAR in all copies of the script!
  *****************************************************************/
 
+use FluidTYPO3\FluidcontentCore\Service\ConfigurationService;
 use FluidTYPO3\Flux\Form;
 use FluidTYPO3\Flux\Provider\AbstractProvider;
 use FluidTYPO3\Flux\Provider\ProviderInterface;
 use FluidTYPO3\Flux\Utility\ExtensionNamingUtility;
 use FluidTYPO3\Flux\Utility\PathUtility;
-use FluidTYPO3\Flux\Utility\ResolveUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -87,16 +87,6 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	protected $fieldName = 'content_options';
 
 	/**
-	 * @var array
-	 */
-	protected static $variants = array();
-
-	/**
-	 * @var array
-	 */
-	protected static $versions = array();
-	
-	/**
 	 * Filled with an integer-or-string -> Fluid section name
 	 * map which maps machine names of menu types to human
 	 * readable values that are sensible as Fluid section names.
@@ -118,6 +108,19 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 		self::MENU_CATEGORIZEDPAGES => 'CategorizedPages',
 		self::MENU_CATEGORIZEDCONTENT => 'CategorizedContent'
 	);
+	
+	/**
+	* @var ConfigurationService
+	*/
+	protected $configurationService;
+
+	/**
+	 * @param ConfigurationService $configurationService
+	 * @return void
+	 */
+	public function injectConfigurationService(ConfigurationService $configurationService) {
+		$this->configurationService = $configurationService;
+	}
 
 	/**
 	 * @return void
@@ -172,86 +175,6 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	}
 
 	/**
-	 * @param string $contentType
-	 * @return array
-	 */
-	public function getVariantExtensionKeysForContentType($contentType) {
-		if (FALSE === isset($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants'][$contentType])) {
-			return array();
-		}
-		if (TRUE === isset(self::$variants[$contentType])) {
-			return self::$variants[$contentType];
-		}
-		self::$variants[$contentType] = array();
-		foreach ($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants'][$contentType] as $variantExtensionKey) {
-			$icon = NULL;
-			if (TRUE === is_array($variantExtensionKey) && 3 === count($variantExtensionKey)) {
-				list ($variantExtensionKey, $labelReference, $icon) = $variantExtensionKey;
-			} elseif (TRUE === is_array($variantExtensionKey) && 2 === count($variantExtensionKey)) {
-				list ($variantExtensionKey, $labelReference) = $variantExtensionKey;
-			} else {
-				$actualKey = ExtensionNamingUtility::getExtensionKey($variantExtensionKey);
-				$labelReference = 'moox_core.variantLabel';
-			}
-			$templatePathAndFilename = $this->getTemplatePathAndFilenameByExtensionKeyAndContentTypeAndVariantAndVersion($variantExtensionKey, $contentType, $variantExtensionKey);
-			if (TRUE === file_exists(PathUtility::translatePath($templatePathAndFilename))) {
-				array_push(self::$variants[$contentType], array($variantExtensionKey, $labelReference, $icon));
-			}
-		}
-		return self::$variants[$contentType];
-	}
-
-	/**
-	 * @param string $contentType
-	 * @param string $variant
-	 * @return array
-	 */
-	public function getVariantVersions($contentType, $variant) {
-		if (TRUE === isset(self::$versions[$contentType][$variant])) {
-			return self::$versions[$contentType][$variant];
-		}
-		if (FALSE === isset(self::$versions[$contentType])) {
-			self::$versions[$contentType] = array();
-		}
-		$paths = $this->configurationService->getViewConfigurationForExtensionName($variant);
-		$versionsDirectory = rtrim($paths['templateRootPath'], '/') . '/CoreContent/' . ucfirst($contentType) . '/';
-		$versionsDirectory = PathUtility::translatePath($versionsDirectory);
-		if (FALSE === is_dir($versionsDirectory)) {
-			self::$versions[$contentType][$variant] = array();
-		} else {
-			$files = glob($versionsDirectory . '*.html');
-			foreach ($files as &$file) {
-				$file = basename($file, '.html');
-			}
-			self::$versions[$contentType][$variant] = $files;
-		}
-		return self::$versions[$contentType][$variant];
-	}
-
-	/**
-	 * @param string $extensionKey
-	 * @param string $contentType
-	 * @param string $variant
-	 * @param string $version
-	 * @return string
-	 */
-	protected function getTemplatePathAndFilenameByExtensionKeyAndContentTypeAndVariantAndVersion($extensionKey, $contentType, $variant = NULL, $version = NULL) {
-		if (FALSE === empty($variant)) {
-			$extensionKey = $variant;
-		}
-		$paths = $this->configurationService->getViewConfigurationForExtensionName($extensionKey);
-		$controllerName = 'CoreContent';
-		$controllerAction = $contentType;
-		$format = 'html';
-		if (FALSE === empty($version)) {
-			$controllerAction .= '/' . $version;
-		}
-		
-		$templatePathAndFilename = ResolveUtility::resolveTemplatePathAndFilenameByPathAndControllerNameAndActionAndFormat($paths, $controllerName, $controllerAction, $format);
-		return $templatePathAndFilename;
-	}
-
-	/**
 	 * @param array $row
 	 * @return string|NULL
 	 */
@@ -279,21 +202,8 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 		$extensionKey = $this->getExtensionKey($row);
 		$variant = $this->getVariant($row);
 		$version = $this->getVersion($row);
-		$template = $this->getTemplatePathAndFilenameByExtensionKeyAndContentTypeAndVariantAndVersion($extensionKey, $row['CType'], $variant, $version);		
-		if (TRUE === file_exists(PathUtility::translatePath($template))) {
-			return GeneralUtility::getFileAbsFileName($template);
-		}
-		return GeneralUtility::getFileAbsFileName($this->templatePathAndFilename);
-	}
-
-	/**
-	  * @return array
-	  */
-	public function getDefaults() {
-		$typoScript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-		$defaults = (array) $typoScript['plugin.']['tx_mooxcore.']['settings.']['defaults.'];
-		$defaults = GeneralUtility::removeDotsFromTS($defaults);
-		return $defaults;
+		$template = $this->configurationService->resolveTemplateFileForVariant($extensionKey, $row['CType'], $variant, $version);
+		return $template;
 	}
 
 	/**
@@ -301,7 +211,7 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	 * @return string
 	 */
 	protected function getVariant(array $row) {
-		$defaults = $this->getDefaults();
+		$defaults = $this->configurationService->getDefaults();
 		if (self::MODE_RECORD !== $defaults['mode'] && TRUE === empty($row['content_variant'])) {
 			return $defaults['variant'];
 		}
@@ -313,7 +223,7 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	 * @return string
 	 */
 	protected function getVersion(array $row) {
-		$defaults = $this->getDefaults();
+		$defaults = $this->configurationService->getDefaults();
 		if (self::MODE_RECORD !== $defaults['mode'] && TRUE === empty($row['content_version'])) {
 			return $defaults['version'];
 		}
@@ -336,7 +246,7 @@ class CoreContentProvider extends AbstractProvider implements ProviderInterface 
 	 * @return void
 	 */
 	public function postProcessRecord($operation, $id, array &$row, DataHandler $reference) {
-		$defaults = $this->getDefaults();
+		$defaults = $this->configurationService->getDefaults();
 		if (self::MODE_RECORD === $defaults['mode']) {
 			if (TRUE === empty($row['content_variant'])) {
 				$row['content_variant'] = $defaults['variant'];

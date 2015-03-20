@@ -23,8 +23,7 @@ namespace DCNGmbH\MooxCore\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  *****************************************************************/
-use FluidTYPO3\Flux\Controller\AbstractFluxController;
-use FluidTYPO3\Flux\Utility\RecursiveArrayUtility;
+
 /**
  * Class AbstractCoreContentController
  *
