@@ -16,7 +16,8 @@
 	<v:page.header.meta name="application-name" content="{settings.globalpagetitle}" />
 	<v:page.header.meta name="apple-mobile-web-app-capable" content="yes" />
 	<v:page.header.meta name="apple-mobile-web-app-status-bar-style" content="{settings.apple-mobile-web-app-status-bar-style}" />
-
+	<f:if condition="{settings.google-site-verification} != ''"><v:page.header.meta name="google-site-verification" content="{settings.google-site-verification}" /></f:if>
+	
 	<v:page.header.meta additionalAttributes="{property: 'og:title'}" content="{page.title}" />
 	<v:page.header.meta additionalAttributes="{property: 'og:site_name'}" content="{settings.globalpagetitle}" />
 	<v:page.header.meta additionalAttributes="{property: 'og:description'}" content="{settings.description}" />
@@ -201,7 +202,7 @@
 			<v:page.menu entryLevel="{settings.entryLevel}" useShortcutUid="FALSE" useShortcutData="TRUE">
 				<ul class="nav navbar-nav">
 					<f:for each="{menu}" as="mainPage" iteration="iteration">
-						<li class="{mainPage.class}"><a tabindex="{iteration.cycle -> v:math.sum(b: 100)}" href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a></li>
+						<li class="{mainPage.class}"><a tabindex="{iteration.cycle -> v:math.sum(b: 100)}" href="{mainPage.link}" class="{mainPage.class}">{f:if(condition: mainPage.nav_title, then: mainPage.nav_title, else: mainPage.title)}</a></li>
 					</f:for>
 				</ul>
 			</v:page.menu>
