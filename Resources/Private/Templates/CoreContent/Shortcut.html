@@ -14,7 +14,7 @@
 </f:section>
 
 <f:section name="Main">
-	<v:content.render contentUids="{record.records -> v:iterator.explode() -> v:format.replace(substring: 'tt_content_', replacement: '')}" />
+	<v:content.render contentUids="{contentUids -> v:iterator.explode()}" />
 </f:section>
 
 </div>
