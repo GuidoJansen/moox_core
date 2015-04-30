@@ -100,10 +100,8 @@ class ProviderField {
 			if (NULL === $translatedLabel) {
 				$translatedLabel = $extensionKey;
 			}
-			if (NULL !== $icon) {
-				$translatedLabel = '<img src="' . $icon . '" alt="' . $extensionKey . '" /> ' . $translatedLabel;
-			}
-			$options[$extensionKey] = $translatedLabel;
+			$optionsIcon = '<img src="' . $icon . '" alt="' . $extensionKey . '" /> ';
+			$options[$extensionKey] = array($optionsIcon, $translatedLabel);
 		}
 		return $options;
 	}
@@ -115,20 +113,32 @@ class ProviderField {
 	 * @return string
 	 */
 	protected function renderSelectField($parameters, $options, $selectedValue) {
-		$hasSelectedValue = (TRUE === empty($selectedValue) || TRUE === array_key_exists($selectedValue, $options));
+		$optionsIcons = array();
+		$optionsLabels = array();
+		$selectedIcon = '<img alt="" src="" />';
+		foreach ($options as $extensionKey => $optionsSetup) {
+			list($optionsIcons[$extensionKey], $optionsLabels[$extensionKey]) = $optionsSetup;
+		}
+		$hasSelectedValue = (TRUE === empty($selectedValue) || TRUE === array_key_exists($selectedValue, $optionsLabels));
 		$selected = (TRUE === empty($selectedValue) ? ' selected="selected"' : NULL);
+		foreach ($optionsIcons as $value => $img) {
+			if ($value === $selectedValue) {
+				$selectedIcon = $img;
+				break;
+			}
+		}
 		$html = array(
-			'<div class="form-control-wrap"><select class="select form-control" name="' . $parameters['itemFormElName'] . '" onchange="' . $parameters['fieldChangeFunc']['TBE_EDITOR_fieldChanged'] . ';' . $parameters['fieldChangeFunc']['alert'] . '">',
+			'<div class="form-control-wrap"><div class="input-group"><div class="input-group-addon input-group-icon">' . $selectedIcon . '</div><select class="select form-control" name="' . $parameters['itemFormElName'] . '" onchange="' . $parameters['fieldChangeFunc']['TBE_EDITOR_fieldChanged'] . ';' . $parameters['fieldChangeFunc']['alert'] . '">',
 			'<option' . $selected . ' value="">' . LocalizationUtility::translate('tt_content.nativeLabel', 'MooxCore') . '</option>'
 		);
-		foreach ($options as $value => $label) {
+		foreach ($optionsLabels as $value => $label) {
 			$selected = $value === $selectedValue ? ' selected="selected"' : NULL;
 			$html[] = '<option' . $selected . ' value="' . $value . '">' . $label . '</option>';
 		}
 		if (FALSE === $hasSelectedValue) {
 			$html[] = '<option selected="selected">INVALID: ' . $selectedValue . '</option>';
 		}
-		$html[] = '</select></div>';
+		$html[] = '</select></div></div>';
 		return implode(LF, $html);
 	}
 
