@@ -65,6 +65,7 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 			$this->variants[$contentType] = array();
 			foreach ($registeredVariantExtensions as $extensionKeyOrArray) {
 				$icon = NULL;
+				$versions = array();
 				if (TRUE === is_array($extensionKeyOrArray) && 3 === count($extensionKeyOrArray)) {
 					list ($extensionKey, $labelReference, $icon) = $extensionKeyOrArray;
 				} elseif (TRUE === is_array($extensionKeyOrArray) && 2 === count($extensionKeyOrArray)) {
@@ -73,7 +74,6 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 					$extensionKey = ExtensionNamingUtility::getExtensionKey($extensionKeyOrArray);
 					$labelReference = 'moox_core.variantLabel';
 				}
-				$templatePathAndFilename = $this->resolveTemplateFileForVariant($extensionKey, $contentType, $extensionKeyOrArray);
 				$controllerName = 'CoreContent/' . ucfirst($contentType);
 				$paths = $this->getViewConfigurationForExtensionName($extensionKey);
 				$templatePaths = new TemplatePaths($paths);
