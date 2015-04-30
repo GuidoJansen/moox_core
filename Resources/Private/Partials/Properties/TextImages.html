@@ -1,6 +1,7 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
-<flux:form.sheet name="image" label="LLL:sheets.image">
+
+<flux:form.sheet name="image" label="LLL:sheets.image" extensionName="DCNGmbH.MooxCore">
 	<flux:field.select name="positionclass" label="LLL:fields.positionclass" items="{beside-left: 'beside-left', beside-right: 'beside-right', top: 'top', bottom: 'bottom', intext-left: 'intext-left', intext-right: 'intext-right'}" default="beside-left" requestUpdate="1" />
 	<f:if condition="{positionclass} == 'top'">
 		<flux:field.select name="imagealignmentclass" label="LLL:fields.imagealignmentclass" items="{left: 'left', center: 'center', right: 'right'}" default="left" />
