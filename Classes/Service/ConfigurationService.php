@@ -58,31 +58,33 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 	 */
 	protected function initializeVariants() {
 		$variants = (array) $this->getAllRegisteredVariants();
-		foreach ($variants as $contentType => $extensionKeyOrArray) {
-                        if (TRUE === empty($extensionKeyOrArray)) {
+		foreach ($variants as $contentType => $registeredVariantExtensions) {
+			if (TRUE === empty($registeredVariantExtensions)) {
 				continue;
 			}
 			$this->variants[$contentType] = array();
-			$icon = NULL;
-			if (TRUE === is_array($extensionKeyOrArray) && 3 === count($extensionKeyOrArray)) {
-				list ($extensionKey, $labelReference, $icon) = $extensionKeyOrArray;
-			} elseif (TRUE === is_array($extensionKeyOrArray) && 2 === count($extensionKeyOrArray)) {
-				list ($extensionKey, $labelReference) = $extensionKeyOrArray;
-			} else {
-				$extensionKey = ExtensionNamingUtility::getExtensionKey($extensionKeyOrArray);
-				$labelReference = 'moox_core.variantLabel';
+			foreach ($registeredVariantExtensions as $extensionKeyOrArray) {
+				$icon = NULL;
+				if (TRUE === is_array($extensionKeyOrArray) && 3 === count($extensionKeyOrArray)) {
+					list ($extensionKey, $labelReference, $icon) = $extensionKeyOrArray;
+				} elseif (TRUE === is_array($extensionKeyOrArray) && 2 === count($extensionKeyOrArray)) {
+					list ($extensionKey, $labelReference) = $extensionKeyOrArray;
+				} else {
+					$extensionKey = ExtensionNamingUtility::getExtensionKey($extensionKeyOrArray);
+					$labelReference = 'moox_core.variantLabel';
+				}
+				$templatePathAndFilename = $this->resolveTemplateFileForVariant($extensionKey, $contentType, $extensionKeyOrArray);
+				$controllerName = 'CoreContent/' . ucfirst($contentType);
+				$paths = $this->getViewConfigurationForExtensionName($variant);
+				$templatePaths = new TemplatePaths($paths);
+				$files = $templatePaths->resolveAvailableTemplateFiles($controllerName);
+				foreach ($files as $file) {
+					$versions[] = basename($file, '.' . TemplatePaths::DEFAULT_FORMAT);
+				}
+				$versions = array_unique($versions);
+				$this->versions[$contentType] = array($extensionKey => $versions);
+				$this->variants[$contentType][] = array($extensionKey, $labelReference, $icon);
 			}
-			$templatePathAndFilename = $this->resolveTemplateFileForVariant($extensionKey, $contentType, $extensionKeyOrArray);
-			$controllerName = 'CoreContent/' . ucfirst($contentType);
-			$paths = $this->getViewConfigurationForExtensionName($variant);
-			$templatePaths = new TemplatePaths($paths);
-			$files = $templatePaths->resolveAvailableTemplateFiles($controllerName);
-			foreach ($files as $file) {
-				$versions[] = basename($file, '.' . TemplatePaths::DEFAULT_FORMAT);
-			}
-			$versions = array_unique($versions);
-			$this->versions[$contentType] = array($extensionKey => $versions);
-			$this->variants[$contentType][] = array($extensionKey, $labelReference, $icon);
 		}
 	}
 
