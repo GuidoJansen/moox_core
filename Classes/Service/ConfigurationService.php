@@ -75,7 +75,7 @@ class ConfigurationService extends FluxService implements SingletonInterface {
 				}
 				$templatePathAndFilename = $this->resolveTemplateFileForVariant($extensionKey, $contentType, $extensionKeyOrArray);
 				$controllerName = 'CoreContent/' . ucfirst($contentType);
-				$paths = $this->getViewConfigurationForExtensionName($variant);
+				$paths = $this->getViewConfigurationForExtensionName($extensionKey);
 				$templatePaths = new TemplatePaths($paths);
 				$files = $templatePaths->resolveAvailableTemplateFiles($controllerName);
 				foreach ($files as $file) {
