@@ -23,7 +23,7 @@
     "keywords": ["MOOX", "TYPO3", "Bootstrap", "Template", "CMS", "Responsive", "Fluid", "Enterprise"],
     "homepage": "http://www.moox.org/",
     "license": "GPL-2.0+",
-    "version": "0.9.60",
+    "version": "0.9.61",
     "support": {
         "issues": "https://github.com/dcngmbh/moox_core/issues"
     },
