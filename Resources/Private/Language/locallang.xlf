@@ -102,6 +102,9 @@
 			<trans-unit id="fields.uploadsAlignment" xml:space="preserve">
 				<source>Alignment</source>
 			</trans-unit>
+			<trans-unit id="fields.uploadsTarget" xml:space="preserve">
+				<source>Open file(s) in a new Window?</source>
+			</trans-unit>
 			<trans-unit id="flux.bullets.sheets.bullets" xml:space="preserve">
 				<source>Bullet types</source>
 			</trans-unit>
