@@ -81,6 +81,9 @@
 			<trans-unit id="fields.uploadsAlignment" xml:space="preserve">
 				<target>Ausrichtung</target>
 			</trans-unit>
+			<trans-unit id="fields.uploadsTarget" xml:space="preserve">
+				<target>Datei(en) in neuem Fenster öffnen?</target>
+			</trans-unit>
 			<trans-unit id="flux.bullets.sheets.bullets" xml:space="preserve">
 				<target>Aufzählungs-Art</target>
 			</trans-unit>
