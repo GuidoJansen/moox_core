@@ -60,7 +60,7 @@ config {
 }
 
 page.includeCSS {
-	theme = EXT:moox_core/Resources/Private/Less/Bootstrap/bootstrap.less
+	theme = EXT:moox_core/Resources/Private/Less/Moox/moox.less
 }
 
 plugin.tx_vhs.assets.mergedAssetsUseHashedFilename = 1
