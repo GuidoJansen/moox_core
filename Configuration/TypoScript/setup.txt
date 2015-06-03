@@ -108,6 +108,19 @@ plugin.tx_vhs.settings.asset{
 		type = css
 	}
 }
+[globalVar = LIT:0<{$plugin.tx_mooxcore.settings.container.enableAnimation}]
+	plugin.tx_vhs.settings.asset{
+		wowAnimate {
+			path = EXT:moox_core/Resources/Public/Js/wow.min.js
+			external = 0
+			dependencies = mooxcore
+			group = moox
+			standalone = 0
+			movable = 1
+			type = js
+		}
+	}
+[global]
 
 plugin.tx_mooxcore.view {
 	label = MOOX Content Elements

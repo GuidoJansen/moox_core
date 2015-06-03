@@ -45,6 +45,9 @@
 			<trans-unit id="fields.spacingNames">
 				<target>Abstand</target>
 			</trans-unit>
+			<trans-unit id="fields.animateClass">
+				<target>Animation</target>
+			</trans-unit>
 			<trans-unit id="fields.tagName">
 				<target>HTML Elementtyp</target>
 			</trans-unit>
