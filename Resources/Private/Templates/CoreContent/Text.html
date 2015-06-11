@@ -12,7 +12,9 @@
 </f:section>
 
 <f:section name="Preview">
-	{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters, append: '') -> v:or(alternative: row.bodytext)}
+	<div style="margin-top: 10px">
+		{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters, append: '...') -> v:or(alternative: row.bodytext)}
+	</div>
 </f:section>
 
 <f:section name="Main">

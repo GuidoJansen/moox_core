@@ -35,7 +35,7 @@ class LogoView extends \TYPO3\CMS\Backend\View\LogoView {
 		}
 
 		$logoTag = '<img src="' . $imgUrl . '" width="' . $width . '" height="' . $height . '" title="'. $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] . '" alt="" />';
-		$siteName = '<span class="typo3-sitename"><a style="color:#fff;" href="http://'.$GLOBALS['_SERVER']['HTTP_HOST'].'/" target="_blank">'. $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] . '[' . TYPO3_version . ']</a></span>'; 
+		$siteName = '<span class="typo3-sitename"><a style="color:#fff;" href="http://'.$GLOBALS['_SERVER']['HTTP_HOST'].'/" target="_blank">'. $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] . ' [' . TYPO3_version . ']</a></span>'; 
 		return '<a href="http://typo3.org/" target="_blank">' . $logoTag . '</a>' . $siteName;
 	}
 
