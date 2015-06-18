@@ -8,7 +8,7 @@
 	 xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
 	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 	<f:section name="Configuration">
-		<flux:form id="panels" options="{group: 'Bootstrap', icon: '../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-alert.png'}">
+		<flux:form id="panels" options="{group: 'Bootstrap', icon: '../../../../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-alert.png'}">
 			<flux:field.select name="type" items="PanelBasic,PanelWithHeading,PanelWithFooter" requestUpdate="TRUE" />
                         <f:if condition="{type}=='PanelBasic'">
                             <flux:field.select name="class" items="panel-default,panel-primary,panel-success,panel-info,panel-warning,panel-danger" default="panel-default" />
