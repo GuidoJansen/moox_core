@@ -284,7 +284,7 @@ unset(
 );
 
 foreach ($GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'] as $index => $item) {
-	if ($item[1] === 'textpic') {
+	if ($item[1] === 'multimedia') {
 		unset($GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][$index]);
 	}
 };
