@@ -79,7 +79,13 @@ $GLOBALS['TCA']['tt_content']['palettes'] = array_replace(
                                 linkToTop;LLL:EXT:cms/locallang_ttc.xlf:linkToTop_formlabel
                         ',
 			'canNotCollapse' => 1
-		)
+		),
+		'frames' => array(
+			'showitem' => '
+                                content_options;Options
+                        ',
+			'canNotCollapse' => 1
+ 		)
 	)
 );
 
@@ -238,7 +244,6 @@ $GLOBALS['TCA']['tt_content']['columns']['content_version'] = array(
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'general', 'content_variant, content_version', 'after:CType');
 
 
-$GLOBALS['TCA']['tt_content']['palettes']['frames']['showitem'] = 'content_options';
 $GLOBALS['TCA']['tt_content']['palettes']['header']['showitem'] = 'header';
 $GLOBALS['TCA']['tt_content']['palettes']['headers']['showitem'] = 'header';
 $GLOBALS['TCA']['tt_content']['columns']['header']['label'] = NULL;
