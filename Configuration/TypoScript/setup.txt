@@ -172,6 +172,7 @@ plugin.tx_mooxcore.settings {
 		spacingNames = {$plugin.tx_mooxcore.settings.container.spacingNames}
 		defaultSpacingNames = {$plugin.tx_mooxcore.settings.container.defaultSpacingNames}
 		addAnchor = {$plugin.tx_mooxcore.settings.container.addAnchor}
+		enableAnimation = {$plugin.tx_mooxcore.settings.container.enableAnimation}
 	}
 	image {
 		classNames = {$plugin.tx_mooxcore.settings.image.classNames}
