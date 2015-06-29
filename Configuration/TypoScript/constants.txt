@@ -89,6 +89,10 @@ plugin.tx_mooxcore.settings {
 	cookieAlertBoxPosition = bottom
 	# cat=MOOX_CORE_COOKIES/settings/40; type=string; label=Text for Cookie Box : If it´s empty, the default text will be used.
 	cookieBoxText =
+	# cat=MOOX_CORE_COOKIES/settings/50; type=string; label=Label for Cookie Accept Button : If it´s empty, the default label will be used.
+	cookieButtonAccept =
+	# cat=MOOX_CORE_COOKIES/settings/60; type=string; label=Label for Cookie Settings Button : If it´s empty, the default label will be used.
+	cookieButtonSettings =
 	
 	# cat=MOOX_ANALYTICS/settings/10; type=boolean; label=Use Piwik
 	usePiwik = 0

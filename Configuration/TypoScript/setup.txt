@@ -202,6 +202,8 @@ plugin.tx_mooxcore.settings {
 	cookieSettingsPage = {$plugin.tx_mooxcore.settings.cookieSettingsPage}
 	cookieAlertBoxPosition = {$plugin.tx_mooxcore.settings.cookieAlertBoxPosition}
 	cookieBoxText = {$plugin.tx_mooxcore.settings.cookieBoxText}
+	cookieButtonAccept = {$plugin.tx_mooxcore.settings.cookieButtonAccept}
+	cookieButtonSettings = {$plugin.tx_mooxcore.settings.cookieButtonSettings}
 	
 	### ANALYTICS ###
 	usePiwik = {$plugin.tx_mooxcore.settings.usePiwik}

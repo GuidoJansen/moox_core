@@ -120,8 +120,28 @@
 								</f:if>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="close cookie-accept" data-dismiss="alert"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonAccept" /></button>
-								<f:link.page pageUid="{settings.cookieSettingsPage}"><button type="button" class="close cookie-link-to-page"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonSettings" /></button></f:link.page>
+								<button type="button" class="close cookie-accept" data-dismiss="alert">
+									<f:if condition="{settings.cookieButtonAccept} != ''">
+										<f:then>
+											{settings.cookieButtonAccept}
+										</f:then>
+										<f:else>
+											<f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonAccept" />
+										</f:else>
+									</f:if>
+								</button>
+								<f:link.page pageUid="{settings.cookieSettingsPage}">
+									<button type="button" class="close cookie-link-to-page">
+										<f:if condition="{settings.cookieButtonSettings} != ''">
+											<f:then>
+												{settings.cookieButtonSettings}
+											</f:then>
+											<f:else>
+												<f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonSettings" />
+											</f:else>
+										</f:if>
+									</button>
+								</f:link.page>
 							</div>
 						</div>
 					</div>
@@ -137,8 +157,28 @@
 							<f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxContent" />
 						</f:else>
 					</f:if>
-					<button type="button" class="close cookie-accept" data-dismiss="alert"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonAccept" /></button>
-					<f:link.page pageUid="{settings.cookieSettingsPage}"><button type="button" class="close cookie-link-to-page"><f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonSettings" /></button></f:link.page>
+					<button type="button" class="close cookie-accept" data-dismiss="alert">
+						<f:if condition="{settings.cookieButtonAccept} != ''">
+							<f:then>
+								{settings.cookieButtonAccept}
+							</f:then>
+							<f:else>
+								<f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonAccept" />
+							</f:else>
+						</f:if>
+					</button>
+					<f:link.page pageUid="{settings.cookieSettingsPage}">
+						<button type="button" class="close cookie-link-to-page">
+							<f:if condition="{settings.cookieButtonSettings} != ''">
+								<f:then>
+									{settings.cookieButtonSettings}
+								</f:then>
+								<f:else>
+									<f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonSettings" />
+								</f:else>
+							</f:if>
+						</button>
+					</f:link.page>
 				</div>
 			</f:else>
 		</f:if>
