@@ -43,7 +43,7 @@ for ($i = 0; $i < count($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types']
 }
 
 /***************
- * Use moox_cote PAGE & USER TSconfig
+ * Use moox_core PAGE & USER TSconfig
  */
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/TypoScript/pageTSconfig.txt">');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/TypoScript/userTSconfig.txt">');
