@@ -101,7 +101,7 @@ plugin.tx_vhs.settings.asset{
 		type = js
 	}
 	fontawesome {
-		path = //maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css
+		path = //maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css
 		external = 1
 		group = cdn
 		standalone = 1
