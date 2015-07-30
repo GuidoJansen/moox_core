@@ -147,6 +147,7 @@ class ProviderField {
 	 * @return string
 	 */
 	public function createVersionsField(array $parameters) {
+		$options = array();
 		$defaults = $this->configurationService->getDefaults();
 		$preSelectedVariant = $parameters['row']['content_variant'];
 		$preSelectedVersion = $parameters['row']['content_version'];
@@ -161,9 +162,11 @@ class ProviderField {
 
 		$versions = $this->configurationService->getVariantVersions($parameters['row']['CType'], $preSelectedVariant);
 		if (TRUE === is_array($versions) && 0 < count($versions)) {
-			$options = array_combine($versions, $versions);
-		} else {
-			$options = array();
+			foreach ($versions as $version) {
+				$icon = $this->configurationService->getIconFromVersion($preSelectedVariant, $parameters['row']['CType'], $version);
+				$versionIcon = '<img src="' . $icon . '" alt="" /> ';
+				$options[$version] = array($versionIcon, $version);
+			}
 		}
 		return $this->renderSelectField($parameters, $options, $preSelectedVersion);
 	}
