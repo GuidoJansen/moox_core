@@ -35,13 +35,21 @@ $GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants'] = array_combine(
 	array_fill(0, count($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types']), array())
 );
 
-for ($i = 0; $i < count($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types']); $i++) {
+$types = count($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types']);
+for ($i = 0; $i < $types; $i++) {
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 		'DCNGmbH.MooxCore',
 		ucfirst($GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types'][$i]),
 		array('CoreContent' => 'render,error'),
 		array());
 }
+unset($types, $i);
+
+// Include new content elements to modWizards
+if (TRUE === version_compare(TYPO3_version, '7.3', '>')) {
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:moox_core/Configuration/PageTS/modWizards.ts">');
+}
+
 
 /***************
  * Use moox_core PAGE & USER TSconfig
