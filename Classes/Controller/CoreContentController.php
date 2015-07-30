@@ -155,6 +155,22 @@ class CoreContentController extends AbstractFluxController {
 				$contentUids = array_map('array_pop', $bindings);
 				$this->view->assign('contentUids', $contentUids);
 				break;
+			case CoreContentProvider::MENU_RELATEDPAGES:
+				$whereKeywords = $this->getWhereQueryForKeywords($record);
+				$selectdUids = TRUE === empty($record['pages'])
+					? $record['uid']
+					: $record['pages'];
+				$where = $whereKeywords . ' AND uid NOT IN (' . $selectdUids . ')';
+				$bindings = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+					'uid',
+					'pages',
+					$where,
+					'',
+					'sorting ASC'
+				);
+				$pageUids = array_map('array_pop', $bindings);
+				$this->view->assign('pageUids', $pageUids);
+				break;
 			default:
 		}
 	}
@@ -186,6 +202,36 @@ class CoreContentController extends AbstractFluxController {
 	 */
 	public function htmlAction() {
 
+	}
+
+	/**
+	 * @param $record
+	 * @return string
+	 */
+	protected function getWhereQueryForKeywords($record) {
+		$selectedUids = $record['pages'];
+		if (TRUE == empty($selectedUids)) {
+			$selectedUids = $record['pid'];
+		}
+		$keywordsRows = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+			'keywords',
+			'pages',
+			'uid IN (' . $selectedUids . ')',
+			'',
+			'sorting ASC'
+		);
+
+		$keywords = implode(',', array_map('array_pop', $keywordsRows));
+		$keywordsArray = array_unique(explode(',', $keywords));
+		$keyWordsWhereArr = [];
+		foreach ($keywordsArray as $word) {
+			$word = trim($word);
+			if ($word) {
+				$keyWordsWhereArr[] = 'keywords LIKE \'%' . $GLOBALS['TYPO3_DB']->quoteStr($word, 'pages') . '%\'';
+			}
+		}
+		$where = empty($keyWordsWhereArr) ? '' : '(' . implode(' OR ', $keyWordsWhereArr) . ')';
+		return $where;
 	}
 
 }
