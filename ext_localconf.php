@@ -26,6 +26,7 @@ $GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types'] = array(
 );
 
 \FluidTYPO3\Flux\Core::registerConfigurationProvider('DCNGmbH\MooxCore\Provider\CoreContentProvider');
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms']['db_new_content_el']['wizardItemsHook']['moox_core'] = 'DCNGmbH\MooxCore\Hooks\WizardItemsHookSubscriber';
 
 // Prepare a global variants registration array indexed by CType value.
 // To add your own, do fx: $GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants']['textpic'][] = 'myextensionkey';
