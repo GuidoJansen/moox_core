@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array (
 	'title' => 'MOOX Bootstrap Core',
-	'description' => 'TYPO3 Responsive using Less, Bootstrap, HTML5 Boilerplate, jQuery and Superfish. Extended by MOOX Design Templates, MOOX News and other MOOX Extensions.',
+	'description' => 'TYPO3 Responsive using Less, Bootstrap, HTML5 Boilerplate and jQuery. Extended by MOOX Design Templates, MOOX News and other MOOX Extensions.',
 	'category' => 'fe',
 	'version' => '0.9.61',
 	'state' => 'beta',
