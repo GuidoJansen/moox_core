@@ -27,6 +27,7 @@ namespace DCNGmbH\MooxCore\UserFunction;
 use DCNGmbH\MooxCore\Provider\CoreContentProvider;
 use DCNGmbH\MooxCore\Service\ConfigurationService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -65,8 +66,12 @@ class ProviderField {
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->injectObjectManager(GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager'));
-		$this->injectConfigurationService($this->objectManager->get('DCNGmbH\MooxCore\Service\ConfigurationService'));
+		/** @var ObjectManager $objectManager */
+		$objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$this->injectObjectManager($objectManager);
+		/** @var ConfigurationService $configurationService */
+		$configurationService = $this->objectManager->get('DCNGmbH\MooxCore\Service\ConfigurationService');
+		$this->injectConfigurationService($configurationService);
 	}
 
 	/**

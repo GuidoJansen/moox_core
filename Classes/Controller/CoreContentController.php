@@ -166,10 +166,8 @@ class CoreContentController extends AbstractFluxController {
 				break;
 			case CoreContentProvider::MENU_RELATEDPAGES:
 				$whereKeywords = $this->getWhereQueryForKeywords($record);
-				$selectdUids = TRUE === empty($record['pages'])
-					? $record['uid']
-					: $record['pages'];
-				$where = $whereKeywords . ' AND uid NOT IN (' . $selectdUids . ')';
+				$selectedUids = TRUE === empty($record['pages']) ? $record['uid'] : $record['pages'];
+				$where = $whereKeywords . ' AND uid NOT IN (' . $selectedUids . ')';
 				$bindings = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
 					'uid',
 					'pages',
