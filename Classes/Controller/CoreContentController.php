@@ -58,6 +58,15 @@ class CoreContentController extends AbstractFluxController {
 		$row = $this->getRecord();
 		$flexFormData = $this->configurationService->convertFlexFormContentToArray($row['pi_flexform']);
 		$this->settings = RecursiveArrayUtility::merge($this->settings, $flexFormData, FALSE, FALSE);
+		$form = $this->provider->getForm($row);
+		$generalSettings = $this->configurationService->convertFlexFormContentToArray($row['pi_flexform'], $form);
+		$contentSettings = $this->configurationService->convertFlexFormContentToArray($row['content_options'], $form);
+		$this->settings = RecursiveArrayUtility::merge($this->settings, $generalSettings, FALSE, FALSE);
+		if (FALSE === isset($this->settings['content'])) {
+			$this->settings['content'] = $contentSettings;
+		} else {
+			$this->settings['content'] = RecursiveArrayUtility::merge($this->settings['content'], $contentSettings);
+		}
 		parent::initializeViewVariables();
 	}
 
