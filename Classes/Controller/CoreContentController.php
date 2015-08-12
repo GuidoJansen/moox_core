@@ -230,7 +230,7 @@ class CoreContentController extends AbstractFluxController {
 
 		$keywords = implode(',', array_map('array_pop', $keywordsRows));
 		$keywordsArray = array_unique(explode(',', $keywords));
-		$keyWordsWhereArr = [];
+		$keyWordsWhereArr = array();
 		foreach ($keywordsArray as $word) {
 			$word = trim($word);
 			if ($word) {
