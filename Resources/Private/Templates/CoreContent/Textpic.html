@@ -28,7 +28,7 @@
 
 <f:section name="Preview">
 	<div style="margin-top: 10px">
-		{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters, append: '...') -> v:or(alternative: row.bodytext)}
+		{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters, append: '...') -> f:format.html() -> v:or(alternative: row.bodytext)}
 	</div>
 	<div style="margin-top: 10px">
 		<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
