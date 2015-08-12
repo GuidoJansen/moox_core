@@ -1,34 +1,27 @@
 <?php
-/***************************************************************
- *  Copyright notice
+
+/*
+ * This file is part of the DCNGmbH/MooxCore project under GPLv2 or later.
  *
- *  (c) 2014 Claus Due <claus@namelesscoder.net>
- *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
+ * For the full copyright and license information, please read the
+ * LICENSE.md file that was distributed with this source code.
+ */
 
 /**
- * Updater Script for fluidcontent_core
+ * Updater Script for moox_core
  *
- * @package FluidcontentCore
+ * @package MooxCore
  */
+// @codingStandardsIgnoreStart
 class ext_update {
+
+	/**
+	 * @var string
+	 */
+	protected $sourceConfigurationLines = array(
+		'$GLOBALS[\'TYPO3_CONF_VARS\'][\'FE\'][\'contentRenderingTemplates\'] = array(\'mooxcore/Configuration/TypoScript/\');',
+		'$GLOBALS[\'TYPO3_CONF_VARS\'][\'FE\'][\'activateContentAdapter\'] = 0;'
+	);
 
 	/**
 	 * @var string
@@ -43,19 +36,78 @@ class ext_update {
 	}
 
 	/**
+	 * @return array
+	 */
+	protected function getCurrentConfigurationLines() {
+		if (FALSE === file_exists($this->targetConfigurationFile)) {
+			// We return not a completely empty array but an array containing the
+			// expected opening PHP tag; to make sure it ends up in the output.
+			return array('<?php');
+		}
+		$lines = explode(PHP_EOL, trim(file_get_contents($this->targetConfigurationFile)));
+		if (0 === count($lines) || '<?php' !== $lines[0]) {
+			array_unshift($lines, '<?php');
+		}
+		return $lines;
+	}
+
+	/**
+	 * Returns TRUE if either of the expected configuration lines
+	 * do not currently exist. If both exist, returns FALSE
+	 * meaning "no need to run the script"
+	 *
 	 * @return boolean
 	 */
 	public function access() {
-		return (FALSE === file_exists($this->targetConfigurationFile) && TRUE === \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('moox_core'));
+		$currentConfiguration = $this->getCurrentConfigurationLines();
+		foreach ($this->sourceConfigurationLines as $expectedConfigurationLine) {
+			if (FALSE === in_array($expectedConfigurationLine, $currentConfiguration)) {
+				return TRUE;
+			}
+		}
+		return FALSE;
 	}
 
 	/**
 	 * @return string
 	 */
 	public function main() {
-		$sourceFile = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('moox_core', 'Build/AdditionalConfiguration.php');
-		copy($sourceFile, $this->targetConfigurationFile);
-		return 'Deployed "' . $sourceFile . '" to "' . $this->targetConfigurationFile . '"';
+		$this->installAdditionalConfiguration();
+		return 'Additional configuration lines added to AdditionalConfiguration.php';
+	}
+
+	/**
+	 * Install expected lines missing from AdditionalConfiguration file
+	 *
+	 * @return void
+	 */
+	protected function installAdditionalConfiguration() {
+		$currentConfigurationLines = $this->getCurrentConfigurationLines();
+		// remove trailing empty spaces and closing PHP tag to ensure predictable appending:
+		for ($i = count($currentConfigurationLines) - 1; $i--; $i >= 0) {
+			$line = trim($currentConfigurationLines[$i]);
+			if (TRUE === empty($line) || '?>' === $line) {
+				unset($currentConfigurationLines[$i]);
+			}
+		}
+		// add expected lines if they are not found:
+		foreach ($this->sourceConfigurationLines as $expectedConfigurationLine) {
+			if (FALSE === in_array($expectedConfigurationLine, $currentConfigurationLines)) {
+				$currentConfigurationLines[] = $expectedConfigurationLine;
+			}
+		}
+		$this->writeAdditionalConfigurationFile($currentConfigurationLines);
+	}
+
+	/**
+	 * Wrapping method to write array to file
+	 *
+	 * @param array $lines
+	 * @return void
+	 */
+	protected function writeAdditionalConfigurationFile(array $lines) {
+		$content = implode(PHP_EOL, $lines) . PHP_EOL;
+		file_put_contents($this->targetConfigurationFile, $content);
 	}
 
 }
