@@ -5,6 +5,6 @@
 							-> v:or(alternative: 'content-{record.uid}') -> v:format.url.sanitizeString()}">
 		{contentElementRecord.header -> v:or(alternative: contentElementRecord.titleAttribute)
 		-> v:or(alternative: '{contentElementRecord.bodyText -> f:format.html()}')
-		-> f:format.crop(maxCharacters: content.settings.preview.maxCharacters)}
+		-> f:format.crop(maxCharacters: settings.content.settings.preview.maxCharacters)}
 	</f:link.page>
 </f:for>

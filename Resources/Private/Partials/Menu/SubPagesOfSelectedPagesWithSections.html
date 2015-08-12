@@ -4,7 +4,7 @@
 	<f:section name="Main">
 		<f:for each="{record.pages -> v:iterator.explode()}" as="menuPage">
 			<v:page.menu pageUid="{menuPage}">
-				<v:tag name="h{content.settings.header.type -> v:or(alternative: record.header_layout)
+				<v:tag name="h{settings.content.settings.header.type -> v:or(alternative: record.header_layout)
 					-> v:or(alternative: settings.header.type) -> v:math.sum(b: 1)}">
 					<f:link.page pageUid="{menuPageData.uid}">{menuPageData.linktext}</f:link.page>
 				</v:tag>
