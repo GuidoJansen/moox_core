@@ -19,6 +19,8 @@ plugin.tx_mooxcore.settings {
 	dnsPrefetch = 
 	# cat=MOOX_CORE/settings/40; type=int+; label=main menu entry level - other menus calculated based on this
 	entryLevel = 0
+	# cat=MOOX_CORE/settings/50; type=boolean; label=Load jQuery in the footer
+	jqueryMovable = 0
 	
 	defaults {
 		template = EXT:moox_core/Resources/Private/Templates/CoreContent/Default.html
