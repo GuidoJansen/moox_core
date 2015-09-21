@@ -74,7 +74,11 @@ $tempColumns = Array (
 	),
 );
 //\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tt_content');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns, 1);
+if (version_compare(TYPO3_branch, '6.2', '<')) {
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns, 1);
+} else {
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
+}
 
 // create palette
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content', ',--div--;LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_extended_visibility,tx_mooxcore_hide_desktop,tx_mooxcore_hide_laptop,tx_mooxcore_hide_tablet,tx_mooxcore_hide_phone,tx_mooxcore_hide_print,tx_mooxcore_hide_barrierfree,tx_mooxcore_hide_oldbrowser', '', '');
