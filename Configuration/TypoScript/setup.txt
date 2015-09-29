@@ -16,6 +16,8 @@ config {
     tx_cooluri_enable = 0
     disableImgBorderAttr = 1
     removeDefaultCss = 1
+	spamProtectEmailAddresses = {$plugin.tx_mooxcore.settings.spamProtectEmailAddresses}
+	spamProtectEmailAddresses_atSubst = {$plugin.tx_mooxcore.settings.spamProtectEmailAddressesAtSubst}
     htmlTag_stdWrap {
 	    setContentToCurrent = 1
 	    cObject = COA
@@ -179,6 +181,14 @@ plugin.tx_mooxcore.settings {
 	}
 	table {
 		classNames = {$plugin.tx_mooxcore.settings.table.classNames}
+	}
+	address {
+		addressIcon = {$plugin.tx_mooxcore.settings.address.addressIcon}
+		phoneIcon = {$plugin.tx_mooxcore.settings.address.phoneIcon}
+		mobileIcon = {$plugin.tx_mooxcore.settings.address.mobileIcon}
+		faxIcon = {$plugin.tx_mooxcore.settings.address.faxIcon}
+		emailIcon = {$plugin.tx_mooxcore.settings.address.emailIcon}
+		websiteIcon = {$plugin.tx_mooxcore.settings.address.websiteIcon}
 	}
 	caption {
 		types = {$plugin.tx_mooxcore.settings.caption.types}

@@ -21,6 +21,10 @@ plugin.tx_mooxcore.settings {
 	entryLevel = 0
 	# cat=MOOX_CORE/settings/50; type=boolean; label=Load jQuery in the footer
 	jqueryMovable = 0
+	# cat=MOOX_CORE/settings/60; type=options[Enable=2,Disable=0]; label=TYPO3 spam email addresses protection
+	spamProtectEmailAddresses = 2
+	# cat=MOOX_CORE/settings/61; type=string; label=TYPO3 spam email addresses protection placeholder for '@' character
+	spamProtectEmailAddressesAtSubst = (at)
 	
 	defaults {
 		template = EXT:moox_core/Resources/Private/Templates/CoreContent/Default.html
@@ -63,6 +67,20 @@ plugin.tx_mooxcore.settings {
 	table {
 		# cat=MOOX_CORE_CONTENT: table/110/classNames; type=string; label=Available CSS class names for tables (comma separated)
 		classNames = table,table-striped,table-bordered,table-hover,table-condensed,table-responsive
+	}
+	address {
+		# cat=MOOX_CORE_CONTENT: address/110/addressIcon; type=string; label=Class address icon: You can use Glyphicon and Font Awesome
+		addressIcon = fa fa-home
+		# cat=MOOX_CORE_CONTENT: address/115/phoneIcon; type=string; label=Class phone icon: You can use Glyphicon and Font Awesome
+		phoneIcon = fa fa-phone
+		# cat=MOOX_CORE_CONTENT: address/120/mobileIcon; type=string; label=Class mobile icon: You can use Glyphicon and Font Awesome
+		mobileIcon = fa fa-mobile fa-lg
+		# cat=MOOX_CORE_CONTENT: address/125/faxIcon; type=string; label=Class fax icon: You can use Glyphicon and Font Awesome
+		faxIcon = fa fa-fax
+		# cat=MOOX_CORE_CONTENT: address/130/emailIcon; type=string; label=Class email icon: You can use Glyphicon and Font Awesome
+		emailIcon = fa fa-envelope
+		# cat=MOOX_CORE_CONTENT: address/135/websiteIcon; type=string; label=Class website icon: You can use Glyphicon and Font Awesome
+		websiteIcon = fa fa-link
 	}
 	preview {
 		# cat=MOOX_CORE_CONTENT: preview/110/maxCharacters; type=string; label=Maximum number of characters to display in previews
