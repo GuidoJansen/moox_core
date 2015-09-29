@@ -24,7 +24,7 @@ plugin.tx_mooxcore.settings {
 	# cat=MOOX_CORE/settings/60; type=options[Enable=2,Disable=0]; label=TYPO3 spam email addresses protection
 	spamProtectEmailAddresses = 2
 	# cat=MOOX_CORE/settings/61; type=string; label=TYPO3 spam email addresses protection placeholder for '@' character
-	spamProtectEmailAddressesAtSubst = (at)
+	spamProtectEmailAddressesAtSubst = <span class="fa fa-at"></span>
 	
 	defaults {
 		template = EXT:moox_core/Resources/Private/Templates/CoreContent/Default.html
