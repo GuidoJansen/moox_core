@@ -88,6 +88,6 @@
 	</f:section>
 
 	<f:section name="Addressitemwebsite">
-		<div class="address-website"><f:if condition="{elementData.websiteabbrtitle}"><abbr title="{elementData.websiteabbrtitle}"></f:if><f:if condition="{elementData.websiteicon}"><span class="{settings.address.websiteIcon}"></span>&nbsp;</f:if>{elementData.websiteabbr}<f:if condition="{elementData.websiteabbrtitle}"></abbr></f:if><f:if condition="{elementDatawebsiteabbr}">&nbsp;&nbsp;</f:if><a href="{elementData.website}" target="_blank">{elementData.website -> v:format.eliminate(characters: 'http://') -> v:format.eliminate(characters: 'https://')}</a></div>
+		<div class="address-website"><f:if condition="{elementData.websiteabbrtitle}"><abbr title="{elementData.websiteabbrtitle}"></f:if><f:if condition="{elementData.websiteicon}"><span class="{settings.address.websiteIcon}"></span>&nbsp;</f:if>{elementData.websiteabbr}<f:if condition="{elementData.websiteabbrtitle}"></abbr></f:if><f:if condition="{elementData.websiteabbr}">&nbsp;&nbsp;</f:if><a href="{elementData.website}" target="_blank">{elementData.website -> v:format.eliminate(characters: 'http://') -> v:format.eliminate(characters: 'https://')}</a></div>
 	</f:section>
 </div>
