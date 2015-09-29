@@ -93,15 +93,14 @@ if (TYPO3_MODE === 'BE') {
 			'DCNGmbH\\MooxCore\\Service\\InstallService',
 			'createDefaultRobots'
 	);
-    /**
-     * Provides an AdditionalConfiguration.php file after extension is installed.
-     */
+	/**
+	 * Provides an example AdditionalConfiguration.php file after extension is installed and shows a warning if TYPO3 is not running with moox_core additional configuration.
+	 */
 	$signalSlotDispatcher->connect(
-			'TYPO3\CMS\Extensionmanager\Utility\InstallUtility',
-			'afterExtensionInstall',
-			'DCNGmbH\MooxCore\Hooks\InstallSignalSlot',
-			'installAddionalConfiguration',
-			FALSE
+			'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
+			'hasInstalledExtensions',
+			'DCNGmbH\\MooxCore\\Service\\InstallService',
+			'createDefaultAdditionalConfiguration'
 	);
 }
 
