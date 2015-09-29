@@ -28,6 +28,7 @@ $GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types'] = array(
 \FluidTYPO3\Flux\Core::registerConfigurationProvider('DCNGmbH\MooxCore\Provider\CoreContentProvider');
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms']['db_new_content_el']['wizardItemsHook']['moox_core'] = 'DCNGmbH\MooxCore\Hooks\WizardItemsHookSubscriber';
 
+
 // Prepare a global variants registration array indexed by CType value.
 // To add your own, do fx: $GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants']['textpic'][] = 'myextensionkey';
 $GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['variants'] = array_combine(
@@ -66,7 +67,8 @@ if($settings['UseRealUrlConfig'] == 1){
 }
 
 if (TYPO3_MODE === 'BE') {
-
+	// enable SignalSlot
+	/** @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher $signalSlotDispatcher */
     $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
     /**
      * Provides an example .htaccess file for Apache after extension is installed and shows a warning if TYPO3 is not running on Apache.
@@ -77,24 +79,25 @@ if (TYPO3_MODE === 'BE') {
         'DCNGmbH\\MooxCore\\Service\\InstallService',
         'generateApacheHtaccess'
     );
+	/**
+	 * Provides an example robots.txt file after extension is installed and shows a warning if TYPO3 is not running with moox_core robots.txt.
+	 */
+	$signalSlotDispatcher->connect(
+			'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
+			'hasInstalledExtensions',
+			'DCNGmbH\\MooxCore\\Service\\InstallService',
+			'createDefaultRobots'
+	);
     /**
-     * Provides an example AdditionalConfiguration.php file after extension is installed and shows a warning if TYPO3 is not running with moox_core additional configuration.
+     * Provides an AdditionalConfiguration.php file after extension is installed.
      */
-    $signalSlotDispatcher->connect(
-        'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-        'hasInstalledExtensions',
-        'DCNGmbH\\MooxCore\\Service\\InstallService',
-        'createDefaultAdditionalConfiguration'
-    );
-    /**
-     * Provides an example robots.txt file after extension is installed and shows a warning if TYPO3 is not running with moox_core robots.txt.
-     */
-    $signalSlotDispatcher->connect(
-        'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-        'hasInstalledExtensions',
-        'DCNGmbH\\MooxCore\\Service\\InstallService',
-        'createDefaultRobots'
-    );
+	$signalSlotDispatcher->connect(
+			'TYPO3\CMS\Extensionmanager\Utility\InstallUtility',
+			'afterExtensionInstall',
+			'DCNGmbH\MooxCore\Hooks\InstallSignalSlot',
+			'installAddionalConfiguration',
+			FALSE
+	);
 }
 
 /***************

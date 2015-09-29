@@ -92,50 +92,6 @@ class InstallService {
        );
        $this->addFlashMessage($flashMessage);
     }
-   
-    /**
-	 * Creates AdditionalConfiguration.php file inside the typo3conf directory
-	 *
-	 * @param string $configurationFile Path of AdditionalConfiguration.php file
-	 * @return void
-	 */
-    public function createDefaultAdditionalConfiguration($extension = NULL){
-	if($extension == $this->extKey){
-	    
-	    $configurationFile = GeneralUtility::getFileAbsFileName("typo3conf/AdditionalConfiguration.php");
-		    
-	    if(file_exists($configurationFile)){
-		
-		/**
-		 * Add Flashmessage that there is already an AdditionalConfiguration.php file and we are not going to override this.
-		 */
-		$flashMessage = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
-		    'There is already an AdditionalConfiguration file in the typo3conf directory, please make this line to your configuration "$GLOBALS[\'TYPO3_CONF_VARS\'][\'FE\'][\'contentRenderingTemplates\'] = array(\'mooxcore/Configuration/TypoScript/\');".<br>'
-		    . 'An example configuration is located at: <strong>typo3conf/ext/moox_core/Configuration/AdditionalConfiguration/AdditionalConfiguration.php</strong>',
-		    'AdditionalConfiguration.php file already exists',
-		    FlashMessage::NOTICE,
-		    TRUE
-		);
-		$this->addFlashMessage($flashMessage);
-			    return;
-		    }
-		       
-	    $configurationContent = GeneralUtility::getUrl(ExtensionManagementUtility::extPath($this->extKey).'/Configuration/AdditionalConfiguration/AdditionalConfiguration.php');
-	    GeneralUtility::writeFile($configurationFile, $configurationContent, TRUE);
-	    
-	    /**
-	     * Add Flashmessage that the example AdditionalCOnfiguration.php file was placed in the typo3conf directory
-	     */
-	    $flashMessage = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
-		'AdditionalConfiguration.php file was placed in your typo3conf directory. <br>',
-		'AdditionalConfiguration.php was placed in the typo3conf directory.',
-		FlashMessage::OK,
-		TRUE
-	   );
-	   $this->addFlashMessage($flashMessage);
-	   
-	}
-    }
     
 	/**
 	 * Creates robots.txt file inside the root directory
