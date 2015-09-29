@@ -271,7 +271,6 @@ unset(
 	$GLOBALS['TCA']['tt_content']['types']['swfobject'],
 	$GLOBALS['TCA']['tt_content']['types']['qtobject'],
 	$GLOBALS['TCA']['tt_content']['types']['multimedia'],
-	$GLOBALS['TCA']['tt_content']['types']['mailform'],
 	$GLOBALS['TCA']['tt_content']['types']['search'],
 	$GLOBALS['TCA']['tt_content']['columns']['text_properties'],
 	$GLOBALS['TCA']['tt_content']['columns']['text_align'],
@@ -297,6 +296,10 @@ unset(
 	$GLOBALS['TCA']['tt_content']['palettes']['image_accessibility'],
 	$GLOBALS['TCA']['tt_content']['palettes']['table']
 );
+
+if (FALSE === \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('form')) {
+	unset( $GLOBALS['TCA']['tt_content']['types']['mailform'] );
+}
 
 foreach ($GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'] as $index => $item) {
 	if ($item[1] === 'multimedia') {

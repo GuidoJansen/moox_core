@@ -49,6 +49,11 @@ unset($types, $i);
 // Include new content elements to modWizards
 if (TRUE === version_compare(TYPO3_version, '7.3', '>')) {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:moox_core/Configuration/PageTS/modWizards.ts">');
+
+	// If the form extension is loaded, then include the mailform element to modWizards
+	if (TRUE === \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('form')) {
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:moox_core/Configuration/PageTS/modWizardsMailform.ts">');
+	}
 }
 
 
