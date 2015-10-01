@@ -942,12 +942,18 @@
 			<trans-unit id="flux.addresses.objects.addresscolsobj.addressicon">
 				<source>Address icon</source>
 			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addresscolsobj.iconplaceholder">
+				<source>Icon placeholder</source>
+			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addresscolsobj">
 				<source>Adress-Zeile</source>
 			</trans-unit>
 
 			<trans-unit id="flux.addresses.objects.addressitemphone.phoneicon">
 				<source>Phone icon</source>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemphone.iconplaceholder">
+				<source>Icon placeholder</source>
 			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addressitemphone.phoneabbr">
 				<source>Telefonbezeichnung oder Abkürzung</source>
@@ -962,6 +968,9 @@
 			<trans-unit id="flux.addresses.objects.addressitemmobile.mobileicon">
 				<source>Mobile icon</source>
 			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemmobile.iconplaceholder">
+				<source>Icon placeholder</source>
+			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addressitemmobile.mobileabbr">
 				<source>Bezeichnung bzw. Abkürzung der Mobil-Nummer</source>
 			</trans-unit>
@@ -974,6 +983,9 @@
 
 			<trans-unit id="flux.addresses.objects.addressitemfax.faxicon">
 				<source>Fax icon</source>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemfax.iconplaceholder">
+				<source>Icon placeholder</source>
 			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addressitemfax.faxabbr">
 				<source>Faxbezeichnung oder Abkürzung</source>
@@ -988,6 +1000,9 @@
 			<trans-unit id="flux.addresses.objects.addressitemmail.mailicon">
 				<source>E-Mail icon</source>
 			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemmail.iconplaceholder">
+				<source>Icon placeholder</source>
+			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addressitemmail.mailabbr">
 				<source>E-Mailbezeichnung oder Abkürzung</source>
 			</trans-unit>
@@ -1000,6 +1015,9 @@
 
 			<trans-unit id="flux.addresses.objects.addressitemwebsite.websiteicon">
 				<source>Website icon</source>
+			</trans-unit>
+			<trans-unit id="flux.addresses.objects.addressitemwebsite.iconplaceholder">
+				<source>Icon placeholder</source>
 			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addressitemwebsite.websiteabbr">
 				<source>Websitebezeichnung oder Abkürzung</source>

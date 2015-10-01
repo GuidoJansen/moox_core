@@ -14,34 +14,40 @@
 			<flux:form.section name="addressitems">
 				<flux:form.object name="addresscolsobj">
 					<flux:field.checkbox name="addressicon" />
+					<flux:field.checkbox name="iconplaceholder" />
 					<flux:field.input name="addresscolinput" />
 				</flux:form.object>
 				<flux:form.object name="addressitemphone">
 					<flux:field.checkbox name="phoneicon" />
+					<flux:field.checkbox name="iconplaceholder" />
 					<flux:field.input name="phoneabbr" />
 					<flux:field.input name="phoneabbrtitle" />
 					<flux:field.input name="phonecontent" />
 				</flux:form.object>
 				<flux:form.object name="addressitemmobile">
 					<flux:field.checkbox name="mobileicon" />
+					<flux:field.checkbox name="iconplaceholder" />
 					<flux:field.input name="mobileabbr" />
 					<flux:field.input name="mobileabbrtitle" />
 					<flux:field.input name="mobilecontent" />
 				</flux:form.object>
 				<flux:form.object name="addressitemfax">
 					<flux:field.checkbox name="faxicon" />
+					<flux:field.checkbox name="iconplaceholder" />
 					<flux:field.input name="faxabbr" />
 					<flux:field.input name="faxabbrtitle" />
 					<flux:field.input name="faxcontent" />
 				</flux:form.object>
 				<flux:form.object name="addressitemmail">
 					<flux:field.checkbox name="mailicon" />
+					<flux:field.checkbox name="iconplaceholder" />
 					<flux:field.input name="mailabbr" />
 					<flux:field.input name="mailabbrtitle" />
 					<flux:field.input name="mail" />
 				</flux:form.object>
 				<flux:form.object name="addressitemwebsite">
 					<flux:field.checkbox name="websiteicon" />
+					<flux:field.checkbox name="iconplaceholder" />
 					<flux:field.input name="websiteabbr" />
 					<flux:field.input name="websiteabbrtitle" />
 					<flux:field.input name="website" />
@@ -68,26 +74,26 @@
 
 
 	<f:section name="Addresscolsobj">
-		<div class="addresscol.{iteration.cycle}"><f:if condition="{elementData.addressicon}"><span class="{settings.address.addressIcon}"></span>&nbsp;</f:if>{elementData.addresscolinput}</div>
+		<div class="addresscol.{iteration.cycle}"><f:if condition="{elementData.addressicon}"><span class="address-icon {settings.address.addressIcon}"></span>&nbsp;</f:if><f:if condition="{elementData.iconplaceholder}"><span class="address-icon"></span>&nbsp;</f:if>{elementData.addresscolinput}</div>
 	</f:section>
 
 	<f:section name="Addressitemphone">
-		<div class="address-phone"><f:if condition="{elementData.phoneabbrtitle}"><abbr title="{elementData.phoneabbrtitle}"></f:if><f:if condition="{elementData.phoneicon}"><span class="{settings.address.phoneIcon}"></span>&nbsp;</f:if>{elementData.phoneabbr}<f:if condition="{elementData.phoneabbrtitle}"></abbr></f:if><f:if condition="{elementData.phoneabbr}">&nbsp;&nbsp;</f:if><a href="phoneto:{elementData.phonecontent}">{elementData.phonecontent}</a></div>
+		<div class="address-phone"><f:if condition="{elementData.phoneabbrtitle}"><abbr title="{elementData.phoneabbrtitle}"></f:if><f:if condition="{elementData.phoneicon}"><span class="address-icon {settings.address.phoneIcon}"></span>&nbsp;</f:if><f:if condition="{elementData.iconplaceholder}"><span class="address-icon"></span>&nbsp;</f:if>{elementData.phoneabbr}<f:if condition="{elementData.phoneabbrtitle}"></abbr></f:if><f:if condition="{elementData.phoneabbr}">&nbsp;&nbsp;</f:if><a href="phoneto:{elementData.phonecontent}">{elementData.phonecontent}</a></div>
 	</f:section>
 
 	<f:section name="Addressitemmobile">
-		<div class="address-mobile"><f:if condition="{elementData.mobileabbrtitle}"><abbr title="{elementData.mobileabbrtitle}"></f:if><f:if condition="{elementData.mobileicon}"><span class="{settings.address.mobileIcon}"></span>&nbsp;</f:if>{elementData.mobileabbr}<f:if condition="{elementData.mobileabbrtitle}"></abbr></f:if><f:if condition="{elementData.mobileabbr}">&nbsp;&nbsp;</f:if><a href="phoneto:{elementData.mobilecontent}">{elementData.mobilecontent}</a></div>
+		<div class="address-mobile"><f:if condition="{elementData.mobileabbrtitle}"><abbr title="{elementData.mobileabbrtitle}"></f:if><f:if condition="{elementData.mobileicon}"><span class="address-icon {settings.address.mobileIcon}"></span>&nbsp;</f:if><f:if condition="{elementData.iconplaceholder}"><span class="address-icon"></span>&nbsp;</f:if>{elementData.mobileabbr}<f:if condition="{elementData.mobileabbrtitle}"></abbr></f:if><f:if condition="{elementData.mobileabbr}">&nbsp;&nbsp;</f:if><a href="phoneto:{elementData.mobilecontent}">{elementData.mobilecontent}</a></div>
 	</f:section>
 
 	<f:section name="Addressitemfax">
-		<div class="address-fax"><f:if condition="{elementData.faxabbrtitle}"><abbr title="{elementData.faxabbrtitle}"></f:if><f:if condition="{elementData.faxicon}"><span class="{settings.address.faxIcon}"></span>&nbsp;</f:if>{elementData.faxabbr}<f:if condition="{elementData.faxabbrtitle}"></abbr></f:if><f:if condition="{elementData.faxabbr}">&nbsp;&nbsp;</f:if>{elementData.faxcontent}</div>
+		<div class="address-fax"><f:if condition="{elementData.faxabbrtitle}"><abbr title="{elementData.faxabbrtitle}"></f:if><f:if condition="{elementData.faxicon}"><span class="address-icon {settings.address.faxIcon}"></span>&nbsp;</f:if><f:if condition="{elementData.iconplaceholder}"><span class="address-icon"></span>&nbsp;</f:if>{elementData.faxabbr}<f:if condition="{elementData.faxabbrtitle}"></abbr></f:if><f:if condition="{elementData.faxabbr}">&nbsp;&nbsp;</f:if>{elementData.faxcontent}</div>
 	</f:section>
 
 	<f:section name="Addressitemmail">
-		<div class="address-mail"><f:if condition="{elementData.mailabbrtitle}"><abbr title="{elementData.mailabbrtitle}"></f:if><f:if condition="{elementData.mailicon}"><span class="{settings.address.emailIcon}"></span>&nbsp;</f:if>{elementData.mailabbr}<f:if condition="{elementData.mailabbrtitle}"></abbr></f:if><f:if condition="{elementData.mailabbr}">&nbsp;&nbsp;</f:if><v:link.typolink configuration="{parameter: elementData.mail}">{elementData.mail}</v:link.typolink></div>
+		<div class="address-mail"><f:if condition="{elementData.mailabbrtitle}"><abbr title="{elementData.mailabbrtitle}"></f:if><f:if condition="{elementData.mailicon}"><span class="address-icon {settings.address.emailIcon}"></span>&nbsp;</f:if><f:if condition="{elementData.iconplaceholder}"><span class="address-icon"></span>&nbsp;</f:if>{elementData.mailabbr}<f:if condition="{elementData.mailabbrtitle}"></abbr></f:if><f:if condition="{elementData.mailabbr}">&nbsp;&nbsp;</f:if><v:link.typolink configuration="{parameter: elementData.mail}">{elementData.mail}</v:link.typolink></div>
 	</f:section>
 
 	<f:section name="Addressitemwebsite">
-		<div class="address-website"><f:if condition="{elementData.websiteabbrtitle}"><abbr title="{elementData.websiteabbrtitle}"></f:if><f:if condition="{elementData.websiteicon}"><span class="{settings.address.websiteIcon}"></span>&nbsp;</f:if>{elementData.websiteabbr}<f:if condition="{elementData.websiteabbrtitle}"></abbr></f:if><f:if condition="{elementData.websiteabbr}">&nbsp;&nbsp;</f:if><a href="{elementData.website}" target="_blank">{elementData.website -> v:format.eliminate(characters: 'http://') -> v:format.eliminate(characters: 'https://')}</a></div>
+		<div class="address-website"><f:if condition="{elementData.websiteabbrtitle}"><abbr title="{elementData.websiteabbrtitle}"></f:if><f:if condition="{elementData.websiteicon}"><span class="address-icon {settings.address.websiteIcon}"></span>&nbsp;</f:if><f:if condition="{elementData.iconplaceholder}"><span class="address-icon"></span>&nbsp;</f:if>{elementData.websiteabbr}<f:if condition="{elementData.websiteabbrtitle}"></abbr></f:if><f:if condition="{elementData.websiteabbr}">&nbsp;&nbsp;</f:if><a href="{elementData.website}" target="_blank">{elementData.website -> v:format.replace(substring: 'http://', replacement: '') -> v:format.replace(substring: 'https://', replacement: '')}</a></div>
 	</f:section>
 </div>
