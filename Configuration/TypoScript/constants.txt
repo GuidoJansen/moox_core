@@ -53,7 +53,7 @@ plugin.tx_mooxcore.settings {
 		defaultSpacingNames = 
 		# cat=MOOX_CORE_CONTENT: container/120/addAnchor; type=boolean; label=Add anchor to content element
 		addAnchor = 0
-		# cat=MOOX_CORE_CONTENT: container/125/addAnchor; type=boolean; label=Enable animations for content elements
+		# cat=MOOX_CORE_CONTENT: container/125/enableAnimation; type=boolean; label=Enable animations for content elements
 		enableAnimation = 0
 	}
 	image {
