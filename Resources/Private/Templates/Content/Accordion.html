@@ -33,15 +33,16 @@
 	</f:section>
 
 	<f:section name="Main">
-		<v:variable.set name="activeTabIndex" value="0" />
-		<f:for each="{panels}" as="panel" iteration="iteration">
-			<f:if condition="{panel.panel.active}">
-				<v:variable.set name="activeTabIndex" value="{iteration.index}" />
-			</f:if>
-		</f:for>
-
 		<div class="panel-group" id="accordion-{record.uid}">
 			<f:for each="{panels}" as="panel" iteration="iteration">
+				<f:if condition="{panel.panel.active} == '1'">
+					<f:then>
+						<v:variable.set name="activeTab" value="TRUE" />
+					</f:then>
+					<f:else>
+						<v:variable.set name="activeTab" value="FALSE" />
+					</f:else>
+				</f:if>
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
@@ -51,7 +52,7 @@
 							</a>
 						</h4>
 					</div>
-					<div id="panel-{record.uid}-{iteration.index}" class="panel-collapse collapse {f:if(condition: '{activeTabIndex} == {iteration.index}', then: 'in')}">
+					<div id="panel-{record.uid}-{iteration.index}" class="panel-collapse collapse {f:if(condition: '{activeTab}', then: 'in')}">
 						<div class="panel-body">
 							<flux:content.render area="content.{iteration.index}" />
 						</div>
