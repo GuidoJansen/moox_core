@@ -8,7 +8,7 @@
      xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
     <f:section name="Configuration">
-            <flux:form id="buttonwithdropdown" options="{group: 'Bootstrap', icon: '../../../../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-button.png'}">
+            <flux:form id="buttonwithdropdown" options="{group: 'Bootstrap', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-button.png\')}'}">
                     <flux:form.sheet name="ButtonSheetOne">
                             <flux:field.select items="xs,sm,default,lg" name="settings.ButtonSize" default="default"/>
                             <flux:field.checkbox name="settings.ButtonCenter" default="0" />

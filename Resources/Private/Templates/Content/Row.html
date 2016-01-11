@@ -8,7 +8,7 @@
 	 xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
 	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 	<f:section name="Configuration">
-		<flux:form id="row" options="{group: 'Grid', icon: '../../../../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-grid.png'}">
+		<flux:form id="row" options="{group: 'Grid', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-grid.png\')}'}">
 			<flux:form.section name="columns">
 				<flux:form.object name="column">
 					<flux:field.select name="class" items="{f:render(section: 'Value', arguments: {iteration: iteration}) -> v:iterator.loop(count: 12, iteration: 'iteration', minimum: 1, maximum: 12)}" label="Columns: 12" />

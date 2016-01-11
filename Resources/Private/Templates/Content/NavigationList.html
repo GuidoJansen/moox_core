@@ -8,7 +8,7 @@
 	 xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
 	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 	<f:section name="Configuration">
-		<flux:form id="navigationlist" options="{group: 'Bootstrap', icon: '../../../../typo3conf/ext/moox_core/Resources/Public/Icons/bootstrap/icon-sitemap.png'}">
+		<flux:form id="navigationlist" options="{group: 'Bootstrap', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-sitemap.png\')}'}">
 			<flux:form.sheet name="display">
 				<flux:field.checkbox name="addWell" />
 				<flux:field.checkbox name="zeroPadding" />
