@@ -167,11 +167,7 @@ class InstallService {
 	    $robotsContent .= "User-Agent: * \n";
 	    $robotsContent .= " \n";
 	    $robotsContent .= "Allow: / \n";
-	    $robotsContent .= "Disallow: /fileadmin/System/ \n";
-	    $robotsContent .= "Disallow: /t3lib/ \n";
 	    $robotsContent .= "Disallow: /typo3/ \n";
-	    $robotsContent .= "Disallow: /*?id=* \n";
-	    $robotsContent .= "Disallow: /*&type=98 \n";
 	    $robotsContent .= " \n";
 	    $robotsContent .= "Sitemap: http://" .$_SERVER['HTTP_HOST']. "/sitemap.xml";
 	    GeneralUtility::writeFile($robotsFile, $robotsContent, TRUE);
