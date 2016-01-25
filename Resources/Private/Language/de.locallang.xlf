@@ -856,15 +856,9 @@
 			<trans-unit id="flux.addresses.objects.addresscolsobj.addressicon">
 				<target>Adresse Icon</target>
 			</trans-unit>
-			<trans-unit id="flux.addresses.objects.addresscolsobj.iconplaceholder">
-				<target>Icon Platzhalter</target>
-			</trans-unit>
 
 			<trans-unit id="flux.addresses.objects.addressitemphone.phoneicon">
 				<target>Telefon Icon</target>
-			</trans-unit>
-			<trans-unit id="flux.addresses.objects.addressitemphone.iconplaceholder">
-				<target>Icon Platzhalter</target>
 			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addressitemphone.phoneabbr">
 				<target>Telefonbezeichnung oder Abkürzung</target>
@@ -879,9 +873,6 @@
 			<trans-unit id="flux.addresses.objects.addressitemmobile.mobileicon">
 				<target>Mobil Icon</target>
 			</trans-unit>
-			<trans-unit id="flux.addresses.objects.addressitemmobile.iconplaceholder">
-				<target>Icon Platzhalter</target>
-			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addressitemmobile.mobileabbr">
 				<target>Bezeichnung bzw. Abkürzung der Mobil-Nummer</target>
 			</trans-unit>
@@ -895,9 +886,6 @@
 			<trans-unit id="flux.addresses.objects.addressitemmail.mailicon">
 				<target>E-Mail Icon</target>
 			</trans-unit>
-			<trans-unit id="flux.addresses.objects.addressitemmail.iconplaceholder">
-				<target>Icon Platzhalter</target>
-			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addressitemmail.mailabbr">
 				<target>E-Mailbezeichnung oder Abkürzung</target>
 			</trans-unit>
@@ -910,9 +898,6 @@
 
 			<trans-unit id="flux.addresses.objects.addressitemwebsite.websiteicon">
 				<target>Website Icon</target>
-			</trans-unit>
-			<trans-unit id="flux.addresses.objects.addressitemwebsite.iconplaceholder">
-				<target>Icon Platzhalter</target>
 			</trans-unit>
 			<trans-unit id="flux.addresses.objects.addressitemwebsite.websiteabbr">
 				<target>Websitebezeichnung oder Abkürzung</target>
@@ -1026,6 +1011,13 @@
 			</trans-unit>
 			
 			<!-- Button.html -->
+
+			<trans-unit id="tt_content.CType.textpic">
+				<target>Text / Bild</target>
+			</trans-unit>
+			<trans-unit id="tt_content.CType.item.media">
+				<target>Text / Media</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

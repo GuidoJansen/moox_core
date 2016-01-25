@@ -94,7 +94,7 @@ class ProviderField {
 		}
 		return $this->renderSelectField($parameters, $options, $preSelected);
 	}
-	
+
 	/**
 	 * @param array $variants
 	 * @return array
@@ -103,7 +103,7 @@ class ProviderField {
 		$options = array();
 		foreach ($variants as $variantSetup) {
 			list ($extensionKey, $labelReference, $icon) = $variantSetup;
-			$translatedLabel = LocalizationUtility::translate($labelReference, $extensionKey);
+			$translatedLabel = $this->translateLabel($labelReference, $extensionKey);
 			if (NULL === $translatedLabel) {
 				$translatedLabel = $extensionKey;
 			}
@@ -136,7 +136,7 @@ class ProviderField {
 		}
 		$html = array(
 			'<div class="form-control-wrap"><div class="input-group"><div class="input-group-addon input-group-icon">' . $selectedIcon . '</div><select class="select form-control" name="' . $parameters['itemFormElName'] . '" onchange="' . $parameters['fieldChangeFunc']['TBE_EDITOR_fieldChanged'] . ';' . $parameters['fieldChangeFunc']['alert'] . '">',
-			'<option' . $selected . ' value="">' . LocalizationUtility::translate('tt_content.nativeLabel', 'MooxCore') . '</option>'
+			'<option' . $selected . ' value="">' . $this->translateLabel('tt_content.nativeLabel', 'MooxCore') . '</option>'
 		);
 		foreach ($optionsLabels as $value => $label) {
 			$selected = $value === $selectedValue ? ' selected="selected"' : NULL;
@@ -177,6 +177,15 @@ class ProviderField {
 			}
 		}
 		return $this->renderSelectField($parameters, $options, $preSelectedVersion);
+	}
+
+	/**
+	 * @param string $key
+	 * @param string $extensionKey
+	 * @return string|NULL
+	 */
+	protected function translateLabel($key, $extensionKey) {
+		return LocalizationUtility::translate($key, $extensionKey);
 	}
 
 	/**

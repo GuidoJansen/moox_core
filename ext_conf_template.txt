@@ -4,11 +4,8 @@ disablePageTemplates = 0
 # cat=basic/template/20; type=boolean; label=Disable Content Templates: Use this option to completely disable (cannot be selected, cannot be rendered, overlayed, etc) the content templates provided by this extension.
 disableContentTemplates = 0
 
-# cat=basic/skin/10; type=string; label=Logo Top: Default [../typo3conf/ext/moox_core/Resources/Public/Images/Backend/typo3-topbar@2x.png]
-Logo = ../typo3conf/ext/moox_core/Resources/Public/Images/Backend/typo3-topbar@2x.png
-
-# cat=basic/skin/20; type=string; label=Logo Login: Default [../typo3conf/ext/moox_core/Resources/Public/Images/Backend/typo3logo-white-greyback.gif]
-LoginLogo = ../typo3conf/ext/moox_core/Resources/Public/Images/Backend/typo3logo-white-greyback.gif
-
 # cat=basic/realurl/10; type=boolean; label=Use RealUrl Config from MOOX Core
 UseRealUrlConfig = 1
+
+# cat=basic/feature/10; type=boolean; label=LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:feature.disableLessProcessing
+disableLessProcessing = 0

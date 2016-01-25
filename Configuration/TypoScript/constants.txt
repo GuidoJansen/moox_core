@@ -1,175 +1,182 @@
-plugin.tx_mooxcore.view {
-	templateRootPaths.default = EXT:moox_core/Resources/Private/Templates/
-	partialRootPaths.default = EXT:moox_core/Resources/Private/Partials/
-	layoutRootPaths.default = EXT:moox_core/Resources/Private/Layouts/
-}
-
 protocol = http
 [globalString = IENV:TYPO3_SSL=1]
 	protocol = https
 [global]
 
-plugin.tx_mooxcore.settings {
+plugin.tx_mooxcore {
+    view {
+        # cat=MOOX_CORE/settings/80; type=string; label=Path to template root (FE)
+        templateRootPaths.default = EXT:moox_core/Resources/Private/Templates/
+        # cat=MOOX_CORE/settings/81; type=string; label=Path to template partials (FE)
+        partialRootPaths.default = EXT:moox_core/Resources/Private/Partials/
+        # cat=MOOX_CORE/settings/82; type=string; label=Path to template layouts (FE)
+        layoutRootPaths.default = EXT:moox_core/Resources/Private/Layouts/
+    }
+    settings {
+        # cat=MOOX_CORE/content/10; type=string; label= Global page title
+        globalpagetitle = MOOX Page
+        # cat=MOOX_CORE/settings/20; type=string; label= Base-URL Domain : Domain without protocol and trailing slash on the end. (e.g. moox.org, www.moox.org or moox.org/subfolder)
+        domain =
+        # cat=MOOX_CORE/settings/30; type=string; label= DNS Prefetch : Insert your domains that should be prefetched, comma separated in this field below.
+        dnsPrefetch =
+        # cat=MOOX_CORE/settings/40; type=int+; label=main menu entry level - other menus calculated based on this
+        entryLevel = 0
+        # cat=MOOX_CORE/settings/50; type=boolean; label=Load jQuery in the footer
+        jqueryMovable = 0
+        # cat=MOOX_CORE/settings/60; type=options[Enable=2,Disable=0]; label=TYPO3 spam email addresses protection
+        spamProtectEmailAddresses = 2
+        # cat=MOOX_CORE/settings/61; type=string; label=TYPO3 spam email addresses protection placeholder for '@' character
+        spamProtectEmailAddressesAtSubst = <span class="fa fa-at"></span>
+        # cat=MOOX_CORE/settings/70; type=boolean; label=Override LESS Variables: If enabled the variables defined in your LESS files will be overridden with the ones defined as TypoScript Constants.
+        overrideLessVariables = 1
+        # cat=MOOX_CORE/settings/70; type=boolean; label=CSS source mapping: Create a CSS source map useful to debug Less in browser developer tools. Note: CSS compression will be disabled.
+        cssSourceMapping = 0
 
-	# cat=MOOX_CORE/content/10; type=string; label= Global page title
-	globalpagetitle = MOOX Page
-	# cat=MOOX_CORE/settings/20; type=string; label= Base-URL Domain : Domain without protocol and trailing slash on the end. (e.g. moox.org, www.moox.org or moox.org/subfolder)
-	domain =
-	# cat=MOOX_CORE/settings/30; type=string; label= DNS Prefetch : Insert your domains that should be prefetched, comma separated in this field below.
-	dnsPrefetch = 
-	# cat=MOOX_CORE/settings/40; type=int+; label=main menu entry level - other menus calculated based on this
-	entryLevel = 0
-	# cat=MOOX_CORE/settings/50; type=boolean; label=Load jQuery in the footer
-	jqueryMovable = 0
-	# cat=MOOX_CORE/settings/60; type=options[Enable=2,Disable=0]; label=TYPO3 spam email addresses protection
-	spamProtectEmailAddresses = 2
-	# cat=MOOX_CORE/settings/61; type=string; label=TYPO3 spam email addresses protection placeholder for '@' character
-	spamProtectEmailAddressesAtSubst = <span class="fa fa-at"></span>
-	
-	defaults {
-		template = EXT:moox_core/Resources/Private/Templates/CoreContent/Default.html
-		variant =
-		version =
-		# mode of defaults usage. Possible values: "record", "preselect" or empty. When set to "record", default values will be saved in records when they are saved, but only if no variant or version was chosen. If set to "preselect" the values entered in defaults will be the initially selected values when creating or editing records. If set to anything else, defaults are used only when the record has empty values in variant or version but the defaults will not be saved to the database.
-		mode = preselect
-	}
-	header {
-		# cat=MOOX_CORE_CONTENT: header/110/type; type=options[H1=1, H2=2, H3=3, H4=4, H5=5, H6=6]; label=Default header type
-		type = 1
-		# cat=MOOX_CORE_CONTENT: header/120/types; type=string; label=Available header types (comma separated)
-		types = 1,2,3,4,5,6
-		autoType = 2
-		# cat=MOOX_CORE_CONTENT: header/130/classNames; type=string; label=Available header CSS class names (comma separated)
-		classNames = page-header,hidden
-		# cat=MOOX_CORE_CONTENT: header/140/classNames; type=string; label=Hide header if empty
-		hideIfEmpty = 1
-	}
-	container {
-		# cat=MOOX_CORE_CONTENT: container/110/classNames; type=string; label=Available CSS class names for container (comma separated)
-		classNames = container,text-left,text-center,text-right
-		# cat=MOOX_CORE_CONTENT: container/115/10; type=string; label=Available spacing types for container (comma separated)
-		spacingNames = top-space-small,top-space-base,top-space-large,bottom-space-small,bottom-space-base,bottom-space-large
-		# cat=MOOX_CORE_CONTENT: container/115/11; type=string; label=Set default spacing types for container (comma separated)
-		defaultSpacingNames = 
-		# cat=MOOX_CORE_CONTENT: container/120/addAnchor; type=boolean; label=Add anchor to content element
-		addAnchor = 0
-		# cat=MOOX_CORE_CONTENT: container/125/enableAnimation; type=boolean; label=Enable animations for content elements
-		enableAnimation = 0
-	}
-	image {
-		# cat=MOOX_CORE_CONTENT: image/110/classNames; type=string; label=Available CSS class names for images (comma separated)
-		classNames = img-rounded,img-circle,img-thumbnail,img-grayscale
-	}
-	caption {
-		# cat=MOOX_CORE_CONTENT: image/120/types; type=string; label=HTML element types for image caption (comma separated)
-		types = none,div,span,p,figure
-	}
-	table {
-		# cat=MOOX_CORE_CONTENT: table/110/classNames; type=string; label=Available CSS class names for tables (comma separated)
-		classNames = table,table-striped,table-bordered,table-hover,table-condensed,table-responsive
-	}
-	address {
-		# cat=MOOX_CORE_CONTENT: address/110/addressIcon; type=string; label=Class address icon: You can use Glyphicon and Font Awesome
-		addressIcon = fa fa-home
-		# cat=MOOX_CORE_CONTENT: address/115/phoneIcon; type=string; label=Class phone icon: You can use Glyphicon and Font Awesome
-		phoneIcon = fa fa-phone
-		# cat=MOOX_CORE_CONTENT: address/120/mobileIcon; type=string; label=Class mobile icon: You can use Glyphicon and Font Awesome
-		mobileIcon = fa fa-mobile fa-lg
-		# cat=MOOX_CORE_CONTENT: address/125/faxIcon; type=string; label=Class fax icon: You can use Glyphicon and Font Awesome
-		faxIcon = fa fa-fax
-		# cat=MOOX_CORE_CONTENT: address/130/emailIcon; type=string; label=Class email icon: You can use Glyphicon and Font Awesome
-		emailIcon = fa fa-envelope
-		# cat=MOOX_CORE_CONTENT: address/135/websiteIcon; type=string; label=Class website icon: You can use Glyphicon and Font Awesome
-		websiteIcon = fa fa-link
-	}
-	preview {
-		# cat=MOOX_CORE_CONTENT: preview/110/maxCharacters; type=string; label=Maximum number of characters to display in previews
-		maxCharacters = 100
-	}
-	less {
-		# cat=MOOX_CORE_CONTENT: container/115/12; type=string; label=@top-space-small:
-		top-space-small = (@padding-small-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/13; type=string; label=@top-space-base:
-		top-space-base = (@padding-base-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/14; type=string; label=@top-space-large:
-		top-space-large = (@padding-large-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/15; type=string; label=@bottom-space-small:
-		bottom-space-small = (@padding-small-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/16; type=string; label=@bottom-space-base:
-		bottom-space-base = (@padding-base-vertical * 3)
-		# cat=MOOX_CORE_CONTENT: container/115/17; type=string; label=@bottom-space-large:
-		bottom-space-large = (@padding-large-vertical * 3)
-	}
-	
-	# cat=MOOX_CORE_COOKIES/settings/10; type=boolean; label=Use Cookie Compliance
-	useCookieCompliance = 0
-	# cat=MOOX_CORE_COOKIES/settings/20; type=string; label=Cookie Settings Page PID
-	cookieSettingsPage =
-	# cat=MOOX_CORE_COOKIES/settings/30; type=options [Alert Top=top,Alert Bottom=bottom,Modal on page load=modal]; label=Cookie Alert Box Position: Options: Alert Top, Alert Bottom and Modal on page load
-	cookieAlertBoxPosition = bottom
-	# cat=MOOX_CORE_COOKIES/settings/40; type=string; label=Text for Cookie Box : If it´s empty, the default text will be used.
-	cookieBoxText =
-	# cat=MOOX_CORE_COOKIES/settings/50; type=string; label=Label for Cookie Accept Button : If it´s empty, the default label will be used.
-	cookieButtonAccept =
-	# cat=MOOX_CORE_COOKIES/settings/60; type=string; label=Label for Cookie Settings Button : If it´s empty, the default label will be used.
-	cookieButtonSettings =
-	
-	# cat=MOOX_ANALYTICS/settings/10; type=boolean; label=Use Piwik
-	usePiwik = 0
-	# cat=MOOX_ANALYTICS/settings/20; type=string; label=Piwik URL : (e.g. www.moox.org/piwik)
-	piwikUrl =
-	# cat=MOOX_ANALYTICS/settings/30; type=string; label=ID Site
-	idSite =
-	# cat=MOOX_ANALYTICS/settings/40; type=boolean; label=Use Google Analytics
-	useGoogleAnalytics = 0
-	# cat=MOOX_ANALYTICS/settings/50; type=string; label=UA-XXXXX-X
-	uaCode =
-	
-	# cat=MOOX_CORE_META/settings/40008; type=options[Article,Blog,Book,Profile,Movie,TV Episode,TV Show,Video,Website]; label= Select yout Page type
-	meta-type = Website
-	# cat=MOOX_CORE_META/settings/40009; type=string; label= Latitude of a Point
-	geo-lat =
-	# cat=MOOX_CORE_META/settings/40010; type=string; label= Longitude of a Point
-	geo-long =
-	# cat=MOOX_CORE_META/settings/40011; type=string; label= Region
-	geo-region =
-	# cat=MOOX_CORE_META/settings/40012; type=string; label= Placename
-	geo-placename =
-	# cat=MOOX_CORE_META/settings/40013; type=options[all,index-follow,noindex-nofollow]; label= Select your robots settings
-	robots = all
-	# cat=MOOX_CORE_META/settings/40024; type=string; label= Statusbar color : Default is "black"
-	apple-mobile-web-app-status-bar-style = black
-	# cat=MOOX_CORE_META/settings/40025; type=string; label= MS Application title color : Default is "#603cba"
-	msApplicationTitleColor = #603cba
-	# cat=MOOX_CORE_META/settings/40026; type=string; label= Google site-verification
-	google-site-verification =
-	
-	# cat=MOOX_CORE_LANGUAGE/settings/10; type=boolean; label= Enable language menu : Works only, if your MOOX Template support this feature.
-	languageEnable =
-	# cat=MOOX_CORE_LANGUAGE/settings/20; type=string; label= accesskey : Keyboard shortcut to access this element
-	languageAccesskey =
-	# cat=MOOX_CORE_LANGUAGE/settings/30; type=string; label= class : CSS class(es) for this element
-	languageClass = moox-language-menu
-	# cat=MOOX_CORE_LANGUAGE/settings/40; type=string; label= defaultIsoFlag : ISO code of the default flag
-	languageDefaultIsoFlag = de
-	# cat=MOOX_CORE_LANGUAGE/settings/50; type=string; label= defaultLanguageLabel : Label for the default language
-	languageDefaultLanguageLabel = Deutsch
-	# cat=MOOX_CORE_LANGUAGE/settings/60; type=options[left to right=ltr,right to left=rtl]; label= dir : Text direction for this HTML element.
-	languageDir = ltr
-	# cat=MOOX_CORE_LANGUAGE/settings/70; type=options[png,gif,jpeg]; label= flagImageType : Sets type of flag image: png, gif, jpeg
-	languageFlagImageType = png
-	# cat=MOOX_CORE_LANGUAGE/settings/80; type=string; label= flagPath : Overwrites the path to the flag folder
-	languageFlagPath = typo3/sysext/t3skin/images/flags/
-	# cat=MOOX_CORE_LANGUAGE/settings/90; type=boolean; label= hideNotTranslated : Hides languageIDs which are not translated
-	languageHideNotTranslated = 0
-	# cat=MOOX_CORE_LANGUAGE/settings/110; type=string; label= layout : How to render links when using autorendering. Possible selections: name,flag - use fx "name" or "flag" or "flag,name" or "name,flag"
-	languageLayout = flag,name
-	# cat=MOOX_CORE_LANGUAGE/settings/120; type=string; label= tagName : Tag name to use for enclosing container, list and flags (not finished) only
-	languageTagName = ul
-	# cat=MOOX_CORE_LANGUAGE/settings/130; type=string; label= tagNameChildren : Tag name to use for child nodes surrounding links, list and flags only
-	languageTagNameChildren = li
-	# cat=MOOX_CORE_LANGUAGE/settings/140; type=boolean; label= useCHash : Use cHash for typolink
-	languageUseCHash = 1
+        defaults {
+            template = EXT:moox_core/Resources/Private/Templates/CoreContent/Default.html
+            variant =
+            version =
+            # mode of defaults usage. Possible values: "record", "preselect" or empty. When set to "record", default values will be saved in records when they are saved, but only if no variant or version was chosen. If set to "preselect" the values entered in defaults will be the initially selected values when creating or editing records. If set to anything else, defaults are used only when the record has empty values in variant or version but the defaults will not be saved to the database.
+            mode = preselect
+        }
+        header {
+            # cat=MOOX_CORE_CONTENT: header/110/type; type=options[H1=1, H2=2, H3=3, H4=4, H5=5, H6=6]; label=Default header type
+            type = 1
+            # cat=MOOX_CORE_CONTENT: header/120/types; type=string; label=Available header types (comma separated)
+            types = 1,2,3,4,5,6
+            autoType = 2
+            # cat=MOOX_CORE_CONTENT: header/130/classNames; type=string; label=Available header CSS class names (comma separated)
+            classNames = page-header,hidden
+            # cat=MOOX_CORE_CONTENT: header/140/classNames; type=string; label=Hide header if empty
+            hideIfEmpty = 1
+        }
+        container {
+            # cat=MOOX_CORE_CONTENT: container/110/classNames; type=string; label=Available CSS class names for container (comma separated)
+            classNames = container,text-left,text-center,text-right
+            # cat=MOOX_CORE_CONTENT: container/115/10; type=string; label=Available spacing types for container (comma separated)
+            spacingNames = top-space-small,top-space-base,top-space-large,bottom-space-small,bottom-space-base,bottom-space-large
+            # cat=MOOX_CORE_CONTENT: container/115/11; type=string; label=Set default spacing types for container (comma separated)
+            defaultSpacingNames =
+            # cat=MOOX_CORE_CONTENT: container/120/addAnchor; type=boolean; label=Add anchor to content element
+            addAnchor = 0
+            # cat=MOOX_CORE_CONTENT: container/125/addAnchor; type=boolean; label=Enable animations for content elements
+            enableAnimation = 0
+        }
+        image {
+            # cat=MOOX_CORE_CONTENT: image/110/classNames; type=string; label=Available CSS class names for images (comma separated)
+            classNames = img-rounded,img-circle,img-thumbnail,img-grayscale
+        }
+        caption {
+            # cat=MOOX_CORE_CONTENT: image/120/types; type=string; label=HTML element types for image caption (comma separated)
+            types = none,div,span,p,figure
+        }
+        table {
+            # cat=MOOX_CORE_CONTENT: table/110/classNames; type=string; label=Available CSS class names for tables (comma separated)
+            classNames = table,table-striped,table-bordered,table-hover,table-condensed,table-responsive
+        }
+        address {
+            # cat=MOOX_CORE_CONTENT: address/110/addressIcon; type=string; label=Class address icon: You can use Glyphicon and Font Awesome
+            addressIcon = fa fa-home
+            # cat=MOOX_CORE_CONTENT: address/115/phoneIcon; type=string; label=Class phone icon: You can use Glyphicon and Font Awesome
+            phoneIcon = fa fa-phone
+            # cat=MOOX_CORE_CONTENT: address/120/mobileIcon; type=string; label=Class mobile icon: You can use Glyphicon and Font Awesome
+            mobileIcon = fa fa-mobile fa-lg
+            # cat=MOOX_CORE_CONTENT: address/125/faxIcon; type=string; label=Class fax icon: You can use Glyphicon and Font Awesome
+            faxIcon = fa fa-fax
+            # cat=MOOX_CORE_CONTENT: address/130/emailIcon; type=string; label=Class email icon: You can use Glyphicon and Font Awesome
+            emailIcon = fa fa-envelope
+            # cat=MOOX_CORE_CONTENT: address/135/websiteIcon; type=string; label=Class website icon: You can use Glyphicon and Font Awesome
+            websiteIcon = fa fa-link
+        }
+        preview {
+            # cat=MOOX_CORE_CONTENT: preview/110/maxCharacters; type=string; label=Maximum number of characters to display in previews
+            maxCharacters = 100
+        }
+        less {
+            # cat=MOOX_CORE_CONTENT: container/115/12; type=string; label=@top-space-small:
+            top-space-small = (@padding-small-vertical * 3)
+            # cat=MOOX_CORE_CONTENT: container/115/13; type=string; label=@top-space-base:
+            top-space-base = (@padding-base-vertical * 3)
+            # cat=MOOX_CORE_CONTENT: container/115/14; type=string; label=@top-space-large:
+            top-space-large = (@padding-large-vertical * 3)
+            # cat=MOOX_CORE_CONTENT: container/115/15; type=string; label=@bottom-space-small:
+            bottom-space-small = (@padding-small-vertical * 3)
+            # cat=MOOX_CORE_CONTENT: container/115/16; type=string; label=@bottom-space-base:
+            bottom-space-base = (@padding-base-vertical * 3)
+            # cat=MOOX_CORE_CONTENT: container/115/17; type=string; label=@bottom-space-large:
+            bottom-space-large = (@padding-large-vertical * 3)
+        }
+
+        # cat=MOOX_CORE_COOKIES/settings/10; type=boolean; label=Use Cookie Compliance
+        useCookieCompliance = 0
+        # cat=MOOX_CORE_COOKIES/settings/20; type=string; label=Cookie Settings Page PID
+        cookieSettingsPage =
+        # cat=MOOX_CORE_COOKIES/settings/30; type=options [Alert Top=top,Alert Bottom=bottom,Modal on page load=modal]; label=Cookie Alert Box Position: Options: Alert Top, Alert Bottom and Modal on page load
+        cookieAlertBoxPosition = bottom
+        # cat=MOOX_CORE_COOKIES/settings/40; type=string; label=Text for Cookie Box : If it´s empty, the default text will be used.
+        cookieBoxText =
+        # cat=MOOX_CORE_COOKIES/settings/50; type=string; label=Label for Cookie Accept Button : If it´s empty, the default label will be used.
+        cookieButtonAccept =
+        # cat=MOOX_CORE_COOKIES/settings/60; type=string; label=Label for Cookie Settings Button : If it´s empty, the default label will be used.
+        cookieButtonSettings =
+
+        # cat=MOOX_ANALYTICS/settings/10; type=boolean; label=Use Piwik
+        usePiwik = 0
+        # cat=MOOX_ANALYTICS/settings/20; type=string; label=Piwik URL : (e.g. www.moox.org/piwik)
+        piwikUrl =
+        # cat=MOOX_ANALYTICS/settings/30; type=string; label=ID Site
+        idSite =
+        # cat=MOOX_ANALYTICS/settings/40; type=boolean; label=Use Google Analytics
+        useGoogleAnalytics = 0
+        # cat=MOOX_ANALYTICS/settings/50; type=string; label=UA-XXXXX-X
+        uaCode =
+
+        # cat=MOOX_CORE_META/settings/40008; type=options[Article,Blog,Book,Profile,Movie,TV Episode,TV Show,Video,Website]; label= Select yout Page type
+        meta-type = Website
+        # cat=MOOX_CORE_META/settings/40009; type=string; label= Latitude of a Point
+        geo-lat =
+        # cat=MOOX_CORE_META/settings/40010; type=string; label= Longitude of a Point
+        geo-long =
+        # cat=MOOX_CORE_META/settings/40011; type=string; label= Region
+        geo-region =
+        # cat=MOOX_CORE_META/settings/40012; type=string; label= Placename
+        geo-placename =
+        # cat=MOOX_CORE_META/settings/40013; type=options[all,index-follow,noindex-nofollow]; label= Select your robots settings
+        robots = all
+        # cat=MOOX_CORE_META/settings/40024; type=string; label= Statusbar color : Default is "black"
+        apple-mobile-web-app-status-bar-style = black
+        # cat=MOOX_CORE_META/settings/40025; type=string; label= MS Application title color : Default is "#603cba"
+        msApplicationTitleColor = #603cba
+        # cat=MOOX_CORE_META/settings/40026; type=string; label= Google site-verification
+        google-site-verification =
+
+        # cat=MOOX_CORE_LANGUAGE/settings/10; type=boolean; label= Enable language menu : Works only, if your MOOX Template support this feature.
+        languageEnable =
+        # cat=MOOX_CORE_LANGUAGE/settings/20; type=string; label= accesskey : Keyboard shortcut to access this element
+        languageAccesskey =
+        # cat=MOOX_CORE_LANGUAGE/settings/30; type=string; label= class : CSS class(es) for this element
+        languageClass = moox-language-menu
+        # cat=MOOX_CORE_LANGUAGE/settings/40; type=string; label= defaultIsoFlag : ISO code of the default flag
+        languageDefaultIsoFlag = de
+        # cat=MOOX_CORE_LANGUAGE/settings/50; type=string; label= defaultLanguageLabel : Label for the default language
+        languageDefaultLanguageLabel = Deutsch
+        # cat=MOOX_CORE_LANGUAGE/settings/60; type=options[left to right=ltr,right to left=rtl]; label= dir : Text direction for this HTML element.
+        languageDir = ltr
+        # cat=MOOX_CORE_LANGUAGE/settings/70; type=options[png,gif,jpeg]; label= flagImageType : Sets type of flag image: png, gif, jpeg
+        languageFlagImageType = png
+        # cat=MOOX_CORE_LANGUAGE/settings/80; type=string; label= flagPath : Overwrites the path to the flag folder
+        languageFlagPath = typo3/sysext/t3skin/images/flags/
+        # cat=MOOX_CORE_LANGUAGE/settings/90; type=boolean; label= hideNotTranslated : Hides languageIDs which are not translated
+        languageHideNotTranslated = 0
+        # cat=MOOX_CORE_LANGUAGE/settings/110; type=string; label= layout : How to render links when using autorendering. Possible selections: name,flag - use fx "name" or "flag" or "flag,name" or "name,flag"
+        languageLayout = flag,name
+        # cat=MOOX_CORE_LANGUAGE/settings/120; type=string; label= tagName : Tag name to use for enclosing container, list and flags (not finished) only
+        languageTagName = ul
+        # cat=MOOX_CORE_LANGUAGE/settings/130; type=string; label= tagNameChildren : Tag name to use for child nodes surrounding links, list and flags only
+        languageTagNameChildren = li
+        # cat=MOOX_CORE_LANGUAGE/settings/140; type=boolean; label= useCHash : Use cHash for typolink
+        languageUseCHash = 1
+    }
 }
 
 styles.content.loginform {

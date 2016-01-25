@@ -10,7 +10,7 @@ class InstallSignalSlot implements SingletonInterface {
     /**
      * Install AddionalConfiguration
      */
-    public function installAddionalConfiguration() {
+    public function installAdditionalConfiguration() {
         $updateService = new UpdateService();
         $updateService->main();
     }

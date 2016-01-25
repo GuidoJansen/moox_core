@@ -3,6 +3,24 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem('tt_content', 'CType',
+	array(
+		'Textpic',
+		'textpic',
+		'content-textpic'
+	),
+	'header', 'after'
+);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem('tt_content', 'CType',
+	array(
+		'Media',
+		'media',
+		'content-textpic'
+	),
+	'menu', 'before'
+);
+
+
 $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes'] = array_merge(
 	$GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes'],
 	array(
@@ -35,6 +53,58 @@ array_splice(
 			'i/tt_content_image.gif'
 		)
 	)
+);
+
+$additionalColumns = Array (
+	'tx_mooxcore_hide_desktop' => Array (
+		'exclude' => 1,
+		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_desktop',
+		'config' => Array (
+			'type' => 'check',
+		)
+	),
+	'tx_mooxcore_hide_laptop' => Array (
+		'exclude' => 1,
+		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_laptop',
+		'config' => Array (
+			'type' => 'check',
+		)
+	),
+	'tx_mooxcore_hide_tablet' => Array (
+		'exclude' => 1,
+		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_tablet',
+		'config' => Array (
+			'type' => 'check',
+		)
+	),
+	'tx_mooxcore_hide_phone' => Array (
+		'exclude' => 1,
+		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_phone',
+		'config' => Array (
+			'type' => 'check',
+		)
+	),
+	'tx_mooxcore_hide_print' => Array (
+		'exclude' => 1,
+		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_print',
+		'config' => Array (
+			'type' => 'check',
+		)
+	),
+	'tx_mooxcore_hide_barrierfree' => Array (
+		'exclude' => 1,
+		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_barrierfree',
+		'config' => Array (
+			'type' => 'check',
+		)
+	),
+	'tx_mooxcore_hide_oldbrowser' => Array (
+		'exclude' => 1,
+		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_oldbrowser',
+		'config' => Array (
+			'type' => 'check',
+		)
+	),
 );
 
 $GLOBALS['TCA']['tt_content']['palettes'] = array_replace(
@@ -83,11 +153,15 @@ $GLOBALS['TCA']['tt_content']['palettes'] = array_replace(
 			'canNotCollapse' => 1
 		),
 		'frames' => array(
+			'showitem' => '',
+			'canNotCollapse' => 1
+ 		)
+		/*'frames' => array(
 			'showitem' => '
                                 content_options;Options
                         ',
 			'canNotCollapse' => 1
- 		)
+ 		)*/
 	)
 );
 
@@ -118,6 +192,23 @@ $GLOBALS['TCA']['tt_content']['types']['text']['showitem'] = '
 $GLOBALS['TCA']['tt_content']['types']['image']['showitem'] = '
                 --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.general;general,
                 --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.header;header,
+        --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.appearance,
+				--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.frames;frames,
+				--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.image_settings;image_settings,
+        --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.images,
+                image,
+                --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.imagelinks;imagelinks,
+        --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,
+                --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.visibility;visibility,
+                --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.access;access,
+        --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.extended
+';
+
+$GLOBALS['TCA']['tt_content']['types']['textpic']['showitem'] = '
+                --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.general;general,
+                --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.header;header,
+                bodytext;LLL:EXT:cms/locallang_ttc.xlf:bodytext_formlabel;;richtext:rte_transform[flag=rte_enabled|mode=ts_css],
+                rte_enabled;LLL:EXT:cms/locallang_ttc.xlf:rte_enabled_formlabel,
         --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.appearance,
 				--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.frames;frames,
 				--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.image_settings;image_settings,
@@ -234,6 +325,19 @@ $GLOBALS['TCA']['tt_content']['types']['html']['showitem'] = '
         --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.extended
 ';
 
+$GLOBALS['TCA']['tt_content']['types']['media']['showitem'] = '
+				--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.general;general,
+				--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.header;header,
+				bodytext;LLL:EXT:cms/locallang_ttc.xlf:bodytext_formlabel;;richtext:rte_transform[flag=rte_enabled|mode=ts_css],
+                rte_enabled;LLL:EXT:cms/locallang_ttc.xlf:rte_enabled_formlabel,
+		--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.appearance,
+                --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.frames;frames,
+        --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,
+                --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.visibility;visibility,
+                --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.access;access,
+        --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.extended
+';
+
 $GLOBALS['TCA']['tt_content']['columns']['pi_flexform']['label'] = NULL;
 $GLOBALS['TCA']['tt_content']['columns']['content_options'] = array(
 	'label' => NULL,
@@ -258,16 +362,17 @@ $GLOBALS['TCA']['tt_content']['columns']['content_version'] = array(
 	)
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'general', 'content_variant, content_version', 'after:CType');
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $additionalColumns, 1);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content', ',--div--;LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_extended_visibility,tx_mooxcore_hide_desktop,tx_mooxcore_hide_laptop,tx_mooxcore_hide_tablet,tx_mooxcore_hide_phone,tx_mooxcore_hide_print,tx_mooxcore_hide_barrierfree,tx_mooxcore_hide_oldbrowser', '', '');
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'general', 'content_variant, content_version', 'after:CType');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'general', ' --linebreak--,content_options;Options', 'after:sys_language_uid');
 
 $GLOBALS['TCA']['tt_content']['palettes']['header']['showitem'] = 'header';
 $GLOBALS['TCA']['tt_content']['palettes']['headers']['showitem'] = 'header';
 $GLOBALS['TCA']['tt_content']['columns']['header']['label'] = NULL;
 $GLOBALS['TCA']['tt_content']['ctrl']['requestUpdate'] .= ',content_variant,content_version';
-
-/* Media tab disabled */ 
-$GLOBALS['TCA']['tt_content']['types']['media']['showitem'] = '--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.general;general,--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.header;header,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.appearance,--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.frames;frames,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.visibility;visibility,--palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.access;access,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.behaviour,bodytext;LLL:EXT:cms/locallang_ttc.xlf:bodytext.ALT.media_formlabel;;richtext:rte_transform[flag=rte_enabled|mode=ts_css],--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.extended,--div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category, categories, ,--div--;LLL:EXT:flux/Resources/Private/Language/locallang.xlf:tt_content.tabs.relation, tx_flux_parent, tx_flux_column, tx_flux_children;LLL:EXT:flux/Resources/Private/Language/locallang.xlf:tt_content.tx_flux_children, , --div--;LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_extended_visibility, tx_mooxcore_hide_desktop, tx_mooxcore_hide_laptop, tx_mooxcore_hide_tablet, tx_mooxcore_hide_phone, tx_mooxcore_hide_print, tx_mooxcore_hide_barrierfree, tx_mooxcore_hide_oldbrowser';
 
 unset(
 	$GLOBALS['TCA']['tt_content']['types']['swfobject'],

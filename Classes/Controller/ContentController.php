@@ -30,9 +30,9 @@ use FluidTYPO3\Fluidcontent\Controller\AbstractContentController;
  * Content Controller
  *
  * Controller which is used to render individual elements from
- * the fluidcontent_bootstrap collection.
+ * the moox_core collection.
  *
- * @package FluidcontentBootstrap
+ * @package MooxCore
  * @subpackage Controller
  * @route off
  */

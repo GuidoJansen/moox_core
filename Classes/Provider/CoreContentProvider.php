@@ -107,25 +107,25 @@ class CoreContentProvider extends ContentProvider implements ProviderInterface {
 		self::MENU_CATEGORIZEDPAGES => 'CategorizedPages',
 		self::MENU_CATEGORIZEDCONTENT => 'CategorizedContent'
 	);
-	
+
 	/**
 	* @var ConfigurationService
 	*/
-	protected $configurationService;
+	protected $contentConfigurationService;
 
 	/**
-	 * @param ConfigurationService $configurationService
+	 * @param ConfigurationService $contentConfigurationService
 	 * @return void
 	 */
-	public function injectConfigurationService(ConfigurationService $configurationService) {
-		$this->configurationService = $configurationService;
+	public function injectContentConfigurationService(ConfigurationService $contentConfigurationService) {
+		$this->contentConfigurationService = $contentConfigurationService;
 	}
 
 	/**
 	 * @return void
 	 */
 	public function initializeObject() {
-		$typoScript = $this->configurationService->getAllTypoScript();
+		$typoScript = $this->contentConfigurationService->getAllTypoScript();
 		$settings = $typoScript['plugin']['tx_mooxcore']['settings'];
 		$this->templateVariables['settings'] = $settings;
 		$this->templatePathAndFilename = PathUtility::translatePath($settings['defaults']['template']);
@@ -160,9 +160,9 @@ class CoreContentProvider extends ContentProvider implements ProviderInterface {
 		}
 		if (self::CTYPE_TABLE == $row[self::CTYPE_FIELDNAME]) {
 			$this->templateVariables['tableHeadPositions'] = array(
-				self::THEAD_NONE => LocalizationUtility::translate('tableHead.none', 'moox_core'),
-				self::THEAD_TOP => LocalizationUtility::translate('tableHead.top', 'moox_core'),
-				self::THEAD_LEFT => LocalizationUtility::translate('tableHead.left', 'moox_core'),
+				self::THEAD_NONE => $this->translateLabel('tableHead.none', 'moox_core'),
+				self::THEAD_TOP => $this->translateLabel('tableHead.top', 'moox_core'),
+				self::THEAD_LEFT => $this->translateLabel('tableHead.left', 'moox_core'),
 			);
 		}
 		return parent::getForm($row);
@@ -198,7 +198,7 @@ class CoreContentProvider extends ContentProvider implements ProviderInterface {
 		$version = $this->getVersion($row);
 		$registeredTypes = (array) $GLOBALS['TYPO3_CONF_VARS']['DCNGmbH.MooxCore']['types'];
 		$templateName = TRUE === in_array($row['CType'], $registeredTypes) ? $row['CType'] : 'default';
-		$template = $this->configurationService->resolveTemplateFileForVariant($extensionKey, $templateName, $variant, $version);
+		$template = $this->contentConfigurationService->resolveTemplateFileForVariant($extensionKey, $templateName, $variant, $version);
  		return $template;
 	}
 
@@ -207,7 +207,7 @@ class CoreContentProvider extends ContentProvider implements ProviderInterface {
 	 * @return string
 	 */
 	protected function getVariant(array $row) {
-		$defaults = $this->configurationService->getDefaults();
+		$defaults = $this->contentConfigurationService->getDefaults();
 		if (self::MODE_RECORD !== $defaults['mode'] && TRUE === empty($row['content_variant'])) {
 			return $defaults['variant'];
 		}
@@ -219,7 +219,7 @@ class CoreContentProvider extends ContentProvider implements ProviderInterface {
 	 * @return string
 	 */
 	protected function getVersion(array $row) {
-		$defaults = $this->configurationService->getDefaults();
+		$defaults = $this->contentConfigurationService->getDefaults();
 		if (self::MODE_RECORD !== $defaults['mode'] && TRUE === empty($row['content_version'])) {
 			return $defaults['version'];
 		}
@@ -233,7 +233,7 @@ class CoreContentProvider extends ContentProvider implements ProviderInterface {
 	public function getControllerActionFromRecord(array $row) {
 		return strtolower($row['CType']);
 	}
-	
+
 	/**
 	 * @param string $operation
 	 * @param integer $id
@@ -243,7 +243,7 @@ class CoreContentProvider extends ContentProvider implements ProviderInterface {
 	 * @return void
 	 */
 	public function postProcessRecord($operation, $id, array &$row, DataHandler $reference, array $removals = array()) {
-		$defaults = $this->configurationService->getDefaults();
+		$defaults = $this->contentConfigurationService->getDefaults();
 		if (self::MODE_RECORD === $defaults['mode']) {
 			if (TRUE === empty($row['content_variant'])) {
 				$row['content_variant'] = $defaults['variant'];
@@ -266,12 +266,20 @@ class CoreContentProvider extends ContentProvider implements ProviderInterface {
 		if (FALSE === empty($variant)) {
 			$extensionKey = ExtensionNamingUtility::getExtensionKey($variant);
 			if (FALSE === empty($extensionKey)) {
-				$overlayPaths = $this->configurationService->getViewConfigurationForExtensionName($extensionKey);
+				$overlayPaths = $this->contentConfigurationService->getViewConfigurationForExtensionName($extensionKey);
 				$paths = array_merge_recursive($paths, $overlayPaths);
 			}
 		}
 
 		return $paths;
+	}
+
+	/**
+	 * @param string $key
+	 * @return string|NULL
+	 */
+	protected function translateLabel($key) {
+		return LocalizationUtility::translate($key, 'moox_core');
 	}
 
 }

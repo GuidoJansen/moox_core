@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+    <file t3:id="1427834041" source-language="de" datatype="plaintext" original="messages" date="2016-01-22T20:22:32Z" product-name="moox_core">
+        <header/>
+        <body>
+            <trans-unit id="tt_content.tx_mooxcore_extended_visibility">
+                <source>Extended Visibility</source>
+                <target>Erweiterte Sichtbarkeits-Optionen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_mooxcore_hide_desktop">
+                <source>Hide in desktop view:</source>
+                <target>In Desktop-Version nicht anzeigen:</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_mooxcore_hide_laptop">
+                <source>Hide in laptop view:</source>
+                <target>In Laptop-Version nicht anzeigen:</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_mooxcore_hide_tablet">
+                <source>Hide in tablet view:</source>
+                <target>In Tablet-Version nicht anzeigen:</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_mooxcore_hide_phone">
+                <source>Hide in phone view:</source>
+                <target>In Handy/Smartphone-Version nicht anzeigen:</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_mooxcore_hide_print">
+                <source>Hide in print view:</source>
+                <target>In Druck-Version nicht anzeigen:</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_mooxcore_hide_barrierfree">
+                <source>Hide in barrier-free view:</source>
+                <target>In barrierefreier Version nicht anzeigen:</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_mooxcore_hide_oldbrowser">
+                <source>Hide from older browsers:</source>
+                <target>Für ältere Browser nicht anzeigen:</target>
+            </trans-unit>
+            <trans-unit id="tt_content.asset_references">
+                <source>Media elements</source>
+                <target>Medien Elemente</target>
+            </trans-unit>
+            <trans-unit id="tt_content.asset_references.addFileReference">
+                <source>Add media file</source>
+                <target>Medien Datei hinzufügen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -47,21 +47,18 @@ for ($i = 0; $i < $types; $i++) {
 unset($types, $i);
 
 // Include new content elements to modWizards
-if (TRUE === version_compare(TYPO3_version, '7.3', '>')) {
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:moox_core/Configuration/PageTS/modWizards.ts">');
-
-	// If the form extension is loaded, then include the mailform element to modWizards
-	if (TRUE === \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('form')) {
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:moox_core/Configuration/PageTS/modWizardsMailform.ts">');
-	}
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:moox_core/Configuration/PageTS/modWizards.ts">');
+// If the form extension is loaded, then include the mailform element to modWizards
+if (TRUE === \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('form')) {
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:moox_core/Configuration/PageTS/modWizardsMailform.ts">');
 }
 
 
 /***************
  * Use moox_core PAGE & USER TSconfig
  */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/TypoScript/pageTSconfig.txt">');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/TypoScript/userTSconfig.txt">');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/PageTS/pageTSconfig.txt">');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/UserTS/userTSconfig.txt">');
 
 /***************
  * Use RealUrl Config from MOOX Core
@@ -97,21 +94,20 @@ if (TYPO3_MODE === 'BE') {
 	 * Provides an example AdditionalConfiguration.php file after extension is installed and shows a warning if TYPO3 is not running with moox_core additional configuration.
 	 */
 	$signalSlotDispatcher->connect(
-			'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-			'hasInstalledExtensions',
-			'DCNGmbH\\MooxCore\\Service\\InstallService',
-			'createDefaultAdditionalConfiguration'
+		'TYPO3\CMS\Extensionmanager\Utility\InstallUtility',
+		'afterExtensionInstall',
+		'DCNGmbH\MooxCore\Hooks\InstallSignalSlot',
+		'installAdditionalConfiguration',
+		FALSE
 	);
 }
 
 /***************
- * Backend Styling
- */
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Backend\\View\\LogoView']['className'] = 'DCNGmbH\\MooxCore\\Xclass\\Backend\\View\\LogoView';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/backend.php']['renderPreProcess'][] = 'DCNGmbH\\MooxCore\\Hooks\\Backend\\RenderPreProcess->addStyles';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/template.php']['preHeaderRenderHook'][] = 'DCNGmbH\\MooxCore\\Hooks\\Backend\\PreHeaderRender->addStyles';
-
-/***************
  * Register hook for processing less files
  */
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-preProcess'][] = 'DCNGmbH\\MooxCore\\Hooks\\PageRendererRender\\PreProcessHook->execute';
+if (TYPO3_MODE === 'FE') {
+	require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('moox_core') . '/Contrib/less.php/Less.php');
+
+		$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-preProcess'][] = 'DCNGmbH\\MooxCore\\Hooks\\PageRendererRender\\PreProcessHook->execute';
+	
+}

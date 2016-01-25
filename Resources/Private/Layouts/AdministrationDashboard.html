@@ -5,16 +5,11 @@
 
 {v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
 
-<f:be.container pageTitle="MOOX Dashboard" loadPrototype="FALSE" loadExtJs="FALSE" loadExtJsTheme="FALSE" loadJQuery="true"
-                includeCssFiles="{0: '{f:uri.resource(path:\'Stylesheets/dashboard/bootstrap.min.css\')}', 1: '{f:uri.resource(path:\'Stylesheets/dashboard/jquery.gridster.css\')}', 2: '{f:uri.resource(path:\'Stylesheets/dashboard/administration-dashboard-style.css\')}'}">
+<f:be.container pageTitle="MOOX Dashboard" loadExtJs="FALSE" loadExtJsTheme="FALSE" loadJQuery="true"
+                includeCssFiles="{0: '{f:uri.resource(path:\'Stylesheets/dashboard/bootstrap.min.css\')}', 1: '{f:uri.resource(path:\'Stylesheets/dashboard/administration-dashboard-style.css\')}'}">
     
     <div class="mod-administration-dashboard">
         <f:render section="main" />
     </div>
-    <f:comment><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script></f:comment>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <f:comment><script type="text/javascript" src="../typo3conf/ext/moox_core/Resources/Public/Js/dashboard/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../typo3conf/ext/moox_core/Resources/Public/Js/dashboard/jquery.gridster.js"></script>
-    <script type="text/javascript" src="../typo3conf/ext/moox_core/Resources/Public/Js/dashboard/administration-dashboard-script.js"></script></f:comment>
-    
 </f:be.container>

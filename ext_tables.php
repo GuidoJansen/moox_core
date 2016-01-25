@@ -21,68 +21,6 @@ if (FALSE === (boolean) $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['moox_core']['set
 }
 
 
-// Add fields for individual id / class for content elements
-$tempColumns = Array (
-	'tx_mooxcore_hide_desktop' => Array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_hide_desktop',		
-		'config' => Array (
-			'type' => 'check',
-		)
-	),
-	'tx_mooxcore_hide_laptop' => Array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_hide_laptop',		
-		'config' => Array (
-			'type' => 'check',
-		)
-	),
-	'tx_mooxcore_hide_tablet' => Array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_hide_tablet',		
-		'config' => Array (
-			'type' => 'check',
-		)
-	),
-	'tx_mooxcore_hide_phone' => Array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_hide_phone',		
-		'config' => Array (
-			'type' => 'check',
-		)
-	),
-	'tx_mooxcore_hide_print' => Array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_hide_print',		
-		'config' => Array (
-			'type' => 'check',
-		)
-	),
-	'tx_mooxcore_hide_barrierfree' => Array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_hide_barrierfree',		
-		'config' => Array (
-			'type' => 'check',
-		)
-	),
-	'tx_mooxcore_hide_oldbrowser' => Array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_hide_oldbrowser',		
-		'config' => Array (
-			'type' => 'check',
-		)
-	),
-);
-//\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tt_content');
-if (version_compare(TYPO3_branch, '6.2', '<')) {
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns, 1);
-} else {
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
-}
-
-// create palette
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content', ',--div--;LLL:EXT:moox_core/locallang_db.xml:tt_content.tx_mooxcore_extended_visibility,tx_mooxcore_hide_desktop,tx_mooxcore_hide_laptop,tx_mooxcore_hide_tablet,tx_mooxcore_hide_phone,tx_mooxcore_hide_print,tx_mooxcore_hide_barrierfree,tx_mooxcore_hide_oldbrowser', '', '');
-
 /* ===========================================================================
  	Register BE-Module for Administration
 =========================================================================== */
@@ -112,7 +50,7 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 			array(),
 			array(
 				'access' => 'user,group',
-				'icon'   => 'EXT:'.$_EXTKEY.'/ext_icon32.png',
+				'icon'   => 'EXT:'.$_EXTKEY.'/Resources/Public/Icons/module-mooxcore-white.svg',
 				'labels' => 'LLL:EXT:'.$_EXTKEY.'/Resources/Private/Language/MainModule.xlf',
 			)
 		);
@@ -127,25 +65,8 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 		),
 		array(
 			'access' => 'user,group',
-			'icon' => 'EXT:' . $_EXTKEY . '/ext_icon32.png',
+			'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/module-mooxcore.svg',
 			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/DashboardModule.xlf',
 		)
     );	
-}
-
-/***************
- * Backend Styling
- */
-if (TYPO3_MODE == 'BE') {
-    $settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$_EXTKEY]);
-    if(!isset($settings['Logo'])){
-        $settings['Logo'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Images/Backend/typo3-topbar@2x.png';
-    }
-    if(!isset($settings['LoginLogo'])){
-        $settings['LoginLogo'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Images/Backend/typo3logo-white-greyback.gif';
-    }
-    $GLOBALS['TBE_STYLES']['logo'] = $settings['Logo'];
-    $GLOBALS['TBE_STYLES']['logo_login'] = $settings['LoginLogo'];
-    $GLOBALS['TBE_STYLES']['htmlTemplates']['EXT:backend/Resources/Private/Templates/login.html'] = 'EXT:moox_core/Resources/Private/Templates/Backend/Login.html';
-    unset($settings);
 }

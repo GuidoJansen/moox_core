@@ -68,7 +68,7 @@ page.includeCSS {
 plugin.tx_vhs.assets.mergedAssetsUseHashedFilename = 1
 plugin.tx_vhs.settings.asset{
 	jquery {
-		path = //ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js
+		path = //ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
 		external = 1
 		group = cdn
 		standalone = 1
@@ -76,7 +76,7 @@ plugin.tx_vhs.settings.asset{
 		type = js
 	}
 	jqueryuid {
-		path = //ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js
+		path = //ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js
 		external = 1
 		dependencies = jquery
 		group = cdn
@@ -85,7 +85,7 @@ plugin.tx_vhs.settings.asset{
 		type = js
 	}
 	bootstrapcore {
-		path = //maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js
+		path = //maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js
 		external = 1
 		dependencies = jquery
 		group = cdn
@@ -103,7 +103,7 @@ plugin.tx_vhs.settings.asset{
 		type = js
 	}
 	fontawesome {
-		path = //maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css
+		path = //maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css
 		external = 1
 		group = cdn
 		standalone = 1
@@ -206,6 +206,9 @@ plugin.tx_mooxcore.settings {
 	globalpagetitle = {$plugin.tx_mooxcore.settings.globalpagetitle}
 	domain = {$plugin.tx_mooxcore.settings.domain}
 	dnsPrefetch = {$plugin.tx_mooxcore.settings.dnsPrefetch}
+
+	overrideLessVariables = {$plugin.tx_mooxcore.settings.overrideLessVariables}
+    cssSourceMapping = {$plugin.tx_mooxcore.settings.cssSourceMapping}
 	
 	### COOKIES ###
 	useCookieCompliance = {$plugin.tx_mooxcore.settings.useCookieCompliance}

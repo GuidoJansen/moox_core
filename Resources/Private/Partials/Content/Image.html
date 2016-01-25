@@ -15,17 +15,23 @@
 <f:section name="image">
 	<f:if condition="{settings.directInclusion}">
 		<f:then>
+			<v:variable.set name="image1200Src" value="{v:uri.image(src: image.uid, treatIdAsReference: 1, maxW: 1200)}" />
+			<v:variable.set name="image992Src" value="{v:uri.image(src: image.uid, treatIdAsReference: 1, maxW: 992)}" />
+			<v:variable.set name="image768Src" value="{v:uri.image(src: image.uid, treatIdAsReference: 1, maxW: 768)}" />
+			<v:variable.set name="image480Src" value="{v:uri.image(src: image.uid, treatIdAsReference: 1, maxW: 480)}" />
+			<v:variable.set name="image400Src" value="{v:uri.image(src: image.uid, treatIdAsReference: 1, maxW: 400)}" />
+			<v:variable.set name="image320Src" value="{v:uri.image(src: image.uid, treatIdAsReference: 1, maxW: 320)}" />
 			<figure class="image">
 				<picture>
 					<!--[if IE 9]><video style="display: none;"><![endif]-->
-					<source srcset="{v:uri.image(src: image.url, maxW: 1200)}" media="(min-width: 1200px)">
-					<source srcset="{v:uri.image(src: image.url, maxW: 992)}" media="(min-width: 992px)">
-					<source srcset="{v:uri.image(src: image.url, maxW: 768)}" media="(min-width: 768px)">
-					<source srcset="{v:uri.image(src: image.url, maxW: 640)}" media="(min-width: 640px)">
-					<source srcset="{v:uri.image(src: image.url, maxW: 480)}" media="(min-width: 480px)">
-					<source srcset="{v:uri.image(src: image.url, maxW: 400)}" media="(min-width: 400px)">
+					<source srcset="{v:uri.image(src: image.uid, treatIdAsReference: 1)}" media="(min-width: 1200px)">
+					<source srcset="{image1200Src}" media="(min-width: 992px)">
+					<source srcset="{image992Src}" media="(min-width: 768px)">
+					<source srcset="{image768Src}" media="(min-width: 480px)">
+					<source srcset="{image480Src}" media="(min-width: 400px)">
+					<source srcset="{image400Src}" media="(min-width: 320px)">
 					<!--[if IE 9]></video><![endif]-->
-					<img srcset="{v:uri.image(src: image.url, maxW: 320)}" title="{image.title}" alt="{f:if(condition: image.alternative, then: image.alternative, else: image.name)}" class="img-responsive {settings.image.className -> v:format.replace(substring: ',', replacement: ' ')}" id="image{record.uid}{image.uid}">
+					<img srcset="{image320Src}" title="{image.title}" alt="{f:if(condition: image.alternative, then: image.alternative, else: image.name)}" class="img-responsive {settings.image.className -> v:format.replace(substring: ',', replacement: ' ')}" id="image{record.uid}{image.uid}">
 				</picture>
 				<f:if condition="{image.description}"><figcaption id="figcaption{record.uid}{image.uid}" class="caption-position-{captionpositionclass}"><f:format.html>{image.description}</f:format.html></figcaption></f:if>
 			</figure>
