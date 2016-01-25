@@ -14,7 +14,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'title' => 'MOOX Bootstrap Core',
 	'description' => 'TYPO3 Responsive using Less, Bootstrap, HTML5 Boilerplate and jQuery. Extended by MOOX Design Templates, MOOX News and other MOOX Extensions.',
 	'category' => 'fe',
-	'version' => '0.9.62',
+	'version' => '0.9.63',
 	'state' => 'beta',
 	'uploadfolder' => false,
 	'createDirs' => '',
@@ -26,7 +26,7 @@ $EM_CONF[$_EXTKEY] = array (
 	array (
 		'depends' => 
 		array (
-			'typo3' => '6.2.0-7.4.99',
+			'typo3' => '6.2.0-6.2.99',
 			'flux' => '',
 			'vhs' => '',
 			'fluidcontent' => '',
