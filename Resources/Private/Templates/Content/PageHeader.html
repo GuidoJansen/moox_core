@@ -1,31 +1,34 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="NoHeader" />
+	<f:layout name="ContentNoHeader" />
 
-<f:section name="Configuration">
-	<flux:form id="pageheader" options="{group: 'Bootstrap', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-header.png\')}'}">
-		<flux:field.select name="headerType" items="{h1: 'h1', h2: 'h2', h3: 'h3', h4: 'h4', h5: 'h5', h6: 'h6'}" default="h1" />
-		<flux:field.input name="header" />
-		<flux:field.input name="subheader" />
-		<flux:field.checkbox name="pageheader" />
-	</flux:form>
-</f:section>
+	<f:section name="Configuration">
+		<flux:form id="pageheader" options="{group: 'Bootstrap', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-header.png\')}'}">
+			<flux:field.select name="headerType" items="{h1: 'h1', h2: 'h2', h3: 'h3', h4: 'h4', h5: 'h5', h6: 'h6'}" default="h1" />
+			<flux:field.input name="header" />
+			<flux:field.input name="subheader" />
+			<flux:field.checkbox name="pageheader" />
+		</flux:form>
+	</f:section>
 
-<f:section name="Preview">
-	<{headerType}>{header}
-		<f:if condition="{subheader}">
-			<small>{subheader}</small>
-		</f:if>
-	</{headerType}>
-</f:section>
-
-<f:section name="Main">
-	<div class="bootstrap-header {f:if(condition: pageheader, then: 'page-header', else: '')}">
+	<f:section name="Preview">
 		<{headerType}>{header}
 			<f:if condition="{subheader}">
 				<small>{subheader}</small>
 			</f:if>
 		</{headerType}>
-	</div>
-</f:section>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="bootstrap-header {f:if(condition: pageheader, then: 'page-header', else: '')}">
+			<{headerType}>{header}
+				<f:if condition="{subheader}">
+					<small>{subheader}</small>
+				</f:if>
+			</{headerType}>
+		</div>
+	</f:section>
+
+</div>

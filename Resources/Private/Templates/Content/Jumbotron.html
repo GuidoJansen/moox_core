@@ -1,7 +1,8 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="Default" />
+<f:layout name="ContentDefault" />
 
 <f:section name="Configuration">
 	<flux:form id="jumbotron" options="{group: 'Bootstrap', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-jumbotron.png\')}'}">
@@ -18,3 +19,5 @@
 		<flux:content.render area="content" />
 	</div>
 </f:section>
+
+</div>

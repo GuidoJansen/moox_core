@@ -1,10 +1,8 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-<f:layout name="Default" />
-<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
-	 xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
-	 xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
-	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+	<f:layout name="ContentDefault" />
 
 	<f:section name="Configuration">
 		<flux:form id="grid4" options="{group: 'Grid', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-grid4.png\')}'}">
@@ -107,4 +105,5 @@
 	<f:section name="Main">
 		<f:render section="FrontendColRenderingGrid4" arguments="{_all}" />
 	</f:section>
+	
 </div>

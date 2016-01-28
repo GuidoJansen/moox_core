@@ -1,3 +1,5 @@
+document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+
 /*!
  * jQuery Cookie Plugin v1.4.1
  * https://github.com/carhartl/jquery-cookie
@@ -3729,5 +3731,5 @@ $(document).ready(function() {
 		      enabled:true
 		    }
 		});
-	}); 
+	});
 });

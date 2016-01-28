@@ -1,0 +1,139 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxHtmlFoot">
+        <v:page.footer>
+
+        </v:page.footer>
+        <f:if condition="{settings.customJS} != ''">
+            <v:asset.script name="{settings.extKey}_customjs" group="moox" dependencies="{settings.extKey}_js" path="{settings.customJS}" standalone="TRUE" allowMoveToFooter="TRUE" external="0" />
+        </f:if>
+        <f:if condition="{settings.useCookieCompliance}">
+            <v:asset.script name="cookie-alert" group="moox" dependencies="mooxcore" standalone="FALSE" allowMoveToFooter="TRUE">
+                jQuery(function( $ ){
+                if( $.cookie('moox-alert-cookie-box') === 'closed' ){
+                $('.alert-cookie').hide();
+                $('#cookie-modal').hide();
+                }
+                $('.cookie-accept').click(function( e ){
+                e.preventDefault();
+                $.cookie('moox-alert-cookie-box', 'closed', { path: '/' });
+                });
+                });
+                <f:if condition="{settings.cookieAlertBoxPosition} == 'modal'">
+                    $(window).load(function(){
+                    $('#cookie-modal').modal('show');
+                    });
+                </f:if>
+            </v:asset.script>
+            <f:if condition="{settings.cookieAlertBoxPosition} == 'modal'">
+                <f:then>
+                    <div id="cookie-modal" class="modal fade bs-example-modal-lg in" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <f:if condition="{settings.cookieBoxText} != ''">
+                                        <f:then>
+                                            {settings.cookieBoxText}
+                                        </f:then>
+                                        <f:else>
+                                            <f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxContent" />
+                                        </f:else>
+                                    </f:if>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="close cookie-accept" data-dismiss="alert">
+                                        <f:if condition="{settings.cookieButtonAccept} != ''">
+                                            <f:then>
+                                                {settings.cookieButtonAccept}
+                                            </f:then>
+                                            <f:else>
+                                                <f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonAccept" />
+                                            </f:else>
+                                        </f:if>
+                                    </button>
+                                    <f:link.page pageUid="{settings.cookieSettingsPage}">
+                                        <button type="button" class="close cookie-link-to-page">
+                                            <f:if condition="{settings.cookieButtonSettings} != ''">
+                                                <f:then>
+                                                    {settings.cookieButtonSettings}
+                                                </f:then>
+                                                <f:else>
+                                                    <f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonSettings" />
+                                                </f:else>
+                                            </f:if>
+                                        </button>
+                                    </f:link.page>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </f:then>
+                <f:else>
+                    <div class="alert alert-info alert-cookie cookie-alert-box-position-{settings.cookieAlertBoxPosition}">
+                        <f:if condition="{settings.cookieBoxText} != ''">
+                            <f:then>
+                                {settings.cookieBoxText}
+                            </f:then>
+                            <f:else>
+                                <f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxContent" />
+                            </f:else>
+                        </f:if>
+                        <button type="button" class="close cookie-accept" data-dismiss="alert">
+                            <f:if condition="{settings.cookieButtonAccept} != ''">
+                                <f:then>
+                                    {settings.cookieButtonAccept}
+                                </f:then>
+                                <f:else>
+                                    <f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonAccept" />
+                                </f:else>
+                            </f:if>
+                        </button>
+                        <f:link.page pageUid="{settings.cookieSettingsPage}">
+                            <button type="button" class="close cookie-link-to-page">
+                                <f:if condition="{settings.cookieButtonSettings} != ''">
+                                    <f:then>
+                                        {settings.cookieButtonSettings}
+                                    </f:then>
+                                    <f:else>
+                                        <f:translate key="LLL:EXT:moox_core/Resources/Private/Language/locallang.xlf:cookieAlertBoxButtonSettings" />
+                                    </f:else>
+                                </f:if>
+                            </button>
+                        </f:link.page>
+                    </div>
+                </f:else>
+            </f:if>
+        </f:if>
+        <f:if condition="{settings.useGoogleAnalytics}">
+            <v:asset.script name="google-analytics" group="moox" standalone="TRUE" allowMoveToFooter="TRUE">
+                <![CDATA[
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                ga('create', ']]>{settings.uaCode}<![CDATA[', 'auto');
+                ga('send', 'pageview');
+                ]]>
+            </v:asset.script>
+        </f:if>
+        <f:if condition="{settings.usePiwik}">
+            <v:asset.script name="piwik" group="moox" standalone="TRUE" allowMoveToFooter="TRUE">
+                <![CDATA[
+                var _paq = _paq || [];
+                (function(){ var u=(("https:" == document.location.protocol) ? "https://]]>{settings.piwikUrl}<![CDATA[/" : "http://]]>{settings.piwikUrl}<![CDATA[/");
+                _paq.push(['setSiteId', ]]>{settings.idSite}<![CDATA[]);
+                _paq.push(['setTrackerUrl', u+'piwik.php']);
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
+                s.parentNode.insertBefore(g,s); })();
+                ]]>
+            </v:asset.script>
+        </f:if>
+        <f:render partial="Page/Configuration/AdditionalHtmlFoot" section="MooxHtmlFoot" arguments="{_all}" />
+    </f:section>
+
+</div>

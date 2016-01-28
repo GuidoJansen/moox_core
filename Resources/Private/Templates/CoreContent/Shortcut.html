@@ -1,21 +1,21 @@
 <div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
-     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
-     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="NoHeader" />
+	<f:layout name="ContentNoHeader" />
 
-<f:section name="Configuration">
-	<flux:form id="shortcut">
-		<f:render partial="Properties/Container" arguments="{_all}" />
-	</flux:form>
-</f:section>
+	<f:section name="Configuration">
+		<flux:form id="shortcut">
+			<f:render partial="Content/Properties/Container" arguments="{_all}" />
+		</flux:form>
+	</f:section>
 
-<f:section name="Preview">
-</f:section>
+	<f:section name="Preview">
+	</f:section>
 
-<f:section name="Main">
-	<v:content.render contentUids="{contentUids -> v:iterator.explode()}" />
-	<f:comment><v:content.render contentUids="{record.records -> v:iterator.explode() -> v:format.replace(substring: 'tt_content_', replacement: '')}" /></f:comment>
-</f:section>
+	<f:section name="Main">
+		<f:comment><v:content.render contentUids="{contentUids -> v:iterator.explode()}" /></f:comment>
+		<v:content.render contentUids="{record.records -> v:iterator.explode() -> v:format.replace(substring: 'tt_content_', replacement: '')}" />
+	</f:section>
 
 </div>

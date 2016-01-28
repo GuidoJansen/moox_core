@@ -1,80 +1,90 @@
 <div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
-     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
-     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="Default" />
+	{namespace mooxcore=DCNGmbH\MooxCore\ViewHelpers}
 
-<f:section name="Configuration">
-	<flux:form id="media">
-		<f:render partial="Properties/Header" arguments="{_all}" />
- 		<f:render partial="Properties/Container" arguments="{_all}" />
-		<f:render partial="Properties/Media" arguments="{_all}" />
-	</flux:form>
-</f:section>
+	<f:layout name="ContentDefault" />
 
-<f:section name="Preview"></f:section>
+	<f:section name="Configuration">
+		<flux:form id="media">
+			<f:render partial="Content/Properties/Header" arguments="{_all}" />
+			<f:render partial="Content/Properties/Container" arguments="{_all}" />
+			<f:render partial="Content/Properties/Media" arguments="{_all}" />
+		</flux:form>
+	</f:section>
 
-<f:section name="Main">
-	<f:if condition="{settings.media.type} == 'video'">
-		<v:asset.script name="videojs-js" group="moox" dependencies="mooxcore" path="EXT:moox_core/Resources/Public/Js/video-js/video.min.js" standalone="FALSE" allowMoveToFooter="TRUE" external="0" />
-		<v:asset.script name="videojs-js-init-{record.uid}" dependencies="videojs-js" group="moox" standalone="FALSE" allowMoveToFooter="TRUE">
-			<![CDATA[
-			videojs.options.flash.swf = "typo3conf/ext/moox_core/Resources/Public/Js/video-js/video-js.swf";
-			]]>
-			<f:if condition="{settings.media.width} == ''">				
-			<![CDATA[
-			videojs("video_]]>{record.uid}<![CDATA[", {"height":"auto", "width":"auto"}).ready(function(){
-				var myPlayer = this;
-				var aspectRatio = 5/12;
-			    
-				function resizeVideoJS(){
-				  var width = document.getElementById(myPlayer.id()).parentElement.offsetWidth;
-				  myPlayer.width(width).height( width * aspectRatio );
-				}
-			    
-				resizeVideoJS();
-				window.onresize = resizeVideoJS;
-			});
-			]]>
-			</f:if>
-		</v:asset.script>
-		<v:asset.script name="videojs-html5-shiv" group="video-js" standalone="TRUE" allowMoveToFooter="FALSE">
-			document.createElement('video');document.createElement('audio');document.createElement('track');
-		</v:asset.script>
-		<div class="moox-videojs moox-videojs-c{record.uid}">
-			<video id="video_{record.uid}" class="video-js vjs-default-skin" width="{settings.media.width}" height="{settings.media.height}" poster="{settings.media.poster}" data-setup="{}" <f:if condition="{settings.media.controls} == '1'">controls</f:if> <f:if condition="{settings.media.autoplay} == '1'">autoplay</f:if> <f:if condition="{settings.media.preload} == '1'">preload</f:if> <f:if condition="{settings.media.loop} == '1'">loop</f:if>>
-				<f:for each="{settings.media.videojsitems}" as="sectionObject" iteration="iteration">
-					<source src="{sectionObject.videojsitem.src}" type='video/{sectionObject.videojsitem.type}' />
-				</f:for>
-			</video>
-		</div>
-	</f:if>
-	<f:if condition="{settings.media.type} == 'audio'">
+	<f:section name="Preview"></f:section>
+
+	<f:section name="Main">
+		<v:resource.record.fal record="{record}" field="assets" table="tt_content" as="assets">
+			<f:for each="{assets}" as="asset">
+				<f:switch expression="{asset.type}">
+					<f:case value="3">
+						<f:render section="audioType" arguments="{_all}" />
+					</f:case>
+					<f:case value="4">
+						<f:switch expression="{asset.mimetype}">
+							<f:case value="video/youtube">
+								<v:variable.set name="mediaSource" value="{mooxcore:getYoutubeId(url:asset.url)}" />
+								<div class="embed-responsive embed-responsive-16by9">
+									<v:media.youtube videoId="{mediaSource}" width="{asset.width}" height="{asset.height}" loop="{settings.media.loop}" autoplay="{settings.media.autoplay}" />
+								</div>
+							</f:case>
+							<f:case value="video/vimeo">
+								<v:variable.set name="mediaSource" value="{mooxcore:getVimeoId(url:asset.url)}" />
+								<div class="embed-responsive embed-responsive-16by9">
+									<v:media.vimeo videoId="{mediaSource}" width="{asset.width}" height="{asset.height}" loop="{settings.media.loop}" autoplay="{settings.media.autoplay}" />
+								</div>
+							</f:case>
+							<f:case default="TRUE">
+								<v:variable.set name="renderHtmlVideo" value="true" />
+							</f:case>
+						</f:switch>
+					</f:case>
+					<f:case default="TRUE">
+						<f:render section="imageType" arguments="{_all}" />
+					</f:case>
+				</f:switch>
+			</f:for>
+		</v:resource.record.fal>
+
+		<f:if condition="{renderHtmlVideo}">
+			<f:render section="videoType" arguments="{_all}" />
+		</f:if>
+
+	</f:section>
+
+	<f:section name="imageType">
+
+	</f:section>
+
+	<f:section name="audioType">
 		<v:asset.script name="audiojs-js" group="moox" dependencies="mooxcore" path="EXT:moox_core/Resources/Public/Js/audio-js/audio.min.js" standalone="FALSE" allowMoveToFooter="TRUE" external="0" />
 		<v:asset.script name="audiojs-js-init" group="moox" dependencies="audiojs-js" standalone="FALSE" allowMoveToFooter="TRUE">
 			<![CDATA[
 			audiojs.events.ready(function() {
-				var as = audiojs.createAll({
-					imageLocation: '/typo3conf/ext/moox_core/Resources/Public/Js/audio-js/player-graphics.gif',
-					swfLocation: '/typo3conf/ext/moox_core/Resources/Public/Js/audio-js/audiojs.swf'
-				}),
-				audio = as[0],
-				ids = ['vol-0', 'vol-10', 'vol-40', 'vol-70', 'vol-100'];
-				for (var i = 0, ii = ids.length; i < ii; i++) {
-					var elem = document.getElementById(ids[i]),
-					  volume = ids[i].split('-')[1];
-					elem.setAttribute('data-volume', volume / 100)
-					elem.onclick = function(e) {
-						audio.setVolume(this.getAttribute('data-volume'));
-						e.preventDefault();
-						return false;
-					}
-				}
+			var as = audiojs.createAll({
+			imageLocation: '/typo3conf/ext/moox_core/Resources/Public/Js/audio-js/player-graphics.gif',
+			swfLocation: '/typo3conf/ext/moox_core/Resources/Public/Js/audio-js/audiojs.swf'
+			}),
+			audio = as[0],
+			ids = ['vol-0', 'vol-10', 'vol-40', 'vol-70', 'vol-100'];
+			for (var i = 0, ii = ids.length; i < ii; i++) {
+			var elem = document.getElementById(ids[i]),
+			volume = ids[i].split('-')[1];
+			elem.setAttribute('data-volume', volume / 100)
+			elem.onclick = function(e) {
+			audio.setVolume(this.getAttribute('data-volume'));
+			e.preventDefault();
+			return false;
+			}
+			}
 			});
 			]]>
 		</v:asset.script>
 		<div class="moox-audiojs moox-audiojs-c{record.uid}">
-			<audio id="audio_{record.uid}" class="audio-js" src="{settings.media.audioSrc}" type="audio/mp3" <f:if condition="{settings.media.autoplay} == '1'">autoplay</f:if> <f:if condition="{settings.media.preload} == '1'">preload</f:if> <f:if condition="{settings.media.loop} == '1'">loop</f:if>></audio>
+			<audio id="audio_{record.uid}" class="audio-js" src="{asset.url}" type="{asset.mimetype}" <f:if condition="{settings.media.autoplay} == '1'">autoplay</f:if> <f:if condition="{settings.media.preload} == '1'">preload</f:if> <f:if condition="{settings.media.loop} == '1'">loop</f:if>></audio>
 			<div class="audio-volume" style="display:none;">
 				<p><a href="#" id="vol-0">Volume: 0.0</a></p>
 				<p><a href="#" id="vol-10">Volume: 0.1</a></p>
@@ -83,7 +93,49 @@
 				<p><a href="#" id="vol-100">Volume: 1.0</a></p>
 			</div>
 		</div>
-	</f:if>
-</f:section>
+	</f:section>
+
+	<f:section name="videoType">
+		<v:asset.script name="videojs-js" group="moox" dependencies="mooxcore" path="EXT:moox_core/Resources/Public/Js/video-js/video.min.js" standalone="FALSE" allowMoveToFooter="TRUE" external="0" />
+		<v:asset.script name="videojs-js-init-{record.uid}" dependencies="videojs-js" group="moox" standalone="FALSE" allowMoveToFooter="TRUE">
+			<![CDATA[
+			videojs.options.flash.swf = "typo3conf/ext/moox_core/Resources/Public/Js/video-js/video-js.swf";
+			]]>
+			<f:if condition="{settings.media.width} == ''">
+				<![CDATA[
+				videojs("video_]]>{record.uid}<![CDATA[", {"height":"auto", "width":"auto"}).ready(function(){
+				var myPlayer = this;
+				var aspectRatio = 5/12;
+
+				function resizeVideoJS(){
+				var width = document.getElementById(myPlayer.id()).parentElement.offsetWidth;
+				myPlayer.width(width).height( width * aspectRatio );
+				}
+
+				resizeVideoJS();
+				window.onresize = resizeVideoJS;
+				});
+				]]>
+			</f:if>
+		</v:asset.script>
+		<v:asset.script name="videojs-html5-shiv" group="video-js" standalone="TRUE" allowMoveToFooter="FALSE">
+			document.createElement('video');document.createElement('audio');document.createElement('track');
+		</v:asset.script>
+		<div class="moox-videojs moox-videojs-c{record.uid}">
+			<video id="video_{record.uid}" class="video-js vjs-default-skin" width="{settings.media.width}" height="{settings.media.height}" poster="{settings.media.poster}" data-setup="{}" <f:if condition="{settings.media.controls} == '1'">controls</f:if> <f:if condition="{settings.media.autoplay} == '1'">autoplay</f:if> <f:if condition="{settings.media.preload} == '1'">preload</f:if> <f:if condition="{settings.media.loop} == '1'">loop</f:if>>
+				<v:resource.record.fal record="{record}" field="assets" table="tt_content" as="assets">
+					<f:for each="{assets}" as="asset" iteration="iteration">
+						<f:if condition="{asset.type} == 4">
+							<f:if condition="{asset.mimetype} != 'video/youtube'">
+								<f:if condition="{asset.mimetype} != 'video/vimeo'">
+									<source src="{asset.url}" type="{asset.mimetype}" />
+								</f:if>
+							</f:if>
+						</f:if>
+					</f:for>
+				</v:resource.record.fal>
+			</video>
+		</div>
+	</f:section>
 
 </div>

@@ -3,6 +3,89 @@
 	<file source-language="en" datatype="plaintext" original="messages" product-name="moox_core" date="2014-01-04T16:56:53+01:00">
 		<header/>
 		<body>
+			<trans-unit id="flux.form.label.blank">
+				<source>Blank</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultSimpleContent">
+				<source>Default - Simple content</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultStartpage">
+				<source>Default - Startpage</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultPortal">
+				<source>Default - Portal</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultColumnRight">
+				<source>Default - Column right</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultColumnLeft">
+				<source>Default - Column left</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultSubmenuLeft">
+				<source>Default - Submenu left</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultSubmenuRight">
+				<source>Default - Submenu right</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerSimpleContent">
+				<source>Center - Simple content</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerStartpage">
+				<source>Center - Startpage</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerPortal">
+				<source>Center - Portal</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerColumnRight">
+				<source>Center - Column right</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerColumnLeft">
+				<source>Center - Column left</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerSubmenuLeft">
+				<source>Center - Submenu left</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerSubmenuRight">
+				<source>Center - Submenu right</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthSimpleContent">
+				<source>Fullwidth - Simple content</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthStartpage">
+				<source>Fullwidth - Startpage</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthPortal">
+				<source>Fullwidth - Portal</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthColumnRight">
+				<source>Fullwidth - Column right</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthColumnLeft">
+				<source>Fullwidth - Column left</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthSubmenuLeft">
+				<source>Fullwidth - Submenu left</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthSubmenuRight">
+				<source>Fullwidth - Submenu right</source>
+			</trans-unit>
+
+			<trans-unit id="flux.form.grid.column.teaserContent">
+				<source>Teaser content</source>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.mainContent">
+				<source>Main content</source>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.leftContent">
+				<source>Left content</source>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.rightContent">
+				<source>Right content</source>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.footerContent">
+				<source>Footer content</source>
+			</trans-unit>
+
 			<trans-unit id="from">
 				<source>from</source>
 			</trans-unit>

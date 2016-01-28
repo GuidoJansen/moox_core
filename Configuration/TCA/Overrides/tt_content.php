@@ -55,7 +55,19 @@ array_splice(
 	)
 );
 
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['FileInfo']['fileExtensionToMimeType']['ogv'] = 'video/ogv';
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'] .= ',ogv';
+
 $additionalColumns = Array (
+	'assets' => Array(
+		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.asset_references',
+		'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('assets', Array(
+			'appearance' => Array(
+				'createNewRelationLinkTitle' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.asset_references.addFileReference'
+			),
+			'foreign_types' => $GLOBALS['TCA']['tt_content']['columns']['image']['config']['foreign_types']
+		), $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'])
+	),
 	'tx_mooxcore_hide_desktop' => Array (
 		'exclude' => 1,
 		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_desktop',
@@ -332,6 +344,9 @@ $GLOBALS['TCA']['tt_content']['types']['media']['showitem'] = '
                 rte_enabled;LLL:EXT:cms/locallang_ttc.xlf:rte_enabled_formlabel,
 		--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.appearance,
                 --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.frames;frames,
+        --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.media,
+                assets,
+                --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.imagelinks;imagelinks,
         --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,
                 --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.visibility;visibility,
                 --palette--;LLL:EXT:cms/locallang_ttc.xlf:palette.access;access,

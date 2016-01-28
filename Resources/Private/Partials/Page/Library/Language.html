@@ -1,0 +1,13 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxLanguageMenu">
+        <f:if condition="{settings.languageEnable}">
+            <div class="language-section pull-left">
+                <v:page.languageMenu accesskey="{settings.languageAccesskey}" class="{settings.languageClass} pull-right" id="mooxLanguageMenu" dir="{settings.languageDir}" tagName="{settings.languageTagName}" tagNameChildren="{settings.languageTagNameChildren}" defaultIsoFlag="{settings.languageDefaultIsoFlag}" defaultLanguageLabel="{settings.languageDefaultLanguageLabel}" hideNotTranslated="{settings.languageHideNotTranslated}" layout="{settings.languageLayout}" useCHash="{settings.languageUseCHash}" flagPath="{settings.languageFlagPath}" flagImageType="{settings.languageFlagImageType}" linkCurrent="1" classCurrent="current" as="languageMenu" />
+            </div>
+        </f:if>
+    </f:section>
+
+</div>

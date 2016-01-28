@@ -1,0 +1,10 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxSettings">
+        {v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
+        <f:render partial="Page/Configuration/AdditionalSettings" section="MooxSettings" arguments="{_all}" />
+    </f:section>
+
+</div>

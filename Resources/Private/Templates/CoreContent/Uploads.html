@@ -1,44 +1,57 @@
 <div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
-     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
-     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="Default" />
+	<f:layout name="ContentDefault" />
 
-<f:section name="Configuration">
-	<flux:form id="uploads">
-		<f:render partial="Properties/Header" arguments="{_all}" />
-		<f:render partial="Properties/Container" arguments="{_all}" />
-		<flux:form.sheet name="uploads">
-			<flux:field.select requestUpdate="0" name="settings.uploadsAlignment" label="LLL:fields.uploadsAlignment" items="{vertical: 'vertical',horizontal: 'horizontal'}" default="vertical" />
-			<flux:field.checkbox name="settings.uploadsTarget" label="LLL:fields.uploadsTarget" />
-		</flux:form.sheet>
-	</flux:form>
-</f:section>
+	<f:section name="Configuration">
+		<flux:form id="uploads">
+			<f:render partial="Content/Properties/Header" arguments="{_all}" />
+			<f:render partial="Content/Properties/Container" arguments="{_all}" />
+		</flux:form>
+	</f:section>
 
-<f:section name="Preview">
-</f:section>
+	<f:section name="Preview">
+	</f:section>
 
-<f:section name="Main">
-	<v:content.resources.fal record="{record}" field="media" as="files">
-		{f:render(section: 'FileList', arguments: {files: files}) -> f:if(condition: files)}
-	</v:content.resources.fal>
-</f:section>
+	<f:section name="Main">
+		<v:content.resources.fal record="{record}" field="media" as="files">
+			{f:render(section: 'FileList', arguments: {files: files}) -> f:if(condition: files)}
+		</v:content.resources.fal>
+	</f:section>
 
-<f:section name="FileList">
-	<dl class="moox-filelist<f:if condition="{settings.uploadsAlignment} == 'horizontal'"><f:then> dl-horizontal</f:then><f:else> dl-vertical</f:else></f:if>">
-		<f:for each="{files}" as="fileRecord">
-			<dt>
-				<a class="file-type-link file-type-{fileRecord.extension}" href="{fileRecord.url}" {f:if(condition: settings.uploadsTarget, then: 'target="_blank"', else: ' ')}>
-					{fileRecord.title -> v:or(alternative: fileRecord.name)}
-				</a>
-			</dt>
-			<dd>
-				<f:if condition="{fileRecord.description}">
-					<div class="filelist-item-description">{fileRecord.description}</div>
-				</f:if>
-			</dd>
-		</f:for>
-	</dl>
-</f:section>
+	<f:section name="FileList">
+		<div class="list-group">
+			<f:for each="{files}" as="fileRecord">
+				<f:link.typolink parameter="{fileRecord.url}" target="_blank" class="list-group-item file-type-link file-type-{fileRecord.extension}">
+					<h5 class="list-group-item-heading">
+						<f:switch expression="{fileRecord.extension}">
+							<f:case value="pdf"><span class="fa fa-file-pdf-o"></span>&nbsp;</f:case>
+							<f:case value="xls"><span class="fa fa-file-excel-o"></span>&nbsp;</f:case>
+							<f:case value="xlsx"><span class="fa fa-file-excel-o"></span>&nbsp;</f:case>
+							<f:case value="jpg"><span class="fa fa-file-image-o"></span>&nbsp;</f:case>
+							<f:case value="jpeg"><span class="fa fa-file-image-o"></span>&nbsp;</f:case>
+							<f:case value="png"><span class="fa fa-file-image-o"></span>&nbsp;</f:case>
+							<f:case value="gif"><span class="fa fa-file-image-o"></span>&nbsp;</f:case>
+							<f:case value="ppt"><span class="fa fa-file-powerpoint-o"></span>&nbsp;</f:case>
+							<f:case value="zip"><span class="fa fa-file-archive-o"></span>&nbsp;</f:case>
+							<f:case value="rar"><span class="fa fa-file-archive-o"></span>&nbsp;</f:case>
+							<f:case value="doc"><span class="fa fa-file-word-o"></span>&nbsp;</f:case>
+							<f:case value="docs"><span class="fa fa-file-word-o"></span>&nbsp;</f:case>
+							<f:case value="html"><span class="fa fa-file-code-o"></span>&nbsp;</f:case>
+							<f:case value="txt"><span class="fa fa-file-text-o"></span>&nbsp;</f:case>
+							<f:case value="mp3"><span class="fa fa-file-audio-o"></span>&nbsp;</f:case>
+							<f:case value="wav"><span class="fa fa-file-audio-o"></span>&nbsp;</f:case>
+							<f:case value="mpeg"><span class="fa fa-file-video-o"></span>&nbsp;</f:case>
+							<f:case value="mp4"><span class="fa fa-file-video-o"></span>&nbsp;</f:case>
+							<f:case default="TRUE"><span class="fa fa-file-o"></span>&nbsp;</f:case>
+						</f:switch>
+						{fileRecord.title -> v:or(alternative: fileRecord.name)}
+					</h5>
+					<f:if condition="{fileRecord.description}"><p class="list-group-item-text"><small>{fileRecord.description}</small></p></f:if>
+				</f:link.typolink>
+			</f:for>
+		</div>
+	</f:section>
 
 </div>

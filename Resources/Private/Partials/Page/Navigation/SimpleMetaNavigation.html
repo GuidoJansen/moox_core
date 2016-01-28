@@ -1,0 +1,19 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxNavigation">
+        <nav class="moox-metanavi">
+            <ul class="moox-metanavi-ul">
+                <f:for each="{menu}" as="page0" iteration="iteration">
+                    <li class="{page0.class}">
+                        <a href="{page0.link}" class="{page0.class}">
+                            {f:if(condition: page0.nav_title, then: page0.nav_title, else: page0.title)}
+                        </a>
+                    </li>
+                </f:for>
+            </ul>
+        </nav>
+    </f:section>
+
+</div>

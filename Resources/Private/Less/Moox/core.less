@@ -1,5 +1,8 @@
 /****************************************************************************************
 # Default css file for content edited with htmlArea RTE
+#
+# Defines a few class selectors that can be simply taken as examples by anyone who needs to configure the RTE.
+# This css file is referenced by property RTE.default.contentCSS in the default configuration of htmlArea RTE.
 # ***************************************************************************************/
 
 /* Left, center, right and justify alignment of text in block elements*/
@@ -13,17 +16,17 @@ p.csc-frame-frame1, table.csc-frame-frame1 { background-color: #EDEBF1; padding:
 p.csc-frame-frame2, table.csc-frame-frame2 { background-color: #F5FFAA; padding: 2px 4px 2px 4px; border: 1px solid #333333; }
 
 /* Bullet styles for unordered lists.*/
-ul.component-items { color: #186900; list-style-type: circle; }
-ul.action-items { color: #8A0020; list-style-image: url(img/red_arrow_bullet.gif); }
+ul.component-items { color: @brand-success; list-style-type: circle; }
+ul.action-items { color: @brand-danger; list-style-image: url(/typo3/sysext/rtehtmlarea/Resources/Public/Images/red_arrow_bullet.png); }
 
 /* Numbering styles for ordered lists.*/
-ol.component-items-ordered { color: #10007B; list-style-type: lower-roman; }
-ol.action-items-ordered { color: #8A0020; list-style-type: lower-greek; }
+ol.component-items-ordered { color: @brand-primary; list-style-type: lower-roman; }
+ol.action-items-ordered { color: @brand-danger; list-style-type: lower-greek; }
 
 /* Three inline text colors taken from the color scheme of CSS Styled Content extension.*/
-span.important { color: #8A0020; }
-span.name-of-person { color: #10007B; }
-span.detail { color: #186900; }
+span.important { color: @brand-danger; }
+span.name-of-person { color: @brand-primary; }
+span.detail { color: @brand-success; }
 
 /* Selectors for the default configuration of the link accessibity feature.*/
 a.external-link {}

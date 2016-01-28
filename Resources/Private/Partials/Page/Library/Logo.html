@@ -1,0 +1,18 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxLogo">
+        <f:link.typolink parameter="{v:site.url()}" class="page-logo">
+            <f:if condition="{settings.logoFile} != ''">
+                <f:then>
+                    <f:image src="{settings.logoFile}" alt="{settings.globalpagetitle} logo" class="logo-image" width="{v:media.image.width(src: settings.logoFile)}" height="{v:media.image.height(src: settings.logoFile)}" />
+                </f:then>
+                <f:else>
+                    <h3 class="text-logo"><v:site.name /></h3>
+                </f:else>
+            </f:if>
+        </f:link.typolink>
+    </f:section>
+
+</div>

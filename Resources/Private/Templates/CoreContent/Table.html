@@ -1,50 +1,50 @@
 <div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
-     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
-     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="Default" />
+	<f:layout name="ContentDefault" />
 
-<f:section name="Configuration">
-	<flux:form id="table">
-		<f:render partial="Properties/Header" arguments="{_all}" />
-		<f:render partial="Properties/Container" arguments="{_all}" />
-		<f:render partial="Properties/Table" arguments="{_all}" />
-	</flux:form>
-</f:section>
+	<f:section name="Configuration">
+		<flux:form id="table">
+			<f:render partial="Content/Properties/Header" arguments="{_all}" />
+			<f:render partial="Content/Properties/Container" arguments="{_all}" />
+			<f:render partial="Content/Properties/Table" arguments="{_all}" />
+		</flux:form>
+	</f:section>
 
-<f:section name="Preview">
-	{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters) -> f:format.nl2br()}
-</f:section>
+	<f:section name="Preview">
+		{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters) -> f:format.nl2br()}
+	</f:section>
 
-<f:section name="Main">
-	<v:tag name="table" class="{settings.table.className -> v:iterator.explode() -> v:iterator.implode(glue: ' ')}">
-		<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString" iteration="rowIteration">
-			<f:if condition="{0: rowIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: 'top'}">
-				<f:then>
-					<thead>
-						<tr>
-							<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column" iteration="columnIteration">
-								<th>{column -> f:format.raw()}</th>
-							</f:for>
-						</tr>
-					</thead>
-				</f:then>
-			</f:if>
-		</f:for>
-		<tbody>
+	<f:section name="Main">
+		<v:tag name="table" class="{settings.table.className -> v:iterator.explode() -> v:iterator.implode(glue: ' ')}">
 			<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString" iteration="rowIteration">
 				<f:if condition="{0: rowIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: 'top'}">
-					<f:else>
-						<tr>
-							<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column" iteration="columnIteration">
-								<v:tag name="{f:if(condition: '{0: columnIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: \'left\'}', then: 'th', else: 'td')}">{column -> f:format.raw()}</v:tag>
-							</f:for>
-						</tr>
-					</f:else>
+					<f:then>
+						<thead>
+							<tr>
+								<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column" iteration="columnIteration">
+									<th>{column -> f:format.raw()}</th>
+								</f:for>
+							</tr>
+						</thead>
+					</f:then>
 				</f:if>
 			</f:for>
-		</tbody>
-	</v:tag>
-</f:section>
+			<tbody>
+				<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString" iteration="rowIteration">
+					<f:if condition="{0: rowIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: 'top'}">
+						<f:else>
+							<tr>
+								<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column" iteration="columnIteration">
+									<v:tag name="{f:if(condition: '{0: columnIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: \'left\'}', then: 'th', else: 'td')}">{column -> f:format.raw()}</v:tag>
+								</f:for>
+							</tr>
+						</f:else>
+					</f:if>
+				</f:for>
+			</tbody>
+		</v:tag>
+	</f:section>
 
 </div>

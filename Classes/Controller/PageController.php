@@ -23,8 +23,6 @@ namespace DCNGmbH\MooxCore\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
- use FluidTYPO3\Fluidpages\Controller\AbstractPageController;
  
 /**
  * Page Controller
@@ -36,7 +34,7 @@ namespace DCNGmbH\MooxCore\Controller;
  * @subpackage Controller
  * @route off
  */
-class PageController extends AbstractPageController {
+class PageController extends \FluidTYPO3\Fluidpages\Controller\PageController {
 
 	/**
 	 * @return string

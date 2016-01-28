@@ -1,0 +1,96 @@
+.navbar-side {
+  background-color: @well-bg;
+  border:none;
+  overflow: hidden;
+
+  .bs-sidenav {
+    > li > a {
+      color: @text-color;
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-active-color;
+        background-color: @brand-primary;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-active-color;
+        background-color: @brand-primary;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-disabled-color;
+        background-color: @navbar-inverse-link-disabled-bg;
+      }
+    }
+    .dropdown {
+      ul {
+        display: block !important;
+        background: lighten(@well-bg, 2%);
+        li {
+          a {
+            color: @text-color;
+            padding-left:  (@navbar-padding-horizontal * 2);
+
+            &:hover,
+            &.active {
+              color: @navbar-inverse-link-active-color;
+              background-color: @brand-primary;
+            }
+          }
+        }
+      }
+    }
+    .nav
+    {
+      opacity: 1 !important;
+    }
+  }
+
+  // Dropdown menu items
+  .bs-sidenav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navbar-inverse-link-active-bg;
+        color: @navbar-inverse-link-active-color;
+      }
+    }
+    @media (max-width: @grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: @navbar-inverse-link-color;
+          &:hover,
+          &:focus {
+            color: @navbar-inverse-link-hover-color;
+            background-color: @navbar-inverse-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-inverse-link-active-color;
+            background-color: @navbar-inverse-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-inverse-link-disabled-color;
+            background-color: @navbar-inverse-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxNavigation">
+        <v:page.menu entryLevel="{v:math.sum(a: settings.entryLevel, b: 1)}" expandAll="1" as="menu" classLast="subnavi-last" classFirst="subnavi-first" classCurrent="subnavi-current">
+            <nav class="navbar navbar-side" role="navigation">
+                <ul class="nav bs-sidenav sf-menu">
+                    <f:for each="{menu}" as="page0" iteration="iteration">
+                        <li class="{page0.class}{f:if(condition: page0.hasSubPages, then: ' sub-menu dropdown')}">
+                            <a href="{page0.link}" class="mainMenu-lvl2{f:if(condition: '{page.active}', then: ' active')}">
+                                {f:if(condition: page0.nav_title, then: page0.nav_title, else: page0.title)}
+                            </a>
+                            <f:if condition="{page0.active}">
+                                <v:page.menu pageUid="{page0.uid}" expandAll="TRUE">
+                                    <ul class="nav{cssClassesSubnaviList}">
+                                        <f:for each="{menu}" as="page1" iteration="subIteration">
+                                            <li class="{page1.class}">
+                                                <a href="{page1.link}" class="{page1.class}">
+                                                    {f:if(condition: page1.nav_title, then: page1.nav_title, else: page1.title)}
+                                                </a>
+                                            </li>
+                                        </f:for>
+                                    </ul>
+                                </v:page.menu>
+                            </f:if>
+                        </li>
+                    </f:for>
+                </ul>
+            </nav>
+        </v:page.menu>
+    </f:section>
+
+</div>

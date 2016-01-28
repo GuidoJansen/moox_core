@@ -1,0 +1,45 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:layout name="PageDefault" />
+
+    <f:section name="Configuration">
+        {v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
+        <flux:form id="centercolumnleft" label="Center - Column left" options="{icon: '{f:uri.resource(path: \'Icons/PageTemplates/Default/center-column-left.png\')}'}" variables="{templateLayout: 'Center'}" enabled="{settings.enableCenterColumnLeftTemplate}">
+            <f:render partial="Page/Configuration/FluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+            <flux:grid>
+                <flux:grid.row>
+                    <flux:grid.column colPos="2" colspan="1" name="Left Content" label="LLL:flux.form.grid.column.leftContent" />
+                    <flux:grid.column colPos="0" colspan="2" name="Main Content" label="LLL:flux.form.grid.column.mainContent" />
+                </flux:grid.row>
+                <flux:grid.row>
+                    <flux:grid.column colPos="4" colspan="3" name="Footer" label="LLL:flux.form.grid.column.footerContent" />
+                </flux:grid.row>
+            </flux:grid>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <aside class="left-content">
+                        <v:content.render column="2" slide="-1" />
+                    </aside>
+                </div>
+                <div class="col-sm-9">
+                    <main class="main-content">
+                        <v:content.render column="0" />
+                    </main>
+                </div>
+            </div>
+        </div>
+    </f:section>
+
+    <f:section name="Footer">
+        <v:content.render column="4" slide="-1" />
+    </f:section>
+
+</div>
+

@@ -1,12 +1,8 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="Default" />
-
-<div xmlns="http://www.w3.org/1999/xhtml"
-	 xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
-	 xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
-	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+	<f:layout name="ContentDefault" />
 
 	<f:section name="Configuration">
 		<flux:form id="addresses" options="{group: 'Bootstrap', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-accordion.png\')}'}">
@@ -96,4 +92,5 @@
 	<f:section name="Addressitemwebsite">
 		<div class="address-website"><f:if condition="{elementData.websiteabbrtitle}"><abbr title="{elementData.websiteabbrtitle}"></f:if><f:if condition="{elementData.websiteicon}"><span class="address-icon {settings.address.websiteIcon}"></span>&nbsp;</f:if><f:if condition="{elementData.iconplaceholder}"><span class="address-icon"></span>&nbsp;</f:if>{elementData.websiteabbr}<f:if condition="{elementData.websiteabbrtitle}"></abbr></f:if><f:if condition="{elementData.websiteabbr}">&nbsp;&nbsp;</f:if><a href="{elementData.website}" target="_blank">{elementData.website -> v:format.replace(substring: 'http://', replacement: '') -> v:format.replace(substring: 'https://', replacement: '')}</a></div>
 	</f:section>
+	
 </div>

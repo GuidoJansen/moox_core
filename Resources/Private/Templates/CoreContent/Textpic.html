@@ -1,127 +1,127 @@
 <div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
-     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
-     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="Default" />
+	<f:layout name="ContentDefault" />
 
-<f:section name="Configuration">
-	<flux:form id="image">
-		<f:render partial="Properties/Header" arguments="{_all}" />
-		<f:render partial="Properties/Container" arguments="{_all}" />
-		<f:render partial="Properties/Images" arguments="{_all}" />
-		<f:render partial="Properties/TextImages" arguments="{_all}" />
-		<f:if condition="{settings.extendedCaptions}">
-			<flux:grid>
-				<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
-					<f:for each="{images}" as="image" iteration="iteration">
-						<flux:grid.row>
-							<flux:grid.column>
-								<flux:form.content name="content{image.checksum}" label="Caption, {image.name}" />
-							</flux:grid.column>
-						</flux:grid.row>
-					</f:for>
-				</v:resource.record.fal>
-			</flux:grid>
-		</f:if>
-	</flux:form>
-</f:section>
+	<f:section name="Configuration">
+		<flux:form id="image">
+			<f:render partial="Content/Properties/Header" arguments="{_all}" />
+			<f:render partial="Content/Properties/Container" arguments="{_all}" />
+			<f:render partial="Content/Properties/Images" arguments="{_all}" />
+			<f:render partial="Content/Properties/TextImages" arguments="{_all}" />
+			<f:if condition="{settings.extendedCaptions}">
+				<flux:grid>
+					<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
+						<f:for each="{images}" as="image" iteration="iteration">
+							<flux:grid.row>
+								<flux:grid.column>
+									<flux:form.content name="content{image.checksum}" label="Caption, {image.name}" />
+								</flux:grid.column>
+							</flux:grid.row>
+						</f:for>
+					</v:resource.record.fal>
+				</flux:grid>
+			</f:if>
+		</flux:form>
+	</f:section>
 
-<f:section name="Preview">
-	<div style="margin-top: 10px">
-		{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters, append: '...') -> f:format.html() -> v:or(alternative: row.bodytext)}
-	</div>
-	<div style="margin-top: 10px">
-		<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
-			<f:for each="{images}" as="image" iteration="iteration">
-				<v:media.image src="{image.uid}" treatIdAsReference="TRUE" alt="{image.id}" height="50" />
-			</f:for>
-		</v:resource.record.fal>
-	</div>
-</f:section>
+	<f:section name="Preview">
+		<div style="margin-top: 10px">
+			{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters, append: '...') -> f:format.html() -> v:or(alternative: row.bodytext)}
+		</div>
+		<div style="margin-top: 10px">
+			<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
+				<f:for each="{images}" as="image" iteration="iteration">
+					<v:media.image src="{image.uid}" treatIdAsReference="TRUE" alt="{image.id}" height="50" />
+				</f:for>
+			</v:resource.record.fal>
+		</div>
+	</f:section>
 
-<f:section name="mediaImage">
-	<div class="image-{positionclass} <f:if condition="{positionclass} == 'beside-left'">image-beside</f:if><f:if condition="{positionclass} == 'beside-right'">image-beside</f:if><f:if condition="{positionclass} == 'intext-left'">image-intext</f:if><f:if condition="{positionclass} == 'intext-right'">image-intext</f:if>">
-		<f:if condition="{settings.lightbox}"><div class="lightbox-gallery"></f:if>
-		<f:if condition="{positionclass} == 'bottom'">
-			<f:render section="mediaBody" arguments="{_all}" />
-		</f:if>
-			<div class="image-wrap <f:if condition="{positionclass} == 'top'"> image-position-{imagealignmentclass}</f:if><f:if condition="{positionclass} == 'bottom'"> image-position-{imagealignmentclass}</f:if>">
-				<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
-					<f:for each="{images}" as="image" iteration="iteration">
-						<v:switch value="{settings.cols}">
-							<v:case case="1" break="TRUE">
-								<v:tag name="{settings.caption.tagName}">
-										<f:render partial="Content/Image" arguments="{_all}" />
-										<flux:content.render area="content{image.checksum}" />
-								</v:tag>		
-							</v:case>
-							<v:case case="2" break="TRUE">
-								<div class="col-md-6">
+	<f:section name="mediaImage">
+		<div class="image-{positionclass} <f:if condition="{positionclass} == 'beside-left'">image-beside</f:if><f:if condition="{positionclass} == 'beside-right'">image-beside</f:if><f:if condition="{positionclass} == 'intext-left'">image-intext</f:if><f:if condition="{positionclass} == 'intext-right'">image-intext</f:if>">
+			<f:if condition="{settings.lightbox}"><div class="lightbox-gallery"></f:if>
+			<f:if condition="{positionclass} == 'bottom'">
+				<f:render section="mediaBody" arguments="{_all}" />
+			</f:if>
+				<div class="image-wrap <f:if condition="{positionclass} == 'top'"> image-position-{imagealignmentclass}</f:if><f:if condition="{positionclass} == 'bottom'"> image-position-{imagealignmentclass}</f:if>">
+					<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
+						<f:for each="{images}" as="image" iteration="iteration">
+							<v:switch value="{settings.cols}">
+								<v:case case="1" break="TRUE">
 									<v:tag name="{settings.caption.tagName}">
-										<f:render partial="Content/Image" arguments="{_all}" />
-										<flux:content.render area="content{image.checksum}" />
+											<f:render partial="Content/Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
 									</v:tag>
-								</div>	
-							</v:case>	
-							<v:case case="3" break="TRUE">
-								<div class="col-md-4">
-									<v:tag name="{settings.caption.tagName}">
-										<f:render partial="Content/Image" arguments="{_all}" />
-										<flux:content.render area="content{image.checksum}" />
-									</v:tag>
-								</div>	
-							</v:case>
-							<v:case case="4" break="TRUE">
-								<div class="col-md-3">
-									<v:tag name="{settings.caption.tagName}">
-										<f:render partial="Content/Image" arguments="{_all}" />
-										<flux:content.render area="content{image.checksum}" />
-									</v:tag>
-								</div>	
-							</v:case>
-							<v:case case="5" break="TRUE">
-								<div class="col-md-2">
-									<v:tag name="{settings.caption.tagName}">
-										<f:render partial="Content/Image" arguments="{_all}" />
-										<flux:content.render area="content{image.checksum}" />
-									</v:tag>
-								</div>	
-							</v:case>
-							<v:case case="6" break="TRUE">
-								<div class="col-md-1">
-									<v:tag name="{settings.caption.tagName}">
-										<f:render partial="Content/Image" arguments="{_all}" />
-										<flux:content.render area="content{image.checksum}" />
-									</v:tag>
-								</div>	
-							</v:case>
-						</v:switch>
-					</f:for>
-				</v:resource.record.fal>
-			</div>
-		<f:if condition="{positionclass} != 'bottom'"><f:render section="mediaBody" arguments="{_all}" /></f:if>
-		<f:if condition="{settings.lightbox}"></div></f:if>
-	</div>
-</f:section>
+								</v:case>
+								<v:case case="2" break="TRUE">
+									<div class="col-md-6">
+										<v:tag name="{settings.caption.tagName}">
+											<f:render partial="Content/Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</v:tag>
+									</div>
+								</v:case>
+								<v:case case="3" break="TRUE">
+									<div class="col-md-4">
+										<v:tag name="{settings.caption.tagName}">
+											<f:render partial="Content/Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</v:tag>
+									</div>
+								</v:case>
+								<v:case case="4" break="TRUE">
+									<div class="col-md-3">
+										<v:tag name="{settings.caption.tagName}">
+											<f:render partial="Content/Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</v:tag>
+									</div>
+								</v:case>
+								<v:case case="5" break="TRUE">
+									<div class="col-md-2">
+										<v:tag name="{settings.caption.tagName}">
+											<f:render partial="Content/Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</v:tag>
+									</div>
+								</v:case>
+								<v:case case="6" break="TRUE">
+									<div class="col-md-1">
+										<v:tag name="{settings.caption.tagName}">
+											<f:render partial="Content/Image" arguments="{_all}" />
+											<flux:content.render area="content{image.checksum}" />
+										</v:tag>
+									</div>
+								</v:case>
+							</v:switch>
+						</f:for>
+					</v:resource.record.fal>
+				</div>
+			<f:if condition="{positionclass} != 'bottom'"><f:render section="mediaBody" arguments="{_all}" /></f:if>
+			<f:if condition="{settings.lightbox}"></div></f:if>
+		</div>
+	</f:section>
 
-<f:section name="mediaBody">
-	<div class="text">
-		{record.bodytext -> f:format.html()}
-	</div>
-</f:section>
+	<f:section name="mediaBody">
+		<div class="text">
+			{record.bodytext -> f:format.html()}
+		</div>
+	</f:section>
 
-<f:section name="Main">
-	<div class="media">
-		<f:if condition="{positionclass} == 'bottom'">
-			<f:then>
-				
-				<f:render section="mediaImage" arguments="{_all}" />
-			</f:then>
-			<f:else>
-				<f:render section="mediaImage" arguments="{_all}" />
-			</f:else>
-		</f:if>
-	</div>
-</f:section>
+	<f:section name="Main">
+		<div class="media">
+			<f:if condition="{positionclass} == 'bottom'">
+				<f:then>
+
+					<f:render section="mediaImage" arguments="{_all}" />
+				</f:then>
+				<f:else>
+					<f:render section="mediaImage" arguments="{_all}" />
+				</f:else>
+			</f:if>
+		</div>
+	</f:section>
 
 </div>

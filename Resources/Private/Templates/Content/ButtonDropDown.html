@@ -1,12 +1,9 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="Default"/>
+    <f:layout name="ContentDefault"/>
 
-<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
-     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
-     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
-     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
     <f:section name="Configuration">
             <flux:form id="buttonwithdropdown" options="{group: 'Bootstrap', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-button.png\')}'}">
                     <flux:form.sheet name="ButtonSheetOne">
@@ -44,52 +41,47 @@
 
     <f:section name="Main">
         <f:for each="{ButtonSection}" as="ButtonObjectItem" iteration="iter">
-                <f:if condition="{settings.ButtonCenter}">
-                        <div class="align-center">
-                </f:if>
-                <div class="btn-group">
-                        <button type="button"
-                        class="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions}
-                            {f:if(then: 'btn-{settings.ButtonSize}', else: '', condition: '{settings.ButtonSize}!=\'default\'')} dropdown-toggle"
-                            data-toggle="dropdown"
-                            aria-expanded="false">
-                                    {ButtonObjectItem.ButtonObject.ButtonText} <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                                <f:for each="{ButtonObjectItem}" as="element">
-                                        <v:condition.type.isArray value="{element.DropDownButtons}">
-                                                <f:for each="{element.DropDownButtons}" as="type" iteration="iteration">
-                                                        <f:for each="{type}" key="elementType" as="elementData">
-                                                                <f:render section="{elementType -> v:format.case(case: 'ucfirst')}" arguments="{_all}" />
-                                                        </f:for>
-                                                </f:for>
-                                        </v:condition.type.isArray>
-                                </f:for>
-                        </ul>
-                </div>
-                <f:if condition="{settings.ButtonCenter}">
-                        </div>
-                </f:if>
+            <f:if condition="{settings.ButtonCenter}">
+                    <div class="align-center">
+            </f:if>
+            <div class="btn-group">
+                    <button type="button"
+                    class="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions}
+                        {f:if(then: 'btn-{settings.ButtonSize}', else: '', condition: '{settings.ButtonSize}!=\'default\'')} dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-expanded="false">
+                                {ButtonObjectItem.ButtonObject.ButtonText} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                            <f:for each="{ButtonObjectItem}" as="element">
+                                    <v:condition.type.isArray value="{element.DropDownButtons}">
+                                            <f:for each="{element.DropDownButtons}" as="type" iteration="iteration">
+                                                    <f:for each="{type}" key="elementType" as="elementData">
+                                                            <f:render section="{elementType -> v:format.case(case: 'ucfirst')}" arguments="{_all}" />
+                                                    </f:for>
+                                            </f:for>
+                                    </v:condition.type.isArray>
+                            </f:for>
+                    </ul>
+            </div>
+            <f:if condition="{settings.ButtonCenter}">
+                    </div>
+            </f:if>
         </f:for>
     </f:section>
 
     <f:section name="Button">
-            <button type="button"
-                class="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions}
-                    {f:if(then: 'btn-{settings.ButtonSize}', else: '', condition: '{settings.ButtonSize}!=\'default\'')}"
-                    data-toggle="dropdown"
-                    aria-expanded="false"
-                    >
-                            {ButtonObjectItem.ButtonObject.ButtonText}
+        <button type="button" class="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions}{f:if(then: ' btn-{settings.ButtonSize}', else: '', condition: '{settings.ButtonSize}!=\'default\'')}" data-toggle="dropdown" aria-expanded="false">
+            {ButtonObjectItem.ButtonObject.ButtonText}
         </button>
     </f:section>
     
-        <f:section name="DropDownLink">
-                <li><a href="">{elementData.DropDownContent}</a></li>
-        </f:section>
-    
-        <f:section name="DropDownDivider">
-                <li class="divider"></li>
-        </f:section>
+    <f:section name="DropDownLink">
+        <li><a href="">{elementData.DropDownContent}</a></li>
+    </f:section>
+
+    <f:section name="DropDownDivider">
+        <li class="divider"></li>
+    </f:section>
 
 </div>

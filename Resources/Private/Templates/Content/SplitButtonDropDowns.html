@@ -1,12 +1,9 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="Default"/>
+    <f:layout name="ContentDefault"/>
 
-<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
-     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
-     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
-     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
     <f:section name="Configuration">
             <flux:form id="splitbuttonwithdropdown" options="{group: 'Bootstrap', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-button.png\')}'}">
                     <flux:form.sheet name="ButtonSheetOne">
@@ -49,8 +46,6 @@
 
     
     <f:section name="Main">
-        
-        
         <f:for each="{ButtonSection}" as="ButtonObjectItem" iteration="iter">
             <v:variable.set name="btnlinkclass" value="btn btn-{ButtonObjectItem.ButtonObject.ButtonOptions} btn-{settings.ButtonSize}" />
                 <f:if condition="{settings.ButtonCenter}">
@@ -96,16 +91,16 @@
             </button>
     </f:section>
     
-        <f:section name="DropDownLink">
-                <li>
-                    <v:link.typolink configuration="{parameter: elementData.target}">
-                            {elementData.DropDownContent}
-                    </v:link.typolink>   
-                </li>
-        </f:section>
-    
-        <f:section name="DropDownDivider">
-                <li class="divider"></li>
-        </f:section>
+    <f:section name="DropDownLink">
+        <li>
+            <v:link.typolink configuration="{parameter: elementData.target}">
+                    {elementData.DropDownContent}
+            </v:link.typolink>
+        </li>
+    </f:section>
+
+    <f:section name="DropDownDivider">
+        <li class="divider"></li>
+    </f:section>
 
 </div>

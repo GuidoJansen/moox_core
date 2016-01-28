@@ -51,7 +51,7 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 			array(
 				'access' => 'user,group',
 				'icon'   => 'EXT:'.$_EXTKEY.'/Resources/Public/Icons/module-mooxcore-white.svg',
-				'labels' => 'LLL:EXT:'.$_EXTKEY.'/Resources/Private/Language/MainModule.xlf',
+				'labels' => 'LLL:EXT:'.$_EXTKEY.'/Resources/Private/Language/Module.xlf:moox_main_module_tab',
 			)
 		);
     }	
@@ -66,7 +66,7 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
 		array(
 			'access' => 'user,group',
 			'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/module-mooxcore.svg',
-			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/DashboardModule.xlf',
+			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/Module.xlf:moox_dashboard_module_tab',
 		)
     );	
 }

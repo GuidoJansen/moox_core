@@ -1,0 +1,40 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+	<f:layout name="PageDefault" />
+
+	<f:section name="Configuration">
+		{v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
+		<flux:form id="defaultstartpage" label="LLL:flux.form.label.defaultStartpage" options="{icon: '{f:uri.resource(path: \'Icons/PageTemplates/Default/default-startpage.png\')}'}" variables="{templateLayout: 'Default'}" enabled="{settings.enableDefaultStartpageTemplate}">
+			<f:render partial="Page/Configuration/FluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+			<flux:grid>
+				<flux:grid.row>
+					<flux:grid.column colPos="3" name="Teaser" label="LLL:flux.form.grid.column.teaserContent" />
+				</flux:grid.row>
+				<flux:grid.row>
+					<flux:grid.column colPos="0" name="Main Content" label="LLL:flux.form.grid.column.mainContent" />
+				</flux:grid.row>
+				<flux:grid.row>
+					<flux:grid.column colPos="4" name="Footer" label="LLL:flux.form.grid.column.footerContent" />
+				</flux:grid.row>
+			</flux:grid>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Content">
+		<section class="teaser-content">
+			<v:content.render column="3" />
+		</section>
+		<div class="container">
+			<main class="main-content">
+				<v:content.render column="0" />
+			</main>
+		</div>
+	</f:section>
+
+	<f:section name="Footer">
+		<v:content.render column="4" slide="-1" />
+	</f:section>
+
+</div>

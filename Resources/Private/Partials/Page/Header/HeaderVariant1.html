@@ -1,0 +1,63 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxHeader">
+        <f:switch expression="{layoutGroup}">
+            <f:case value="Default">
+                <v:variable.set name="headerPart2ContainerClass" value="container" />
+                <div id="page-header-container" class="container">
+                    <f:render section="MooxHeaderPart1" arguments="{_all}" />
+                </div>
+                <f:render section="MooxHeaderPart2" arguments="{_all}" />
+            </f:case>
+            <f:case value="Center">
+                <v:variable.set name="headerPart2ContainerClass" value="container" />
+                <div id="page-header-container">
+                    <f:render section="MooxHeaderPart1" arguments="{_all}" />
+                </div>
+                <f:render section="MooxHeaderPart2" arguments="{_all}" />
+            </f:case>
+            <f:case value="Fullwidth">
+                <v:variable.set name="headerPart2ContainerClass" value="container-fluid" />
+                <div id="page-header-container" class="container-fluid">
+                    <f:render section="MooxHeaderPart1" arguments="{_all}" />
+                </div>
+                <f:render section="MooxHeaderPart2" arguments="{_all}" />
+            </f:case>
+            <f:case default="TRUE">
+                <div class="alert alert-danger" role="alert"><strong>Error!</strong>This header variant is not available for this Layout.</div>
+            </f:case>
+        </f:switch>
+    </f:section>
+
+    <f:section name="MooxHeaderPart1">
+        <div class="row">
+            <div class="col-sm-4 col-xs-12">
+                <f:render partial="Page/Library/Logo" section="MooxLogo" arguments="{_all}" />
+            </div>
+            <div class="col-sm-8 col-xs-12">
+                <f:render partial="Page/Library/Language" section="MooxLanguageMenu" arguments="{_all}" />
+                <f:if condition="{settings.headerMenuEnable}">
+                    <div class="header-menu-section pull-left">
+                        <v:page.menu pageUid="{settings.headerMenuPageUid}" class="pull-right" useShortcutUid="FALSE" useShortcutData="FALSE">
+                            <f:render partial="Page/Navigation/SimpleMetaNavigation" section="MooxNavigation" arguments="{_all}" />
+                        </v:page.menu>
+                    </div>
+                </f:if>
+            </div>
+        </div>
+    </f:section>
+
+    <f:section name="MooxHeaderPart2">
+        <v:page.menu entryLevel="{settings.entryLevel}" useShortcutUid="FALSE" useShortcutData="FALSE">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="{headerPart2ContainerClass}">
+                    <f:render partial="Page/Navigation/SuperfishNavigation" section="MooxNavigation" arguments="{_all}" />
+                </div>
+            </nav>
+        </v:page.menu>
+        <f:render partial="Page/Header/AdditionalHeaderVariant1" section="MooxHeader" arguments="{_all}" />
+    </f:section>
+
+</div>

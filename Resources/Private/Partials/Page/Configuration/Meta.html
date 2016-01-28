@@ -1,0 +1,49 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxMetaTags">
+        <v:page.header.title title="{settings.globalpagetitle}: {page.title} {page.subtitle}" setIndexedDocTitle="1" />
+        <v:page.header.meta name="author" content="{page.author}" />
+        <v:page.header.meta name="description" content="{page.description}" />
+        <v:page.header.meta name="keywords" content="{page.keywords}" />
+        <v:page.header.meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <v:page.header.meta name="generator" content="MOOX for TYPO3" />
+        <v:page.header.meta name="apple-mobile-web-app-title" content="{settings.globalpagetitle}" />
+        <v:page.header.meta name="msapplication-TileColor" content="{settings.msApplicationTitleColor}" />
+        <v:page.header.meta name="msapplication-TileImage" content="{v:site.url()}{settings.pathToFaviconsFolder}/mstile-144x144.png" />
+        <v:page.header.meta name="msapplication-config" content="{v:site.url()}{settings.pathToFaviconsFolder}/browserconfig.xml" />
+        <v:page.header.meta name="application-name" content="{settings.globalpagetitle}" />
+        <v:page.header.meta name="apple-mobile-web-app-capable" content="yes" />
+        <v:page.header.meta name="apple-mobile-web-app-status-bar-style" content="{settings.apple-mobile-web-app-status-bar-style}" />
+        <v:page.header.meta name="google-site-verification" content="{settings.google-site-verification}" />
+        <v:page.header.meta additionalAttributes="{property: 'og:title'}" content="{page.title}" />
+        <v:page.header.meta additionalAttributes="{property: 'og:site_name'}" content="{settings.globalpagetitle}" />
+        <v:page.header.meta additionalAttributes="{property: 'og:description'}" content="{settings.description}" />
+        <v:page.header.meta additionalAttributes="{property: 'og:type'}" content="{settings.meta-type}" />
+        <v:page.header.meta additionalAttributes="{property: 'og:image'}" content="{v:site.url()}{settings.pathToFaviconsFolder}/mstile-144x144.png" />
+        <v:page.header.link rel="shortcut icon" href="{v:site.url()}{settings.pathToFaviconsFolder}/favicon.ico" />
+        <v:page.header.link rel="apple-touch-icon" additionalAttributes="{sizes: '57x57'}" href="{v:site.url()}{settings.pathToFaviconsFolder}/apple-touch-icon-57x57.png" />
+        <v:page.header.link rel="apple-touch-icon" additionalAttributes="{sizes: '114x114'}" href="{v:site.url()}{settings.pathToFaviconsFolder}/apple-touch-icon-114x114.png" />
+        <v:page.header.link rel="apple-touch-icon" additionalAttributes="{sizes: '72x72'}" href="{v:site.url()}{settings.pathToFaviconsFolder}/apple-touch-icon-72x72.png" />
+        <v:page.header.link rel="apple-touch-icon" additionalAttributes="{sizes: '144x144'}" href="{v:site.url()}{settings.pathToFaviconsFolder}/apple-touch-icon-144x144.png" />
+        <v:page.header.link rel="apple-touch-icon" additionalAttributes="{sizes: '60x60'}" href="{v:site.url()}{settings.pathToFaviconsFolder}/apple-touch-icon-60x60.png" />
+        <v:page.header.link rel="apple-touch-icon" additionalAttributes="{sizes: '120x120'}" href="{v:site.url()}{settings.pathToFaviconsFolder}/apple-touch-icon-120x120.png" />
+        <v:page.header.link rel="apple-touch-icon" additionalAttributes="{sizes: '76x76'}" href="{v:site.url()}{settings.pathToFaviconsFolder}/apple-touch-icon-76x76.png" />
+        <v:page.header.link rel="apple-touch-icon" additionalAttributes="{sizes: '152x152'}" href="{v:site.url()}{settings.pathToFaviconsFolder}/apple-touch-icon-152x152.png" />
+        <v:page.header.link rel="icon" type="image/png" href="{v:site.url()}{settings.pathToFaviconsFolder}/favicon-196x196.png" additionalAttributes="{sizes: '196x196'}" />
+        <v:page.header.link rel="icon" type="image/png" href="{v:site.url()}{settings.pathToFaviconsFolder}/favicon-160x160.png" additionalAttributes="{sizes: '160x160'}" />
+        <v:page.header.link rel="icon" type="image/png" href="{v:site.url()}{settings.pathToFaviconsFolder}/favicon-96x96.png" additionalAttributes="{sizes: '96x96'}" />
+        <v:page.header.link rel="icon" type="image/png" href="{v:site.url()}{settings.pathToFaviconsFolder}/favicon-16x16.png" additionalAttributes="{sizes: '16x16'}" />
+        <v:page.header.link rel="icon" type="image/png" href="{v:site.url()}{settings.pathToFaviconsFolder}/favicon-32x32.png" additionalAttributes="{sizes: '32x32'}" />
+        <f:if condition="{settings.geo-lat}">
+            <v:page.header.meta name="geo.position" content="{settings.geo-lat};{settings.geo-long}" />
+            <v:page.header.meta name="ICBM" content="{settings.geo-lat}, {settings.geo-long}" />
+        </f:if>
+        <v:page.header.meta name="geo.region" content="{settings.geo-region}" />
+        <v:page.header.meta name="geo.placename" content="{settings.geo-placename}" />
+        <v:page.header.meta name="robots" content="{settings.robots}" />
+        <f:render partial="Page/Configuration/AdditionalMeta" section="MooxMetaTags" arguments="{_all}" />
+    </f:section>
+
+</div>

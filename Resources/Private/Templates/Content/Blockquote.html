@@ -1,12 +1,9 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
-<f:layout name="Default" />
+	<f:layout name="ContentDefault" />
 
-<div xmlns="http://www.w3.org/1999/xhtml"
-	 xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
-	 xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
-	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 	<f:section name="Configuration">
 		<flux:form id="blockquote" options="{group: 'Bootstrap', icon: '{f:uri.resource(path: \'Icons/bootstrap/icon-alert.png\')}'}">
 			<flux:field.select name="class" items="left,right" default="left" />
@@ -55,4 +52,5 @@
 			</f:if>
 		</blockquote>
 	</f:section>
+	
 </div>
