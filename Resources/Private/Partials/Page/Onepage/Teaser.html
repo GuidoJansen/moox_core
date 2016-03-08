@@ -1,0 +1,24 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxTeaser">
+        <f:if condition="{teaserWidthContent}">
+            <f:then>
+                <div id="teaser-section" class="container">
+                    <div class="jumbotron">
+                        <v:content.render column="3" />
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="jumbotron">
+                    <div id="teaser-section" class="container-fluid">
+                        <v:content.render column="3" />
+                    </div>
+                </div>
+            </f:else>
+        </f:if>
+    </f:section>
+
+</div>

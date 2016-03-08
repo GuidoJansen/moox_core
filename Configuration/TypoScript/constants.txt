@@ -1,5 +1,6 @@
 # customsubcategory=100=Settings
 # customsubcategory=105=Design
+# customsubcategory=106=Fonts
 # customsubcategory=110=Meta Tags
 # customsubcategory=115=Analytics
 # customsubcategory=120=Cookies
@@ -35,6 +36,8 @@ plugin.tx_mooxcore {
         extKey = moox_core
         # cat=MOOX_CORE/100/100; type=string; label=Global page title
         globalpagetitle = MOOX Page
+        # cat=MOOX_CORE/100/110; type=boolean; label=Develop Mode:Default = 1 (enabled)
+        developMode = 0
         # cat=MOOX_CORE/100/120; type=boolean; label=Load jQuery in the footer
         jqueryMovable = 0
         # cat=MOOX_CORE/100/130; type=options[Enable=2,Disable=0]; label=TYPO3 spam email addresses protection
@@ -53,10 +56,18 @@ plugin.tx_mooxcore {
         ### DESIGN ###
     	# cat=MOOX_CORE/105/100; type=string; label= Logo:Path to logo image
     	logoFile = typo3conf/ext/moox_core/Resources/Public/Images/moox-logo.png
-    	# cat=MOOX_CORE/105/110; type=options[Variant 1=HeaderVariant1]; label= Header Layout:Select a variant for your page header
+        # cat=MOOX_CORE/105/110; type=string; label= Company Slogan
+        companySlogan =
+    	# cat=MOOX_CORE/105/120; type=options[Variant 1=HeaderVariant1]; label= Header Layout:Select a variant for your page header
         headerVariantPartial = HeaderVariant1
-        # cat=MOOX_CORE/105/120; type=options[Variant 1=FooterVariant1]; label= Footer Layout:Select a variant for your page footer
+        # cat=MOOX_CORE/105/130; type=options[Variant 1=FooterVariant1]; label= Footer Layout:Select a variant for your page footer
         footerVariantPartial = FooterVariant1
+
+        ### FONTS ###
+        # cat=MOOX_CORE/106/100; type=string; label= Enable Google Fonts: Paste your Google Fonts URL here (the href from the LINK REL tag)
+        googlefonts =
+        # cat=MOOX_CORE/106/110; type=string; label= Enable Fonts.com: Paste your Fonts.com Tag here (the src from the SCRIPT SRC tag)
+        fontscom =
 
         ### META ###
         # cat=MOOX_CORE/110/100; type=options[Article,Blog,Book,Profile,Movie,TV Episode,TV Show,Video,Website]; label= Select yout Page type
@@ -110,11 +121,11 @@ plugin.tx_mooxcore {
 
         ### LANGUAGE ###
         # cat=MOOX_CORE/130/100; type=boolean; label= Enable language menu : Works only, if your MOOX Template support this feature.
-        languageEnable =
+        languageEnable = 0
         # cat=MOOX_CORE/130/110; type=string; label= accesskey : Keyboard shortcut to access this element
         languageAccesskey =
         # cat=MOOX_CORE/130/120; type=string; label= class : CSS class(es) for this element
-        languageClass = moox-language-menu
+        languageClass = nav moox-language-menu
         # cat=MOOX_CORE/130/130; type=string; label= defaultIsoFlag : ISO code of the default flag
         languageDefaultIsoFlag = de
         # cat=MOOX_CORE/130/140; type=string; label= defaultLanguageLabel : Label for the default language
@@ -124,11 +135,11 @@ plugin.tx_mooxcore {
         # cat=MOOX_CORE/130/160; type=options[png,gif,jpeg]; label= flagImageType : Sets type of flag image: png, gif, jpeg
         languageFlagImageType = png
         # cat=MOOX_CORE/130/170; type=string; label= flagPath : Overwrites the path to the flag folder
-        languageFlagPath = typo3/sysext/t3skin/images/flags/
+        languageFlagPath = typo3conf/ext/moox_core/Resources/Public/Icons/Flags/
         # cat=MOOX_CORE/130/180; type=boolean; label= hideNotTranslated : Hides languageIDs which are not translated
         languageHideNotTranslated = 0
         # cat=MOOX_CORE/130/190; type=string; label= layout : How to render links when using autorendering. Possible selections: name,flag - use fx "name" or "flag" or "flag,name" or "name,flag"
-        languageLayout = flag,name
+        languageLayout = flag
         # cat=MOOX_CORE/130/200; type=string; label= tagName : Tag name to use for enclosing container, list and flags (not finished) only
         languageTagName = ul
         # cat=MOOX_CORE/130/210; type=string; label= tagNameChildren : Tag name to use for child nodes surrounding links, list and flags only
@@ -138,7 +149,7 @@ plugin.tx_mooxcore {
 
         ### SEARCH ###
         # cat=MOOX_CORE/135/100; type=boolean; label=Enable search field
-        enableSearch = 1
+        enableSearch = 0
         # cat=MOOX_CORE/135/110; type=string; label=Name attribute of search field
         searchFieldName = tx_indexedsearch[sword]
         # cat=MOOX_CORE/135/120; type=string; label=Search page uid
@@ -193,6 +204,10 @@ plugin.tx_mooxcore {
         enableFullwidthSubmenuLeftTemplate = 1
         # cat=MOOX_CORE/150/310; type=string; label=Fullwidth - Submenu Right Template:Enable=1 / Disable=0
         enableFullwidthSubmenuRightTemplate = 1
+        # cat=MOOX_CORE/150/320; type=string; label=Onepage Template:Enable=1 / Disable=0
+        enableOnepageTemplate = 1
+        # cat=MOOX_CORE/150/330; type=string; label=Onepage Section Template:Enable=1 / Disable=0
+        enableOnepageSectionTemplate = 1
 
         defaults {
             template = EXT:moox_core/Resources/Private/Templates/CoreContent/Default.html

@@ -1,4 +1,5 @@
 document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+window.HELP_IMPROVE_VIDEOJS = false;
 
 /*!
  * jQuery Cookie Plugin v1.4.1
@@ -95,6 +96,22 @@ document.documentElement.className = document.documentElement.className.replace(
 	};
 }));
 
+// Specify image dimensions
+$(document).ready(function() {
+	imageSize();
+});
+$(window).resize(function() {
+	imageSize();
+});
+function imageSize() {
+	$('img').each(function() {
+		var findImgWidth = $(this).width();
+		var findImgHeight = $(this).height();
+
+		$(this).attr('width', findImgWidth);
+		$(this).attr('height', findImgHeight);
+	});
+}
 
 /*! Picturefill - v3.0.1 - 2015-09-30
  * http://scottjehl.github.io/picturefill
@@ -3719,9 +3736,6 @@ $(window).resize(function(){
 	/*>>fastclick*/
 	_checkInstance(); }));
 
-/* END MAGNIFIC POPUP */
-
-/* MOOX CORE INIT */
 $(document).ready(function() {
 	$('.lightbox-gallery').each(function() {
 		$(this).magnificPopup({
@@ -3732,4 +3746,25 @@ $(document).ready(function() {
 		    }
 		});
 	});
+});
+/* END MAGNIFIC POPUP */
+
+// Onepager open Section Hidden Content
+$(".open-hidden-content").click(function() {
+	var buttonClicked = $(this).attr("data-clicked");
+	var hiddenContentId = "#" + $(this).attr("data-for");
+	var buttonFromSection = "#" + $(this).attr("data-section");
+	$(hiddenContentId).toggleClass("content-opened");
+	$(hiddenContentId).slideToggle("slow");
+	if (buttonClicked == "false") {
+		$(this).text("Weniger Infos");
+		$(this).attr("data-clicked", "true");
+	}
+	if (buttonClicked == "true") {
+		$(this).text("Mehr Infos");
+		$(this).attr("data-clicked", "false");
+		$('html, body').animate({
+			scrollTop: $(buttonFromSection).offset().top
+		}, 500);
+	}
 });

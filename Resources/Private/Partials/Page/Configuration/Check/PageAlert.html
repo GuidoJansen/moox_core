@@ -1,0 +1,70 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxAlert">
+        <v:security.allow anyBackendUser="TRUE">
+            <div class="alert alert-warning alert-dismissible" role="alert" style="border-radius: 0; margin-bottom: 0;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="container">
+                    <label class="pull-left">
+                        <strong>{v:context.get()} Mode</strong>
+                    </label>
+                    <div class="pull-right">
+                        <div class="btn-group" role="group" aria-label="MOOX Administration Buttons">
+                            <!-- Button backend -->
+                            <a href="/typo3" target="_blank" class="btn btn-default btn-sm">
+                                <span class="fa fa-pencil"></span> Backend
+                            </a>
+                            <!-- Button warning modal -->
+                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#pageWarningAlertModal">
+                                <span class="fa fa-exclamation-triangle"></span> 7 Warnings
+                            </button>
+                            <!-- Button debug modal -->
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#pageDebugModal">
+                                <span class="fa fa-bug"></span> Debug
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Warning -->
+            <div class="modal moox-develop-modal fade" id="pageWarningAlertModal" tabindex="-1" role="dialog" aria-labelledby="pageWarningAlertModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="pageWarningAlertModalLabel">Warnings</h4>
+                        </div>
+                        <div class="modal-body">
+                            comming soon... :-P
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Debug -->
+            <div class="modal moox-develop-modal fade" id="pageDebugModal" tabindex="-1" role="dialog" aria-labelledby="pageDebugModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="pageDebugModalLabel">Debug</h4>
+                        </div>
+                        <div class="modal-body">
+                            {_all -> f:debug(inline: 1, ansiColors: 1)}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </v:security.allow>
+    </f:section>
+
+</div>

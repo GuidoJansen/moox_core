@@ -8,7 +8,7 @@ config {
     compressCss = 1
     compressJs = 0
     simulateStaticDocuments = 0
-    absRefPrefix = /
+    absRefPrefix = auto
     tx_realurl_enable = 1
     prefixLocalAnchors = all
     tx_cooluri_enable = 0
@@ -61,7 +61,7 @@ config {
 
 page {
     includeCSS {
-	    theme = EXT:moox_core/Resources/Private/Less/Moox/moox.less
+	    theme = EXT:moox_core/Resources/Private/Less/Theme/theme.less
     }
     bodyTag >
     bodyTagCObject = TEXT
@@ -80,7 +80,7 @@ plugin.tx_vhs.settings.asset{
 		movable = {$plugin.tx_mooxcore.settings.jqueryMovable}
 		type = js
 	}
-	jqueryuid {
+	jqueryui {
 		path = //ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js
 		external = 1
 		dependencies = jquery
@@ -210,6 +210,7 @@ plugin.tx_mooxcore {
         ### SETTINGS ###
         extKey = {$plugin.tx_mooxcore.settings.extKey}
         globalpagetitle = {$plugin.tx_mooxcore.settings.globalpagetitle}
+        developMode = {$plugin.tx_mooxcore.settings.developMode}
         overrideLessVariables = {$plugin.tx_mooxcore.settings.overrideLessVariables}
         cssSourceMapping = {$plugin.tx_mooxcore.settings.cssSourceMapping}
         pathToFaviconsFolder = {$plugin.tx_mooxcore.settings.pathToFaviconsFolder}
@@ -217,8 +218,13 @@ plugin.tx_mooxcore {
 
         ### DESIGN ###
         logoFile = {$plugin.tx_mooxcore.settings.logoFile}
+        companySlogan = {$plugin.tx_mooxcore.settings.companySlogan}
         headerVariantPartial = {$plugin.tx_mooxcore.settings.headerVariantPartial}
         footerVariantPartial = {$plugin.tx_mooxcore.settings.footerVariantPartial}
+
+        ### FONTS ###
+        googlefonts = {$plugin.tx_mooxcore.settings.googlefonts}
+        fontscom = {$plugin.tx_mooxcore.settings.fontscom}
 
         ### META ###
         meta-type = {$plugin.tx_mooxcore.settings.meta-type}
@@ -294,6 +300,8 @@ plugin.tx_mooxcore {
         enableFullwidthStartpageTemplate = {$plugin.tx_mooxcore.settings.enableFullwidthStartpageTemplate}
         enableFullwidthSubmenuLeftTemplate = {$plugin.tx_mooxcore.settings.enableFullwidthSubmenuLeftTemplate}
         enableFullwidthSubmenuRightTemplate = {$plugin.tx_mooxcore.settings.enableFullwidthSubmenuRightTemplate}
+        enableOnepageTemplate = {$plugin.tx_mooxcore.settings.enableOnepageTemplate}
+        enableOnepageSectionTemplate = {$plugin.tx_mooxcore.settings.enableOnepageSectionTemplate}
 
         ### COPYRIGHT ###
         disableCopyright = {$plugin.tx_mooxcore.settings.disableCopyright}
@@ -653,3 +661,23 @@ plugin.news._CSS_DEFAULT_STYLE >
 plugin.tx_indexedsearch._CSS_DEFAULT_STYLE >
 plugin.fluidpages._CSS_DEFAULT_STYLE >
 plugin.tx_form._CSS_DEFAULT_STYLE >
+
+# EXT: tinysource
+###################################################
+plugin.tx_tinysource {
+	enable = 1
+	head {
+		stripTabs = 1
+		stripNewLines = 1
+		stripDoubleSpaces = 1
+		stripTwoLinesToOne = 1
+	}
+	body {
+		stripComments = 1
+		stripTabs = 1
+		stripNewLines = 1
+		stripDoubleSpaces = 1
+		stripTwoLinesToOne = 1
+		preventStripOfSearchComment = 1
+	}
+}

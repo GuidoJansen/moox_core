@@ -4,7 +4,7 @@
 
     <f:section name="MooxCopyright">
         <f:if condition="{settings.disableCopyright} != '1'">
-            Copyright {v:system.timestamp() -> f:format.date(format: 'Y')} <a href="{settings.copyrightLink}" target="_blank">{settings.copyrightName}</a> - Powered by <a href="http://typo3.org" target="_blank">TYPO3</a> & <a href="http://www.moox.org" target="_blank">MOOX</a>
+            <span class="footer-copyright">Copyright &copy; {v:system.timestamp() -> f:format.date(format: 'Y')} <a href="{settings.copyrightLink}" target="_blank">{settings.copyrightName}</a> - Powered by <a href="http://typo3.org" target="_blank">TYPO3</a> & <a href="http://www.moox.org" target="_blank">MOOX</a></span>
         </f:if>
     </f:section>
 

@@ -23,9 +23,15 @@
 	</f:section>
 
 	<f:section name="Content">
-		<section class="teaser-content">
-			<v:content.render column="3" />
-		</section>
+		<f:if condition="{v:content.get(column: 3)}">
+			<section class="teaser-content">
+				<div class="jumbotron">
+					<div class="container">
+						<v:content.render column="3" />
+					</div>
+				</div>
+			</section>
+		</f:if>
 		<div class="container">
 			<main class="main-content">
 				<v:content.render column="0" />

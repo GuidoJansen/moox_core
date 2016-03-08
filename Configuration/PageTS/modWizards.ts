@@ -33,6 +33,15 @@ mod.wizards.newContentElement {
                 }
             }
 
+            media {
+                iconIdentifier = content-textpic
+                title = LLL:EXT:backend/Resources/Private/Language/locallang_db_new_content_el.xlf:common_textMedia_title
+                description = LLL:EXT:backend/Resources/Private/Language/locallang_db_new_content_el.xlf:common_textMedia_description
+                tt_content_defValues {
+                    CType = media
+                }
+            }
+
             image {
                 iconIdentifier = content-image
                 title = LLL:EXT:backend/Resources/Private/Language/locallang_db_new_content_el.xlf:common_imagesOnly_title
@@ -61,7 +70,7 @@ mod.wizards.newContentElement {
             }
         }
 
-        common.show := addToList(header,text,textpic,image,bullets,table)
+        common.show := addToList(header,text,textpic,media,image,bullets,table)
 
         special.header = LLL:EXT:backend/Resources/Private/Language/locallang_db_new_content_el.xlf:special
         special.elements {
@@ -82,15 +91,6 @@ mod.wizards.newContentElement {
                 tt_content_defValues {
                     CType = menu
                     menu_type = 0
-                }
-            }
-
-            media {
-                iconIdentifier = content-textpic
-                title = LLL:EXT:backend/Resources/Private/Language/locallang_db_new_content_el.xlf:common_textMedia_title
-                description = LLL:EXT:backend/Resources/Private/Language/locallang_db_new_content_el.xlf:common_textMedia_description
-                tt_content_defValues {
-                    CType = media
                 }
             }
 
@@ -122,7 +122,7 @@ mod.wizards.newContentElement {
             }
         }
 
-        special.show := addToList(uploads,menu,media,html,div,shortcut)
+        special.show := addToList(uploads,menu,html,div,shortcut)
 
 		# dummy placeholder for forms group
         forms.header = LLL:EXT:backend/Resources/Private/Language/locallang_db_new_content_el.xlf:forms

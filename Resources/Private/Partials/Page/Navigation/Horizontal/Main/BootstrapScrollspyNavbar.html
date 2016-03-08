@@ -1,0 +1,40 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxNavigation">
+        <a href="#content-wrap" class="sr-only sr-only-focusable">{settings.accessibilitySkipMainNavigation}</a>
+        <div class="navbar-right">
+            <button class="navbar-toggle btn btn-navbar" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand hidden-lg hidden-md hidden-sm">Menu</span>
+        </div>
+        <div id="scrollspyNavigation" class="collapse navbar-collapse navbar-scrollspy" aria-expanded="false">
+            <ul class="nav navbar-nav navbar-left" role="navigation">
+                <li><a href="#home"><f:if condition="{settings.entryLevel} == '0'">{rootLine.0.title}</f:if><f:if condition="{settings.entryLevel} == '1'">{rootLine.1.title}</f:if><f:if condition="{settings.entryLevel} == '2'">{rootLine.2.title}</f:if><f:if condition="{settings.entryLevel} == '3'">{rootLine.3.title}</f:if><f:if condition="{settings.entryLevel} == '4'">{rootLine.4.title}</f:if><f:if condition="{settings.entryLevel} == '5'">{rootLine.5.title}</f:if></a></li>
+                <f:for each="{menu}" as="section" iteration="iteration">
+                    {section -> flux:form.data(table: 'pages', field: 'tx_fed_page_flexform') -> v:variable.set(name: 'sectionFormData')}
+                    <li <f:if condition="{section.hasSubPages}">class="dropdown"</f:if>>
+                        <a data-scroll="" tabindex="{iteration.cycle -> v:math.sum(b: 100)}" href="<f:if condition="{section.tx_realurl_pathsegment}"><f:then>#{section.tx_realurl_pathsegment}</f:then><f:else>#page{section.uid}</f:else></f:if>"<f:if condition="{section.hasSubPages}"> class="dropdown-toggle" data-toggle="dropdown"</f:if>><f:if condition="{section.nav_title}"><f:then>{section.nav_title}</f:then><f:else>{section.title}</f:else></f:if><f:if condition="{section.hasSubPages}"> <span class="caret"></span></f:if></a>
+                        <v:page.menu pageUid="{section.uid}" as="subSections">
+                            <f:if condition="{subSections}">
+                                <ul class="dropdown-menu" role="menu">
+                                    <f:for each="{subSections}" as="subSection" iteration="subIteration">
+                                        <li>
+                                            <a data-scroll="" href="<f:if condition="{subSection.tx_realurl_pathsegment}"><f:then>#{subSection.tx_realurl_pathsegment}</f:then><f:else>#page{subSection.uid}</f:else></f:if>"><f:if condition="{subSection.nav_title}"><f:then>{subSection.nav_title}</f:then><f:else>{subSection.title}</f:else></f:if></a>
+                                        </li>
+                                    </f:for>
+                                </ul>
+                            </f:if>
+                        </v:page.menu>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </f:section>
+
+</div>

@@ -17,7 +17,7 @@ if (!defined('TYPO3_MODE')) {
 		'media',
 		'content-textpic'
 	),
-	'menu', 'before'
+	'textpic', 'after'
 );
 
 
@@ -55,8 +55,8 @@ array_splice(
 	)
 );
 
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['FileInfo']['fileExtensionToMimeType']['ogv'] = 'video/ogv';
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'] .= ',ogv';
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['FileInfo']['fileExtensionToMimeType']['ogv'] = 'video/ogg';
 
 $additionalColumns = Array (
 	'assets' => Array(
@@ -99,20 +99,6 @@ $additionalColumns = Array (
 	'tx_mooxcore_hide_print' => Array (
 		'exclude' => 1,
 		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_print',
-		'config' => Array (
-			'type' => 'check',
-		)
-	),
-	'tx_mooxcore_hide_barrierfree' => Array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_barrierfree',
-		'config' => Array (
-			'type' => 'check',
-		)
-	),
-	'tx_mooxcore_hide_oldbrowser' => Array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_hide_oldbrowser',
 		'config' => Array (
 			'type' => 'check',
 		)
@@ -379,7 +365,7 @@ $GLOBALS['TCA']['tt_content']['columns']['content_version'] = array(
 
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $additionalColumns, 1);
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content', ',--div--;LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_extended_visibility,tx_mooxcore_hide_desktop,tx_mooxcore_hide_laptop,tx_mooxcore_hide_tablet,tx_mooxcore_hide_phone,tx_mooxcore_hide_print,tx_mooxcore_hide_barrierfree,tx_mooxcore_hide_oldbrowser', '', '');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content', ',--div--;LLL:EXT:moox_core/Resources/Private/Language/Database.xlf:tt_content.tx_mooxcore_extended_visibility,tx_mooxcore_hide_desktop,tx_mooxcore_hide_laptop,tx_mooxcore_hide_tablet,tx_mooxcore_hide_phone,tx_mooxcore_hide_print', '', '');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'general', 'content_variant, content_version', 'after:CType');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'general', ' --linebreak--,content_options;Options', 'after:sys_language_uid');

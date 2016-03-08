@@ -1,0 +1,68 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Administration" />
+
+{v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
+
+<f:be.container pageTitle="MOOX Dashboard" loadJQuery="true" includeJsFiles="{0: '{f:uri.resource(path:\'Js/Administration/Dashboard/main.js\')}'}" includeCssFiles="{0: '{f:uri.resource(path:\'Stylesheets/Administration/Dashboard/bootstrap.min.css\')}', 1: '{f:uri.resource(path:\'Stylesheets/Administration/Dashboard/font-awesome.min.css\')}', 2: '{f:uri.resource(path:\'Stylesheets/Administration/Dashboard/ionicons.min.css\')}', 3: '{f:uri.resource(path:\'Stylesheets/Administration/Dashboard/style.css\')}'}">
+
+    <div class="wrapper">
+        <f:comment>
+        <!-- Main Header -->
+        <header class="main-header">
+
+            <!-- Logo -->
+            <a href="index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>M</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>MOOX</b></span>
+            </a>
+
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+
+                <form action="#" method="get" class="sidebar-form">
+                    <f:be.menus.actionMenu additionalAttributes="{class: 'form-control'}">
+                        <f:be.menus.actionMenuItem label="Dashboard" controller="Administration" action="dashboard" />
+                        <f:be.menus.actionMenuItem label="Designer" controller="Administration" action="designer" />
+                    </f:be.menus.actionMenu>
+                </form>
+                <!-- Sidebar Menu -->
+                <f:render section="menu" />
+
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        </f:comment>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="margin-left: 0;">
+            <f:render section="main" />
+        </div><!-- /.content-wrapper -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="pull-right hidden-xs">
+                Powered by <a href="http://typo3.org" target="_blank">TYPO3</a> & <a href="http://www.moox.org" target="_blank">MOOX</a>
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; {v:system.timestamp() -> f:format.date(format: 'Y')} <a href="http://www.dcn.de" target="_blank">DCN GmbH</a>.</strong> All rights reserved.
+        </footer>
+
+    </div><!-- ./wrapper -->
+
+</f:be.container>

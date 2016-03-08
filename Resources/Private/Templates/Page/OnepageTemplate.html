@@ -1,0 +1,109 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:layout name="PageDefault" />
+
+    <f:section name="Configuration">
+        {v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
+        <flux:form id="onepage" label="LLL:flux.form.label.onepage" options="{icon: '{f:uri.resource(path: \'Icons/PageTemplates/Default/onepage-main.png\')}'}" variables="{templateLayout: 'Onepage'}" enabled="{settings.enableOnepageTemplate}">
+            <f:render partial="Page/Configuration/FluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+            <f:render partial="Page/Configuration/Onepage/PageFluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+            <flux:grid>
+                <flux:grid.row>
+                    <flux:grid.column colPos="3" name="Teaser Content" label="LLL:flux.form.grid.column.teaserContent" />
+                </flux:grid.row>
+                <flux:grid.row>
+                    <flux:grid.column colPos="0" name="Main Content" label="LLL:flux.form.grid.column.mainContent" />
+                </flux:grid.row>
+            </flux:grid>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Content">
+        <f:switch expression="{onepageLayout}">
+            <f:case value="Center">
+                <v:variable.set name="sectionNavigationContainerOuterClass" value="container" />
+                <v:variable.set name="sectionNavigationContainerClass" value="container-fluid" />
+            </f:case>
+            <f:case value="Fullwidth">
+                <v:variable.set name="sectionNavigationContainerOuterClass" value="" />
+                <v:variable.set name="sectionNavigationContainerClass" value="container-fluid" />
+            </f:case>
+            <f:case default="TRUE">
+                <v:variable.set name="sectionNavigationContainerOuterClass" value="" />
+                <v:variable.set name="sectionNavigationContainerClass" value="container" />
+            </f:case>
+        </f:switch>
+        <section id="home">
+            <f:if condition="{v:content.get(column: 3)}">
+                <f:render partial="Page/Onepage/Teaser" section="MooxTeaser" arguments="{_all}" />
+            </f:if>
+            <f:if condition="{v:content.get(column: 0)}">
+                <div class="{f:if(condition: fullWidthContent, then: 'container-fluid', else: 'container')}">
+                    <v:content.render column="0" />
+                </div>
+            </f:if>
+        </section>
+        <f:if condition="{useOnlySectionMenu} != '1'">
+            <div class="{sectionNavigationContainerOuterClass}">
+                <v:page.menu entryLevel="{settings.entryLevel}" useShortcutUid="FALSE" useShortcutData="FALSE">
+                    <nav class="navbar navbar-default {f:if(condition: onepageNavbarClass, then: 'navbar-teaser')}" role="navigation">
+                        <div class="{sectionNavigationContainerClass}">
+                            <f:render partial="Page/Navigation/Horizontal/HorizontalOnepageMain" section="MooxNavigation" arguments="{_all}" />
+                        </div>
+                    </nav>
+                </v:page.menu>
+            </div>
+        </f:if>
+        <v:page.menu entryLevel="{settings.entryLevel}" pageUid="{page.uid}" levels="2" as="sections" showHiddenInMenu="1">
+            <f:for each="{sections}" as="section" iteration="iteration">
+                {section -> flux:form.data(table: 'pages', field: 'tx_fed_page_flexform') -> v:variable.set(name: 'sectionFormData')}
+                <v:variable.set name="sectionParentPage" value="{v:page.info(pageUid: section.uid, field: 'pid')}" />
+                <v:variable.set name="subSectionParentPage" value="{v:page.info(pageUid: sectionParentPage, field: 'pid')}" />
+                <f:if condition="{v:page.info(pageUid: section.uid, field: 'tx_fed_page_controller_action')} == ''">
+                    <f:if condition="{v:page.info(pageUid: section.uid, field: 'tx_fed_page_controller_action_sub')} == ''">
+                        <f:then>
+                            <f:if condition="{v:page.info(pageUid: sectionParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                <f:then>
+                                    <f:if condition="{v:page.info(pageUid: subSectionParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                        <f:then>
+                                            <v:variable.set name="sectionTemplate" value="FALSE" />
+                                        </f:then>
+                                        <f:else>
+                                            <v:variable.set name="sectionTemplate" value="{v:page.info(pageUid: subSectionParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                        </f:else>
+                                    </f:if>
+                                </f:then>
+                                <f:else>
+                                    <v:variable.set name="sectionTemplate" value="{v:page.info(pageUid: sectionParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <v:variable.set name="sectionTemplate" value="{v:page.info(pageUid: section.uid, field: 'tx_fed_page_controller_action_sub')}" />
+                        </f:else>
+                    </f:if>
+                </f:if>
+                <f:if condition="{sectionTemplate} == 'DCNGmbH.MooxCore->onepageSectionTemplate'">
+                    <section id="<f:if condition="{section.tx_realurl_pathsegment}"><f:then>{section.tx_realurl_pathsegment}</f:then><f:else>page{section.uid}</f:else></f:if>">
+                        <div class="{f:if(condition: sectionFormData.fullWidthContent, then: 'container-fluid', else: 'container')} section-content">
+                            <div class="section-content-inner">
+                                <f:render partial="Page/Onepage/SectionInner" section="MooxSection" arguments="{_all}" />
+                                <v:page.menu pageUid="{section.uid}" as="subSections">
+                                    <f:if condition="{subSections}">
+                                        <f:for each="{subSections}" as="subSection" iteration="subIteration">
+                                            {subSection -> flux:form.data(table: 'pages', field: 'tx_fed_page_flexform') -> v:variable.set(name: 'subSectionFormData')}
+                                            <f:render partial="Page/Onepage/SubSectionInner" section="MooxSection" arguments="{_all}" />
+                                        </f:for>
+                                    </f:if>
+                                </v:page.menu>
+                            </div>
+                        </div>
+                    </section>
+                </f:if>
+            </f:for>
+        </v:page.menu>
+    </f:section>
+
+</div>

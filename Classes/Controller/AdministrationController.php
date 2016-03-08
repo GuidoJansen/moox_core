@@ -30,11 +30,38 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 /**
  * The main Controller, managing all the tasks for moox core dashboard management
  */
-class AdministrationController extends ActionController{
+class AdministrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+
+    /**
+     * extConf
+     *
+     * @var boolean
+     */
+    protected $extConf;
+
+    /**
+     * initialize the controller
+     *
+     * @return void
+     */
+    protected function initializeAction() {
+        parent::initializeAction();
+        $this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_core']);
+    }
  
     /**
-     * initial action, called on a clean request without specified target
+     * action dashboard
+     *
+     * @return void
      */
     public function dashboardAction() {
+    }
+
+    /**
+     * action designer
+     *
+     * @return void
+     */
+    public function designerAction() {
     }
 }

@@ -1,0 +1,17 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxHeader">
+        <f:if condition="{onepageLayout} == 'Center'">
+            <div class="container">
+        </f:if>
+        <header id="page-header">
+            <f:render partial="Page/Header/Variants/{settings.headerVariantPartial}" section="MooxHeader" arguments="{_all}" />
+        </header>
+        <f:if condition="{onepageLayout} == 'Center'">
+            </div>
+        </f:if>
+    </f:section>
+
+</div>

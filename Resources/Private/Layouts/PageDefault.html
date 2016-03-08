@@ -15,14 +15,17 @@
 <f:render partial="Page/Configuration/Meta" section="MooxMetaTags" arguments="{_all}" />
 <f:render partial="Page/Configuration/HtmlHead" section="MooxHtmlHead" arguments="{_all}" />
 
+<f:if condition="{settings.developMode}">
+	<f:render partial="Page/Configuration/Check/PageAlert" section="MooxAlert" arguments="{_all}" />
+</f:if>
 <div id="moox-typo3-page" class="moox-page moox-page-default-layout moox-template-{form.id}">
-	<f:render partial="Page/Header/{layoutGroup}Header" section="MooxHeader" arguments="{_all}" />
+	<f:render partial="Page/Header/Header" section="MooxHeader" arguments="{_all}" />
 	<div id="page-content" class="moox-content clearfix">
 		<!--TYPO3SEARCH_begin-->
 		<f:render section="Content" />
 		<!--TYPO3SEARCH_end-->
 	</div>
-	<f:render partial="Page/Footer/{layoutGroup}Footer" section="MooxFooter" arguments="{_all}" />
+	<f:render partial="Page/Footer/Footer" section="MooxFooter" arguments="{_all}" />
 </div>
 
 <f:render partial="Page/Configuration/HtmlFoot" section="MooxHtmlFoot" arguments="{_all}" />

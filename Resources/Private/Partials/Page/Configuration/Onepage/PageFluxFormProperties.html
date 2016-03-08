@@ -1,0 +1,13 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxPageProperties">
+        <flux:field.select name="onepageLayout" label="Onepager Layout" items="Default,Center,Fullwidth" default="Default"/>
+        <flux:field.checkbox name="useOnlySectionMenu" label="useOnlySectionMenu" default="0" />
+        <flux:field.checkbox name="teaserWidthContent" label="Set Teaser Content to Container-Width" default="0" />
+        <flux:field.checkbox name="fullWidthContent" label="Set Main Content to Full-Width" default="0" />
+        <f:render partial="Page/Configuration/Onepage/AdditionalPageFluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+    </f:section>
+
+</div>

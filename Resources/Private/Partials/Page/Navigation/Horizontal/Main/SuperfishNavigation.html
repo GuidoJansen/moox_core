@@ -1,0 +1,185 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxNavigation">
+        <v:asset.script path="EXT:moox_core/Resources/Public/Js/Navigation/Superfish/hoverIntent.min.js" external="0" name="superfishHoverintent" dependencies="mooxcore" group="moox" standalone="0" movable="1" />
+        <v:asset.script path="EXT:moox_core/Resources/Public/Js/Navigation/Superfish/superfish.min.js" external="0" name="superfish" dependencies="superfishHoverintent" group="moox" standalone="0" movable="1" />
+        <a href="#content-wrap" class="sr-only sr-only-focusable">{settings.accessibilitySkipMainNavigation}</a>
+        <div class="navbar-right">
+            <button class="navbar-toggle btn btn-navbar" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand hidden-lg hidden-md hidden-sm">Menu</span>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav sf-menu">
+                <f:for each="{menu}" as="page0" iteration="iteration">
+                    <v:variable.set name="rootlineParentPage" value="{v:page.info(pageUid: page0.uid, field: 'pid')}" />
+                    <v:variable.set name="subRootlineParentPage" value="{v:page.info(pageUid: rootlineParentPage, field: 'pid')}" />
+                    <f:if condition="{v:page.info(pageUid: page0.uid, field: 'tx_fed_page_controller_action')} == ''">
+                        <f:if condition="{v:page.info(pageUid: page0.uid, field: 'tx_fed_page_controller_action_sub')} == ''">
+                            <f:then>
+                                <f:if condition="{v:page.info(pageUid: rootlineParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                    <f:then>
+                                        <f:if condition="{v:page.info(pageUid: subRootlineParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                            <f:then>
+                                                <v:variable.set name="subpageTemplate" value="FALSE" />
+                                            </f:then>
+                                            <f:else>
+                                                <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: subRootlineParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                            </f:else>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: rootlineParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: page0.uid, field: 'tx_fed_page_controller_action_sub')}" />
+                            </f:else>
+                        </f:if>
+                    </f:if>
+                    <f:if condition="{subpageTemplate} != 'DCNGmbH.MooxCore->onepageSectionTemplate'">
+                        <li class="{page0.class}{f:if(condition: page0.hasSubpages, then: ' dropdown')}">
+                            <v:variable.set name="nolink" value="{page0.doktype}{page0.url}" />
+                            <f:if condition="{nolink}=='3#'">
+                                <f:then>
+                                    <a class="{page0.class} dropdown-toggle nolink" href="#" accesskey="{iteration.cycle}">
+                                        {f:if(condition: page0.nav_title, then: page0.nav_title, else: page0.title)}
+                                    </a>
+                                </f:then>
+                                <f:else>
+                                    <v:page.link pageUid="{page0.uid}" class="{page0.class} dropdown-toggle" accesskey="{iteration.cycle}">
+                                        {f:if(condition: page0.nav_title, then: page0.nav_title, else: page0.title)}
+                                    </v:page.link>
+                                </f:else>
+                            </f:if>
+                            <v:page.menu pageUid="{page0.uid}" expandAll="TRUE">
+                                <f:if condition="{v:page.info(pageUid: page0.uid, field: 'tx_fed_page_controller_action')} != 'DCNGmbH.MooxCore->onepageTemplate'">
+                                    <f:then>
+                                    <f:if condition="{menu}">
+                                        <ul class="dropdown-menu">
+                                            <f:for each="{menu}" as="page1" iteration="subIteration">
+                                                <v:variable.set name="rootlineParentPage" value="{v:page.info(pageUid: page1.uid, field: 'pid')}" />
+                                                <v:variable.set name="subRootlineParentPage" value="{v:page.info(pageUid: rootlineParentPage, field: 'pid')}" />
+                                                <f:if condition="{v:page.info(pageUid: page1.uid, field: 'tx_fed_page_controller_action')} == ''">
+                                                    <f:if condition="{v:page.info(pageUid: page1.uid, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                                        <f:then>
+                                                            <f:if condition="{v:page.info(pageUid: rootlineParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                                                <f:then>
+                                                                    <f:if condition="{v:page.info(pageUid: subRootlineParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                                                        <f:then>
+                                                                            <v:variable.set name="subpageTemplate" value="FALSE" />
+                                                                        </f:then>
+                                                                        <f:else>
+                                                                            <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: subRootlineParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                                                        </f:else>
+                                                                    </f:if>
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: rootlineParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                                                </f:else>
+                                                            </f:if>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: page1.uid, field: 'tx_fed_page_controller_action_sub')}" />
+                                                        </f:else>
+                                                    </f:if>
+                                                </f:if>
+                                                <f:if condition="{subpageTemplate} != 'DCNGmbH.MooxCore->onepageSectionTemplate'">
+                                                    <li class="{page1.class}">
+                                                        <v:variable.set name="nolink" value="{page1.doktype}{page1.url}" />
+                                                        <f:if condition="{nolink}=='3#'">
+                                                            <f:then>
+                                                                <a class="{page1.class} item{f:if(condition: subIteration.isFirst, then: 'first-child')} {f:if(condition: subIteration.isLast, then: 'last-child')} nolink" href="#">
+                                                                    {f:if(condition: page1.nav_title, then: page1.nav_title, else: page1.title)}
+                                                                </a>
+                                                            </f:then>
+                                                            <f:else>
+                                                                <a href="{page1.link}" class="{page1.class} item{f:if(condition: subIteration.isFirst, then: 'first-child')} {f:if(condition: subIteration.isLast, then: 'last-child')}">
+                                                                    {f:if(condition: page1.nav_title, then: page1.nav_title, else: page1.title)}
+                                                                </a>
+                                                            </f:else>
+                                                        </f:if>
+                                                        <v:page.menu pageUid="{page1.uid}" expandAll="TRUE" classLast="nav3rdlast" classFirst="nav3rdfirst">
+                                                            <f:if condition="{v:page.info(pageUid: page1.uid, field: 'tx_fed_page_controller_action')} != 'DCNGmbH.MooxCore->onepageTemplate'">
+                                                                <f:then>
+                                                                    <f:if condition="{menu}">
+                                                                        <ul class="dropdown-menu">
+                                                                            <f:for each="{menu}" as="page2" iteration="thirdIteration">
+                                                                                <v:variable.set name="rootlineParentPage" value="{v:page.info(pageUid: page2.uid, field: 'pid')}" />
+                                                                                <v:variable.set name="subRootlineParentPage" value="{v:page.info(pageUid: rootlineParentPage, field: 'pid')}" />
+                                                                                <f:if condition="{v:page.info(pageUid: page2.uid, field: 'tx_fed_page_controller_action')} == ''">
+                                                                                    <f:if condition="{v:page.info(pageUid: page2.uid, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                                                                        <f:then>
+                                                                                            <f:if condition="{v:page.info(pageUid: rootlineParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                                                                                <f:then>
+                                                                                                    <f:if condition="{v:page.info(pageUid: subRootlineParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                                                                                        <f:then>
+                                                                                                            <v:variable.set name="subpageTemplate" value="FALSE" />
+                                                                                                        </f:then>
+                                                                                                        <f:else>
+                                                                                                            <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: subRootlineParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                                                                                        </f:else>
+                                                                                                    </f:if>
+                                                                                                </f:then>
+                                                                                                <f:else>
+                                                                                                    <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: rootlineParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                                                                                </f:else>
+                                                                                            </f:if>
+                                                                                        </f:then>
+                                                                                        <f:else>
+                                                                                            <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: page2.uid, field: 'tx_fed_page_controller_action_sub')}" />
+                                                                                        </f:else>
+                                                                                    </f:if>
+                                                                                </f:if>
+                                                                                <f:if condition="{subpageTemplate} != 'DCNGmbH.MooxCore->onepageSectionTemplate'">
+                                                                                    <li class="{page2.class}">
+                                                                                        <v:variable.set name="nolink" value="{page2.doktype}{page2.url}" />
+                                                                                        <f:if condition="{nolink}=='3#'">
+                                                                                            <f:then>
+                                                                                                <a class="{page2.class} nolink" href="#">
+                                                                                                    {f:if(condition: page2.nav_title, then: page2.nav_title, else: page2.title)}
+                                                                                                </a>
+                                                                                            </f:then>
+                                                                                            <f:else>
+                                                                                                <a href="{page2.link}" class="{page2.class} item{f:if(condition: thirdIteration.isFirst, then: 'first-child')} {f:if(condition: thirdIteration.isLast, then: 'last-child')}">
+                                                                                                    {f:if(condition: page2.nav_title, then: page2.nav_title, else: page2.title)}
+                                                                                                </a>
+                                                                                            </f:else>
+                                                                                        </f:if>
+                                                                                    </li>
+                                                                                </f:if>
+                                                                            </f:for>
+                                                                        </ul>
+                                                                    </f:if>
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <!-- no submenu -->
+                                                                </f:else>
+                                                            </f:if>
+                                                        </v:page.menu>
+                                                    </li>
+                                                </f:if>
+                                            </f:for>
+                                        </ul>
+                                    </f:if>
+                                </f:then>
+                                <f:else>
+                                    <!-- no submenu -->
+                                </f:else>
+                            </f:if>
+                            </v:page.menu>
+                        </li>
+                    </f:if>
+                </f:for>
+            </ul>
+        </div>
+    </f:section>
+
+</div>

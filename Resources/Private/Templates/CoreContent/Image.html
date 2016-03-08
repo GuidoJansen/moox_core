@@ -9,17 +9,6 @@
 			<f:render partial="Content/Properties/Header" arguments="{_all}" />
 			<f:render partial="Content/Properties/Container" arguments="{_all}" />
 			<f:render partial="Content/Properties/Images" arguments="{_all}" />
-			<f:if condition="{settings.extendedCaptions}">
-				<flux:grid>
-					<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
-						<f:for each="{images}" as="image" iteration="iteration">
-							<flux:grid.row>
-								<flux:grid.column name="content{image.checksum}" label="Caption, {image.name}" />
-							</flux:grid.row>
-						</f:for>
-					</v:resource.record.fal>
-				</flux:grid>
-			</f:if>
 		</flux:form>
 	</f:section>
 
@@ -31,7 +20,6 @@
 				</f:for>
 			</v:resource.record.fal>
 		</div>
-		<flux:widget.grid />
 	</f:section>
 
 	<f:section name="Main">

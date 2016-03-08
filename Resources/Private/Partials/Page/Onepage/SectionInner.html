@@ -1,0 +1,21 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxSection">
+        <a name="<f:if condition="{section.tx_realurl_pathsegment}"><f:then>{section.tx_realurl_pathsegment}</f:then><f:else>page{section.uid}</f:else></f:if>"></a>
+        <div class="section-content-inner-main">
+            <f:render partial="Page/Onepage/SectionInnerHeader" section="MooxSectionHeader" arguments="{_all}" />
+            <v:content.render pageUid="{section.uid}" />
+            <f:if condition="{v:content.get(column: 5, pageUid: section.uid)}">
+                <div id="section-hidden-content-{section.uid}" class="content-closed" style="display: none;">
+                    <v:content.render pageUid="{section.uid}" column="5" />
+                </div>
+                <div class="text-center">
+                    <button type="button" id="open-hidden-content-{section.uid}" data-clicked="false" data-for="section-hidden-content-{section.uid}" data-section="<f:if condition="{section.tx_realurl_pathsegment}"><f:then>{section.tx_realurl_pathsegment}</f:then><f:else>page{section.uid}</f:else></f:if>" class="btn btn-default btn-lg open-hidden-content">Mehr Infos</button>
+                </div>
+            </f:if>
+        </div>
+    </f:section>
+
+</div>

@@ -3,27 +3,12 @@
      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" f:schemaLocation="http://fluidtypo3.org/schemas/fluid-master.xsd">
 
 <flux:form.sheet name="media" label="LLL:sheets.media" extensionName="DCNGmbH.MooxCore">
-	<flux:field.select name="settings.media.type" items="{video: 'video',audio: 'audio'}" label="LLL:fields.mediaType" requestUpdate="TRUE" default="audio" />
-        <flux:field.checkbox name="settings.media.autoplay" label="LLL:fields.mediaAutoplay" />
-        <flux:field.checkbox name="settings.media.preload" label="LLL:fields.mediaPreload" />
-        <flux:field.checkbox name="settings.media.loop" label="LLL:fields.mediaLoop" />
-	<f:if condition="{settings.media.type} == 'video'">
-		<f:then>
-			<flux:field.checkbox name="settings.media.controls" label="LLL:fields.mediaControls" />
-			<flux:field.input name="settings.media.width" label="LLL:fields.mediaWidth" />
-			<flux:field.input name="settings.media.height" label="LLL:fields.mediaHeight" />
-			<flux:field.file name="settings.media.poster" label="LLL:fields.mediaPoster" multiple="FALSE" allowed="jpg,jpeg,png,gif" showThumbnails="TRUE" />
-			<flux:form.section name="settings.media.videojsitems">
-				<flux:form.object name="videojsitem" label="LLL:fields.addMediaSource">
-					<flux:field.file name="src" label="LLL:fields.mediaSource" allowed="mp4,webm,ogg,ogv" />
-					<flux:field.select requestUpdate="0" name="type" label="LLL:fields.mediaVideoType" items="{mp4: 'mp4',webm: 'webm',ogg: 'ogg'}" default="mp4" />
-				</flux:form.object>
-			</flux:form.section>
-		</f:then>
-		<f:else>
-			<flux:field.file name="settings.media.audioSrc" label="LLL:fields.mediaSource" allowed="mp3" />
-		</f:else>
-	</f:if>
+	<flux:field.select name="settings.media.positionclass" label="LLL:fields.mediaTextPositionClass" items="{top: 'top', bottom: 'bottom'}" default="top" />
+	<flux:field.checkbox name="settings.media.autoplay" label="LLL:fields.mediaAutoplay" />
+	<flux:field.checkbox name="settings.media.preload" label="LLL:fields.mediaPreload" />
+	<flux:field.checkbox name="settings.media.loop" label="LLL:fields.mediaLoop" />
+	<flux:field.checkbox name="settings.media.controls" label="LLL:fields.mediaControls" />
+	<flux:field.file name="settings.media.poster" label="LLL:fields.mediaPoster" multiple="FALSE" allowed="jpg,jpeg,png,gif" showThumbnails="TRUE" />
 </flux:form.sheet>
 
 </div>

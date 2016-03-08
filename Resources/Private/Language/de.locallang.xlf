@@ -96,14 +96,8 @@
 			<trans-unit id="flux.bullets.fields.settings.start" xml:space="preserve">
 				<target>Startpunkt der Liste</target>
 			</trans-unit>
-			<trans-unit id="flux.image.fields.settings.scaleMode" xml:space="preserve">
-				<target>Skalierungs Modus (c)rop, (m)aximum oder normal (Wird gezerrt sobald Höhe + Breite angegeben werden)</target>
-			</trans-unit>
-			<trans-unit id="flux.image.fields.settings.extendedCaptions" xml:space="preserve">
-				<target>Erstelle eine Inhaltsspalte für die Bildunterschrift</target>
-			</trans-unit>
 			<trans-unit id="flux.image.fields.settings.directInclusion" xml:space="preserve">
-				<target>Responsive Bild (Sobald das Häckchen gesetzt ist, kann der Skalierungs Modus nicht verwendet werden)</target>
+				<target>Bild(er) auf 100% Breite erzwingen</target>
 			</trans-unit>
 			<trans-unit id="fields.lightbox" xml:space="preserve">
 				<target>Bilder bei Klick in Lightbox öffnen</target>
@@ -161,6 +155,9 @@
 			</trans-unit>
 			<trans-unit id="sheets.media" xml:space="preserve">
 				<target>Medien</target>
+			</trans-unit>
+			<trans-unit id="fields.mediaTextPositionClass" xml:space="preserve">
+				<target>Text position</target>
 			</trans-unit>
 			<trans-unit id="fields.mediaType" xml:space="preserve">
 				<target>Medien-Typ</target>

@@ -69,6 +69,12 @@
 			<trans-unit id="flux.form.label.fullwidthSubmenuRight">
 				<source>Fullwidth - Submenu right</source>
 			</trans-unit>
+			<trans-unit id="flux.form.label.onepage">
+				<source>Onepage (ROOT Page)</source>
+			</trans-unit>
+			<trans-unit id="flux.form.label.onepageSection">
+				<source>Onepage Section (Subpages)</source>
+			</trans-unit>
 
 			<trans-unit id="flux.form.grid.column.teaserContent">
 				<source>Teaser content</source>
@@ -84,6 +90,9 @@
 			</trans-unit>
 			<trans-unit id="flux.form.grid.column.footerContent">
 				<source>Footer content</source>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.hiddenContent">
+				<source>Hidden content</source>
 			</trans-unit>
 
 			<trans-unit id="from">
@@ -200,14 +209,8 @@
 			<trans-unit id="flux.bullets.fields.settings.start" xml:space="preserve">
 				<source>Starting list number</source>
 			</trans-unit>
-			<trans-unit id="flux.image.fields.settings.scaleMode" xml:space="preserve">
-				<source>Scaling mode (c)rop, (m)aximum or normal (applies stretching if both width and height are given)</source>
-			</trans-unit>
-			<trans-unit id="flux.image.fields.settings.extendedCaptions" xml:space="preserve">
-				<source>Create content containers for image captions</source>
-			</trans-unit>
-			<trans-unit id="flux.image.fields.settings.directInclusion" xml:space="preserve">
-				<source>Responsive image (You can not use the scaling mode as soon as you select it)</source>
+			<trans-unit id="flux.image.fields.settings.forceImageToFullwidth" xml:space="preserve">
+				<source>Force image(s) to 100% width</source>
 			</trans-unit>
 			<trans-unit id="fields.lightbox" xml:space="preserve">
 				<source>Open image(s) in lightbox</source>
@@ -265,6 +268,9 @@
 			</trans-unit>
 			<trans-unit id="sheets.media" xml:space="preserve">
 				<source>Media</source>
+			</trans-unit>
+			<trans-unit id="fields.mediaTextPositionClass" xml:space="preserve">
+				<source>Text position</source>
 			</trans-unit>
 			<trans-unit id="fields.mediaType" xml:space="preserve">
 				<source>Media Type</source>

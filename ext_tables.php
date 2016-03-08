@@ -61,7 +61,7 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
         'dashboard',
         'top',
         array(
-			'Administration' => 'dashboard',
+			'Administration' => 'dashboard,designer',
 		),
 		array(
 			'access' => 'user,group',

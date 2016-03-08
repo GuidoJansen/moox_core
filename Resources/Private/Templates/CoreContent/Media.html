@@ -14,9 +14,53 @@
 		</flux:form>
 	</f:section>
 
-	<f:section name="Preview"></f:section>
+	<f:section name="Preview">
+		<strong>Media Type:</strong><br />
+		<v:resource.record.fal record="{record}" field="assets" table="tt_content" as="assets">
+			<f:for each="{assets}" as="asset">
+				<f:switch expression="{asset.type}">
+					<f:case value="3">
+						Audio
+					</f:case>
+					<f:case value="4">
+						<f:switch expression="{asset.mimetype}">
+							<f:case value="video/youtube">
+								YouTube
+							</f:case>
+							<f:case value="video/vimeo">
+								Vimeo
+							</f:case>
+							<f:case default="TRUE">
+								Video
+							</f:case>
+						</f:switch>
+					</f:case>
+					<f:case default="TRUE">
+						Image
+					</f:case>
+				</f:switch>
+			</f:for>
+		</v:resource.record.fal>
+	</f:section>
 
 	<f:section name="Main">
+		<f:if condition="{settings.media.positionclass} == 'top'">
+			<f:then>
+				<div class="moox-textmedia bottom-space-base">
+					{record.bodytext -> f:format.html()}
+				</div>
+				<f:render section="Media" arguments="{_all}" />
+			</f:then>
+			<f:else>
+				<f:render section="Media" arguments="{_all}" />
+				<div class="moox-textmedia top-space-base">
+					{record.bodytext -> f:format.html()}
+				</div>
+			</f:else>
+		</f:if>
+	</f:section>
+
+	<f:section name="Media">
 		<v:resource.record.fal record="{record}" field="assets" table="tt_content" as="assets">
 			<f:for each="{assets}" as="asset">
 				<f:switch expression="{asset.type}">
@@ -48,15 +92,13 @@
 				</f:switch>
 			</f:for>
 		</v:resource.record.fal>
-
 		<f:if condition="{renderHtmlVideo}">
 			<f:render section="videoType" arguments="{_all}" />
 		</f:if>
-
 	</f:section>
 
 	<f:section name="imageType">
-
+		<v:media.image src="{asset.uid}" treatIdAsReference="TRUE" title="{asset.title}" alt="{f:if(condition: asset.alternative, then: asset.alternative, else: asset.name)}" width="{asset.width}" height="{asset.height}" class="img-responsive" id="image{record.uid}{asset.uid}" />
 	</f:section>
 
 	<f:section name="audioType">
@@ -84,7 +126,7 @@
 			]]>
 		</v:asset.script>
 		<div class="moox-audiojs moox-audiojs-c{record.uid}">
-			<audio id="audio_{record.uid}" class="audio-js" src="{asset.url}" type="{asset.mimetype}" <f:if condition="{settings.media.autoplay} == '1'">autoplay</f:if> <f:if condition="{settings.media.preload} == '1'">preload</f:if> <f:if condition="{settings.media.loop} == '1'">loop</f:if>></audio>
+			<audio id="audio_{record.uid}" class="audio-js" src="{asset.url}" type="{asset.mimetype}" {f:if(condition: settings.media.autoplay, then: 'autoplay')} {f:if(condition: settings.media.preload, then: 'preload')} {f:if(condition: settings.media.loop, then: 'loop')}></audio>
 			<div class="audio-volume" style="display:none;">
 				<p><a href="#" id="vol-0">Volume: 0.0</a></p>
 				<p><a href="#" id="vol-10">Volume: 0.1</a></p>
@@ -96,33 +138,29 @@
 	</f:section>
 
 	<f:section name="videoType">
-		<v:asset.script name="videojs-js" group="moox" dependencies="mooxcore" path="EXT:moox_core/Resources/Public/Js/video-js/video.min.js" standalone="FALSE" allowMoveToFooter="TRUE" external="0" />
+		<v:asset.script name="videojs-js" group="moox" dependencies="mooxcore" path="EXT:moox_core/Resources/Public/Js/video-js/videojs.min.js" standalone="FALSE" allowMoveToFooter="TRUE" external="0" />
 		<v:asset.script name="videojs-js-init-{record.uid}" dependencies="videojs-js" group="moox" standalone="FALSE" allowMoveToFooter="TRUE">
 			<![CDATA[
 			videojs.options.flash.swf = "typo3conf/ext/moox_core/Resources/Public/Js/video-js/video-js.swf";
 			]]>
-			<f:if condition="{settings.media.width} == ''">
-				<![CDATA[
+			<![CDATA[
 				videojs("video_]]>{record.uid}<![CDATA[", {"height":"auto", "width":"auto"}).ready(function(){
 				var myPlayer = this;
 				var aspectRatio = 5/12;
-
 				function resizeVideoJS(){
 				var width = document.getElementById(myPlayer.id()).parentElement.offsetWidth;
 				myPlayer.width(width).height( width * aspectRatio );
 				}
-
 				resizeVideoJS();
 				window.onresize = resizeVideoJS;
 				});
-				]]>
-			</f:if>
+			]]>
 		</v:asset.script>
-		<v:asset.script name="videojs-html5-shiv" group="video-js" standalone="TRUE" allowMoveToFooter="FALSE">
+		<v:asset.script name="videojs-html5-shiv" group="moox" dependencies="mooxcore" standalone="FALSE" allowMoveToFooter="FALSE">
 			document.createElement('video');document.createElement('audio');document.createElement('track');
 		</v:asset.script>
 		<div class="moox-videojs moox-videojs-c{record.uid}">
-			<video id="video_{record.uid}" class="video-js vjs-default-skin" width="{settings.media.width}" height="{settings.media.height}" poster="{settings.media.poster}" data-setup="{}" <f:if condition="{settings.media.controls} == '1'">controls</f:if> <f:if condition="{settings.media.autoplay} == '1'">autoplay</f:if> <f:if condition="{settings.media.preload} == '1'">preload</f:if> <f:if condition="{settings.media.loop} == '1'">loop</f:if>>
+			<video id="video_{record.uid}" class="video-js vjs-default-skin" width="auto" height="auto" poster="{settings.media.poster}" data-setup="{}" {f:if(condition: settings.media.controls, then: 'controls')} {f:if(condition: settings.media.autoplay, then: 'autoplay')} {f:if(condition: settings.media.preload, then: 'preload')} {f:if(condition: settings.media.loop, then: 'loop')}>
 				<v:resource.record.fal record="{record}" field="assets" table="tt_content" as="assets">
 					<f:for each="{assets}" as="asset" iteration="iteration">
 						<f:if condition="{asset.type} == 4">
@@ -130,6 +168,11 @@
 								<f:if condition="{asset.mimetype} != 'video/vimeo'">
 									<source src="{asset.url}" type="{asset.mimetype}" />
 								</f:if>
+							</f:if>
+						</f:if>
+						<f:if condition="{asset.type} == 5">
+							<f:if condition="{asset.mimetype} == 'application/ogg'">
+								<source src="{asset.url}" type="video/ogg" />
 							</f:if>
 						</f:if>
 					</f:for>

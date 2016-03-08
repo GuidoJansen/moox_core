@@ -1,0 +1,32 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:layout name="Administration"/>
+
+    <f:section name="menu">
+        <ul class="sidebar-menu">
+            <li class="header">NAVIGATION</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="active"><a href="#"><i class="fa fa-paint-brush"></i> <span>Start</span></a></li>
+        </ul><!-- /.sidebar-menu -->
+    </f:section>
+
+    <f:section name="main">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                <span class="fa fa-paint-brush"></span> Designer
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <f:debug>{_all}</f:debug>
+
+        </section><!-- /.content -->
+
+    </f:section>
+
+</div>

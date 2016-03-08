@@ -1,0 +1,110 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxHeader">
+        <f:switch expression="{layoutGroup}">
+            <f:case value="Default">
+                <v:variable.set name="headerPart2ContainerClass" value="container" />
+                <f:render section="MooxHeaderPart0" arguments="{_all}" />
+                <div id="page-header-container" class="container">
+                    <f:render section="MooxHeaderPart1" arguments="{_all}" />
+                </div>
+                <f:render section="MooxHeaderPart2" arguments="{_all}" />
+            </f:case>
+            <f:case value="Center">
+                <v:variable.set name="headerPart2ContainerClass" value="container-fluid" />
+                <f:render section="MooxHeaderPart0" arguments="{_all}" />
+                <div id="page-header-container">
+                    <f:render section="MooxHeaderPart1" arguments="{_all}" />
+                </div>
+                <f:render section="MooxHeaderPart2" arguments="{_all}" />
+            </f:case>
+            <f:case value="Fullwidth">
+                <v:variable.set name="headerPart2ContainerClass" value="container-fluid" />
+                <f:render section="MooxHeaderPart0" arguments="{_all}" />
+                <div id="page-header-container" class="container-fluid">
+                    <f:render section="MooxHeaderPart1" arguments="{_all}" />
+                </div>
+                <f:render section="MooxHeaderPart2" arguments="{_all}" />
+            </f:case>
+            <f:case value="Onepage">
+                <f:switch expression="{onepageLayout}">
+                    <f:case value="Center">
+                        <v:variable.set name="headerPart2ContainerClass" value="container-fluid" />
+                        <v:variable.set name="onepageNavbarClass" value="true" />
+                        <f:render section="MooxHeaderPart0" arguments="{_all}" />
+                        <div id="page-header-container">
+                            <f:render section="MooxHeaderPart1" arguments="{_all}" />
+                        </div>
+                        <f:render section="MooxHeaderPart2" arguments="{_all}" />
+                    </f:case>
+                    <f:case value="Fullwidth">
+                        <v:variable.set name="headerPart2ContainerClass" value="container-fluid" />
+                        <v:variable.set name="onepageNavbarClass" value="true" />
+                        <f:render section="MooxHeaderPart0" arguments="{_all}" />
+                        <div id="page-header-container" class="container-fluid">
+                            <f:render section="MooxHeaderPart1" arguments="{_all}" />
+                        </div>
+                        <f:render section="MooxHeaderPart2" arguments="{_all}" />
+                    </f:case>
+                    <f:case default="TRUE">
+                        <v:variable.set name="headerPart2ContainerClass" value="container" />
+                        <v:variable.set name="onepageNavbarClass" value="true" />
+                        <f:render section="MooxHeaderPart0" arguments="{_all}" />
+                        <div id="page-header-container" class="container">
+                            <f:render section="MooxHeaderPart1" arguments="{_all}" />
+                        </div>
+                        <f:render section="MooxHeaderPart2" arguments="{_all}" />
+                    </f:case>
+                </f:switch>
+            </f:case>
+            <f:case default="TRUE">
+                <div class="alert alert-danger" role="alert"><strong>Error!</strong>This header variant is not available for this Layout.</div>
+            </f:case>
+        </f:switch>
+    </f:section>
+
+    <f:section name="MooxHeaderPart0">
+
+    </f:section>
+
+    <f:section name="MooxHeaderPart1">
+        <div class="row">
+            <div class="col-sm-4 col-xs-12">
+                <f:render partial="Page/Library/Logo" section="MooxLogo" arguments="{_all}" />
+            </div>
+            <div class="col-sm-8 col-xs-12">
+                <f:render partial="Page/Library/Language" section="MooxLanguageMenu" arguments="{_all}" />
+                <f:if condition="{settings.headerMenuEnable}">
+                    <div class="header-menu-section pull-right">
+                        <v:page.menu pageUid="{settings.headerMenuPageUid}" useShortcutUid="TRUE" useShortcutData="FALSE">
+                            <f:render partial="Page/Navigation/Horizontal/HorizontalMeta" section="MooxNavigation" arguments="{_all}" />
+                        </v:page.menu>
+                    </div>
+                </f:if>
+                <f:if condition="{settings.companySlogan} != ''">
+                    <div class="moox-company-slogan">{settings.companySlogan}</div>
+                </f:if>
+            </div>
+        </div>
+    </f:section>
+
+    <f:section name="MooxHeaderPart2">
+        <v:page.menu entryLevel="{settings.entryLevel}" useShortcutUid="TRUE" useShortcutData="FALSE">
+            <nav class="navbar navbar-default {f:if(condition: onepageNavbarClass, then: 'navbar-teaser')}" role="navigation">
+                <div class="{headerPart2ContainerClass}">
+                    <f:if condition="{useOnlySectionMenu}">
+                        <f:then>
+                            <f:render partial="Page/Navigation/Horizontal/HorizontalOnepageMain" section="MooxNavigation" arguments="{_all}" />
+                        </f:then>
+                        <f:else>
+                            <f:render partial="Page/Navigation/Horizontal/HorizontalMain" section="MooxNavigation" arguments="{_all}" />
+                        </f:else>
+                    </f:if>
+                </div>
+            </nav>
+        </v:page.menu>
+    </f:section>
+
+</div>

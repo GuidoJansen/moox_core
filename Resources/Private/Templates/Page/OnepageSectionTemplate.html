@@ -1,0 +1,28 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:layout name="PageDefault" />
+
+    <f:section name="Configuration">
+        {v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
+        <flux:form id="onepagesection" label="LLL:flux.form.label.onepageSection" options="{icon: '{f:uri.resource(path: \'Icons/PageTemplates/Default/onepage-section.png\')}'}" variables="{templateLayout: 'Onepage'}" enabled="{settings.enableOnepageSectionTemplate}">
+            <f:render partial="Page/Configuration/FluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+            <f:render partial="Page/Configuration/Onepage/SectionFluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+            <flux:grid>
+                <flux:grid.row>
+                    <flux:grid.column colPos="0" name="Main Content" label="LLL:flux.form.grid.column.mainContent" />
+                </flux:grid.row>
+                <flux:grid.row>
+                    <flux:grid.column colPos="5" name="Hidden Content" label="LLL:flux.form.grid.column.hiddenContent" />
+                </flux:grid.row>
+            </flux:grid>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Content">
+        <v:content.render column="0" />
+        <v:content.render column="5" />
+    </f:section>
+
+</div>

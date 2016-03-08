@@ -66,6 +66,16 @@ img {width: auto; height: auto;}
     margin-bottom: @bottom-space-large;
 }
 
+/* FORCE IMAGE TO 100% WIDTH */
+.img-full-responsive {
+	display: block;
+	width: 100%;
+	height: auto;
+	&.img-responsive {
+		max-width: inherit;
+	}
+}
+
 /* IMAGE STYLES */
 .img-grayscale
 {
@@ -299,6 +309,43 @@ img {width: auto; height: auto;}
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+/********************************************************
+* MOOX Default Theme rules */
+
+
+header#page-header {
+	#page-header-container {
+		padding-top: (@padding-large-vertical * 2);
+		padding-bottom: (@padding-large-vertical * 2);
+	}
+}
+
+/* Startpage navbar margin reset */
+.moox-template-defaultstartpage,
+.moox-template-centerstartpage,
+.moox-template-fullwidthstartpage {
+	header {
+		.navbar {
+			margin-bottom: 0;
+		}
+	}
+}
+.moox-template-onepage {
+	header {
+		.navbar-teaser {
+			margin-bottom: 0;
+		}
+	}
+}
+
+footer#page-footer {
+	.footer-copyright {
+		a {
+			font-weight: bold;
+		}
+	}
 }
 
 
