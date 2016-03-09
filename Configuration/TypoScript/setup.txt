@@ -681,3 +681,55 @@ plugin.tx_tinysource {
 		preventStripOfSearchComment = 1
 	}
 }
+
+# EXT: powermail
+###################################################
+[globalVar = LIT:0 < {$plugin.tx_powermail.settings.javascript.addAdditionalJavaScript}]
+    page {
+        # Remove powermail JavaScript files
+        includeJSFooter {
+            powermailJQueryDatepicker >
+            powermailJQueryFormValidation >
+            powermailJQueryTabs >
+            powermailForm >
+        }
+    }
+    plugin.tx_vhs.settings.asset{
+        powermailJQueryDatepicker {
+            path = EXT:powermail/Resources/Public/JavaScripts/Libraries/jquery.datetimepicker.min.js
+            dependencies = mooxcore
+            external = 0
+            group = moox
+            standalone = 0
+            movable = 1
+            type = js
+        }
+        powermailJQueryFormValidation {
+            path = EXT:powermail/Resources/Public/JavaScripts/Libraries/parsley.min.js
+            dependencies = mooxcore
+            external = 0
+            group = moox
+            standalone = 0
+            movable = 1
+            type = js
+        }
+        powermailJQueryTabs {
+            path = EXT:powermail/Resources/Public/JavaScripts/Powermail/Tabs.min.js
+            dependencies = mooxcore
+            external = 0
+            group = moox
+            standalone = 0
+            movable = 1
+            type = js
+        }
+        powermailForm {
+            path = EXT:powermail/Resources/Public/JavaScripts/Powermail/Form.min.js
+            dependencies = mooxcore
+            external = 0
+            group = moox
+            standalone = 0
+            movable = 1
+            type = js
+        }
+    }
+[end]

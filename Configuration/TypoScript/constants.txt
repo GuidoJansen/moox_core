@@ -294,6 +294,10 @@ plugin.tx_mooxcore {
     }
 }
 
+
+### EXTENSIONS CONSTANTS ###
+
+### EXT:felogin ###
 styles.content.loginform {
 	target = _top
 	  # cat=content/cLogin; type=int+; label= PID of user archive: Enter the page-uid number (PID) of the folder where you keep your fe_users that are supposed to login on this site. This setting is necessary, if login is going to work!
@@ -302,4 +306,13 @@ styles.content.loginform {
 	goodMess =
 	  # cat=content/cLogin; type=; label= Login template: Enter the path for the HTML template to be used
 	templateFile = EXT:felogin/template.html
+}
+
+### EXT:powermail ###
+plugin.tx_powermail {
+    view {
+        templateRootPath = EXT:moox_core/Resources/Private/Extensions/powermail/Templates/
+        partialRootPath = EXT:moox_core/Resources/Private/Extensions/powermail/Partials/
+        layoutRootPath = EXT:moox_core/Resources/Private/Extensions/powermail/Layouts/
+    }
 }
