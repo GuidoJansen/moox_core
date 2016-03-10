@@ -27,6 +27,9 @@
 	</div>
 	<f:render partial="Page/Footer/Footer" section="MooxFooter" arguments="{_all}" />
 </div>
+<f:if condition="{settings.enablePreloader}">
+	<f:render partial="Page/Library/Preloader" section="MooxPreloader" arguments="{_all}" />
+</f:if>
 
 <f:render partial="Page/Configuration/HtmlFoot" section="MooxHtmlFoot" arguments="{_all}" />
 

@@ -58,6 +58,9 @@ config {
 	    }
     }
 }
+[globalVar = LIT:0<{$plugin.tx_mooxcore.settings.developMode}]
+    config.no_cache = 1
+[global]
 
 page {
     includeCSS {
@@ -220,7 +223,9 @@ plugin.tx_mooxcore {
         logoFile = {$plugin.tx_mooxcore.settings.logoFile}
         companySlogan = {$plugin.tx_mooxcore.settings.companySlogan}
         headerVariantPartial = {$plugin.tx_mooxcore.settings.headerVariantPartial}
+        teaserVariantPartial = {$plugin.tx_mooxcore.settings.teaserVariantPartial}
         footerVariantPartial = {$plugin.tx_mooxcore.settings.footerVariantPartial}
+        enablePreloader = {$plugin.tx_mooxcore.settings.enablePreloader}
 
         ### FONTS ###
         googlefonts = {$plugin.tx_mooxcore.settings.googlefonts}

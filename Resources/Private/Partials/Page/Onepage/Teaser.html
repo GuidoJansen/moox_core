@@ -5,17 +5,15 @@
     <f:section name="MooxTeaser">
         <f:if condition="{teaserWidthContent}">
             <f:then>
-                <div id="teaser-section" class="container">
-                    <div class="jumbotron">
-                        <v:content.render column="3" />
+                <div class="container">
+                    <div class="teaser-content">
+                        <f:render partial="Page/Teaser/Layouts/OnepageTeaser" section="MooxTeaser" arguments="{_all}" />
                     </div>
                 </div>
             </f:then>
             <f:else>
-                <div class="jumbotron">
-                    <div id="teaser-section" class="container-fluid">
-                        <v:content.render column="3" />
-                    </div>
+                <div class="teaser-content">
+                    <f:render partial="Page/Teaser/Layouts/OnepageTeaser" section="MooxTeaser" arguments="{_all}" />
                 </div>
             </f:else>
         </f:if>

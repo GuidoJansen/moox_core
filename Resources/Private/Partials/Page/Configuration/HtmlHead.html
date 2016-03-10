@@ -14,7 +14,7 @@
             <v:asset.script name="fonts-com-external" group="fonts" path="{settings.fontscom}" standalone="TRUE" allowMoveToFooter="FALSE" external="1" />
         </f:if>
         <f:if condition="{settings.customCSS} != ''">
-            <v:asset.style name="{settings.extKey}_customcss" group="moox" path="{settings.customCSS}" standalone="FALSE" allowMoveToFooter="FALSE" external="0" />
+            <v:asset.style name="moox_core_customcss" group="moox" path="{settings.customCSS}" standalone="FALSE" allowMoveToFooter="FALSE" external="0" />
         </f:if>
         <v:asset name="respondjs" group="moox" dependencies="{settings.extKey}_customcss" standalone="TRUE" allowMoveToFooter="FALSE">
             <!--[if lt IE 8]>

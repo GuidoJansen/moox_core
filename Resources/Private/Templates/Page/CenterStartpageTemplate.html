@@ -25,11 +25,7 @@
 	<f:section name="Content">
 		<div class="container">
 			<f:if condition="{v:content.get(column: 3)}">
-				<section class="teaser-content">
-					<div class="jumbotron">
-						<v:content.render column="3" />
-					</div>
-				</section>
+				<f:render partial="Page/Teaser/Teaser" section="MooxTeaser" arguments="{_all}" />
 			</f:if>
 			<main class="main-content">
 				<v:content.render column="0" />

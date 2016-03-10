@@ -1,0 +1,10 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxTeaser">
+        <v:variable.set name="teaserContainerClass" value="container-fullwidth" />
+        <f:render partial="Page/Teaser/Variants/{settings.teaserVariantPartial}" section="MooxTeaser" arguments="{_all}" />
+    </f:section>
+
+</div>
