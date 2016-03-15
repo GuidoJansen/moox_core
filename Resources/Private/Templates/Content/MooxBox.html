@@ -15,6 +15,7 @@
             <flux:field.select name="boxPadding" label="Box Padding" items="{0: 'None', 5: '5px', 10: '10px', 15: '15px', 20: '20px', 25: '25px', 30: '30px', 35: '35px', 40: '40px', 45: '45px', 50: '50px'}" default="0"/>
             <flux:field.input name="boxOpacity" label="Box Opacity (Default 100%)" eval="int,trim" default="100" />
             <flux:field.checkbox name="setBoxIntoContainer" label="Set container width" default="0" />
+            <flux:field.input name="customCssClass" label="Custom CSS Class" />
             <flux:form.content name="content" />
         </flux:form>
     </f:section>
@@ -49,7 +50,7 @@
                 <v:variable.set name="bgImageSrc" value="{v:uri.image(src: image.uid, treatIdAsReference: 1, maxW: 1920)}" />
             </f:if>
         </f:comment>
-        <v:tag name="{tagName}" class="moox-box moox-box{record.uid} moox-box-bg-color-{bgClass} moox-box-padding-{boxPadding}{f:if(condition: bgImage, then: ' moox-box-background-image')}" style="{bgImageSrc}{boxOpacityStyle}">
+        <v:tag name="{tagName}" class="moox-box moox-box{record.uid} moox-box-bg-color-{bgClass} moox-box-padding-{boxPadding}{f:if(condition: bgImage, then: ' moox-box-background-image')} {customCssClass}" style="{bgImageSrc}{boxOpacityStyle}">
             <flux:content.render area="content" />
         </v:tag>
     </f:section>
