@@ -8,6 +8,7 @@
 		{v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
 		<flux:form id="defaultstartpage" label="LLL:flux.form.label.defaultStartpage" options="{icon: '{f:uri.resource(path: \'Icons/PageTemplates/Default/default-startpage.png\')}'}" variables="{templateLayout: 'Default'}" enabled="{settings.enableDefaultStartpageTemplate}">
 			<f:render partial="Page/Configuration/FluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+			<f:render partial="Page/Configuration/DefaultLayoutFluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
 			<flux:grid>
 				<flux:grid.row>
 					<flux:grid.column colPos="3" name="Teaser" label="LLL:flux.form.grid.column.teaserContent" />
@@ -26,15 +27,11 @@
 		<f:if condition="{v:content.get(column: 3)}">
 			<f:render partial="Page/Teaser/Teaser" section="MooxTeaser" arguments="{_all}" />
 		</f:if>
-		<div class="container">
+		<div class="{pageContentWidth}">
 			<main class="main-content">
 				<v:content.render column="0" />
 			</main>
 		</div>
-	</f:section>
-
-	<f:section name="Footer">
-		<v:content.render column="4" slide="-1" />
 	</f:section>
 
 </div>

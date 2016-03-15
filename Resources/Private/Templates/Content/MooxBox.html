@@ -1,0 +1,57 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:layout name="ContentDefault" />
+
+    <f:section name="Configuration">
+        <flux:form id="mooxbox" options="{group: 'MOOX', icon: '{f:uri.resource(path: \'Icons/Moox/icon-box.png\')}'}">
+            <flux:field.select name="tagName" label="HTML Tag" items="div,section" default="div"/>
+            <flux:field.file name="bgImage" label="Background Image" maxItems="1" allowed="jpg,jpeg,png,gif" />
+            <f:comment>
+                <flux:field.inline.fal name="bgImage" label="Background Image" maxItems="1" allowedExtensions="jpg,jpeg,png,gif" />
+            </f:comment>
+            <flux:field.select name="bgClass" label="Background Color" items="{none: 'None', gray-base: 'Gray Base', gray-darker: 'Gray Darker', gray-dark: 'Gray Dark', gray: 'Gray', gray-light: 'Gray Light', gray-lighter: 'Gray Lighter', brand-primary: 'Primary', brand-success: 'Success', brand-info: 'Info', brand-warning: 'Warning', brand-danger: 'Danger'}" default="none"/>
+            <flux:field.select name="boxPadding" label="Box Padding" items="{0: 'None', 5: '5px', 10: '10px', 15: '15px', 20: '20px', 25: '25px', 30: '30px', 35: '35px', 40: '40px', 45: '45px', 50: '50px'}" default="0"/>
+            <flux:field.input name="boxOpacity" label="Box Opacity (Default 100%)" eval="int,trim" default="100" />
+            <flux:field.checkbox name="setBoxIntoContainer" label="Set container width" default="0" />
+            <flux:form.content name="content" />
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <flux:widget.grid />
+    </f:section>
+
+    <f:section name="Main">
+        <f:if condition="{setBoxIntoContainer}">
+            <f:then>
+                <div class="container">
+                    <f:render section="Box" arguments="{_all}" />
+                </div>
+            </f:then>
+            <f:else>
+                <f:render section="Box" arguments="{_all}" />
+            </f:else>
+        </f:if>
+    </f:section>
+
+    <f:section name="Box">
+        <f:if condition="{bgImage}">
+            <v:variable.set name="bgImageSrc" value="background-image: url({v:uri.image(src: bgImage, maxW: 1920)});" />
+        </f:if>
+        <f:if condition="{boxOpacity} < '100'">
+            <v:variable.set name="boxOpacityStyle" value="opacity: 0.{boxOpacity};" />
+        </f:if>
+        <f:comment>
+            <f:if condition="{bgImage}">
+                {v:content.resources.fal(field: 'bgImage') -> v:iterator.first() -> v:variable.set(name: 'image')}
+                <v:variable.set name="bgImageSrc" value="{v:uri.image(src: image.uid, treatIdAsReference: 1, maxW: 1920)}" />
+            </f:if>
+        </f:comment>
+        <v:tag name="{tagName}" class="moox-box moox-box{record.uid} moox-box-bg-color-{bgClass} moox-box-padding-{boxPadding}{f:if(condition: bgImage, then: ' moox-box-background-image')}" style="{bgImageSrc}{boxOpacityStyle}">
+            <flux:content.render area="content" />
+        </v:tag>
+    </f:section>
+
+</div>

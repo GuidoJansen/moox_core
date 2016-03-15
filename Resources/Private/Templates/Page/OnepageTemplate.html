@@ -40,7 +40,7 @@
                 <f:render partial="Page/Onepage/Teaser" section="MooxTeaser" arguments="{_all}" />
             </f:if>
             <f:if condition="{v:content.get(column: 0)}">
-                <div class="{f:if(condition: fullWidthContent, then: 'container-fluid', else: 'container')}">
+                <div class="{pageContentWidth}">
                     <v:content.render column="0" />
                 </div>
             </f:if>
@@ -87,7 +87,7 @@
                 </f:if>
                 <f:if condition="{sectionTemplate} == 'DCNGmbH.MooxCore->onepageSectionTemplate'">
                     <section id="<f:if condition="{section.tx_realurl_pathsegment}"><f:then>{section.tx_realurl_pathsegment}</f:then><f:else>page{section.uid}</f:else></f:if>">
-                        <div class="{f:if(condition: sectionFormData.fullWidthContent, then: 'container-fluid', else: 'container')} section-content">
+                        <div class="{sectionFormData.pageContentWidth} section-content">
                             <div class="section-content-inner">
                                 <f:render partial="Page/Onepage/SectionInner" section="MooxSection" arguments="{_all}" />
                                 <v:page.menu pageUid="{section.uid}" as="subSections">

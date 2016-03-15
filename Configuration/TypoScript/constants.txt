@@ -36,7 +36,7 @@ plugin.tx_mooxcore {
         extKey = moox_core
         # cat=MOOX_CORE/100/100; type=string; label=Global page title
         globalpagetitle = MOOX Page
-        # cat=MOOX_CORE/100/110; type=boolean; label=Develop Mode:Default = 0 (disabled)
+        # cat=MOOX_CORE/100/110; type=boolean; label=Develop Mode:Default = 0 (disabled) (Experimental)
         developMode = 0
         # cat=MOOX_CORE/100/120; type=boolean; label=Load jQuery in the footer
         jqueryMovable = 0
@@ -66,6 +66,10 @@ plugin.tx_mooxcore {
         footerVariantPartial = FooterVariant1
         # cat=MOOX_CORE/105/150; type=boolean; label=Page Preloader:Default = 0 (disabled)
         enablePreloader = 0
+        # cat=MOOX_CORE/105/160; type=string; label= Custom CSS file:Insert path to your custom css file
+        customCSS =
+        # cat=MOOX_CORE/105/161; type=string; label= Custom JAVASCRIPT file:Insert path to your custom javascript file
+        customJS =
 
         ### FONTS ###
         # cat=MOOX_CORE/106/100; type=string; label= Enable Google Fonts: Paste your Google Fonts URL here (the href from the LINK REL tag)
@@ -222,7 +226,7 @@ plugin.tx_mooxcore {
         }
         header {
             # cat=MOOX_CORE/141/100; type=options[H1=1, H2=2, H3=3, H4=4, H5=5, H6=6]; label=Default header type
-            type = 1
+            type = 2
             # cat=MOOX_CORE/141/110; type=string; label=Available header types (comma separated)
             types = 1,2,3,4,5,6
             autoType = 2

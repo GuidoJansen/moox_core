@@ -8,6 +8,7 @@
         {v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
         <flux:form id="fullwidthsubmenuright" label="LLL:flux.form.label.fullwidthSubmenuRight" options="{icon: '{f:uri.resource(path: \'Icons/PageTemplates/Default/full-menu-right.png\')}'}" variables="{templateLayout: 'Fullwidth'}" enabled="{settings.enableFullwidthSubmenuRightTemplate}">
             <f:render partial="Page/Configuration/FluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+            <f:render partial="Page/Configuration/FullwidthLayoutFluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
             <flux:grid>
                 <flux:grid.row>
                     <flux:grid.column colPos="0" colspan="4" name="Main Content" label="LLL:flux.form.grid.column.mainContent" />
@@ -20,7 +21,7 @@
     </f:section>
 
     <f:section name="Content">
-        <div class="container-fluid">
+        <div class="{pageContentWidth}">
             <div class="row">
                 <div class="col-sm-9">
                     <main class="main-content">
@@ -34,10 +35,6 @@
                 </div>
             </div>
         </div>
-    </f:section>
-
-    <f:section name="Footer">
-        <v:content.render column="4" slide="-1" />
     </f:section>
 
 </div>

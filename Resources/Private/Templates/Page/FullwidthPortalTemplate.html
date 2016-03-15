@@ -8,6 +8,7 @@
         {v:variable.typoscript(path: 'plugin.tx_mooxcore.settings') -> v:variable.set(name: 'settings' )}
         <flux:form id="fullportal" label="LLL:flux.form.label.fullwidthPortal" options="{icon: '{f:uri.resource(path: \'Icons/PageTemplates/Default/full-portal.png\')}'}" variables="{templateLayout: 'Fullwidth'}" enabled="{settings.enableFullwidthPortalTemplate}">
             <f:render partial="Page/Configuration/FluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
+            <f:render partial="Page/Configuration/FullwidthLayoutFluxFormProperties" section="MooxPageProperties" arguments="{_all}" />
             <flux:grid>
                 <flux:grid.row>
                     <flux:grid.column colPos="0" colspan="2" name="Main Content" label="LLL:flux.form.grid.column.mainContent" />
@@ -22,7 +23,7 @@
 
 
     <f:section name="Content">
-        <div class="container-fluid">
+        <div class="{pageContentWidth}">
             <div class="row">
                 <div class="col-sm-3">
                     <div class="subnavi-content-left">
@@ -41,11 +42,6 @@
                 </div>
             </div>
         </div>
-    </f:section>
-
-
-    <f:section name="Footer">
-        <v:content.render column="4" slide="-1" />
     </f:section>
 
 </div>

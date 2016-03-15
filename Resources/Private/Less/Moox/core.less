@@ -47,6 +47,14 @@ div.indent { margin-left: 2em; }
 img {width: auto; height: auto;}
 
 /* SPACING TYPES */
+@top-space-base: (@padding-base-vertical * 3);
+@top-space-small: (@padding-small-vertical * 3);
+@top-space-large: (@padding-large-vertical * 3);
+
+@bottom-space-base: (@padding-base-vertical * 3);
+@bottom-space-small: (@padding-small-vertical * 3);
+@bottom-space-large: (@padding-large-vertical * 3);
+
 .top-space-small {
     margin-top: @top-space-small;
 }
@@ -64,6 +72,79 @@ img {width: auto; height: auto;}
 }
 .bottom-space-large {
     margin-bottom: @bottom-space-large;
+}
+
+/* MOOX BOX FCE */
+.moox-box {
+	&.moox-box-bg-color-gray-base {
+		background-color: @gray-base;
+	}
+	&.moox-box-bg-color-gray-darker {
+		background-color: @gray-darker;
+	}
+	&.moox-box-bg-color-gray-dark {
+		background-color: @gray-dark;
+	}
+	&.moox-box-bg-color-gray {
+		background-color: @gray;
+	}
+	&.moox-box-bg-color-gray-lighter {
+		background-color: @gray-lighter;
+	}
+	&.moox-box-bg-color-gray-light {
+		background-color: @gray-light;
+	}
+	&.moox-box-bg-color-brand-primary {
+		background-color: @brand-primary;
+	}
+	&.moox-box-bg-color-brand-success {
+		background-color: @brand-success;
+	}
+	&.moox-box-bg-color-brand-info {
+		background-color: @brand-info;
+	}
+	&.moox-box-bg-color-brand-warning {
+		background-color: @brand-warning;
+	}
+	&.moox-box-bg-color-brand-danger {
+		background-color: @brand-danger;
+	}
+	&.moox-box-padding-5 {
+		padding: 5px;
+	}
+	&.moox-box-padding-10 {
+		padding: 10px;
+	}
+	&.moox-box-padding-15 {
+		padding: 15px;
+	}
+	&.moox-box-padding-20 {
+		padding: 20px;
+	}
+	&.moox-box-padding-25 {
+		padding: 25px;
+	}
+	&.moox-box-padding-30 {
+		padding: 30px;
+	}
+	&.moox-box-padding-35 {
+		padding: 35px;
+	}
+	&.moox-box-padding-40 {
+		padding: 40px;
+	}
+	&.moox-box-padding-45 {
+		padding: 45px;
+	}
+	&.moox-box-padding-50 {
+		padding: 50px;
+	}
+	&.moox-box-background-image {
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+	}
 }
 
 /* FORCE IMAGE TO 100% WIDTH */
@@ -331,11 +412,19 @@ header#page-header {
 			margin-bottom: 0;
 		}
 	}
+	section.teaser-content {
+		margin-bottom: @navbar-margin-bottom;
+	}
 }
 .moox-template-onepage {
 	header {
 		.navbar-teaser {
 			margin-bottom: 0;
+		}
+	}
+	section#home {
+		div.teaser-content {
+			margin-bottom: @navbar-margin-bottom;
 		}
 	}
 }

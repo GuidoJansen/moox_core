@@ -95,6 +95,19 @@
 				<source>Hidden content</source>
 			</trans-unit>
 
+			<trans-unit id="flux.form.properties.label.pageContentWidth">
+				<source>Select page content width</source>
+			</trans-unit>
+			<trans-unit id="flux.form.properties.label.onepageLayout">
+				<source>Onepager Layout</source>
+			</trans-unit>
+			<trans-unit id="flux.form.properties.label.useOnlySectionMenu">
+				<source>Use only section menu</source>
+			</trans-unit>
+			<trans-unit id="flux.form.properties.label.teaserWidthContent">
+				<source>Set Teaser Content to Container-Width</source>
+			</trans-unit>
+
 			<trans-unit id="from">
 				<source>from</source>
 			</trans-unit>
@@ -1213,6 +1226,16 @@
 			</trans-unit>
 			<trans-unit id="tt_content.CType.item.media">
 				<source>Text / Media</source>
+			</trans-unit>
+
+			<trans-unit id="flux.mooxbox" xml:space="preserve">
+				<source>Box</source>
+			</trans-unit>
+			<trans-unit id="flux.mooxbox.columns.content" xml:space="preserve">
+				<source>Box content</source>
+			</trans-unit>
+			<trans-unit id="flux.mooxbox.description" xml:space="preserve">
+				<source>A box outer element with background settings into which you can insert other content elements.</source>
 			</trans-unit>
 		</body>
 	</file>

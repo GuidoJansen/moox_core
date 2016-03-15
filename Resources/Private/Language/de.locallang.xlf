@@ -3,6 +3,111 @@
 	<file source-language="de" datatype="plaintext" original="messages" product-name="moox_core" date="2014-01-04T16:56:53+01:00">
 		<header/>
 		<body>
+			<trans-unit id="flux.form.label.blank">
+				<target>Leer</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultSimpleContent">
+				<target>Standard - Einfacher Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultStartpage">
+				<target>Standard - Startseite</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultPortal">
+				<target>Standard - Portal</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultColumnRight">
+				<target>Standard - Rechte Spalte</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultColumnLeft">
+				<target>Standard - Linke Spalte</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultSubmenuLeft">
+				<target>Standard - Unternavigation Links</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.defaultSubmenuRight">
+				<target>Standard - Unternavigation Rechts</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerSimpleContent">
+				<target>Mittig - Einfacher Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerStartpage">
+				<target>Mittig - Startseite</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerPortal">
+				<target>Mittig - Portal</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerColumnRight">
+				<target>Mittig - Rechte Spalte</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerColumnLeft">
+				<target>Mittig - Linke Spalte</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerSubmenuLeft">
+				<target>Mittig - Unternavigation Links</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.centerSubmenuRight">
+				<target>Mittig - Unternavigation Rechts</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthSimpleContent">
+				<target>Volle Breite - Einfacher Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthStartpage">
+				<target>Volle Breite - Startseite</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthPortal">
+				<target>Volle Breite - Portal</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthColumnRight">
+				<target>Volle Breite - Rechte Spalte</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthColumnLeft">
+				<target>Volle Breite - Linke Spalte</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthSubmenuLeft">
+				<target>Volle Breite - Unternavigation Links</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.fullwidthSubmenuRight">
+				<target>Volle Breite - Unternavigation Rechts</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.onepage">
+				<target>Onepage (ROOT Seite)</target>
+			</trans-unit>
+			<trans-unit id="flux.form.label.onepageSection">
+				<target>Onepage Bereich (Unterseiten)</target>
+			</trans-unit>
+
+			<trans-unit id="flux.form.grid.column.teaserContent">
+				<target>Teaser Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.mainContent">
+				<target>Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.leftContent">
+				<target>Linke Spalte</target>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.rightContent">
+				<target>Rechte Spalte</target>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.footerContent">
+				<target>Fuß Inhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.form.grid.column.hiddenContent">
+				<target>Versteckter/Spezieller Inhalt</target>
+			</trans-unit>
+
+			<trans-unit id="flux.form.properties.label.pageContentWidth">
+				<target>Breite für den Inhaltsbereich</target>
+			</trans-unit>
+			<trans-unit id="flux.form.properties.label.onepageLayout">
+				<target>Onepager Layout</target>
+			</trans-unit>
+			<trans-unit id="flux.form.properties.label.useOnlySectionMenu">
+				<target>Nur die Section-Navigation benutzen</target>
+			</trans-unit>
+			<trans-unit id="flux.form.properties.label.teaserWidthContent">
+				<target>Teaser auf Container Breite setzen</target>
+			</trans-unit>
+
 			<trans-unit id="from">
 				<target>von</target>
 			</trans-unit>

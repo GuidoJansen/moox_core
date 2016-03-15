@@ -226,6 +226,8 @@ plugin.tx_mooxcore {
         teaserVariantPartial = {$plugin.tx_mooxcore.settings.teaserVariantPartial}
         footerVariantPartial = {$plugin.tx_mooxcore.settings.footerVariantPartial}
         enablePreloader = {$plugin.tx_mooxcore.settings.enablePreloader}
+        customCSS = {$plugin.tx_mooxcore.settings.customCSS}
+        customJS = {$plugin.tx_mooxcore.settings.customJS}
 
         ### FONTS ###
         googlefonts = {$plugin.tx_mooxcore.settings.googlefonts}
