@@ -4,7 +4,10 @@
 
     <f:section name="MooxHtmlHead">
         <v:page.header>
-            <f:base />
+            <f:comment>Is that the solution for onepager templates?</f:comment>
+            <f:if condition="{page.tx_fed_page_controller_action} != 'DCNGmbH.MooxCore->onepageTemplate'">
+                <f:base />
+            </f:if>
         </v:page.header>
         <v:asset.prefetch domains="maxcdn.bootstrapcdn.com,ajax.googleapis.com<f:if condition='{settings.dnsPrefetch}'>,{settings.dnsPrefetch}</f:if>" />
         <f:if condition="{settings.googlefonts} != ''">

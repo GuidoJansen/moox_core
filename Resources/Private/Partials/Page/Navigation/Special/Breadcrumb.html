@@ -7,7 +7,18 @@
             <f:if condition="{rootlinePages}">
                 <nav id="breadcrumb-navigation" class="moox-breadcrumb-navigation" role="navigation">
                     <ol class="breadcrumb">
+                        <f:if condition="{settings.breadcrumbLabel} != ''"><li class="breadcrumb-label">{settings.breadcrumbLabel}</li></f:if>
                         <f:for each="{rootlinePages}" as="rootlinePage" iteration="iteration">
+                            <f:if condition="{settings.breadcrumbLabel} != ''">
+                                <f:if condition="{iteration.isFirst}">
+                                    <f:then>
+                                        <v:variable.set name="useBreadcrumbLabel" value="true" />
+                                    </f:then>
+                                    <f:else>
+                                        <v:variable.set name="useBreadcrumbLabel" value="false" />
+                                    </f:else>
+                                </f:if>
+                            </f:if>
                             <v:variable.set name="rootlineParentPage" value="{v:page.info(pageUid: rootlinePage.uid, field: 'pid')}" />
                             <v:variable.set name="subRootlineParentPage" value="{v:page.info(pageUid: rootlineParentPage, field: 'pid')}" />
                             <f:if condition="{v:page.info(pageUid: rootlinePage.uid, field: 'tx_fed_page_controller_action')} == ''">
@@ -37,7 +48,7 @@
                             <f:if condition="{subpageTemplate} != 'DCNGmbH.MooxCore->onepageSectionTemplate'">
                                 <f:if condition="{rootlinePage.current}">
                                     <f:then>
-                                        <li class="active">
+                                        <li class="active{f:if(condition: useBreadcrumbLabel, then: ' first-breadcrumb-item')}">
                                             <f:if condition="{rootlinePage.nav_title}">
                                                 <f:then>{rootlinePage.nav_title}</f:then>
                                                 <f:else>{rootlinePage.title}</f:else>
@@ -45,7 +56,7 @@
                                         </li>
                                     </f:then>
                                     <f:else>
-                                        <li>
+                                        <li {f:if(condition: useBreadcrumbLabel, then: 'class="first-breadcrumb-item"')}>
                                             <a href="{rootlinePage.link}">
                                                 <f:if condition="{rootlinePage.nav_title}">
                                                     <f:then>{rootlinePage.nav_title}</f:then>

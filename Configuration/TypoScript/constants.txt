@@ -128,6 +128,8 @@ plugin.tx_mooxcore {
         entryLevel = 0
         # cat=MOOX_CORE/125/110; type=boolean; label=Enable breadcrumb menu (Works only, if your MOOX Template support this feature):Enable=1 / Disable=0 (Default 0)
         breadcrumbEnable = 0
+        # cat=MOOX_CORE/125/111; type=string; label=Breadcrumb label:Default empty (empty = hidden)
+        breadcrumbLabel =
 
         ### LANGUAGE ###
         # cat=MOOX_CORE/130/100; type=boolean; label= Enable language menu : Works only, if your MOOX Template support this feature.

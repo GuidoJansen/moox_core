@@ -39,6 +39,17 @@
             <f:if condition="{v:content.get(column: 3)}">
                 <f:render partial="Page/Onepage/Teaser" section="MooxTeaser" arguments="{_all}" />
             </f:if>
+            <f:if condition="{useOnlySectionMenu} != '1'">
+                <div class="{sectionNavigationContainerOuterClass}">
+                    <v:page.menu entryLevel="{settings.entryLevel}" pageUid="{page.uid}" useShortcutUid="FALSE" useShortcutData="FALSE">
+                        <nav class="navbar navbar-default {f:if(condition: onepageNavbarClass, then: 'navbar-teaser')}" role="navigation">
+                            <div class="{sectionNavigationContainerClass}">
+                                <f:render partial="Page/Navigation/Horizontal/HorizontalOnepageMain" section="MooxNavigation" arguments="{_all}" />
+                            </div>
+                        </nav>
+                    </v:page.menu>
+                </div>
+            </f:if>
             <f:if condition="{settings.breadcrumbEnable}">
                 <div class="{pageContentWidth}">
                     <div class="breadcrumb-content">
@@ -56,17 +67,6 @@
                 </div>
             </f:if>
         </section>
-        <f:if condition="{useOnlySectionMenu} != '1'">
-            <div class="{sectionNavigationContainerOuterClass}">
-                <v:page.menu entryLevel="{settings.entryLevel}" pageUid="{page.uid}" useShortcutUid="FALSE" useShortcutData="FALSE">
-                    <nav class="navbar navbar-default {f:if(condition: onepageNavbarClass, then: 'navbar-teaser')}" role="navigation">
-                        <div class="{sectionNavigationContainerClass}">
-                            <f:render partial="Page/Navigation/Horizontal/HorizontalOnepageMain" section="MooxNavigation" arguments="{_all}" />
-                        </div>
-                    </nav>
-                </v:page.menu>
-            </div>
-        </f:if>
         <v:page.menu entryLevel="{settings.entryLevel}" pageUid="{page.uid}" levels="2" as="sections" showHiddenInMenu="1">
             <f:for each="{sections}" as="section" iteration="iteration">
                 {section -> flux:form.data(table: 'pages', field: 'tx_fed_page_flexform') -> v:variable.set(name: 'sectionFormData')}
