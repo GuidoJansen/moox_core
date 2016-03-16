@@ -45,16 +45,16 @@
                         </f:if>
                     </f:if>
                     <f:if condition="{subpageTemplate} != 'DCNGmbH.MooxCore->onepageSectionTemplate'">
-                        <li class="{page0.class}{f:if(condition: page0.hasSubpages, then: ' dropdown')}">
+                        <li class="{page0.class}{f:if(condition: page0.hasSubpages, then: ' dropdown')} menu-list-item{page0.uid}">
                             <v:variable.set name="nolink" value="{page0.doktype}{page0.url}" />
                             <f:if condition="{nolink}=='3#'">
                                 <f:then>
-                                    <a class="{page0.class} dropdown-toggle nolink" href="#" accesskey="{iteration.cycle}">
+                                    <a class="{page0.class} menu-link{page0.uid} dropdown-toggle nolink" href="#" accesskey="{iteration.cycle}">
                                         {f:if(condition: page0.nav_title, then: page0.nav_title, else: page0.title)}
                                     </a>
                                 </f:then>
                                 <f:else>
-                                    <v:page.link pageUid="{page0.uid}" class="{page0.class} dropdown-toggle" target="{page0.target}" accesskey="{iteration.cycle}">
+                                    <v:page.link pageUid="{page0.uid}" class="{page0.class} menu-link{page0.uid} dropdown-toggle" target="{page0.target}" accesskey="{iteration.cycle}">
                                         {f:if(condition: page0.nav_title, then: page0.nav_title, else: page0.title)}
                                     </v:page.link>
                                 </f:else>
@@ -92,16 +92,16 @@
                                                     </f:if>
                                                 </f:if>
                                                 <f:if condition="{subpageTemplate} != 'DCNGmbH.MooxCore->onepageSectionTemplate'">
-                                                    <li class="{page1.class}">
+                                                    <li class="{page1.class} menu-list-item{page1.uid}">
                                                         <v:variable.set name="nolink" value="{page1.doktype}{page1.url}" />
                                                         <f:if condition="{nolink}=='3#'">
                                                             <f:then>
-                                                                <a class="{page1.class} item{f:if(condition: subIteration.isFirst, then: 'first-child')} {f:if(condition: subIteration.isLast, then: 'last-child')} nolink" href="#">
+                                                                <a class="{page1.class} menu-link{page1.uid} item{f:if(condition: subIteration.isFirst, then: 'first-child')} {f:if(condition: subIteration.isLast, then: 'last-child')} nolink" href="#">
                                                                     {f:if(condition: page1.nav_title, then: page1.nav_title, else: page1.title)}
                                                                 </a>
                                                             </f:then>
                                                             <f:else>
-                                                                <v:page.link pageUid="{page1.uid}" class="{page1.class} item{f:if(condition: subIteration.isFirst, then: 'first-child')} {f:if(condition: subIteration.isLast, then: 'last-child')}" target="{page1.target}">
+                                                                <v:page.link pageUid="{page1.uid}" class="{page1.class} menu-link{page1.uid} item{f:if(condition: subIteration.isFirst, then: 'first-child')} {f:if(condition: subIteration.isLast, then: 'last-child')}" target="{page1.target}">
                                                                     {f:if(condition: page1.nav_title, then: page1.nav_title, else: page1.title)}
                                                                 </v:page.link>
                                                             </f:else>
@@ -139,16 +139,16 @@
                                                                                     </f:if>
                                                                                 </f:if>
                                                                                 <f:if condition="{subpageTemplate} != 'DCNGmbH.MooxCore->onepageSectionTemplate'">
-                                                                                    <li class="{page2.class}">
+                                                                                    <li class="{page2.class} menu-list-item{page2.uid}">
                                                                                         <v:variable.set name="nolink" value="{page2.doktype}{page2.url}" />
                                                                                         <f:if condition="{nolink}=='3#'">
                                                                                             <f:then>
-                                                                                                <a class="{page2.class} nolink" href="#">
+                                                                                                <a class="{page2.class} menu-link{page2.uid} nolink" href="#">
                                                                                                     {f:if(condition: page2.nav_title, then: page2.nav_title, else: page2.title)}
                                                                                                 </a>
                                                                                             </f:then>
                                                                                             <f:else>
-                                                                                                <v:page.link pageUid="{page2.uid}" class="{page2.class} item{f:if(condition: thirdIteration.isFirst, then: 'first-child')} {f:if(condition: thirdIteration.isLast, then: 'last-child')}" target="{page2.target}">
+                                                                                                <v:page.link pageUid="{page2.uid}" class="{page2.class} menu-link{page2.uid} item{f:if(condition: thirdIteration.isFirst, then: 'first-child')} {f:if(condition: thirdIteration.isLast, then: 'last-child')}" target="{page2.target}">
                                                                                                     {f:if(condition: page2.nav_title, then: page2.nav_title, else: page2.title)}
                                                                                                 </v:page.link>
                                                                                             </f:else>

@@ -18,14 +18,14 @@
                 <f:if condition="{useOnlySectionMenu} == '1'"><li><a href="#home"><f:if condition="{settings.entryLevel} == '0'">{rootLine.0.title}</f:if><f:if condition="{settings.entryLevel} == '1'">{rootLine.1.title}</f:if><f:if condition="{settings.entryLevel} == '2'">{rootLine.2.title}</f:if><f:if condition="{settings.entryLevel} == '3'">{rootLine.3.title}</f:if><f:if condition="{settings.entryLevel} == '4'">{rootLine.4.title}</f:if><f:if condition="{settings.entryLevel} == '5'">{rootLine.5.title}</f:if></a></li></f:if>
                 <f:for each="{menu}" as="section" iteration="iteration">
                     {section -> flux:form.data(table: 'pages', field: 'tx_fed_page_flexform') -> v:variable.set(name: 'sectionFormData')}
-                    <li <f:if condition="{section.hasSubPages}">class="dropdown"</f:if>>
-                        <a data-scroll="" tabindex="{iteration.cycle -> v:math.sum(b: 100)}" href="<f:if condition="{section.tx_realurl_pathsegment}"><f:then>#{section.tx_realurl_pathsegment}</f:then><f:else>#page{section.uid}</f:else></f:if>"<f:if condition="{section.hasSubPages}"> class="dropdown-toggle" data-toggle="dropdown"</f:if>><f:if condition="{section.nav_title}"><f:then>{section.nav_title}</f:then><f:else>{section.title}</f:else></f:if><f:if condition="{section.hasSubPages}"> <span class="caret"></span></f:if></a>
+                    <li class="{f:if(condition: section.hasSubPages, then: 'dropdown')} menu-list-item{section.uid}">
+                        <a data-scroll="" class="menu-link{section.uid}" tabindex="{iteration.cycle -> v:math.sum(b: 100)}" href="<f:if condition="{section.tx_realurl_pathsegment}"><f:then>#{section.tx_realurl_pathsegment}</f:then><f:else>#page{section.uid}</f:else></f:if>"<f:if condition="{section.hasSubPages}"> class="dropdown-toggle" data-toggle="dropdown"</f:if>><f:if condition="{section.nav_title}"><f:then>{section.nav_title}</f:then><f:else>{section.title}</f:else></f:if><f:if condition="{section.hasSubPages}"> <span class="caret"></span></f:if></a>
                         <v:page.menu pageUid="{section.uid}" as="subSections">
                             <f:if condition="{subSections}">
                                 <ul class="dropdown-menu" role="menu">
                                     <f:for each="{subSections}" as="subSection" iteration="subIteration">
-                                        <li>
-                                            <a data-scroll="" href="<f:if condition="{subSection.tx_realurl_pathsegment}"><f:then>#{subSection.tx_realurl_pathsegment}</f:then><f:else>#page{subSection.uid}</f:else></f:if>"><f:if condition="{subSection.nav_title}"><f:then>{subSection.nav_title}</f:then><f:else>{subSection.title}</f:else></f:if></a>
+                                        <li class="menu-list-item{subSection.uid}">
+                                            <a data-scroll="" class="menu-link{subSection.uid}" href="<f:if condition="{subSection.tx_realurl_pathsegment}"><f:then>#{subSection.tx_realurl_pathsegment}</f:then><f:else>#page{subSection.uid}</f:else></f:if>"><f:if condition="{subSection.nav_title}"><f:then>{subSection.nav_title}</f:then><f:else>{subSection.title}</f:else></f:if></a>
                                         </li>
                                     </f:for>
                                 </ul>
