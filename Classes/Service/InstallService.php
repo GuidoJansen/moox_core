@@ -77,7 +77,7 @@ class InstallService {
 			return;
 	}
                    
-        $htaccessContent = GeneralUtility::getUrl(ExtensionManagementUtility::extPath($this->extKey).'/Configuration/Apache/.htaccess');
+        $htaccessContent = GeneralUtility::getUrl(ExtensionManagementUtility::extPath($this->extKey).'/Configuration/Apache/_.htaccess');
         GeneralUtility::writeFile($htaccessFile, $htaccessContent, TRUE);
         
         /**
