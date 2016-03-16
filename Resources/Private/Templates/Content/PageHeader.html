@@ -14,7 +14,7 @@
 	</f:section>
 
 	<f:section name="Preview">
-		<{headerType}>{header}&nbsp;
+		<{headerType}>{header}
 			<f:if condition="{subheader}">
 				<small>{subheader}</small>
 			</f:if>
@@ -23,7 +23,7 @@
 
 	<f:section name="Main">
 		<div class="bootstrap-header {f:if(condition: pageheader, then: 'page-header', else: '')}">
-			<{headerType}>{header}
+			<{headerType}>{header}&nbsp;
 				<f:if condition="{subheader}">
 					<small>{subheader}</small>
 				</f:if>

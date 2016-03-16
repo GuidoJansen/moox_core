@@ -126,6 +126,8 @@ plugin.tx_mooxcore {
         ### NAVIGATION ###
         # cat=MOOX_CORE/125/100; type=int+; label=Main menu entry level - other menus calculated based on this
         entryLevel = 0
+        # cat=MOOX_CORE/125/110; type=boolean; label=Enable breadcrumb menu (Works only, if your MOOX Template support this feature):Enable=1 / Disable=0 (Default 0)
+        breadcrumbEnable = 0
 
         ### LANGUAGE ###
         # cat=MOOX_CORE/130/100; type=boolean; label= Enable language menu : Works only, if your MOOX Template support this feature.

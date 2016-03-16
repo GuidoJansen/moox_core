@@ -15,7 +15,7 @@
         </div>
         <div id="scrollspyNavigation" class="collapse navbar-collapse navbar-scrollspy" aria-expanded="false">
             <ul class="nav navbar-nav navbar-left" role="navigation">
-                <li><a href="#home"><f:if condition="{settings.entryLevel} == '0'">{rootLine.0.title}</f:if><f:if condition="{settings.entryLevel} == '1'">{rootLine.1.title}</f:if><f:if condition="{settings.entryLevel} == '2'">{rootLine.2.title}</f:if><f:if condition="{settings.entryLevel} == '3'">{rootLine.3.title}</f:if><f:if condition="{settings.entryLevel} == '4'">{rootLine.4.title}</f:if><f:if condition="{settings.entryLevel} == '5'">{rootLine.5.title}</f:if></a></li>
+                <f:if condition="{useOnlySectionMenu} == '1'"><li><a href="#home"><f:if condition="{settings.entryLevel} == '0'">{rootLine.0.title}</f:if><f:if condition="{settings.entryLevel} == '1'">{rootLine.1.title}</f:if><f:if condition="{settings.entryLevel} == '2'">{rootLine.2.title}</f:if><f:if condition="{settings.entryLevel} == '3'">{rootLine.3.title}</f:if><f:if condition="{settings.entryLevel} == '4'">{rootLine.4.title}</f:if><f:if condition="{settings.entryLevel} == '5'">{rootLine.5.title}</f:if></a></li></f:if>
                 <f:for each="{menu}" as="section" iteration="iteration">
                     {section -> flux:form.data(table: 'pages', field: 'tx_fed_page_flexform') -> v:variable.set(name: 'sectionFormData')}
                     <li <f:if condition="{section.hasSubPages}">class="dropdown"</f:if>>

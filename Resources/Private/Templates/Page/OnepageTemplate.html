@@ -39,6 +39,17 @@
             <f:if condition="{v:content.get(column: 3)}">
                 <f:render partial="Page/Onepage/Teaser" section="MooxTeaser" arguments="{_all}" />
             </f:if>
+            <f:if condition="{settings.breadcrumbEnable}">
+                <div class="{pageContentWidth}">
+                    <div class="breadcrumb-content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <f:render partial="Page/Navigation/Special/Breadcrumb" section="MooxNavigation" arguments="{_all}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </f:if>
             <f:if condition="{v:content.get(column: 0)}">
                 <div class="{pageContentWidth}">
                     <v:content.render column="0" />
@@ -47,7 +58,7 @@
         </section>
         <f:if condition="{useOnlySectionMenu} != '1'">
             <div class="{sectionNavigationContainerOuterClass}">
-                <v:page.menu entryLevel="{settings.entryLevel}" useShortcutUid="FALSE" useShortcutData="FALSE">
+                <v:page.menu entryLevel="{settings.entryLevel}" pageUid="{page.uid}" useShortcutUid="FALSE" useShortcutData="FALSE">
                     <nav class="navbar navbar-default {f:if(condition: onepageNavbarClass, then: 'navbar-teaser')}" role="navigation">
                         <div class="{sectionNavigationContainerClass}">
                             <f:render partial="Page/Navigation/Horizontal/HorizontalOnepageMain" section="MooxNavigation" arguments="{_all}" />

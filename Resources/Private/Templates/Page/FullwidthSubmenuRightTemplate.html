@@ -22,6 +22,15 @@
 
     <f:section name="Content">
         <div class="{pageContentWidth}">
+            <f:if condition="{settings.breadcrumbEnable}">
+                <div class="breadcrumb-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <f:render partial="Page/Navigation/Special/Breadcrumb" section="MooxNavigation" arguments="{_all}" />
+                        </div>
+                    </div>
+                </div>
+            </f:if>
             <div class="row">
                 <div class="col-sm-9">
                     <main class="main-content">

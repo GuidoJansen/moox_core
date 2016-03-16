@@ -1,0 +1,66 @@
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+
+    <f:section name="MooxNavigation">
+        <v:page.breadCrumb as="rootlinePages" pageUid="{page.uid}" showHiddenInMenu="1">
+            <f:if condition="{rootlinePages}">
+                <nav id="breadcrumb-navigation" class="moox-breadcrumb-navigation" role="navigation">
+                    <ol class="breadcrumb">
+                        <f:for each="{rootlinePages}" as="rootlinePage" iteration="iteration">
+                            <v:variable.set name="rootlineParentPage" value="{v:page.info(pageUid: rootlinePage.uid, field: 'pid')}" />
+                            <v:variable.set name="subRootlineParentPage" value="{v:page.info(pageUid: rootlineParentPage, field: 'pid')}" />
+                            <f:if condition="{v:page.info(pageUid: rootlinePage.uid, field: 'tx_fed_page_controller_action')} == ''">
+                                <f:if condition="{v:page.info(pageUid: rootlinePage.uid, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                    <f:then>
+                                        <f:if condition="{v:page.info(pageUid: rootlineParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                            <f:then>
+                                                <f:if condition="{v:page.info(pageUid: subRootlineParentPage, field: 'tx_fed_page_controller_action_sub')} == ''">
+                                                    <f:then>
+                                                        <v:variable.set name="subpageTemplate" value="FALSE" />
+                                                    </f:then>
+                                                    <f:else>
+                                                        <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: subRootlineParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                                    </f:else>
+                                                </f:if>
+                                            </f:then>
+                                            <f:else>
+                                                <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: rootlineParentPage, field: 'tx_fed_page_controller_action_sub')}" />
+                                            </f:else>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <v:variable.set name="subpageTemplate" value="{v:page.info(pageUid: rootlinePage.uid, field: 'tx_fed_page_controller_action_sub')}" />
+                                    </f:else>
+                                </f:if>
+                            </f:if>
+                            <f:if condition="{subpageTemplate} != 'DCNGmbH.MooxCore->onepageSectionTemplate'">
+                                <f:if condition="{rootlinePage.current}">
+                                    <f:then>
+                                        <li class="active">
+                                            <f:if condition="{rootlinePage.nav_title}">
+                                                <f:then>{rootlinePage.nav_title}</f:then>
+                                                <f:else>{rootlinePage.title}</f:else>
+                                            </f:if>
+                                        </li>
+                                    </f:then>
+                                    <f:else>
+                                        <li>
+                                            <a href="{rootlinePage.link}">
+                                                <f:if condition="{rootlinePage.nav_title}">
+                                                    <f:then>{rootlinePage.nav_title}</f:then>
+                                                    <f:else>{rootlinePage.title}</f:else>
+                                                </f:if>
+                                            </a>
+                                        </li>
+                                    </f:else>
+                                </f:if>
+                            </f:if>
+                        </f:for>
+                    </ol>
+                </nav>
+            </f:if>
+        </v:page.breadCrumb>
+    </f:section>
+
+</div>
