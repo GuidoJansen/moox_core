@@ -3,7 +3,7 @@
      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
 
     <f:section name="MooxNavigation">
-        <v:page.menu entryLevel="{v:math.sum(a: settings.entryLevel, b: 1)}" expandAll="1" as="menu" classLast="subnavi-last" classFirst="subnavi-first" classCurrent="subnavi-current">
+        <v:page.menu entryLevel="{v:math.sum(a: settings.subEntryLevel, b: 1)}" expandAll="1" as="menu" classLast="subnavi-last" classFirst="subnavi-first" classCurrent="subnavi-current">
             <nav class="navbar navbar-side" role="navigation">
                 <ul class="nav bs-sidenav sf-menu">
                     <f:for each="{menu}" as="page0" iteration="iteration">

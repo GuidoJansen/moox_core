@@ -124,9 +124,11 @@ plugin.tx_mooxcore {
         cookieButtonSettings =
 
         ### NAVIGATION ###
-        # cat=MOOX_CORE/125/100; type=int+; label=Main menu entry level - other menus calculated based on this
+        # cat=MOOX_CORE/125/100; type=int+; label=Main-menu entry level : other menus calculated on this base value
         entryLevel = 0
-        # cat=MOOX_CORE/125/110; type=boolean; label=Enable breadcrumb menu (Works only, if your MOOX Template support this feature):Enable=1 / Disable=0 (Default 0)
+        # cat=MOOX_CORE/125/105; type=int+; label=Sub-menu entry level : other sub menus calculated on this base value, override main-level for submenues
+        subEntryLevel = 0
+        # cat=MOOX_CORE/125/110; type=boolean; label=Enable breadcrumb menu : Enable=1 / Disable=0 (Default 0), not available on Startpage-Layouts
         breadcrumbEnable = 0
         # cat=MOOX_CORE/125/111; type=string; label=Breadcrumb label:Default empty (empty = hidden)
         breadcrumbLabel =
@@ -165,7 +167,7 @@ plugin.tx_mooxcore {
         # cat=MOOX_CORE/135/110; type=string; label=Name attribute of search field
         searchFieldName = tx_indexedsearch[sword]
         # cat=MOOX_CORE/135/120; type=string; label=Search page uid
-        searchPageUid = 68
+        searchPageUid = 
         # cat=MOOX_CORE/135/130; type=string; label=Search method
         searchMethod = post
         # cat=MOOX_CORE/135/140; type=string; label=Search placeholder

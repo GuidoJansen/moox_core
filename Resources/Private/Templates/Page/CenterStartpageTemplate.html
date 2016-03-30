@@ -27,15 +27,6 @@
 			<f:if condition="{v:content.get(column: 3)}">
 				<f:render partial="Page/Teaser/Teaser" section="MooxTeaser" arguments="{_all}" />
 			</f:if>
-			<f:if condition="{settings.breadcrumbEnable}">
-				<div class="breadcrumb-content">
-					<div class="row">
-						<div class="col-xs-12">
-							<f:render partial="Page/Navigation/Special/Breadcrumb" section="MooxNavigation" arguments="{_all}" />
-						</div>
-					</div>
-				</div>
-			</f:if>
 			<main class="main-content">
 				<v:content.render column="0" />
 			</main>

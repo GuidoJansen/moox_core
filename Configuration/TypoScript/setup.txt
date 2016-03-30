@@ -261,6 +261,7 @@ plugin.tx_mooxcore {
 
         ### NAVIGATION ###
         entryLevel = {$plugin.tx_mooxcore.settings.entryLevel}
+        subEntryLevel = {$plugin.tx_mooxcore.settings.subEntryLevel}
         breadcrumbEnable = {$plugin.tx_mooxcore.settings.breadcrumbEnable}
         breadcrumbLabel = {$plugin.tx_mooxcore.settings.breadcrumbLabel}
 
