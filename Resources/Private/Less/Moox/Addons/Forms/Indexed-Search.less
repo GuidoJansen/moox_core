@@ -6,6 +6,11 @@
       text-decoration: none;
     }
   }
+  .tx-indexedsearch-search-submit {
+    .btn {
+      text-decoration: none;
+    }
+  }
   .tx-indexedsearch-whatis
   {
     .tx-indexedsearch-sw {
@@ -22,24 +27,26 @@
       .mark();
     }
   }
-  .browsebox {
+  ul.tx-indexedsearch-browsebox,
+  ul.browsebox {
     .pagination();
     .tx-indexedsearch-browselist-currentPage {
       strong {
         position: relative;
         float: left;
-        padding: 6px 12px;
-        line-height: 1.42857143;
+        padding: @padding-base-vertical @padding-base-horizontal;
+        line-height: @line-height-base;
         text-decoration: none;
         font-weight: normal;
-        background-color: @brand-primary;
-        border: 1px solid @brand-primary;
+        color: @pagination-hover-color;
+        background-color: @pagination-bg;
+        border: 1px solid @pagination-border;
         a {
           z-index: 3;
-          color: #fff;
+          color: @pagination-hover-color;
           cursor: default;
-          background-color: @brand-primary;
-          border-color: @brand-primary;
+          background-color: none;
+          border: none;
           text-decoration: none;
         }
       }

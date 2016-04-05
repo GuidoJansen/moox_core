@@ -61,6 +61,9 @@ config {
 [globalVar = LIT:0<{$plugin.tx_mooxcore.settings.developMode}]
     config.no_cache = 1
 [global]
+[globalVar = LIT:0<{$plugin.tx_mooxcore.settings.enableSearch}]
+    page.config.index_enable = 1
+[global]
 
 page {
     includeCSS {
@@ -264,6 +267,7 @@ plugin.tx_mooxcore {
         subEntryLevel = {$plugin.tx_mooxcore.settings.subEntryLevel}
         breadcrumbEnable = {$plugin.tx_mooxcore.settings.breadcrumbEnable}
         breadcrumbLabel = {$plugin.tx_mooxcore.settings.breadcrumbLabel}
+        headerMenuPageUid = {$plugin.tx_mooxcore.settings.headerMenuPageUid}
 
         ### LANGUAGE ###
         languageEnable = {$plugin.tx_mooxcore.settings.languageEnable}

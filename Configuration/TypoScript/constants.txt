@@ -132,6 +132,8 @@ plugin.tx_mooxcore {
         breadcrumbEnable = 0
         # cat=MOOX_CORE/125/111; type=string; label=Breadcrumb label:Default empty (empty = hidden)
         breadcrumbLabel =
+        # cat=MOOX_CORE/125/115; type=string; label=Header meta navigation page UID: (empty = hidden)
+        headerMenuPageUid =
 
         ### LANGUAGE ###
         # cat=MOOX_CORE/130/100; type=boolean; label= Enable language menu : Works only, if your MOOX Template support this feature.
@@ -139,7 +141,7 @@ plugin.tx_mooxcore {
         # cat=MOOX_CORE/130/110; type=string; label= accesskey : Keyboard shortcut to access this element
         languageAccesskey =
         # cat=MOOX_CORE/130/120; type=string; label= class : CSS class(es) for this element
-        languageClass = nav moox-language-menu
+        languageClass = moox-language-menu
         # cat=MOOX_CORE/130/130; type=string; label= defaultIsoFlag : ISO code of the default flag
         languageDefaultIsoFlag = de
         # cat=MOOX_CORE/130/140; type=string; label= defaultLanguageLabel : Label for the default language
@@ -310,6 +312,15 @@ plugin.tx_mooxcore {
 
 
 ### EXTENSIONS CONSTANTS ###
+
+### EXT: Indexed Search ###
+plugin.tx_indexedsearch {
+    view {
+        templateRootPath = EXT:moox_core/Resources/Private/Extensions/indexed_search/Templates/
+        partialRootPath = EXT:moox_core/Resources/Private/Extensions/indexed_search/Partials/
+        layoutRootPath = EXT:moox_core/Resources/Private/Extensions/indexed_search/Layouts/
+    }
+}
 
 ### EXT:felogin ###
 styles.content.loginform {

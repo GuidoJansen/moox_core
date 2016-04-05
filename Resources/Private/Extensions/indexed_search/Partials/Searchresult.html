@@ -1,0 +1,33 @@
+<div class="panel panel-primary tx-indexedsearch-res">
+    <div class="panel-heading">
+        <f:format.html><h3 class="panel-title"><span class="glyphicon glyphicon-file tx-indexedsearch-icon icon"></span> <f:if condition="{settings.displayResultNumber}"><span class="tx-indexedsearch-result-number">{row.result_number}</span></f:if> <span class="tx-indexedsearch-title{row.CSSsuffix} title">{row.title}</span> <span class="tx-indexedsearch-percent">{row.rating}</span></h3></f:format.html>
+    </div>
+
+    <div class="panel-body">
+        <p class="tx-indexedsearch-description">{row.description}</p>
+    </div>
+    <div class="panel-footer">
+        <f:if condition="{row.headerOnly} == 0">
+            <dl class="dl-horizontal tx-indexedsearch-info">
+                <dt class="tx-indexedsearch-text-item-size"><f:translate key="result.size" />&nbsp;</dt>
+                <dd class="tx-indexedsearch-text-item-size">{row.size}</dd>
+
+                <dt class="tx-indexedsearch-text-item-crdate"><f:translate key="result.created" />&nbsp;</dt>
+                <dd class="tx-indexedsearch-text-item-crdate"><f:format.date>@{row.created}</f:format.date></dd>
+
+                <dt class="tx-indexedsearch-text-item-mtime"><f:translate key="result.modified" />&nbsp;</dt>
+                <dd class="tx-indexedsearch-text-item-mtime"><f:format.date>@{row.modified}</f:format.date></dd>
+
+                <dt class="tx-indexedsearch-text-item-path"><f:translate key="result.path" />&nbsp;</dt>
+                <dd class="tx-indexedsearch-text-item-path"><f:format.html>{row.path}</f:format.html></dd>
+            </dl>
+        </f:if>
+        <f:if condition="{row.subresults}">
+            <div class="tx-indexedsearch-list">
+                <f:for each="{row.subresults.items}" as="subrow">
+                    <f:render partial="Searchresult" arguments="{row: subrow}" />
+                </f:for>
+            </div>
+        </f:if>
+    </div>
+</div>

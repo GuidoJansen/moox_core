@@ -75,16 +75,30 @@
                 <f:render partial="Page/Library/Logo" section="MooxLogo" arguments="{_all}" />
             </div>
             <div class="col-sm-8 col-xs-12">
-                <f:render partial="Page/Library/Language" section="MooxLanguageMenu" arguments="{_all}" />
-                <f:if condition="{settings.headerMenuEnable}">
-                    <div class="header-menu-section pull-right">
-                        <v:page.menu pageUid="{settings.headerMenuPageUid}" useShortcutUid="TRUE" useShortcutData="FALSE">
-                            <f:render partial="Page/Navigation/Horizontal/HorizontalMeta" section="MooxNavigation" arguments="{_all}" />
-                        </v:page.menu>
-                    </div>
-                </f:if>
+                <div class="header-menu-section">
+                    <f:render partial="Page/Library/Language" section="MooxLanguageMenu" arguments="{_all}" />
+                    <f:if condition="{settings.headerMenuPageUid}">
+                        <div class="pull-right">
+                            <v:page.menu pageUid="{settings.headerMenuPageUid}" useShortcutUid="TRUE" useShortcutData="FALSE">
+                                <f:render partial="Page/Navigation/Horizontal/HorizontalMeta" section="MooxNavigation" arguments="{_all}" />
+                            </v:page.menu>
+                        </div>
+                    </f:if>
+                </div>
+                <div class="clearfix"></div>
                 <f:if condition="{settings.companySlogan} != ''">
-                    <div class="moox-company-slogan">{settings.companySlogan}</div>
+                    <div class="moox-company-slogan clearfix">{settings.companySlogan}</div>
+                </f:if>
+                <f:if condition="{settings.enableSearch}">
+                    <div class="moox-search-box clearfix">
+                        <form class="form-inline pull-right" method="{settings.searchMethod}" action="{f:uri.page(pageUid: settings.searchPageUid)}" role="search">
+                            <div class="form-group">
+                                <label class="sr-only" for="navbarSearchField">{settings.searchPlaceholder}</label>
+                                <input type="text" name="{settings.searchFieldName}" id="navbarSearchField" class="form-control input-sm" tabindex="2" accesskey="s" placeholder="{settings.searchPlaceholder}" />
+                            </div>
+                            <button tabindex="3" type="submit" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-search"></span><span class="sr-only">{settings.searchPlaceholder}</span></button>
+                        </form>
+                    </div>
                 </f:if>
             </div>
         </div>
