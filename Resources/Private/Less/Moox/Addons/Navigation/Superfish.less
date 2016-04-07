@@ -1,12 +1,24 @@
 .navbar-collapse {
   .sf-menu {
     .dropdown-menu {
+      @media (max-width: @screen-xs-max) {
+        width: 100%;
+        background-color: lighten(@navbar-default-bg, 5%);
+        position: relative;
+      }
       li {
         position: relative;
         .dropdown-menu {
           top: 0;
           left: 100%;
           border-top-left-radius: 0;
+           @media (max-width: @screen-xs-max) {
+            background-color: lighten(@navbar-default-bg, 8%);
+            position: relative;
+            padding-left: 10px;
+            float: left;
+            left: 0px;
+           }
         }
       }
     }

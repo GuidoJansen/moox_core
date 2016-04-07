@@ -71,10 +71,7 @@
 
     <f:section name="MooxHeaderPart1">
         <div class="row">
-            <div class="col-sm-4 col-xs-12">
-                <f:render partial="Page/Library/Logo" section="MooxLogo" arguments="{_all}" />
-            </div>
-            <div class="col-sm-8 col-xs-12">
+            <div class="col-sm-8 col-sm-push-4 col-xs-12">
                 <div class="header-menu-section">
                     <f:render partial="Page/Library/Language" section="MooxLanguageMenu" arguments="{_all}" />
                     <f:if condition="{settings.headerMenuPageUid}">
@@ -100,6 +97,9 @@
                         </form>
                     </div>
                 </f:if>
+            </div>
+            <div class="col-sm-4 col-sm-pull-8 col-xs-12">
+                <f:render partial="Page/Library/Logo" section="MooxLogo" arguments="{_all}" />
             </div>
         </div>
     </f:section>

@@ -392,9 +392,20 @@ img {width: auto; height: auto;}
 	height: 100%;
 }
 
+/* BUTTONS FIXES STYLES */
+.buttonwrap a {
+ 	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
 /* Kill PHP-Content Headers */
 .phpWrapper h1 {
     display: none;
+}
+.phpContent h1 {
+    display: block;
 }
 
 /********************************************************
@@ -404,6 +415,10 @@ header#page-header {
 	#page-header-container {
 		padding-top: (@padding-large-vertical * 2);
 		padding-bottom: (@padding-large-vertical * 2);
+		@media (max-width: @screen-xs-max) {
+			padding-top: 5px;
+			padding-bottom: 10px;
+		}
 	}
 }
 
