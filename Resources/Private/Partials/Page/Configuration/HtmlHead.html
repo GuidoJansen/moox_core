@@ -5,8 +5,10 @@
     <f:section name="MooxHtmlHead">
         <v:page.header>
             <f:comment>Is that the solution for onepager templates?</f:comment>
-            <f:if condition="{page.tx_fed_page_controller_action} != 'DCNGmbH.MooxCore->onepageTemplate'">
-                <f:base />
+            <f:if condition="{settings.useStaticBaseUrl} != '1'">
+                <f:if condition="{page.tx_fed_page_controller_action} != 'DCNGmbH.MooxCore->onepageTemplate'">
+                    <f:base />
+                </f:if>
             </f:if>
         </v:page.header>
         <v:asset.prefetch domains="maxcdn.bootstrapcdn.com,ajax.googleapis.com<f:if condition='{settings.dnsPrefetch}'>,{settings.dnsPrefetch}</f:if>" />

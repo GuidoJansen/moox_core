@@ -58,6 +58,9 @@ config {
 	    }
     }
 }
+[globalVar = LIT:0<{$plugin.tx_mooxcore.settings.useStaticBaseUrl}]
+    config.baseURL = {$protocol}://{$plugin.tx_mooxcore.settings.domain}/
+[global]
 [globalVar = LIT:0<{$plugin.tx_mooxcore.settings.developMode}]
     config.no_cache = 1
 [global]
@@ -216,6 +219,8 @@ plugin.tx_mooxcore {
         ### SETTINGS ###
         extKey = {$plugin.tx_mooxcore.settings.extKey}
         globalpagetitle = {$plugin.tx_mooxcore.settings.globalpagetitle}
+        useStaticBaseUrl = {$plugin.tx_mooxcore.settings.useStaticBaseUrl}
+        domain = {$plugin.tx_mooxcore.settings.domain}
         developMode = {$plugin.tx_mooxcore.settings.developMode}
         overrideLessVariables = {$plugin.tx_mooxcore.settings.overrideLessVariables}
         cssSourceMapping = {$plugin.tx_mooxcore.settings.cssSourceMapping}

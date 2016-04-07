@@ -36,6 +36,10 @@ plugin.tx_mooxcore {
         extKey = moox_core
         # cat=MOOX_CORE/100/100; type=string; label=Global page title
         globalpagetitle = MOOX Page
+        # cat=MOOX_CORE/100/104; type=options[Enable=1,Disable=0]; label=Use static Base-URL:Required Base-URL Domain
+        useStaticBaseUrl = 0
+        # cat=MOOX_CORE/100/105; type=string; label= Base-URL Domain (Optional):Domain without protocol and trailing slash on the end. (e.g. moox.org, www.moox.org or moox.org/subfolder)
+        domain =
         # cat=MOOX_CORE/100/110; type=boolean; label=Develop Mode:Default = 0 (disabled) (Experimental)
         developMode = 0
         # cat=MOOX_CORE/100/120; type=boolean; label=Load jQuery in the footer
