@@ -65,32 +65,7 @@ page.includeCSS {
 
 plugin.tx_vhs.assets.mergedAssetsUseHashedFilename = 1
 plugin.tx_vhs.settings.asset{
-	jquery {
-		path = //ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js
-		external = 1
-		group = cdn
-		standalone = 1
-		movable = 1
-		type = js
-	}
-	jqueryuid {
-		path = //ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js
-		external = 1
-		dependencies = jquery
-		group = cdn
-		standalone = 1
-		movable = 1
-		type = js
-	}
-	bootstrapcore {
-		path = //maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js
-		external = 1
-		dependencies = jquery
-		group = cdn
-		standalone = 1
-		movable = 1
-		type = js
-	}
+	
 	mooxcore {
 		path = EXT:moox_core/Resources/Public/Js/moox-scripts.min.js
 		external = 0

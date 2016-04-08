@@ -1,7 +1,7 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
 
 <f:if condition="{image.description}">
-	<v:asset.script name="img-description{record.uid}{image.uid}" dependencies="{settings.extKey}_js" group="moox" standalone="FALSE" allowMoveToFooter="TRUE">			
+	<v:asset.script name="img-description{record.uid}{image.uid}" dependencies="{settings.extKey}_js" group="moox" standalone="FALSE" movable="TRUE">			
 		<![CDATA[
 		$(window).load(function(){
 			$('#figcaption]]>{record.uid}{image.uid}<![CDATA[').css({'width':$('#image]]>{record.uid}{image.uid}<![CDATA[').width()});
